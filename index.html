@@ -1733,6 +1733,23 @@ partial dictionary JsonWebKey {
                       then [= exception/throw =] a
                       {{DataError}}.
                     </p>
+                    <p class=note>
+                      The import operation shall accept `ML-KEM-512-PrivateKey`, `ML-KEM-768-PrivateKey`, or `ML-KEM-1024-PrivateKey`
+                      structures in either the `seed` or `both` CHOICEs.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If |mlKemPrivateKey| represents an ML-KEM key in the `expandedKey` format,
+                      [= exception/throw =] a {{NotSupportedError}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If |mlKemPrivateKey| represents an ML-KEM key in the `both` format,
+                      and the `seed` field does not correspond to the `expandedKey` field,
+                      [= exception/throw =] a {{DataError}}.
+                    </p>
                   </li>
                   <li>
                     <p>
@@ -2889,6 +2906,23 @@ dictionary ContextParams : Algorithm {
                       If an error occurred while parsing,
                       then [= exception/throw =] a
                       {{DataError}}.
+                    </p>
+                    <p class=note>
+                      The import operation shall accept `ML-DSA-44-PrivateKey`, `ML-DSA-65-PrivateKey`, or `ML-DSA-87-PrivateKey`
+                      structures in either the `seed` or `both` CHOICEs.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If |mlDsaPrivateKey| represents an ML-DSA key in the `expandedKey` format,
+                      [= exception/throw =] a {{NotSupportedError}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If |mlDsaPrivateKey| represents an ML-DSA key in the `both` format,
+                      and the `seed` field does not correspond to the `expandedKey` field,
+                      [= exception/throw =] a {{DataError}}.
                     </p>
                   </li>
                   <li>
