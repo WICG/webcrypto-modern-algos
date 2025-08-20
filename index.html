@@ -1738,6 +1738,11 @@ dictionary JsonWebKey {
                       then [= exception/throw =] a
                       {{DataError}}.
                     </p>
+                    <p class=note>
+                      The import operation shall accept `ML-KEM-512-PrivateKey`, `ML-KEM-768-PrivateKey`, or `ML-KEM-1024-PrivateKey`
+                      structures in either one of the three CHOICEs (seed-only, private-only, or both). The absence of a seed
+                      or presence of the expanded private key is not a reason to [= exception/throw =] a {{DataError}}.
+                    </p>
                   </li>
                   <li>
                     <p>
@@ -2079,6 +2084,14 @@ dictionary JsonWebKey {
             <p>
               If the underlying cryptographic key material represented by the <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a> internal slot of |key|
               cannot be accessed, then [= exception/throw =] an {{OperationError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
+              of |key| is "`private`" and an ML-KEM seed cannot be resolved from the
+              <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
+              internal slot of |key|, then [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
@@ -2892,6 +2905,11 @@ dictionary ContextParams : Algorithm {
                       then [= exception/throw =] a
                       {{DataError}}.
                     </p>
+                    <p class=note>
+                      The import operation shall accept `ML-DSA-44-PrivateKey`, `ML-DSA-65-PrivateKey`, or `ML-DSA-87-PrivateKey`
+                      structures in either one of the three CHOICEs (seed-only, private-only, or both). The absence of a seed
+                      or presence of the expanded private key is not a reason to [= exception/throw =] a {{DataError}}.
+                    </p>
                   </li>
                   <li>
                     <p>
@@ -3223,6 +3241,14 @@ dictionary ContextParams : Algorithm {
             <p>
               If the underlying cryptographic key material represented by the <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a> internal slot of |key|
               cannot be accessed, then [= exception/throw =] an {{OperationError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
+              of |key| is "`private`" and an ML-DSA seed cannot be resolved from the
+              <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
+              internal slot of |key|, then [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
