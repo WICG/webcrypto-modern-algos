@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 35.4.3">
+<meta name="generator" content="ReSpec 35.5.1">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -284,8 +284,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       "id": "draft-ietf-lamps-dilithium-certificates"
     }
   },
-  "publishISODate": "2025-08-11T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 11 August 2025"
+  "publishISODate": "2025-09-03T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 03 September 2025"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/cg-draft"></head>
 
@@ -294,7 +294,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Modern Algorithms in the Web Cryptography API</h1> 
     <p id="w3c-state">
       <a href="https://www.w3.org/standards/types#reports">Draft Community Group Report</a>
-      <time class="dt-published" datetime="2025-08-11">11 August 2025</time>
+      <time class="dt-published" datetime="2025-09-03">03 September 2025</time>
     </p>
     <dl>
       
@@ -1410,25 +1410,14 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
 
   <section id="JsonWebKey-dictionary"><div class="header-wrapper"><h2 id="x5-jsonwebkey-dictionary"><bdi class="secno">5. </bdi>JsonWebKey dictionary</h2><a class="self-link" href="#JsonWebKey-dictionary" aria-label="Permalink for Section 5."></a></div>
     
-    <pre class="idl def" id="webidl-1604149801"><span class="idlHeader"><a class="self-link" href="#webidl-1604149801">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-jsonwebkey" data-title="JsonWebKey">dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-JsonWebKey" id="ref-for-dfn-JsonWebKey-1"><code>JsonWebKey</code></a> {<span data-idl="" class="idlMember" id="idl-def-jsonwebkey-kty" data-title="kty" data-dfn-for="JsonWebKey"><span class="idlType"><span class="idlSectionComment">
-  // The following fields are defined in Section 3.1 of JSON Web Key
-  </span><a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString">DOMString</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-jsonwebkey-kty" data-idl="field" data-title="kty" data-dfn-for="JsonWebKey" data-type="DOMString" class="idlName" tabindex="0" aria-haspopup="dialog"><code>kty</code></dfn>;</span><span data-idl="" class="idlMember" id="idl-def-jsonwebkey-use" data-title="use" data-dfn-for="JsonWebKey"><span class="idlType">
-  <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString">DOMString</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-jsonwebkey-use" data-idl="field" data-title="use" data-dfn-for="JsonWebKey" data-type="DOMString" class="idlName" tabindex="0" aria-haspopup="dialog"><code>use</code></dfn>;</span><span data-idl="" class="idlMember" id="idl-def-jsonwebkey-key_ops" data-title="key_ops" data-dfn-for="JsonWebKey"><span class="idlType">
-  <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#idl-sequence">sequence</a>&lt;<a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString">DOMString</a>&gt;</span> <dfn data-export="" data-dfn-type="dict-member" id="dom-jsonwebkey-key_ops" data-idl="field" data-title="key_ops" data-dfn-for="JsonWebKey" data-type="sequence" class="idlName" tabindex="0" aria-haspopup="dialog"><code>key_ops</code></dfn>;</span><span data-idl="" class="idlMember" id="idl-def-jsonwebkey-alg" data-title="alg" data-dfn-for="JsonWebKey"><span class="idlType">
-  <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString">DOMString</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-jsonwebkey-alg" data-idl="field" data-title="alg" data-dfn-for="JsonWebKey" data-type="DOMString" class="idlName" tabindex="0" aria-haspopup="dialog"><code>alg</code></dfn>;</span><span data-idl="" class="idlMember" id="idl-def-jsonwebkey-ext" data-title="ext" data-dfn-for="JsonWebKey"><span class="idlType"><span class="idlSectionComment">
-
-  // The following fields are defined in JSON Web Key Parameters Registration
-  </span><a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-boolean">boolean</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-jsonwebkey-ext" data-idl="field" data-title="ext" data-dfn-for="JsonWebKey" data-type="boolean" class="idlName" tabindex="0" aria-haspopup="dialog"><code>ext</code></dfn>;</span><span data-idl="" class="idlMember" id="idl-def-jsonwebkey-pub" data-title="pub" data-dfn-for="JsonWebKey"><span class="idlType"><span class="idlSectionComment">
-
+    <pre class="idl def" id="webidl-1943935263"><span class="idlHeader"><a class="self-link" href="#webidl-1943935263">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-jsonwebkey-partial-1" data-title="JsonWebKey">partial dictionary <a data-idl="partial" data-link-type="dictionary" data-title="JsonWebKey" class="idlID" data-dfn-for="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey">JsonWebKey</a> {<span data-idl="" class="idlMember" id="idl-def-jsonwebkey-pub" data-title="pub" data-dfn-for="JsonWebKey"><span class="idlType"><span class="idlSectionComment">
   // The following fields are defined in draft-ietf-cose-dilithium-07
   </span><a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString">DOMString</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-jsonwebkey-pub" data-idl="field" data-title="pub" data-dfn-for="JsonWebKey" data-type="DOMString" class="idlName" tabindex="0" aria-haspopup="dialog"><code>pub</code></dfn>;</span><span data-idl="" class="idlMember" id="idl-def-jsonwebkey-priv" data-title="priv" data-dfn-for="JsonWebKey"><span class="idlType">
   <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString">DOMString</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-jsonwebkey-priv" data-idl="field" data-title="priv" data-dfn-for="JsonWebKey" data-type="DOMString" class="idlName" tabindex="0" aria-haspopup="dialog"><code>priv</code></dfn>;</span>
 };</span></code></pre>
     <p>
-      This version of the <dfn data-idl="dictionary" id="dfn-JsonWebKey" data-export="" data-dfn-type="dictionary" data-title="JsonWebKey" data-dfn-for="" tabindex="0" aria-haspopup="dialog"><code>JsonWebKey</code></dfn> dictionary
+      This extension of the <a data-link-type="dictionary" data-lt="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a> dictionary defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-webcrypto" title="Web Cryptography Level 2">webcrypto</a></cite>]
       provides a way to represent keys with the "AKP" key type defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-cose-dilithium-07" title="ML-DSA for JOSE and COSE">draft-ietf-cose-dilithium-07</a></cite>].
-      It may be merged into the definition of <a href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a> in [<cite><a class="bibref" data-link-type="biblio" href="#bib-webcrypto" title="Web Cryptography Level 2">webcrypto</a></cite>]
-      by adding the <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-1"><code>pub</code></a> and <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-1"><code>priv</code></a> fields there.
     </p>
   </section>
 
@@ -2126,7 +2115,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 <ol>
                   <li>
                     <dl class="switch">
-                      <dt>If <var>keyData</var> is a <a data-link-type="idl" data-lt="JsonWebKey" href="#dfn-JsonWebKey" class="internalDFN" id="ref-for-dfn-JsonWebKey-2"><code>JsonWebKey</code></a> dictionary:</dt>
+                      <dt>If <var>keyData</var> is a <a data-link-type="dictionary" data-lt="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a> dictionary:</dt>
                       <dd><p>Let <var>jwk</var> equal <var>keyData</var>.</p></dd>
                       <dt>Otherwise:</dt>
                       <dd><p><a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">Throw</a> a <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.</p></dd>
@@ -2134,7 +2123,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-2"><code>priv</code></a> field of <var>jwk</var> is present
+                      If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-1"><code>priv</code></a> field of <var>jwk</var> is present
                       and if <var>usages</var> contains an entry which is not
                       "<code>decapsulateKey</code>" or "<code>decapsulateBits</code>"
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
@@ -2143,7 +2132,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-3"><code>priv</code></a> field of <var>jwk</var> is not present
+                      If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-2"><code>priv</code></a> field of <var>jwk</var> is not present
                       and if <var>usages</var> contains an entry which is not
                       "<code>encapsulateKey</code>" or "<code>encapsulateBits</code>"
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
@@ -2152,7 +2141,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-kty" class="internalDFN" id="ref-for-dom-jsonwebkey-kty-1"><code>kty</code></a> field of <var>jwk</var> is not
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-kty"><code>kty</code></a> field of <var>jwk</var> is not
                       "<code>AKP</code>",
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -2160,7 +2149,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-alg" class="internalDFN" id="ref-for-dom-jsonwebkey-alg-1"><code>alg</code></a> field of <var>jwk</var> is not
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-alg"><code>alg</code></a> field of <var>jwk</var> is not
                       one of the <code>alg</code> values corresponding to the
                       <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var>
                       indicated in Section 8 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-jose-pqc-kem-01" title="Post-Quantum Key Encapsulation Mechanisms (PQ KEMs) for JOSE and COSE">draft-ietf-jose-pqc-kem-01</a></cite>]
@@ -2174,14 +2163,14 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If <var>usages</var> is non-empty and the <a data-link-type="idl" href="#dom-jsonwebkey-use" class="internalDFN" id="ref-for-dom-jsonwebkey-use-1"><code>use</code></a> field of <var>jwk</var> is present
+                      If <var>usages</var> is non-empty and the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-use"><code>use</code></a> field of <var>jwk</var> is present
                       and is not equal to "<code>enc</code>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
                     </p>
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-key_ops" class="internalDFN" id="ref-for-dom-jsonwebkey-key_ops-1"><code>key_ops</code></a> field of <var>jwk</var> is present, and
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-key_ops"><code>key_ops</code></a> field of <var>jwk</var> is present, and
                       is invalid according to the requirements of JSON Web
                       Key [<cite><a class="bibref" data-link-type="biblio" href="#bib-jwk" title="JSON Web Key (JWK)">JWK</a></cite>], or it does not contain all of the specified <var>usages</var>
                       values,
@@ -2191,7 +2180,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-ext" class="internalDFN" id="ref-for-dom-jsonwebkey-ext-1"><code>ext</code></a> field of <var>jwk</var> is present and
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-ext"><code>ext</code></a> field of <var>jwk</var> is present and
                       has the value false and <var>extractable</var> is true,
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -2199,12 +2188,12 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <dl class="switch">
-                      <dt>If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-4"><code>priv</code></a> field of <var>jwk</var> is present:</dt>
+                      <dt>If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-3"><code>priv</code></a> field of <var>jwk</var> is present:</dt>
                       <dd>
                         <ol>
                           <li>
                             <p>
-                              If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-5"><code>priv</code></a> attribute of <var>jwk</var>
+                              If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-4"><code>priv</code></a> attribute of <var>jwk</var>
                               does not contain a valid base64url encoded seed
                               representing an ML-KEM private key,
                               then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -2214,7 +2203,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                             <p>
                               Let <var>key</var> be a new <a data-link-type="interface" data-lt="CryptoKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey"><code>CryptoKey</code></a> object that represents the
                               ML-KEM private key identified by interpreting the
-                              <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-6"><code>priv</code></a> attribute of <var>jwk</var>
+                              <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-5"><code>priv</code></a> attribute of <var>jwk</var>
                               as a base64url encoded seed.
                             </p>
                           </li>
@@ -2226,7 +2215,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                           </li>
                           <li>
                             <p>
-                              If the <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-2"><code>pub</code></a> attribute of <var>jwk</var>
+                              If the <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-1"><code>pub</code></a> attribute of <var>jwk</var>
                               does not contain the base64url encoded public key
                               representing the ML-KEM public key
                               corresponding to <var>key</var>,
@@ -2240,7 +2229,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                         <ol>
                           <li>
                             <p>
-                              If the <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-3"><code>pub</code></a> attribute of <var>jwk</var>
+                              If the <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-2"><code>pub</code></a> attribute of <var>jwk</var>
                               does not contain a valid base64url encoded public key
                               representing an ML-KEM public key,
                               then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -2250,7 +2239,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                             <p>
                               Let <var>key</var> be a new <a data-link-type="interface" data-lt="CryptoKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey"><code>CryptoKey</code></a> object that represents the
                               ML-KEM public key identified by interpreting the
-                              <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-4"><code>pub</code></a> attribute of <var>jwk</var>
+                              <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-3"><code>pub</code></a> attribute of <var>jwk</var>
                               as a base64url encoded public key.
                             </p>
                           </li>
@@ -2546,7 +2535,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 <ol>
                   <li>
                     <p>
-                      Let <var>jwk</var> be a new <a data-link-type="idl" data-lt="JsonWebKey" href="#dfn-JsonWebKey" class="internalDFN" id="ref-for-dfn-JsonWebKey-3"><code>JsonWebKey</code></a>
+                      Let <var>jwk</var> be a new <a data-link-type="dictionary" data-lt="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a>
                       dictionary.
                     </p>
                   </li>
@@ -2571,7 +2560,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      Set the <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-5"><code>pub</code></a> attribute of <var>jwk</var>
+                      Set the <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-4"><code>pub</code></a> attribute of <var>jwk</var>
                       to the base64url encoded public key corresponding
                       to the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a>
                       internal slot of <var>key</var>.
@@ -2584,7 +2573,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                         of <var>key</var> is "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-private"><code>private</code></a>":
                       </dt>
                       <dd>
-                        Set the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-7"><code>priv</code></a> attribute of <var>jwk</var>
+                        Set the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-6"><code>priv</code></a> attribute of <var>jwk</var>
                         to the base64url encoded seed represented by
                         the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a>
                         internal slot of <var>key</var>.
@@ -3272,7 +3261,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 <ol>
                   <li>
                     <dl class="switch">
-                      <dt>If <var>keyData</var> is a <a data-link-type="idl" data-lt="JsonWebKey" href="#dfn-JsonWebKey" class="internalDFN" id="ref-for-dfn-JsonWebKey-4"><code>JsonWebKey</code></a> dictionary:</dt>
+                      <dt>If <var>keyData</var> is a <a data-link-type="dictionary" data-lt="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a> dictionary:</dt>
                       <dd><p>Let <var>jwk</var> equal <var>keyData</var>.</p></dd>
                       <dt>Otherwise:</dt>
                       <dd><p><a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">Throw</a> a <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.</p></dd>
@@ -3280,10 +3269,10 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-8"><code>priv</code></a> field is present
+                      If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-7"><code>priv</code></a> field is present
                       and <var>usages</var> contains a value which is not
                       "<code>sign</code>", or,
-                      if the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-9"><code>priv</code></a> field is not present
+                      if the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-8"><code>priv</code></a> field is not present
                       and <var>usages</var> contains a value which is not
                       "<code>verify</code>"
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
@@ -3292,7 +3281,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-kty" class="internalDFN" id="ref-for-dom-jsonwebkey-kty-2"><code>kty</code></a> field of <var>jwk</var> is not
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-kty"><code>kty</code></a> field of <var>jwk</var> is not
                       "<code>AKP</code>",
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -3300,7 +3289,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-alg" class="internalDFN" id="ref-for-dom-jsonwebkey-alg-2"><code>alg</code></a> field of <var>jwk</var> is not equal to
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-alg"><code>alg</code></a> field of <var>jwk</var> is not equal to
                       the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var>,
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -3308,14 +3297,14 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If <var>usages</var> is non-empty and the <a data-link-type="idl" href="#dom-jsonwebkey-use" class="internalDFN" id="ref-for-dom-jsonwebkey-use-2"><code>use</code></a> field of <var>jwk</var> is present
+                      If <var>usages</var> is non-empty and the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-use"><code>use</code></a> field of <var>jwk</var> is present
                       and is not equal to "<code>sig</code>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
                     </p>
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-key_ops" class="internalDFN" id="ref-for-dom-jsonwebkey-key_ops-2"><code>key_ops</code></a> field of <var>jwk</var> is present, and
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-key_ops"><code>key_ops</code></a> field of <var>jwk</var> is present, and
                       is invalid according to the requirements of JSON Web
                       Key [<cite><a class="bibref" data-link-type="biblio" href="#bib-jwk" title="JSON Web Key (JWK)">JWK</a></cite>], or it does not contain all of the specified <var>usages</var>
                       values,
@@ -3325,7 +3314,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-ext" class="internalDFN" id="ref-for-dom-jsonwebkey-ext-2"><code>ext</code></a> field of <var>jwk</var> is present and
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-ext"><code>ext</code></a> field of <var>jwk</var> is present and
                       has the value false and <var>extractable</var> is true,
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -3333,12 +3322,12 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <dl class="switch">
-                      <dt>If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-10"><code>priv</code></a> field of <var>jwk</var> is present:</dt>
+                      <dt>If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-9"><code>priv</code></a> field of <var>jwk</var> is present:</dt>
                       <dd>
                         <ol>
                           <li>
                             <p>
-                              If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-11"><code>priv</code></a> attribute of <var>jwk</var>
+                              If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-10"><code>priv</code></a> attribute of <var>jwk</var>
                               does not contain a valid base64url encoded seed
                               representing an ML-DSA private key,
                               then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -3348,7 +3337,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                             <p>
                               Let <var>key</var> be a new <a data-link-type="interface" data-lt="CryptoKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey"><code>CryptoKey</code></a> object that represents the
                               ML-DSA private key identified by interpreting the
-                              <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-12"><code>priv</code></a> attribute of <var>jwk</var>
+                              <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-11"><code>priv</code></a> attribute of <var>jwk</var>
                               as a base64url encoded seed.
                             </p>
                           </li>
@@ -3360,7 +3349,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                           </li>
                           <li>
                             <p>
-                              If the <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-6"><code>pub</code></a> attribute of <var>jwk</var>
+                              If the <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-5"><code>pub</code></a> attribute of <var>jwk</var>
                               does not contain the base64url encoded public key
                               representing the ML-DSA public key
                               corresponding to <var>key</var>,
@@ -3374,7 +3363,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                         <ol>
                           <li>
                             <p>
-                              If the <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-7"><code>pub</code></a> attribute of <var>jwk</var>
+                              If the <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-6"><code>pub</code></a> attribute of <var>jwk</var>
                               does not contain a valid base64url encoded public key
                               representing an ML-DSA public key,
                               then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -3384,7 +3373,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                             <p>
                               Let <var>key</var> be a new <a data-link-type="interface" data-lt="CryptoKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey"><code>CryptoKey</code></a> object that represents the
                               ML-DSA public key identified by interpreting the
-                              <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-8"><code>pub</code></a> attribute of <var>jwk</var>
+                              <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-7"><code>pub</code></a> attribute of <var>jwk</var>
                               as a base64url encoded public key.
                             </p>
                           </li>
@@ -3690,7 +3679,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 <ol>
                   <li>
                     <p>
-                      Let <var>jwk</var> be a new <a data-link-type="idl" data-lt="JsonWebKey" href="#dfn-JsonWebKey" class="internalDFN" id="ref-for-dfn-JsonWebKey-5"><code>JsonWebKey</code></a>
+                      Let <var>jwk</var> be a new <a data-link-type="dictionary" data-lt="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a>
                       dictionary.
                     </p>
                   </li>
@@ -3708,7 +3697,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      Set the <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-9"><code>pub</code></a> attribute of <var>jwk</var>
+                      Set the <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-8"><code>pub</code></a> attribute of <var>jwk</var>
                       to the base64url encoded public key corresponding
                       to the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a>
                       internal slot of <var>key</var>.
@@ -3721,7 +3710,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                         of <var>key</var> is "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-private"><code>private</code></a>":
                       </dt>
                       <dd>
-                        Set the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-13"><code>priv</code></a> attribute of <var>jwk</var>
+                        Set the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-12"><code>priv</code></a> attribute of <var>jwk</var>
                         to the base64url encoded seed represented by
                         the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a>
                         internal slot of <var>key</var>.
@@ -4496,7 +4485,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 <ol>
                   <li>
                     <dl class="switch">
-                      <dt>If <var>keyData</var> is a <a data-link-type="idl" data-lt="JsonWebKey" href="#dfn-JsonWebKey" class="internalDFN" id="ref-for-dfn-JsonWebKey-6"><code>JsonWebKey</code></a> dictionary:</dt>
+                      <dt>If <var>keyData</var> is a <a data-link-type="dictionary" data-lt="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a> dictionary:</dt>
                       <dd><p>Let <var>jwk</var> equal <var>keyData</var>.</p></dd>
                       <dt>Otherwise:</dt>
                       <dd><p><a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">Throw</a> a <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.</p></dd>
@@ -4504,10 +4493,10 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-14"><code>priv</code></a> field is present
+                      If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-13"><code>priv</code></a> field is present
                       and <var>usages</var> contains a value which is not
                       "<code>sign</code>", or,
-                      if the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-15"><code>priv</code></a> field is not present
+                      if the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-14"><code>priv</code></a> field is not present
                       and <var>usages</var> contains a value which is not
                       "<code>verify</code>"
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
@@ -4516,7 +4505,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-kty" class="internalDFN" id="ref-for-dom-jsonwebkey-kty-3"><code>kty</code></a> field of <var>jwk</var> is not
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-kty"><code>kty</code></a> field of <var>jwk</var> is not
                       "<code>AKP</code>",
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -4524,7 +4513,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-alg" class="internalDFN" id="ref-for-dom-jsonwebkey-alg-3"><code>alg</code></a> field of <var>jwk</var> is not equal to
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-alg"><code>alg</code></a> field of <var>jwk</var> is not equal to
                       the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var>,
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -4532,14 +4521,14 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If <var>usages</var> is non-empty and the <a data-link-type="idl" href="#dom-jsonwebkey-use" class="internalDFN" id="ref-for-dom-jsonwebkey-use-3"><code>use</code></a> field of <var>jwk</var> is present
+                      If <var>usages</var> is non-empty and the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-use"><code>use</code></a> field of <var>jwk</var> is present
                       and is not equal to "<code>sig</code>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
                     </p>
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-key_ops" class="internalDFN" id="ref-for-dom-jsonwebkey-key_ops-3"><code>key_ops</code></a> field of <var>jwk</var> is present, and
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-key_ops"><code>key_ops</code></a> field of <var>jwk</var> is present, and
                       is invalid according to the requirements of JSON Web
                       Key [<cite><a class="bibref" data-link-type="biblio" href="#bib-jwk" title="JSON Web Key (JWK)">JWK</a></cite>], or it does not contain all of the specified <var>usages</var>
                       values,
@@ -4549,7 +4538,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-ext" class="internalDFN" id="ref-for-dom-jsonwebkey-ext-3"><code>ext</code></a> field of <var>jwk</var> is present and
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-ext"><code>ext</code></a> field of <var>jwk</var> is present and
                       has the value false and <var>extractable</var> is true,
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -4557,12 +4546,12 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <dl class="switch">
-                      <dt>If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-16"><code>priv</code></a> field of <var>jwk</var> is present:</dt>
+                      <dt>If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-15"><code>priv</code></a> field of <var>jwk</var> is present:</dt>
                       <dd>
                         <ol>
                           <li>
                             <p>
-                              If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-17"><code>priv</code></a> attribute of <var>jwk</var>
+                              If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-16"><code>priv</code></a> attribute of <var>jwk</var>
                               does not contain a valid base64url encoded value
                               representing an SLH-DSA private key,
                               then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -4572,7 +4561,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                             <p>
                               Let <var>key</var> be a new <a data-link-type="interface" data-lt="CryptoKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey"><code>CryptoKey</code></a> object that represents the
                               SLH-DSA private key identified by interpreting the
-                              <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-18"><code>priv</code></a> attribute of <var>jwk</var>
+                              <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-17"><code>priv</code></a> attribute of <var>jwk</var>
                               as a base64url encoded private key.
                             </p>
                           </li>
@@ -4584,7 +4573,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                           </li>
                           <li>
                             <p>
-                              If the <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-10"><code>pub</code></a> attribute of <var>jwk</var>
+                              If the <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-9"><code>pub</code></a> attribute of <var>jwk</var>
                               does not contain the base64url encoded public key
                               representing the SLH-DSA public key
                               corresponding to <var>key</var>,
@@ -4598,7 +4587,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                         <ol>
                           <li>
                             <p>
-                              If the <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-11"><code>pub</code></a> attribute of <var>jwk</var>
+                              If the <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-10"><code>pub</code></a> attribute of <var>jwk</var>
                               does not contain a valid base64url encoded public key
                               representing an SLH-DSA public key,
                               then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -4608,7 +4597,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                             <p>
                               Let <var>key</var> be a new <a data-link-type="interface" data-lt="CryptoKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey"><code>CryptoKey</code></a> object that represents the
                               SLH-DSA public key identified by interpreting the
-                              <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-12"><code>pub</code></a> attribute of <var>jwk</var>
+                              <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-11"><code>pub</code></a> attribute of <var>jwk</var>
                               as a base64url encoded public key.
                             </p>
                           </li>
@@ -4978,7 +4967,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 <ol>
                   <li>
                     <p>
-                      Let <var>jwk</var> be a new <a data-link-type="idl" data-lt="JsonWebKey" href="#dfn-JsonWebKey" class="internalDFN" id="ref-for-dfn-JsonWebKey-7"><code>JsonWebKey</code></a>
+                      Let <var>jwk</var> be a new <a data-link-type="dictionary" data-lt="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a>
                       dictionary.
                     </p>
                   </li>
@@ -4996,7 +4985,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      Set the <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-13"><code>pub</code></a> attribute of <var>jwk</var>
+                      Set the <a data-link-type="idl" href="#dom-jsonwebkey-pub" class="internalDFN" id="ref-for-dom-jsonwebkey-pub-12"><code>pub</code></a> attribute of <var>jwk</var>
                       to the base64url encoded public key corresponding
                       to the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a>
                       internal slot of <var>key</var>.
@@ -5009,7 +4998,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                         of <var>key</var> is "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-private"><code>private</code></a>":
                       </dt>
                       <dd>
-                        Set the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-19"><code>priv</code></a> attribute of <var>jwk</var>
+                        Set the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-18"><code>priv</code></a> attribute of <var>jwk</var>
                         to the base64url encoded private key represented by
                         the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a>
                         internal slot of <var>key</var>.
@@ -5387,7 +5376,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 <ol>
                   <li>
                     <dl class="switch">
-                      <dt>If <var>keyData</var> is a <a data-link-type="idl" data-lt="JsonWebKey" href="#dfn-JsonWebKey" class="internalDFN" id="ref-for-dfn-JsonWebKey-8"><code>JsonWebKey</code></a> dictionary:</dt>
+                      <dt>If <var>keyData</var> is a <a data-link-type="dictionary" data-lt="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a> dictionary:</dt>
                       <dd><p>Let <var>jwk</var> equal <var>keyData</var>.</p></dd>
                       <dt>Otherwise:</dt>
                       <dd><p><a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">Throw</a> a <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.</p></dd>
@@ -5395,7 +5384,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-kty" class="internalDFN" id="ref-for-dom-jsonwebkey-kty-4"><code>kty</code></a> field of <var>jwk</var> is not
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-kty"><code>kty</code></a> field of <var>jwk</var> is not
                       "<code>oct</code>",
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -5418,17 +5407,17 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   <li>
                     <dl class="switch">
                       <dt>If <var>data</var> has length 128 bits:</dt>
-                      <dd>If the <a data-link-type="idl" href="#dom-jsonwebkey-alg" class="internalDFN" id="ref-for-dom-jsonwebkey-alg-4"><code>alg</code></a> field of <var>jwk</var> is present, and is
+                      <dd>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-alg"><code>alg</code></a> field of <var>jwk</var> is present, and is
                       not "<code>A128OCB</code>",
                         then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                         <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.</dd>
                       <dt>If <var>data</var> has length 192 bits:</dt>
-                      <dd>If the <a data-link-type="idl" href="#dom-jsonwebkey-alg" class="internalDFN" id="ref-for-dom-jsonwebkey-alg-5"><code>alg</code></a> field of <var>jwk</var> is present, and is
+                      <dd>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-alg"><code>alg</code></a> field of <var>jwk</var> is present, and is
                       not "<code>A192OCB</code>",
                         then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                         <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.</dd>
                       <dt>If <var>data</var> has length 256 bits:</dt>
-                      <dd>If the <a data-link-type="idl" href="#dom-jsonwebkey-alg" class="internalDFN" id="ref-for-dom-jsonwebkey-alg-6"><code>alg</code></a> field of <var>jwk</var> is present, and is
+                      <dd>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-alg"><code>alg</code></a> field of <var>jwk</var> is present, and is
                       not "<code>A256OCB</code>",
                         then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                         <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.</dd>
@@ -5441,7 +5430,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If <var>usages</var> is non-empty and the <a data-link-type="idl" href="#dom-jsonwebkey-use" class="internalDFN" id="ref-for-dom-jsonwebkey-use-4"><code>use</code></a> field of <var>jwk</var> is present and is
+                      If <var>usages</var> is non-empty and the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-use"><code>use</code></a> field of <var>jwk</var> is present and is
                       not "<code>enc</code>",
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -5449,7 +5438,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-key_ops" class="internalDFN" id="ref-for-dom-jsonwebkey-key_ops-4"><code>key_ops</code></a> field of <var>jwk</var> is present, and
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-key_ops"><code>key_ops</code></a> field of <var>jwk</var> is present, and
                       is invalid according to the requirements of
                       JSON Web Key [<cite><a class="bibref" data-link-type="biblio" href="#bib-jwk" title="JSON Web Key (JWK)">JWK</a></cite>] or
                       does not contain all of the specified <var>usages</var> values,
@@ -5459,7 +5448,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-ext" class="internalDFN" id="ref-for-dom-jsonwebkey-ext-4"><code>ext</code></a> field of <var>jwk</var> is present and
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-ext"><code>ext</code></a> field of <var>jwk</var> is present and
                       has the value false and <var>extractable</var> is true,
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -5544,7 +5533,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 <ol>
                   <li>
                     <p>
-                      Let <var>jwk</var> be a new <a data-link-type="idl" data-lt="JsonWebKey" href="#dfn-JsonWebKey" class="internalDFN" id="ref-for-dfn-JsonWebKey-9"><code>JsonWebKey</code></a>
+                      Let <var>jwk</var> be a new <a data-link-type="dictionary" data-lt="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a>
                       dictionary.
                     </p>
                   </li>
@@ -5909,7 +5898,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 <ol>
                   <li>
                     <dl class="switch">
-                      <dt>If <var>keyData</var> is a <a data-link-type="idl" data-lt="JsonWebKey" href="#dfn-JsonWebKey" class="internalDFN" id="ref-for-dfn-JsonWebKey-10"><code>JsonWebKey</code></a> dictionary:</dt>
+                      <dt>If <var>keyData</var> is a <a data-link-type="dictionary" data-lt="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a> dictionary:</dt>
                       <dd><p>Let <var>jwk</var> equal <var>keyData</var>.</p></dd>
                       <dt>Otherwise:</dt>
                       <dd><p><a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">Throw</a> a <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.</p></dd>
@@ -5917,7 +5906,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-kty" class="internalDFN" id="ref-for-dom-jsonwebkey-kty-5"><code>kty</code></a> field of <var>jwk</var> is not
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-kty"><code>kty</code></a> field of <var>jwk</var> is not
                       "<code>oct</code>",
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -5939,7 +5928,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-alg" class="internalDFN" id="ref-for-dom-jsonwebkey-alg-7"><code>alg</code></a> field of <var>jwk</var> is present, and is
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-alg"><code>alg</code></a> field of <var>jwk</var> is present, and is
                       not "<code>C20P</code>",
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -5947,7 +5936,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If <var>usages</var> is non-empty and the <a data-link-type="idl" href="#dom-jsonwebkey-use" class="internalDFN" id="ref-for-dom-jsonwebkey-use-5"><code>use</code></a> field of <var>jwk</var> is present and is
+                      If <var>usages</var> is non-empty and the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-use"><code>use</code></a> field of <var>jwk</var> is present and is
                       not "<code>enc</code>",
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -5955,7 +5944,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-key_ops" class="internalDFN" id="ref-for-dom-jsonwebkey-key_ops-5"><code>key_ops</code></a> field of <var>jwk</var> is present, and
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-key_ops"><code>key_ops</code></a> field of <var>jwk</var> is present, and
                       is invalid according to the requirements of
                       JSON Web Key [<cite><a class="bibref" data-link-type="biblio" href="#bib-jwk" title="JSON Web Key (JWK)">JWK</a></cite>] or
                       does not contain all of the specified <var>usages</var> values,
@@ -5965,7 +5954,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-ext" class="internalDFN" id="ref-for-dom-jsonwebkey-ext-5"><code>ext</code></a> field of <var>jwk</var> is present and
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-ext"><code>ext</code></a> field of <var>jwk</var> is present and
                       has the value false and <var>extractable</var> is true,
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -6044,7 +6033,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 <ol>
                   <li>
                     <p>
-                      Let <var>jwk</var> be a new <a data-link-type="idl" data-lt="JsonWebKey" href="#dfn-JsonWebKey" class="internalDFN" id="ref-for-dfn-JsonWebKey-11"><code>JsonWebKey</code></a>
+                      Let <var>jwk</var> be a new <a data-link-type="dictionary" data-lt="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a>
                       dictionary.
                     </p>
                   </li>
@@ -6640,7 +6629,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 <ol>
                   <li>
                     <dl class="switch">
-                      <dt>If <var>keyData</var> is a <a data-link-type="idl" data-lt="JsonWebKey" href="#dfn-JsonWebKey" class="internalDFN" id="ref-for-dfn-JsonWebKey-12"><code>JsonWebKey</code></a> dictionary:</dt>
+                      <dt>If <var>keyData</var> is a <a data-link-type="dictionary" data-lt="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a> dictionary:</dt>
                       <dd><p>Let <var>jwk</var> equal <var>keyData</var>.</p></dd>
                       <dt>Otherwise:</dt>
                       <dd><p><a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">Throw</a> a <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.</p></dd>
@@ -6648,7 +6637,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-kty" class="internalDFN" id="ref-for-dom-jsonwebkey-kty-6"><code>kty</code></a> field of <var>jwk</var> is not
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-kty"><code>kty</code></a> field of <var>jwk</var> is not
                       "<code>oct</code>",
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -6676,7 +6665,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                         "<code>KMAC128</code>":
                       </dt>
                       <dd>
-                        If the <a data-link-type="idl" href="#dom-jsonwebkey-alg" class="internalDFN" id="ref-for-dom-jsonwebkey-alg-8"><code>alg</code></a> field of <var>jwk</var> is present
+                        If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-alg"><code>alg</code></a> field of <var>jwk</var> is present
                         and is not "<code>K128</code>",
                         then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                         <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -6687,7 +6676,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                         "<code>KMAC256</code>":
                       </dt>
                       <dd>
-                        If the <a data-link-type="idl" href="#dom-jsonwebkey-alg" class="internalDFN" id="ref-for-dom-jsonwebkey-alg-9"><code>alg</code></a> field of <var>jwk</var> is present
+                        If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-alg"><code>alg</code></a> field of <var>jwk</var> is present
                         and is not "<code>K256</code>",
                         then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                         <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -6696,7 +6685,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If <var>usages</var> is non-empty and the <a data-link-type="idl" href="#dom-jsonwebkey-use" class="internalDFN" id="ref-for-dom-jsonwebkey-use-6"><code>use</code></a> field of <var>jwk</var> is present and is
+                      If <var>usages</var> is non-empty and the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-use"><code>use</code></a> field of <var>jwk</var> is present and is
                       not "<code>sign</code>",
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -6704,7 +6693,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-key_ops" class="internalDFN" id="ref-for-dom-jsonwebkey-key_ops-6"><code>key_ops</code></a> field of <var>jwk</var> is present, and
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-key_ops"><code>key_ops</code></a> field of <var>jwk</var> is present, and
                       is invalid according to the requirements of
                       JSON Web Key [<cite><a class="bibref" data-link-type="biblio" href="#bib-jwk" title="JSON Web Key (JWK)">JWK</a></cite>] or
                       does not contain all of the specified <var>usages</var> values,
@@ -6714,7 +6703,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      If the <a data-link-type="idl" href="#dom-jsonwebkey-ext" class="internalDFN" id="ref-for-dom-jsonwebkey-ext-6"><code>ext</code></a> field of <var>jwk</var> is present and
+                      If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-ext"><code>ext</code></a> field of <var>jwk</var> is present and
                       has the value false and <var>extractable</var> is true,
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
@@ -6852,7 +6841,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 <ol>
                   <li>
                     <p>
-                      Let <var>jwk</var> be a new <a data-link-type="idl" data-lt="JsonWebKey" href="#dfn-JsonWebKey" class="internalDFN" id="ref-for-dfn-JsonWebKey-13"><code>JsonWebKey</code></a>
+                      Let <var>jwk</var> be a new <a data-link-type="dictionary" data-lt="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a>
                       dictionary.
                     </p>
                   </li>
@@ -8401,116 +8390,6 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <a href="#ref-for-dfn-EncapsulatedBits-ciphertext-3" title="§ 6.3.1 Encapsulate">§ 6.3.1 Encapsulate</a> 
     </li>
   </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-jsonwebkey-kty" aria-label="Links in this document to definition: kty">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-jsonwebkey-kty" aria-label="Permalink for definition: kty. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-jsonwebkey-kty-1" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-kty-2" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-kty-3" title="§ 8.3.4 Import Key">§ 8.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-kty-4" title="§ 9.4.4 Import Key">§ 9.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-kty-5" title="§ 10.3.4 Import Key">§ 10.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-kty-6" title="§ 13.7.4 Import Key">§ 13.7.4 Import Key</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-jsonwebkey-use" aria-label="Links in this document to definition: use">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-jsonwebkey-use" aria-label="Permalink for definition: use. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-jsonwebkey-use-1" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-use-2" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-use-3" title="§ 8.3.4 Import Key">§ 8.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-use-4" title="§ 9.4.4 Import Key">§ 9.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-use-5" title="§ 10.3.4 Import Key">§ 10.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-use-6" title="§ 13.7.4 Import Key">§ 13.7.4 Import Key</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-jsonwebkey-key_ops" aria-label="Links in this document to definition: key_ops">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-jsonwebkey-key_ops" aria-label="Permalink for definition: key_ops. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-jsonwebkey-key_ops-1" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-key_ops-2" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-key_ops-3" title="§ 8.3.4 Import Key">§ 8.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-key_ops-4" title="§ 9.4.4 Import Key">§ 9.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-key_ops-5" title="§ 10.3.4 Import Key">§ 10.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-key_ops-6" title="§ 13.7.4 Import Key">§ 13.7.4 Import Key</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-jsonwebkey-alg" aria-label="Links in this document to definition: alg">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-jsonwebkey-alg" aria-label="Permalink for definition: alg. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-jsonwebkey-alg-1" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-alg-2" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-alg-3" title="§ 8.3.4 Import Key">§ 8.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-alg-4" title="§ 9.4.4 Import Key">§ 9.4.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-alg-5" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-alg-6" title="Reference 3">(3)</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-alg-7" title="§ 10.3.4 Import Key">§ 10.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-alg-8" title="§ 13.7.4 Import Key">§ 13.7.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-alg-9" title="Reference 2">(2)</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-jsonwebkey-ext" aria-label="Links in this document to definition: ext">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-jsonwebkey-ext" aria-label="Permalink for definition: ext. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-jsonwebkey-ext-1" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-ext-2" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-ext-3" title="§ 8.3.4 Import Key">§ 8.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-ext-4" title="§ 9.4.4 Import Key">§ 9.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-ext-5" title="§ 10.3.4 Import Key">§ 10.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-ext-6" title="§ 13.7.4 Import Key">§ 13.7.4 Import Key</a> 
-    </li>
-  </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-jsonwebkey-pub" aria-label="Links in this document to definition: pub">
       <span class="caret"></span>
       <div>
@@ -8520,19 +8399,17 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dom-jsonwebkey-pub-1" title="§ 5. JsonWebKey dictionary">§ 5. JsonWebKey dictionary</a> 
+      <a href="#ref-for-dom-jsonwebkey-pub-1" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-pub-2" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-pub-3" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dom-jsonwebkey-pub-2" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-pub-3" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-pub-4" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dom-jsonwebkey-pub-4" title="§ 6.3.5 Export Key">§ 6.3.5 Export Key</a> 
     </li><li>
-      <a href="#ref-for-dom-jsonwebkey-pub-5" title="§ 6.3.5 Export Key">§ 6.3.5 Export Key</a> 
+      <a href="#ref-for-dom-jsonwebkey-pub-5" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-pub-6" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-pub-7" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dom-jsonwebkey-pub-6" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-pub-7" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-pub-8" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dom-jsonwebkey-pub-8" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
     </li><li>
-      <a href="#ref-for-dom-jsonwebkey-pub-9" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
+      <a href="#ref-for-dom-jsonwebkey-pub-9" title="§ 8.3.4 Import Key">§ 8.3.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-pub-10" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-pub-11" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dom-jsonwebkey-pub-10" title="§ 8.3.4 Import Key">§ 8.3.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-pub-11" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-pub-12" title="Reference 3">(3)</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-pub-13" title="§ 8.3.5 Export Key">§ 8.3.5 Export Key</a> 
+      <a href="#ref-for-dom-jsonwebkey-pub-12" title="§ 8.3.5 Export Key">§ 8.3.5 Export Key</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-jsonwebkey-priv" aria-label="Links in this document to definition: priv">
@@ -8544,55 +8421,17 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dom-jsonwebkey-priv-1" title="§ 5. JsonWebKey dictionary">§ 5. JsonWebKey dictionary</a> 
+      <a href="#ref-for-dom-jsonwebkey-priv-1" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-priv-2" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-priv-3" title="Reference 3">(3)</a> <a href="#ref-for-dom-jsonwebkey-priv-4" title="Reference 4">(4)</a> <a href="#ref-for-dom-jsonwebkey-priv-5" title="Reference 5">(5)</a> 
     </li><li>
-      <a href="#ref-for-dom-jsonwebkey-priv-2" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-priv-3" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-priv-4" title="Reference 3">(3)</a> <a href="#ref-for-dom-jsonwebkey-priv-5" title="Reference 4">(4)</a> <a href="#ref-for-dom-jsonwebkey-priv-6" title="Reference 5">(5)</a> 
+      <a href="#ref-for-dom-jsonwebkey-priv-6" title="§ 6.3.5 Export Key">§ 6.3.5 Export Key</a> 
     </li><li>
-      <a href="#ref-for-dom-jsonwebkey-priv-7" title="§ 6.3.5 Export Key">§ 6.3.5 Export Key</a> 
+      <a href="#ref-for-dom-jsonwebkey-priv-7" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-priv-8" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-priv-9" title="Reference 3">(3)</a> <a href="#ref-for-dom-jsonwebkey-priv-10" title="Reference 4">(4)</a> <a href="#ref-for-dom-jsonwebkey-priv-11" title="Reference 5">(5)</a> 
     </li><li>
-      <a href="#ref-for-dom-jsonwebkey-priv-8" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-priv-9" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-priv-10" title="Reference 3">(3)</a> <a href="#ref-for-dom-jsonwebkey-priv-11" title="Reference 4">(4)</a> <a href="#ref-for-dom-jsonwebkey-priv-12" title="Reference 5">(5)</a> 
+      <a href="#ref-for-dom-jsonwebkey-priv-12" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
     </li><li>
-      <a href="#ref-for-dom-jsonwebkey-priv-13" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
+      <a href="#ref-for-dom-jsonwebkey-priv-13" title="§ 8.3.4 Import Key">§ 8.3.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-priv-14" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-priv-15" title="Reference 3">(3)</a> <a href="#ref-for-dom-jsonwebkey-priv-16" title="Reference 4">(4)</a> <a href="#ref-for-dom-jsonwebkey-priv-17" title="Reference 5">(5)</a> 
     </li><li>
-      <a href="#ref-for-dom-jsonwebkey-priv-14" title="§ 8.3.4 Import Key">§ 8.3.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-priv-15" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-priv-16" title="Reference 3">(3)</a> <a href="#ref-for-dom-jsonwebkey-priv-17" title="Reference 4">(4)</a> <a href="#ref-for-dom-jsonwebkey-priv-18" title="Reference 5">(5)</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-priv-19" title="§ 8.3.5 Export Key">§ 8.3.5 Export Key</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-JsonWebKey" aria-label="Links in this document to definition: JsonWebKey">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-JsonWebKey" aria-label="Permalink for definition: JsonWebKey. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1604149801">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-JsonWebKey-1" title="§ 5. JsonWebKey dictionary">§ 5. JsonWebKey dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-JsonWebKey-2" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dfn-JsonWebKey-3" title="§ 6.3.5 Export Key">§ 6.3.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dfn-JsonWebKey-4" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dfn-JsonWebKey-5" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dfn-JsonWebKey-6" title="§ 8.3.4 Import Key">§ 8.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dfn-JsonWebKey-7" title="§ 8.3.5 Export Key">§ 8.3.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dfn-JsonWebKey-8" title="§ 9.4.4 Import Key">§ 9.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dfn-JsonWebKey-9" title="§ 9.4.5 Export Key">§ 9.4.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dfn-JsonWebKey-10" title="§ 10.3.4 Import Key">§ 10.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dfn-JsonWebKey-11" title="§ 10.3.5 Export Key">§ 10.3.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dfn-JsonWebKey-12" title="§ 13.7.4 Import Key">§ 13.7.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dfn-JsonWebKey-13" title="§ 13.7.5 Export Key">§ 13.7.5 Export Key</a> 
+      <a href="#ref-for-dom-jsonwebkey-priv-18" title="§ 8.3.5 Export Key">§ 8.3.5 Export Key</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-ContextParams" aria-label="Links in this document to definition: ContextParams">
