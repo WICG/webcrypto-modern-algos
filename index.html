@@ -1184,26 +1184,16 @@ dictionary EncapsulatedBits {
   <section id="JsonWebKey-dictionary">
     <h2>JsonWebKey dictionary</h2>
     <pre class=idl>
-dictionary JsonWebKey {
-  // The following fields are defined in Section 3.1 of JSON Web Key
-  DOMString kty;
-  DOMString use;
-  sequence&lt;DOMString> key_ops;
-  DOMString alg;
-
-  // The following fields are defined in JSON Web Key Parameters Registration
-  boolean ext;
-
+partial dictionary JsonWebKey {
   // The following fields are defined in draft-ietf-cose-dilithium-07
   DOMString pub;
   DOMString priv;
 };
     </pre>
     <p>
-      This version of the <dfn data-idl id="dfn-JsonWebKey">JsonWebKey</dfn> dictionary
+      This version of the {{JsonWebKey}} dictionary
       provides a way to represent keys with the "AKP" key type defined in [[draft-ietf-cose-dilithium-07]].
-      It may be merged into the definition of <a data-cite="webcrypto#dfn-JsonWebKey">`JsonWebKey`</a> in [[webcrypto]]
-      by adding the {{JsonWebKey/pub}} and {{JsonWebKey/priv}} fields there.
+      It extends the definition of {{JsonWebKey}} in [[webcrypto]].
     </p>
   </section>
 
