@@ -275,7 +275,7 @@ enum KeyFormat { "raw-public", "raw-private", "raw-seed", "raw-secret", "raw", "
 enum KeyUsage { "encrypt", "decrypt", "sign", "verify", "deriveKey", "deriveBits", "wrapKey", "unwrapKey", "encapsulateKey", "encapsulateBits", "decapsulateKey", "decapsulateBits" };
         </pre>
         <p>
-          This specification specifies a number of new <a data-cite="webcrypto#dfn-RecognizedKeyUsages">recognized key usage values</a>:
+          This specification specifies a number of new <a data-cite="webcrypto#dfn-RecognizedKeyUsage">recognized key usage values</a>:
         </p>
         <dl data-dfn-for=KeyUsage>
           <dt><dfn data-idl>encapsulateKey</dfn></dt>
@@ -6610,7 +6610,7 @@ dictionary KmacParams : Algorithm {
           </li>
           <li>
             <p>
-              Let |data| be an <a data-cite="webcrypto#byte-sequence-containing">byte sequence containing</a> |bits|.
+              Let |data| be an <a data-cite="webcrypto#dfn-byte-sequence-containing">byte sequence containing</a> |bits|.
             </p>
           </li>
           <li>
