@@ -2676,6 +2676,12 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
   <a data-link-type="typedef" href="https://webidl.spec.whatwg.org/#BufferSource">BufferSource</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-ContextParams-context" id="ref-for-dfn-ContextParams-context-1"><code>context</code></a>;</span>
 };</span></code></pre>
       <p>The <dfn data-idl="field" data-dfn-for="ContextParams" id="dfn-ContextParams-context" data-export="" data-dfn-type="dict-member" data-title="context" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>context</code></dfn> member represents the optional context data to associate with the message.</p>
+      <div class="note" role="note" id="issue-container-generatedID-4"><div role="heading" class="note-title marker" id="h-note-4" aria-level="4"><span>Note</span></div><div class="">
+        <p>
+          The <a data-link-type="idl" data-lt="ContextParams" href="#dfn-ContextParams" class="internalDFN" id="ref-for-dfn-ContextParams-4"><code>ContextParams</code></a> dictionary is identical to the <a data-link-type="dictionary" data-lt="Ed448Params" href="https://wicg.github.io/webcrypto-secure-curves/#dfn-Ed448Params"><code>Ed448Params</code></a> dictionary of [<cite><a class="bibref" data-link-type="biblio" href="#bib-webcrypto-secure-curves" title="Secure Curves in the Web Cryptography API">webcrypto-secure-curves</a></cite>],
+          and the latter may be replaced by the former when merging this proposal.
+        </p>
+      </div></div>
     </section>
     <section id="ml-dsa-operations"><div class="header-wrapper"><h3 id="x7-4-operations"><bdi class="secno">7.4 </bdi>Operations</h3><a class="self-link" href="#ml-dsa-operations" aria-label="Permalink for Section 7.4"></a></div>
       
@@ -2770,7 +2776,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
               Section 5.1 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-fips-204" title="Module-Lattice-Based Digital Signature Standard">FIPS-204</a></cite>], with the parameter set
               indicated by the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var>.
             </p>
-            <div class="note" role="note" id="issue-container-generatedID-4"><div role="heading" class="note-title marker" id="h-note-4" aria-level="5"><span>Note</span></div><div class="">
+            <div class="note" role="note" id="issue-container-generatedID-5"><div role="heading" class="note-title marker" id="h-note-5" aria-level="5"><span>Note</span></div><div class="">
               <p>
                 In order to be able to export the seed <code>ξ</code>,
                 it needs to be stored as part of the generated
@@ -3660,7 +3666,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                       of the key represented by the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a>
                       internal slot of <var>key</var>.
                     </p>
-                    <div class="note" role="note" id="issue-container-generatedID-5"><div role="heading" class="note-title marker" id="h-note-5" aria-level="5"><span>Note</span></div><div class="">
+                    <div class="note" role="note" id="issue-container-generatedID-6"><div role="heading" class="note-title marker" id="h-note-6" aria-level="5"><span>Note</span></div><div class="">
                       <p>
                         The <var>ξ</var> seed variable was sampled in the ML-DSA.KeyGen function
                         as described in Section 5.1 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-fips-204" title="Module-Lattice-Based Digital Signature Standard">FIPS-204</a></cite>].
@@ -3785,12 +3791,12 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         <tbody>
           <tr>
             <td>sign</td>
-            <td><a data-link-type="idl" data-lt="ContextParams" href="#dfn-ContextParams" class="internalDFN" id="ref-for-dfn-ContextParams-4"><code>ContextParams</code></a></td>
+            <td><a data-link-type="idl" data-lt="ContextParams" href="#dfn-ContextParams" class="internalDFN" id="ref-for-dfn-ContextParams-5"><code>ContextParams</code></a></td>
             <td><a data-link-type="dfn" href="https://infra.spec.whatwg.org/#byte-sequence">byte sequence</a></td>
           </tr>
           <tr>
             <td>verify</td>
-            <td><a data-link-type="idl" data-lt="ContextParams" href="#dfn-ContextParams" class="internalDFN" id="ref-for-dfn-ContextParams-5"><code>ContextParams</code></a></td>
+            <td><a data-link-type="idl" data-lt="ContextParams" href="#dfn-ContextParams" class="internalDFN" id="ref-for-dfn-ContextParams-6"><code>ContextParams</code></a></td>
             <td>boolean</td>
           </tr>
           <tr>
@@ -5110,7 +5116,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <p>The <dfn data-dfn-for="AeadParams" id="dfn-AeadParams-iv" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="iv" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>iv</code></dfn> member represents the initialization vector to use.</p>
       <p>The <dfn data-dfn-for="AeadParams" id="dfn-AeadParams-additionalData" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="additionalData" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>additionalData</code></dfn> member represents the additional authentication data to include.</p>
       <p>The <dfn data-dfn-for="AeadParams" id="dfn-AeadParams-tagLength" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="tagLength" data-type="octet" tabindex="0" aria-haspopup="dialog"><code>tagLength</code></dfn> member represents the desired length of the authentication tag.</p>
-      <div class="note" role="note" id="issue-container-generatedID-6"><div role="heading" class="note-title marker" id="h-note-6" aria-level="4"><span>Note</span></div><div class="">
+      <div class="note" role="note" id="issue-container-generatedID-7"><div role="heading" class="note-title marker" id="h-note-7" aria-level="4"><span>Note</span></div><div class="">
         <p>
           The <a data-link-type="idl" data-lt="AeadParams" href="#dfn-AeadParams" class="internalDFN" id="ref-for-dfn-AeadParams-4"><code>AeadParams</code></a> dictionary is identical to the <a data-link-type="dictionary" data-lt="AesGcmParams" href="https://www.w3.org/TR/webcrypto-2/#dfn-AesGcmParams"><code>AesGcmParams</code></a> dictionary of [<cite><a class="bibref" data-link-type="biblio" href="#bib-webcrypto" title="Web Cryptography Level 2">webcrypto</a></cite>],
           and the latter may be replaced by the former when merging this proposal.
@@ -7028,7 +7034,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <p>The <dfn data-dfn-for="Argon2Params" id="dfn-Argon2Params-version" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="version" data-type="octet" tabindex="0" aria-haspopup="dialog"><code>version</code></dfn> member represents the version number. The default and currently only defined version is 19 (0x13).</p>
       <p>The <dfn data-dfn-for="Argon2Params" id="dfn-Argon2Params-secretValue" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="secretValue" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>secretValue</code></dfn> member represents the optional secret value.</p>
       <p>The <dfn data-dfn-for="Argon2Params" id="dfn-Argon2Params-associatedData" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="associatedData" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>associatedData</code></dfn> member represents the optional associated data.</p>
-      <div class="note" role="note" id="issue-container-generatedID-7"><div role="heading" class="note-title marker" id="h-note-7" aria-level="4"><span>Note</span></div><p class="">
+      <div class="note" role="note" id="issue-container-generatedID-8"><div role="heading" class="note-title marker" id="h-note-8" aria-level="4"><span>Note</span></div><p class="">
         For the recommended values of the parameters, see section 4 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9106" title="Argon2 Memory-Hard Function for Password Hashing and Proof-of-Work Applications">RFC9106</a></cite>].
       </p></div>
     </section>
@@ -7841,6 +7847,8 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <a href="https://datatracker.ietf.org/doc/draft-ietf-lamps-kyber-certificates/"><cite>Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM)</cite></a>.  IETF. URL: <a href="https://datatracker.ietf.org/doc/draft-ietf-lamps-kyber-certificates/">https://datatracker.ietf.org/doc/draft-ietf-lamps-kyber-certificates/</a>
     </dd><dt id="bib-rfc9814">[RFC9814]</dt><dd>
       <a href="https://www.rfc-editor.org/rfc/rfc9814"><cite>Use of the SLH-DSA Signature Algorithm in the Cryptographic Message Syntax (CMS)</cite></a>. R. Housley; S. Fluhrer; P. Kampanakis; B. Westerbaan.  IETF. July 2025. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc9814">https://www.rfc-editor.org/rfc/rfc9814</a>
+    </dd><dt id="bib-webcrypto-secure-curves">[webcrypto-secure-curves]</dt><dd>
+      <a href="https://wicg.github.io/webcrypto-secure-curves/"><cite>Secure Curves in the Web Cryptography API</cite></a>.  W3C. Draft Community Group Report. URL: <a href="https://wicg.github.io/webcrypto-secure-curves/">https://wicg.github.io/webcrypto-secure-curves/</a>
     </dd></dl>
   </section></section><p role="navigation" id="back-to-top">
     <a href="#title"><abbr title="Back to Top">↑</abbr></a>
@@ -8453,9 +8461,9 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
     <li>
       <a href="#ref-for-dfn-ContextParams-1" title="§ 7.2 Registration">§ 7.2 Registration</a> <a href="#ref-for-dfn-ContextParams-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-ContextParams-3" title="§ 7.3 ContextParams dictionary">§ 7.3 ContextParams dictionary</a> 
+      <a href="#ref-for-dfn-ContextParams-3" title="§ 7.3 ContextParams dictionary">§ 7.3 ContextParams dictionary</a> <a href="#ref-for-dfn-ContextParams-4" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-ContextParams-4" title="§ 8.2 Registration">§ 8.2 Registration</a> <a href="#ref-for-dfn-ContextParams-5" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-ContextParams-5" title="§ 8.2 Registration">§ 8.2 Registration</a> <a href="#ref-for-dfn-ContextParams-6" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-ContextParams-context" aria-label="Links in this document to definition: context">
