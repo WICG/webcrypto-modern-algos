@@ -1889,6 +1889,9 @@ partial dictionary JsonWebKey {
               <dd>
                 <ol>
                   <li>
+                    <p class="issue">
+                      The JWK format for ML-KEM is not standardized yet and thus subject to change.
+                    </p>
                     <dl class="switch">
                       <dt>If |keyData| is a {{JsonWebKey}} dictionary:</dt>
                       <dd><p>Let |jwk| equal |keyData|.</p></dd>
@@ -2309,6 +2312,9 @@ partial dictionary JsonWebKey {
               <dd>
                 <ol>
                   <li>
+                    <p class="issue">
+                      The JWK format for ML-KEM is not standardized yet and thus subject to change.
+                    </p>
                     <p>
                       Let |jwk| be a new {{JsonWebKey}}
                       dictionary.
@@ -4267,6 +4273,10 @@ dictionary ContextParams : Algorithm {
               <dd>
                 <ol>
                   <li>
+                    <p class="issue">
+                      The JWK format for SLH-DSA is not standardized yet and thus subject to change.
+                      TODO: register "alg" values for SLH-DSA with IANA in the JSON Web Signature and Encryption Algorithms registry.
+                    </p>
                     <dl class="switch">
                       <dt>If |keyData| is a {{JsonWebKey}} dictionary:</dt>
                       <dd><p>Let |jwk| equal |keyData|.</p></dd>
@@ -4749,6 +4759,10 @@ dictionary ContextParams : Algorithm {
               <dd>
                 <ol>
                   <li>
+                    <p class="issue">
+                      The JWK format for SLH-DSA is not standardized yet and thus subject to change.
+                      TODO: register "alg" values for SLH-DSA with IANA in the JSON Web Signature and Encryption Algorithms registry.
+                    </p>
                     <p>
                       Let |jwk| be a new {{JsonWebKey}}
                       dictionary.
