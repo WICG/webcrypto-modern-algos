@@ -284,8 +284,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       "id": "draft-ietf-lamps-dilithium-certificates"
     }
   },
-  "publishISODate": "2025-09-09T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 09 September 2025"
+  "publishISODate": "2025-09-11T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 11 September 2025"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/cg-draft"></head>
 
@@ -294,7 +294,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Modern Algorithms in the Web Cryptography API</h1> 
     <p id="w3c-state">
       <a href="https://www.w3.org/standards/types#reports">Draft Community Group Report</a>
-      <time class="dt-published" datetime="2025-09-09">09 September 2025</time>
+      <time class="dt-published" datetime="2025-09-11">11 September 2025</time>
     </p>
     <dl>
       
@@ -6519,9 +6519,17 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 <var>normalizedAlgorithm</var> is present:
               </dt>
               <dd>
-                Let <var>length</var> be equal to the
-                <a data-link-type="idl" href="#dfn-KmacKeyGenParams-length" class="internalDFN" id="ref-for-dfn-KmacKeyGenParams-length-3"><code>length</code></a>
-                member of <var>normalizedAlgorithm</var>.
+                <ol>
+                  <li>
+                    Let <var>length</var> be equal to the
+                    <a data-link-type="idl" href="#dfn-KmacKeyGenParams-length" class="internalDFN" id="ref-for-dfn-KmacKeyGenParams-length-3"><code>length</code></a>
+                    member of <var>normalizedAlgorithm</var>.
+                  </li>
+                  <li>
+                    If <var>length</var> is zero, then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an
+                    <a data-link-type="exception" data-lt="OperationError" href="https://webidl.spec.whatwg.org/#operationerror"><code>OperationError</code></a>.
+                  </li>
+                </ol>
               </dd>
               <dt>
                 Otherwise, if the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of
