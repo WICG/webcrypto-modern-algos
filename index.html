@@ -169,7 +169,7 @@
     </p>
   </section>
   <section id="specification-conventions">
-    <h2>Specification Conventions</h3>
+    <h2>Specification Conventions</h2>
     <p>
       This specification follows the <a data-cite="webcrypto#algorithm-conventions">conventions</a>
       laid out in Section 18.3 of [[webcrypto]]. None of the algorithms defined here
@@ -1517,14 +1517,13 @@ partial dictionary JsonWebKey {
               <dd>
                 <ol>
                   <li>
-                    <li>
-                      <p>
-                        If |usages| contains an entry which is not
-                        "`encapsulateKey`" or "`encapsulateBits`"
-                        then [= exception/throw =] a
-                        {{SyntaxError}}.
-                      </p>
-                    </li>
+                    <p>
+                      If |usages| contains an entry which is not
+                      "`encapsulateKey`" or "`encapsulateBits`"
+                      then [= exception/throw =] a
+                      {{SyntaxError}}.
+                    </p>
+                  </li>
                   <li>
                     <p>
                       Let |spki| be the result of running the
@@ -1637,14 +1636,13 @@ partial dictionary JsonWebKey {
               <dd>
                 <ol>
                   <li>
-                    <li>
-                      <p>
-                        If |usages| contains an entry which is not
-                        "`encapsulateKey`" or "`encapsulateBits`"
-                        then [= exception/throw =] a
-                        {{SyntaxError}}.
-                      </p>
-                    </li>
+                    <p>
+                      If |usages| contains an entry which is not
+                      "`decapsulateKey`" or "`decapsulateBits`"
+                      then [= exception/throw =] a
+                      {{SyntaxError}}.
+                    </p>
+                  </li>
                   <li>
                     <p>
                       Let |privateKeyInfo| be the result of running the
@@ -1988,7 +1986,7 @@ partial dictionary JsonWebKey {
                           <li>
                             <p>
                               Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a>
-                              internal slot of |Key| to {{KeyType/"private"}}.
+                              internal slot of |key| to {{KeyType/"private"}}.
                             </p>
                           </li>
                           <li>
@@ -2024,7 +2022,7 @@ partial dictionary JsonWebKey {
                           <li>
                             <p>
                               Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a>
-                              internal slot of |Key| to {{KeyType/"public"}}.
+                              internal slot of |key| to {{KeyType/"public"}}.
                             </p>
                           </li>
                         </ol>
@@ -3133,7 +3131,7 @@ dictionary ContextParams : Algorithm {
                           <li>
                             <p>
                               Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a>
-                              internal slot of |Key| to {{KeyType/"private"}}.
+                              internal slot of |key| to {{KeyType/"private"}}.
                             </p>
                           </li>
                           <li>
@@ -3169,7 +3167,7 @@ dictionary ContextParams : Algorithm {
                           <li>
                             <p>
                               Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a>
-                              internal slot of |Key| to {{KeyType/"public"}}.
+                              internal slot of |key| to {{KeyType/"public"}}.
                             </p>
                           </li>
                         </ol>
@@ -4361,7 +4359,7 @@ dictionary ContextParams : Algorithm {
                           <li>
                             <p>
                               Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a>
-                              internal slot of |Key| to {{KeyType/"private"}}.
+                              internal slot of |key| to {{KeyType/"private"}}.
                             </p>
                           </li>
                           <li>
@@ -4397,7 +4395,7 @@ dictionary ContextParams : Algorithm {
                           <li>
                             <p>
                               Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a>
-                              internal slot of |Key| to {{KeyType/"public"}}.
+                              internal slot of |key| to {{KeyType/"public"}}.
                             </p>
                           </li>
                         </ol>
@@ -6387,7 +6385,7 @@ dictionary KmacParams : Algorithm {
           <li>
             <p>
               Set the {{KeyAlgorithm/name}} attribute of
-              |algorithm| to "`KMAC`".
+              |algorithm| to the {{Algorithm/name}} member of |normalizedAlgorithm|.
             </p>
           </li>
           <li>
@@ -6599,7 +6597,7 @@ dictionary KmacParams : Algorithm {
           <li>
             <p>
               Set the {{KeyAlgorithm/name}} attribute of
-              |algorithm| to "`KMAC`".
+              |algorithm| to the {{Algorithm/name}} member of |normalizedAlgorithm|.
             </p>
           </li>
           <li>
