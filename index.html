@@ -397,6 +397,19 @@ enum KeyUsage { "encrypt", "decrypt", "sign", "verify", "deriveKey", "deriveBits
           </li>
           <li>
             <p>
+              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-extractable">`[[extractable]]`</a> internal
+              slot of |sharedKey| to |extractable|.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-usages">`[[usages]]`</a> internal slot of
+              |sharedKey| to the <a data-cite="webcrypto#concept-normalized-usages">normalized value</a>
+              of |usages|.
+            </p>
+          </li>
+          <li>
+            <p>
               Let |encapsulatedKey| be a new {{EncapsulatedKey}} dictionary
               with {{EncapsulatedKey/sharedKey}} set to |sharedKey|
               and {{EncapsulatedKey/ciphertext}} set to the
@@ -627,6 +640,19 @@ enum KeyUsage { "encrypt", "decrypt", "sign", "verify", "deriveKey", "deriveBits
               |format|, the |decapsulatedBits| as |keyData|, |sharedKeyAlgorithm| as
               |algorithm| and using
               |extractable| and |usages|.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-extractable">`[[extractable]]`</a> internal
+              slot of |sharedKey| to |extractable|.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-usages">`[[usages]]`</a> internal slot of
+              |sharedKey| to the <a data-cite="webcrypto#concept-normalized-usages">normalized value</a>
+              of |usages|.
             </p>
           </li>
           <li>
