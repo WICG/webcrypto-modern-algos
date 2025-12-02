@@ -83,17 +83,11 @@
         "publisher": "IETF",
         "date": "May 2025"
       },
-      "draft-ietf-cose-dilithium-07": {
+      "draft-ietf-cose-dilithium-08": {
         "title": "ML-DSA for JOSE and COSE",
-        "href": "https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-07.html",
+        "href": "https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-08.html",
         "publisher": "IETF",
-        "date": "June 2025"
-      },
-      "draft-ietf-cose-sphincs-plus-05": {
-        "title": "SLH-DSA for JOSE and COSE",
-        "href": "https://www.ietf.org/archive/id/draft-ietf-cose-sphincs-plus-05.html",
-        "publisher": "IETF",
-        "date": "October 2024"
+        "date": "July 2025"
       },
       "CSOR": {
         "title": "Computer Security Objects Register",
@@ -1211,14 +1205,14 @@ dictionary EncapsulatedBits {
     <h2>Partial JsonWebKey dictionary</h2>
     <pre class=idl>
 partial dictionary JsonWebKey {
-  // The following fields are defined in draft-ietf-cose-dilithium-07
+  // The following fields are defined in draft-ietf-cose-dilithium-08
   DOMString pub;
   DOMString priv;
 };
     </pre>
     <p>
       This extension of the {{JsonWebKey}} dictionary defined in [[webcrypto]]
-      provides a way to represent keys with the "AKP" key type defined in [[draft-ietf-cose-dilithium-07]].
+      provides a way to represent keys with the "AKP" key type defined in [[draft-ietf-cose-dilithium-08]].
     </p>
   </section>
 
@@ -3576,6 +3570,15 @@ dictionary ContextParams : Algorithm {
         </tbody>
       </table>
     </section>
+    <section id="slh-dsa-jwk">
+      <h4>JSON Web Key Representation</h4>
+      <p>
+        SLH-DSA keys use the "AKP" (Algorithm Key Pair) key type defined in [[draft-ietf-cose-dilithium-08]]
+        for JWK representation. The "alg" (algorithm) parameter identifies the specific SLH-DSA parameter set.
+        The public key is carried in the "pub" parameter. If a private key is included, it is represented
+        using the "priv" parameter. When expressed in JWK, all key parameters are base64url encoded.
+      </p>
+    </section>
 
     <section id="slh-dsa-operations">
       <h4>Operations</h4>
@@ -4225,10 +4228,6 @@ dictionary ContextParams : Algorithm {
               <dd>
                 <ol>
                   <li>
-                    <p class="issue">
-                      The JWK format for SLH-DSA is not standardized yet and thus subject to change.
-                      TODO: register "alg" values for SLH-DSA with IANA in the JSON Web Signature and Encryption Algorithms registry.
-                    </p>
                     <dl class="switch">
                       <dt>If |keyData| is a {{JsonWebKey}} dictionary:</dt>
                       <dd><p>Let |jwk| equal |keyData|.</p></dd>
@@ -4711,10 +4710,6 @@ dictionary ContextParams : Algorithm {
               <dd>
                 <ol>
                   <li>
-                    <p class="issue">
-                      The JWK format for SLH-DSA is not standardized yet and thus subject to change.
-                      TODO: register "alg" values for SLH-DSA with IANA in the JSON Web Signature and Encryption Algorithms registry.
-                    </p>
                     <p>
                       Let |jwk| be a new {{JsonWebKey}}
                       dictionary.
@@ -7016,6 +7011,192 @@ dictionary Argon2Params : Algorithm {
     </section>
   </section>
 
+  <section id="iana-section">
+    <h2>IANA Considerations</h2>
+    <section id="iana-section-jws-jwa">
+      <h3>JSON Web Signature and Encryption Algorithms Registration</h3>
+      <p>
+        This section registers the following algorithm identifiers in the IANA JSON Web
+        Signature and Encryption Algorithms Registry for use with JSON Web Key.
+      </p>
+      <ul>
+        <li>Algorithm Name: "A128OCB"</li>
+        <li>Algorithm Description: AES OCB using 128 bit key</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "A192OCB"</li>
+        <li>Algorithm Description: AES OCB using 192 bit key</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "A256OCB"</li>
+        <li>Algorithm Description: AES OCB using 256 bit key</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "C20P"</li>
+        <li>Algorithm Description: ChaCha20-Poly1305</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "K128"</li>
+        <li>Algorithm Description: KMAC using the KMAC128</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "K256"</li>
+        <li>Algorithm Description: KMAC using the KMAC256</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHA2-128s"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHA2-128s parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHA2-128f"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHA2-128f parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHA2-192s"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHA2-192s parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHA2-192f"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHA2-192f parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHA2-256s"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHA2-256s parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHA2-256f"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHA2-256f parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHAKE-128s"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHAKE-128s parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHAKE-128f"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHAKE-128f parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHAKE-192s"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHAKE-192s parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHAKE-192f"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHAKE-192f parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHAKE-256s"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHAKE-256s parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHAKE-256f"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHAKE-256f parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+    </section>
+    <section id="iana-section-key-operations">
+      <h3>JSON Web Key Operations</h3>
+      <p>
+        This section registers the following key operations in the IANA JSON Web Key
+        Operations Registry for use with JSON Web Key.
+      </p>
+      <ul>
+        <li>Key Operation Value: "encapsulateKey"</li>
+        <li>Key Operation Description: Encapsulate key</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Key Operation Value: "encapsulateBits"</li>
+        <li>Key Operation Description: Encapsulate bits not to be used as a key</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Key Operation Value: "decapsulateKey"</li>
+        <li>Key Operation Description: Eecapsulate key</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Key Operation Value: "decapsulateBits"</li>
+        <li>Key Operation Description: Encapsulate bits not to be used as a key</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+    </section>
+  </section>
+
   <section>
     <h2>Usage Example</h2>
     <p>
@@ -7184,8 +7365,6 @@ alg: "K256" }
         </tr>
       </tbody>
     </table>
-    <div class="todo">TODO: register A128OCB, A192OCB, A256OCB, C20P, K128 and K256(?) with IANA in the JSON Web Signature and Encryption Algorithms registry.</div>
-    <div class="todo">TODO: register encapsulateKey, encapsulateBits, decapsulateKey and decapsulateBits with IANA in the JSON Web Key Operations registry.</div>
   </section>
 
   <section id="pkcs8-mapping" class="appendix informative">
