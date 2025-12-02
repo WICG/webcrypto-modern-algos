@@ -1768,14 +1768,13 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
               <dd>
                 <ol>
                   <li>
-                    </li><li>
-                      <p>
-                        If <var>usages</var> contains an entry which is not
-                        "<code>encapsulateKey</code>" or "<code>encapsulateBits</code>"
-                        then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
-                        <a data-link-type="exception" data-lt="SyntaxError" href="https://webidl.spec.whatwg.org/#syntaxerror"><code>SyntaxError</code></a>.
-                      </p>
-                    </li>
+                    <p>
+                      If <var>usages</var> contains an entry which is not
+                      "<code>encapsulateKey</code>" or "<code>encapsulateBits</code>"
+                      then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
+                      <a data-link-type="exception" data-lt="SyntaxError" href="https://webidl.spec.whatwg.org/#syntaxerror"><code>SyntaxError</code></a>.
+                    </p>
+                  </li>
                   <li>
                     <p>
                       Let <var>spki</var> be the result of running the
@@ -1888,14 +1887,13 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
               <dd>
                 <ol>
                   <li>
-                    </li><li>
-                      <p>
-                        If <var>usages</var> contains an entry which is not
-                        "<code>encapsulateKey</code>" or "<code>encapsulateBits</code>"
-                        then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
-                        <a data-link-type="exception" data-lt="SyntaxError" href="https://webidl.spec.whatwg.org/#syntaxerror"><code>SyntaxError</code></a>.
-                      </p>
-                    </li>
+                    <p>
+                      If <var>usages</var> contains an entry which is not
+                      "<code>decapsulateKey</code>" or "<code>decapsulateBits</code>"
+                      then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
+                      <a data-link-type="exception" data-lt="SyntaxError" href="https://webidl.spec.whatwg.org/#syntaxerror"><code>SyntaxError</code></a>.
+                    </p>
+                  </li>
                   <li>
                     <p>
                       Let <var>privateKeyInfo</var> be the result of running the
@@ -2239,7 +2237,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                           <li>
                             <p>
                               Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a>
-                              internal slot of <var>Key</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-private"><code>private</code></a>".
+                              internal slot of <var>key</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-private"><code>private</code></a>".
                             </p>
                           </li>
                           <li>
@@ -2275,7 +2273,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                           <li>
                             <p>
                               Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a>
-                              internal slot of <var>Key</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>".
+                              internal slot of <var>key</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>".
                             </p>
                           </li>
                         </ol>
@@ -3382,7 +3380,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                           <li>
                             <p>
                               Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a>
-                              internal slot of <var>Key</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-private"><code>private</code></a>".
+                              internal slot of <var>key</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-private"><code>private</code></a>".
                             </p>
                           </li>
                           <li>
@@ -3418,7 +3416,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                           <li>
                             <p>
                               Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a>
-                              internal slot of <var>Key</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>".
+                              internal slot of <var>key</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>".
                             </p>
                           </li>
                         </ol>
@@ -4610,7 +4608,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                           <li>
                             <p>
                               Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a>
-                              internal slot of <var>Key</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-private"><code>private</code></a>".
+                              internal slot of <var>key</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-private"><code>private</code></a>".
                             </p>
                           </li>
                           <li>
@@ -4646,7 +4644,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                           <li>
                             <p>
                               Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a>
-                              internal slot of <var>Key</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>".
+                              internal slot of <var>key</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>".
                             </p>
                           </li>
                         </ol>
@@ -6627,7 +6625,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
           <li>
             <p>
               Set the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-keyalgorithm-name"><code>name</code></a> attribute of
-              <var>algorithm</var> to "<code>KMAC</code>".
+              <var>algorithm</var> to the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var>.
             </p>
           </li>
           <li>
@@ -6839,7 +6837,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
           <li>
             <p>
               Set the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-keyalgorithm-name"><code>name</code></a> attribute of
-              <var>algorithm</var> to "<code>KMAC</code>".
+              <var>algorithm</var> to the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var>.
             </p>
           </li>
           <li>
