@@ -1644,18 +1644,6 @@ partial dictionary JsonWebKey {
                       internal slot of |key| to |algorithm|.
                     </p>
                   </li>
-                  <li>
-                    <p>
-                      Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-extractable">`[[extractable]]`</a> internal
-                      slot of |key| to |extractable|.
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-usages">`[[usages]]`</a> internal slot of
-                      |key| to |usages|.
-                    </p>
-                  </li>
                 </ol>
               </dd>
               <dt>If |format| is {{KeyFormat/"pkcs8"}}:</dt>
@@ -1780,18 +1768,6 @@ partial dictionary JsonWebKey {
                     <p>
                       Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a>
                       internal slot of |key| to |algorithm|.
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-extractable">`[[extractable]]`</a> internal
-                      slot of |key| to |extractable|.
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-usages">`[[usages]]`</a> internal slot of
-                      |key| to |usages|.
                     </p>
                   </li>
                 </ol>
@@ -2810,18 +2786,6 @@ dictionary ContextParams : Algorithm {
                       internal slot of |key| to |algorithm|.
                     </p>
                   </li>
-                  <li>
-                    <p>
-                      Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-extractable">`[[extractable]]`</a> internal
-                      slot of |key| to |extractable|.
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-usages">`[[usages]]`</a> internal slot of
-                      |key| to |usages|.
-                    </p>
-                  </li>
                 </ol>
               </dd>
               <dt>If |format| is {{KeyFormat/"pkcs8"}}:</dt>
@@ -2946,18 +2910,6 @@ dictionary ContextParams : Algorithm {
                     <p>
                       Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a>
                       internal slot of |key| to |algorithm|.
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-extractable">`[[extractable]]`</a> internal
-                      slot of |key| to |extractable|.
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-usages">`[[usages]]`</a> internal slot of
-                      |key| to |usages|.
                     </p>
                   </li>
                 </ol>
@@ -3992,18 +3944,6 @@ dictionary ContextParams : Algorithm {
                       internal slot of |key| to |algorithm|.
                     </p>
                   </li>
-                  <li>
-                    <p>
-                      Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-extractable">`[[extractable]]`</a> internal
-                      slot of |key| to |extractable|.
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-usages">`[[usages]]`</a> internal slot of
-                      |key| to |usages|.
-                    </p>
-                  </li>
                 </ol>
               </dd>
               <dt>If |format| is {{KeyFormat/"pkcs8"}}:</dt>
@@ -4173,18 +4113,6 @@ dictionary ContextParams : Algorithm {
                     <p>
                       Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a>
                       internal slot of |key| to |algorithm|.
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-extractable">`[[extractable]]`</a> internal
-                      slot of |key| to |extractable|.
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-usages">`[[usages]]`</a> internal slot of
-                      |key| to |usages|.
                     </p>
                   </li>
                 </ol>
@@ -5117,6 +5045,12 @@ dictionary AeadParams : Algorithm {
           </li>
           <li>
             <p>
+              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot of
+              |key| to {{KeyType/"secret"}}.
+            </p>
+          </li>
+          <li>
+            <p>
               Let |algorithm| be a new
               {{AesKeyAlgorithm}}.
             </p>
@@ -5646,6 +5580,12 @@ dictionary AeadParams : Algorithm {
           </li>
           <li>
             <p>
+              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot of
+              |key| to {{KeyType/"secret"}}.
+            </p>
+          </li>
+          <li>
+            <p>
               Let |algorithm| be a new
               {{KeyAlgorithm}}.
             </p>
@@ -5795,6 +5735,12 @@ dictionary AeadParams : Algorithm {
             <p>
               Let |key| be a new {{CryptoKey}}
               object representing a key with value |data|.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot of
+              |key| to {{KeyType/"secret"}}.
             </p>
           </li>
           <li>
@@ -6407,6 +6353,12 @@ dictionary KmacParams : Algorithm {
           </li>
           <li>
             <p>
+              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot of
+              |key| to {{KeyType/"secret"}}.
+            </p>
+          </li>
+          <li>
+            <p>
               Let |algorithm| be a new
               {{KmacKeyAlgorithm}}.
             </p>
@@ -6615,6 +6567,12 @@ dictionary KmacParams : Algorithm {
               Let |key| be a new {{CryptoKey}}
               object representing an KMAC key with the first |length|
               bits of |data|.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot of
+              |key| to {{KeyType/"secret"}}.
             </p>
           </li>
           <li>
@@ -7017,12 +6975,6 @@ dictionary Argon2Params : Algorithm {
             <p>
               Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot of
               |key| to {{KeyType/"secret"}}.
-            </p>
-          </li>
-          <li>
-            <p>
-              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-extractable">`[[extractable]]`</a> internal slot of
-              |key| to `false`.
             </p>
           </li>
           <li>
