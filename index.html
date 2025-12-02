@@ -252,18 +252,12 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       "date": "May 2025",
       "id": "draft-ietf-jose-pqc-kem-01"
     },
-    "draft-ietf-cose-dilithium-07": {
+    "draft-ietf-cose-dilithium-08": {
       "title": "ML-DSA for JOSE and COSE",
-      "href": "https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-07.html",
+      "href": "https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-08.html",
       "publisher": "IETF",
-      "date": "June 2025",
-      "id": "draft-ietf-cose-dilithium-07"
-    },
-    "draft-ietf-cose-sphincs-plus-05": {
-      "title": "SLH-DSA for JOSE and COSE",
-      "href": "https://www.ietf.org/archive/id/draft-ietf-cose-sphincs-plus-05.html",
-      "publisher": "IETF",
-      "date": "October 2024"
+      "date": "July 2025",
+      "id": "draft-ietf-cose-dilithium-08"
     },
     "CSOR": {
       "title": "Computer Security Objects Register",
@@ -365,7 +359,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           discussion of this specification.
         
     
-  </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a></li><li class="tocline"><a class="tocxref" href="#specification-conventions"><bdi class="secno">2. </bdi>Specification Conventions</a></li><li class="tocline"><a class="tocxref" href="#partial-subtlecrypto-interface"><bdi class="secno">3. </bdi>Partial SubtleCrypto interface</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#subtlecrypto-interface-datatypes"><bdi class="secno">3.1 </bdi>Data Types</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#subtlecrypto-interface-keyformat"><bdi class="secno">3.1.1 </bdi>Key Formats</a></li><li class="tocline"><a class="tocxref" href="#subtlecrypto-interface-keyusage"><bdi class="secno">3.1.2 </bdi>Key Usages</a></li></ol></li><li class="tocline"><a class="tocxref" href="#partial-subtlecrypto-interface-methods"><bdi class="secno">3.2 </bdi>Methods and Parameters</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#SubtleCrypto-method-encapsulateKey"><bdi class="secno">3.2.1 </bdi>The encapsulateKey method</a></li><li class="tocline"><a class="tocxref" href="#SubtleCrypto-method-encapsulateBits"><bdi class="secno">3.2.2 </bdi>The encapsulateBits method</a></li><li class="tocline"><a class="tocxref" href="#SubtleCrypto-method-decapsulateKey"><bdi class="secno">3.2.3 </bdi>The decapsulateKey method</a></li><li class="tocline"><a class="tocxref" href="#SubtleCrypto-method-decapsulateBits"><bdi class="secno">3.2.4 </bdi>The decapsulateBits method</a></li><li class="tocline"><a class="tocxref" href="#SubtleCrypto-method-getPublicKey"><bdi class="secno">3.2.5 </bdi>The getPublicKey method</a></li><li class="tocline"><a class="tocxref" href="#SubtleCrypto-method-supports"><bdi class="secno">3.2.6 </bdi>The supports method</a></li></ol></li><li class="tocline"><a class="tocxref" href="#partial-subtlecrypto-interface-checking-support-for-algorithm"><bdi class="secno">3.3 </bdi>Checking support for an algorithm</a></li></ol></li><li class="tocline"><a class="tocxref" href="#encapsulation"><bdi class="secno">4. </bdi>Encapsulation dictionaries</a></li><li class="tocline"><a class="tocxref" href="#partial-JsonWebKey-dictionary"><bdi class="secno">5. </bdi>Partial JsonWebKey dictionary</a></li><li class="tocline"><a class="tocxref" href="#ml-kem"><bdi class="secno">6. </bdi>ML-KEM</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ml-kem-description"><bdi class="secno">6.1 </bdi>Description</a></li><li class="tocline"><a class="tocxref" href="#ml-kem-registration"><bdi class="secno">6.2 </bdi>Registration</a></li><li class="tocline"><a class="tocxref" href="#ml-kem-operations"><bdi class="secno">6.3 </bdi>Operations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ml-kem-operations-encapsulate"><bdi class="secno">6.3.1 </bdi>Encapsulate</a></li><li class="tocline"><a class="tocxref" href="#ml-kem-operations-decapsulate"><bdi class="secno">6.3.2 </bdi>Decapsulate</a></li><li class="tocline"><a class="tocxref" href="#ml-kem-operations-generate-key"><bdi class="secno">6.3.3 </bdi>Generate Key</a></li><li class="tocline"><a class="tocxref" href="#ml-kem-operations-import-key"><bdi class="secno">6.3.4 </bdi>Import Key</a></li><li class="tocline"><a class="tocxref" href="#ml-kem-operations-export-key"><bdi class="secno">6.3.5 </bdi>Export Key</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#ml-dsa"><bdi class="secno">7. </bdi>ML-DSA</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ml-dsa-description"><bdi class="secno">7.1 </bdi>Description</a></li><li class="tocline"><a class="tocxref" href="#ml-dsa-registration"><bdi class="secno">7.2 </bdi>Registration</a></li><li class="tocline"><a class="tocxref" href="#context-params"><bdi class="secno">7.3 </bdi><span data-idl="dictionary" data-export="" data-dfn-type="dictionary" data-title="ContextParams" data-dfn-for=""><code>ContextParams</code></span> dictionary</a></li><li class="tocline"><a class="tocxref" href="#ml-dsa-operations"><bdi class="secno">7.4 </bdi>Operations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ml-dsa-operations-sign"><bdi class="secno">7.4.1 </bdi>Sign</a></li><li class="tocline"><a class="tocxref" href="#ml-dsa-operations-verify"><bdi class="secno">7.4.2 </bdi>Verify</a></li><li class="tocline"><a class="tocxref" href="#ml-dsa-operations-generate-key"><bdi class="secno">7.4.3 </bdi>Generate Key</a></li><li class="tocline"><a class="tocxref" href="#ml-dsa-operations-import-key"><bdi class="secno">7.4.4 </bdi>Import Key</a></li><li class="tocline"><a class="tocxref" href="#ml-dsa-operations-export-key"><bdi class="secno">7.4.5 </bdi>Export Key</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#slh-dsa"><bdi class="secno">8. </bdi>SLH-DSA</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#slh-dsa-description"><bdi class="secno">8.1 </bdi>Description</a></li><li class="tocline"><a class="tocxref" href="#slh-dsa-registration"><bdi class="secno">8.2 </bdi>Registration</a></li><li class="tocline"><a class="tocxref" href="#slh-dsa-operations"><bdi class="secno">8.3 </bdi>Operations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#slh-dsa-operations-sign"><bdi class="secno">8.3.1 </bdi>Sign</a></li><li class="tocline"><a class="tocxref" href="#slh-dsa-operations-verify"><bdi class="secno">8.3.2 </bdi>Verify</a></li><li class="tocline"><a class="tocxref" href="#slh-dsa-operations-generate-key"><bdi class="secno">8.3.3 </bdi>Generate Key</a></li><li class="tocline"><a class="tocxref" href="#slh-dsa-operations-import-key"><bdi class="secno">8.3.4 </bdi>Import Key</a></li><li class="tocline"><a class="tocxref" href="#slh-dsa-operations-export-key"><bdi class="secno">8.3.5 </bdi>Export Key</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#aes-ocb"><bdi class="secno">9. </bdi>AES-OCB</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aes-ocb-description"><bdi class="secno">9.1 </bdi>Description</a></li><li class="tocline"><a class="tocxref" href="#aes-ocb-registration"><bdi class="secno">9.2 </bdi>Registration</a></li><li class="tocline"><a class="tocxref" href="#aead-params"><bdi class="secno">9.3 </bdi><span data-idl="dictionary" data-export="" data-dfn-type="dictionary" data-title="AeadParams" data-dfn-for=""><code>AeadParams</code></span> dictionary</a></li><li class="tocline"><a class="tocxref" href="#aes-ocb-operations"><bdi class="secno">9.4 </bdi>Operations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aes-ocb-operations-encrypt"><bdi class="secno">9.4.1 </bdi>Encrypt</a></li><li class="tocline"><a class="tocxref" href="#aes-ocb-operations-decrypt"><bdi class="secno">9.4.2 </bdi>Decrypt</a></li><li class="tocline"><a class="tocxref" href="#aes-ocb-operations-generate-key"><bdi class="secno">9.4.3 </bdi>Generate Key</a></li><li class="tocline"><a class="tocxref" href="#aes-ocb-operations-import-key"><bdi class="secno">9.4.4 </bdi>Import Key</a></li><li class="tocline"><a class="tocxref" href="#aes-ocb-operations-export-key"><bdi class="secno">9.4.5 </bdi>Export Key</a></li><li class="tocline"><a class="tocxref" href="#aes-ocb-operations-get-key-length"><bdi class="secno">9.4.6 </bdi>Get key length</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#chacha20-poly1305"><bdi class="secno">10. </bdi>ChaCha20-Poly1305</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#chacha20-poly1305-description"><bdi class="secno">10.1 </bdi>Description</a></li><li class="tocline"><a class="tocxref" href="#chacha20-poly1305-registration"><bdi class="secno">10.2 </bdi>Registration</a></li><li class="tocline"><a class="tocxref" href="#chacha20-poly1305-operations"><bdi class="secno">10.3 </bdi>Operations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#chacha20-poly1305-operations-encrypt"><bdi class="secno">10.3.1 </bdi>Encrypt</a></li><li class="tocline"><a class="tocxref" href="#chacha20-poly1305-operations-decrypt"><bdi class="secno">10.3.2 </bdi>Decrypt</a></li><li class="tocline"><a class="tocxref" href="#chacha20-poly1305-operations-generate-key"><bdi class="secno">10.3.3 </bdi>Generate Key</a></li><li class="tocline"><a class="tocxref" href="#chacha20-poly1305-operations-import-key"><bdi class="secno">10.3.4 </bdi>Import Key</a></li><li class="tocline"><a class="tocxref" href="#chacha20-poly1305-operations-export-key"><bdi class="secno">10.3.5 </bdi>Export Key</a></li><li class="tocline"><a class="tocxref" href="#chacha20-poly1305-operations-get-key-length"><bdi class="secno">10.3.6 </bdi>Get key length</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#sha3"><bdi class="secno">11. </bdi>SHA-3</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#sha3-description"><bdi class="secno">11.1 </bdi>Description</a></li><li class="tocline"><a class="tocxref" href="#sha3-registration"><bdi class="secno">11.2 </bdi>Registration</a></li><li class="tocline"><a class="tocxref" href="#sha3-operations"><bdi class="secno">11.3 </bdi>Operations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#sha3-operations-digest"><bdi class="secno">11.3.1 </bdi>Digest</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#cshake"><bdi class="secno">12. </bdi>cSHAKE</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#cshake-description"><bdi class="secno">12.1 </bdi>Description</a></li><li class="tocline"><a class="tocxref" href="#cshake-registration"><bdi class="secno">12.2 </bdi>Registration</a></li><li class="tocline"><a class="tocxref" href="#cshake-params"><bdi class="secno">12.3 </bdi><span data-idl="dictionary" data-export="" data-dfn-type="dictionary" data-title="CShakeParams" data-dfn-for=""><code>CShakeParams</code></span> dictionary</a></li><li class="tocline"><a class="tocxref" href="#cshake-operations"><bdi class="secno">12.4 </bdi>Operations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#cshake-operations-digest"><bdi class="secno">12.4.1 </bdi>Digest</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#kmac"><bdi class="secno">13. </bdi>KMAC</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kmac-description"><bdi class="secno">13.1 </bdi>Description</a></li><li class="tocline"><a class="tocxref" href="#kmac-registration"><bdi class="secno">13.2 </bdi>Registration</a></li><li class="tocline"><a class="tocxref" href="#kmac-keygen-params"><bdi class="secno">13.3 </bdi><span data-idl="dictionary" data-export="" data-dfn-type="dictionary" data-title="KmacKeyGenParams" data-dfn-for=""><code>KmacKeyGenParams</code></span> dictionary</a></li><li class="tocline"><a class="tocxref" href="#kmac-importparams"><bdi class="secno">13.4 </bdi><span data-idl="dictionary" data-export="" data-dfn-type="dictionary" data-title="KmacImportParams" data-dfn-for=""><code>KmacImportParams</code></span> dictionary</a></li><li class="tocline"><a class="tocxref" href="#KmacKeyAlgorithm-dictionary"><bdi class="secno">13.5 </bdi><span data-idl="dictionary" data-export="" data-dfn-type="dictionary" data-title="KmacKeyAlgorithm" data-dfn-for=""><code>KmacKeyAlgorithm</code></span> dictionary</a></li><li class="tocline"><a class="tocxref" href="#kmac-params"><bdi class="secno">13.6 </bdi><span data-idl="dictionary" data-export="" data-dfn-type="dictionary" data-title="KmacParams" data-dfn-for=""><code>KmacParams</code></span> dictionary</a></li><li class="tocline"><a class="tocxref" href="#kmac-operations"><bdi class="secno">13.7 </bdi>Operations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kmac-operations-sign"><bdi class="secno">13.7.1 </bdi>Sign</a></li><li class="tocline"><a class="tocxref" href="#kmac-operations-verify"><bdi class="secno">13.7.2 </bdi>Verify</a></li><li class="tocline"><a class="tocxref" href="#kmac-operations-generate-key"><bdi class="secno">13.7.3 </bdi>Generate Key</a></li><li class="tocline"><a class="tocxref" href="#kmac-operations-import-key"><bdi class="secno">13.7.4 </bdi>Import Key</a></li><li class="tocline"><a class="tocxref" href="#kmac-operations-export-key"><bdi class="secno">13.7.5 </bdi>Export Key</a></li><li class="tocline"><a class="tocxref" href="#kmac-operations-get-key-length"><bdi class="secno">13.7.6 </bdi>Get key length</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#argon2"><bdi class="secno">14. </bdi>Argon2</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#argon2-description"><bdi class="secno">14.1 </bdi>Description</a></li><li class="tocline"><a class="tocxref" href="#argon2-registration"><bdi class="secno">14.2 </bdi>Registration</a></li><li class="tocline"><a class="tocxref" href="#argon2-params"><bdi class="secno">14.3 </bdi><span data-idl="dictionary" data-export="" data-dfn-type="dictionary" data-title="Argon2Params" data-dfn-for=""><code>Argon2Params</code></span> dictionary</a></li><li class="tocline"><a class="tocxref" href="#argon2-operations"><bdi class="secno">14.4 </bdi>Operations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#argon2-operations-derive-bits"><bdi class="secno">14.4.1 </bdi>Derive Bits</a></li><li class="tocline"><a class="tocxref" href="#argon2-operations-import-key"><bdi class="secno">14.4.2 </bdi>Import key</a></li><li class="tocline"><a class="tocxref" href="#argon2-operations-get-key-length"><bdi class="secno">14.4.3 </bdi>Get key length</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#usage-example"><bdi class="secno">15. </bdi>Usage Example</a></li><li class="tocline"><a class="tocxref" href="#jwk-mapping"><bdi class="secno">A. </bdi>Mapping between JSON Web Key / JSON Web Algorithm</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#algorithm-mappings"><bdi class="secno">A.1 </bdi>Algorithm mappings</a></li></ol></li><li class="tocline"><a class="tocxref" href="#pkcs8-mapping"><bdi class="secno">B. </bdi>Mapping between Algorithm and PKCS#8 PrivateKeyInfo</a></li><li class="tocline"><a class="tocxref" href="#spki-mapping"><bdi class="secno">C. </bdi>Mapping between Algorithm and SubjectPublicKeyInfo</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">D. </bdi>Conformance</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">E. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">E.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">E.2 </bdi>Informative references</a></li></ol></li></ol></nav>
+  </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a></li><li class="tocline"><a class="tocxref" href="#specification-conventions"><bdi class="secno">2. </bdi>Specification Conventions</a></li><li class="tocline"><a class="tocxref" href="#partial-subtlecrypto-interface"><bdi class="secno">3. </bdi>Partial SubtleCrypto interface</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#subtlecrypto-interface-datatypes"><bdi class="secno">3.1 </bdi>Data Types</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#subtlecrypto-interface-keyformat"><bdi class="secno">3.1.1 </bdi>Key Formats</a></li><li class="tocline"><a class="tocxref" href="#subtlecrypto-interface-keyusage"><bdi class="secno">3.1.2 </bdi>Key Usages</a></li></ol></li><li class="tocline"><a class="tocxref" href="#partial-subtlecrypto-interface-methods"><bdi class="secno">3.2 </bdi>Methods and Parameters</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#SubtleCrypto-method-encapsulateKey"><bdi class="secno">3.2.1 </bdi>The encapsulateKey method</a></li><li class="tocline"><a class="tocxref" href="#SubtleCrypto-method-encapsulateBits"><bdi class="secno">3.2.2 </bdi>The encapsulateBits method</a></li><li class="tocline"><a class="tocxref" href="#SubtleCrypto-method-decapsulateKey"><bdi class="secno">3.2.3 </bdi>The decapsulateKey method</a></li><li class="tocline"><a class="tocxref" href="#SubtleCrypto-method-decapsulateBits"><bdi class="secno">3.2.4 </bdi>The decapsulateBits method</a></li><li class="tocline"><a class="tocxref" href="#SubtleCrypto-method-getPublicKey"><bdi class="secno">3.2.5 </bdi>The getPublicKey method</a></li><li class="tocline"><a class="tocxref" href="#SubtleCrypto-method-supports"><bdi class="secno">3.2.6 </bdi>The supports method</a></li></ol></li><li class="tocline"><a class="tocxref" href="#partial-subtlecrypto-interface-checking-support-for-algorithm"><bdi class="secno">3.3 </bdi>Checking support for an algorithm</a></li></ol></li><li class="tocline"><a class="tocxref" href="#encapsulation"><bdi class="secno">4. </bdi>Encapsulation dictionaries</a></li><li class="tocline"><a class="tocxref" href="#partial-JsonWebKey-dictionary"><bdi class="secno">5. </bdi>Partial JsonWebKey dictionary</a></li><li class="tocline"><a class="tocxref" href="#ml-kem"><bdi class="secno">6. </bdi>ML-KEM</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ml-kem-description"><bdi class="secno">6.1 </bdi>Description</a></li><li class="tocline"><a class="tocxref" href="#ml-kem-registration"><bdi class="secno">6.2 </bdi>Registration</a></li><li class="tocline"><a class="tocxref" href="#ml-kem-operations"><bdi class="secno">6.3 </bdi>Operations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ml-kem-operations-encapsulate"><bdi class="secno">6.3.1 </bdi>Encapsulate</a></li><li class="tocline"><a class="tocxref" href="#ml-kem-operations-decapsulate"><bdi class="secno">6.3.2 </bdi>Decapsulate</a></li><li class="tocline"><a class="tocxref" href="#ml-kem-operations-generate-key"><bdi class="secno">6.3.3 </bdi>Generate Key</a></li><li class="tocline"><a class="tocxref" href="#ml-kem-operations-import-key"><bdi class="secno">6.3.4 </bdi>Import Key</a></li><li class="tocline"><a class="tocxref" href="#ml-kem-operations-export-key"><bdi class="secno">6.3.5 </bdi>Export Key</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#ml-dsa"><bdi class="secno">7. </bdi>ML-DSA</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ml-dsa-description"><bdi class="secno">7.1 </bdi>Description</a></li><li class="tocline"><a class="tocxref" href="#ml-dsa-registration"><bdi class="secno">7.2 </bdi>Registration</a></li><li class="tocline"><a class="tocxref" href="#context-params"><bdi class="secno">7.3 </bdi><span data-idl="dictionary" data-export="" data-dfn-type="dictionary" data-title="ContextParams" data-dfn-for=""><code>ContextParams</code></span> dictionary</a></li><li class="tocline"><a class="tocxref" href="#ml-dsa-operations"><bdi class="secno">7.4 </bdi>Operations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ml-dsa-operations-sign"><bdi class="secno">7.4.1 </bdi>Sign</a></li><li class="tocline"><a class="tocxref" href="#ml-dsa-operations-verify"><bdi class="secno">7.4.2 </bdi>Verify</a></li><li class="tocline"><a class="tocxref" href="#ml-dsa-operations-generate-key"><bdi class="secno">7.4.3 </bdi>Generate Key</a></li><li class="tocline"><a class="tocxref" href="#ml-dsa-operations-import-key"><bdi class="secno">7.4.4 </bdi>Import Key</a></li><li class="tocline"><a class="tocxref" href="#ml-dsa-operations-export-key"><bdi class="secno">7.4.5 </bdi>Export Key</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#slh-dsa"><bdi class="secno">8. </bdi>SLH-DSA</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#slh-dsa-description"><bdi class="secno">8.1 </bdi>Description</a></li><li class="tocline"><a class="tocxref" href="#slh-dsa-registration"><bdi class="secno">8.2 </bdi>Registration</a></li><li class="tocline"><a class="tocxref" href="#slh-dsa-jwk"><bdi class="secno">8.3 </bdi>JSON Web Key Representation</a></li><li class="tocline"><a class="tocxref" href="#slh-dsa-operations"><bdi class="secno">8.4 </bdi>Operations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#slh-dsa-operations-sign"><bdi class="secno">8.4.1 </bdi>Sign</a></li><li class="tocline"><a class="tocxref" href="#slh-dsa-operations-verify"><bdi class="secno">8.4.2 </bdi>Verify</a></li><li class="tocline"><a class="tocxref" href="#slh-dsa-operations-generate-key"><bdi class="secno">8.4.3 </bdi>Generate Key</a></li><li class="tocline"><a class="tocxref" href="#slh-dsa-operations-import-key"><bdi class="secno">8.4.4 </bdi>Import Key</a></li><li class="tocline"><a class="tocxref" href="#slh-dsa-operations-export-key"><bdi class="secno">8.4.5 </bdi>Export Key</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#aes-ocb"><bdi class="secno">9. </bdi>AES-OCB</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aes-ocb-description"><bdi class="secno">9.1 </bdi>Description</a></li><li class="tocline"><a class="tocxref" href="#aes-ocb-registration"><bdi class="secno">9.2 </bdi>Registration</a></li><li class="tocline"><a class="tocxref" href="#aead-params"><bdi class="secno">9.3 </bdi><span data-idl="dictionary" data-export="" data-dfn-type="dictionary" data-title="AeadParams" data-dfn-for=""><code>AeadParams</code></span> dictionary</a></li><li class="tocline"><a class="tocxref" href="#aes-ocb-operations"><bdi class="secno">9.4 </bdi>Operations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aes-ocb-operations-encrypt"><bdi class="secno">9.4.1 </bdi>Encrypt</a></li><li class="tocline"><a class="tocxref" href="#aes-ocb-operations-decrypt"><bdi class="secno">9.4.2 </bdi>Decrypt</a></li><li class="tocline"><a class="tocxref" href="#aes-ocb-operations-generate-key"><bdi class="secno">9.4.3 </bdi>Generate Key</a></li><li class="tocline"><a class="tocxref" href="#aes-ocb-operations-import-key"><bdi class="secno">9.4.4 </bdi>Import Key</a></li><li class="tocline"><a class="tocxref" href="#aes-ocb-operations-export-key"><bdi class="secno">9.4.5 </bdi>Export Key</a></li><li class="tocline"><a class="tocxref" href="#aes-ocb-operations-get-key-length"><bdi class="secno">9.4.6 </bdi>Get key length</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#chacha20-poly1305"><bdi class="secno">10. </bdi>ChaCha20-Poly1305</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#chacha20-poly1305-description"><bdi class="secno">10.1 </bdi>Description</a></li><li class="tocline"><a class="tocxref" href="#chacha20-poly1305-registration"><bdi class="secno">10.2 </bdi>Registration</a></li><li class="tocline"><a class="tocxref" href="#chacha20-poly1305-operations"><bdi class="secno">10.3 </bdi>Operations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#chacha20-poly1305-operations-encrypt"><bdi class="secno">10.3.1 </bdi>Encrypt</a></li><li class="tocline"><a class="tocxref" href="#chacha20-poly1305-operations-decrypt"><bdi class="secno">10.3.2 </bdi>Decrypt</a></li><li class="tocline"><a class="tocxref" href="#chacha20-poly1305-operations-generate-key"><bdi class="secno">10.3.3 </bdi>Generate Key</a></li><li class="tocline"><a class="tocxref" href="#chacha20-poly1305-operations-import-key"><bdi class="secno">10.3.4 </bdi>Import Key</a></li><li class="tocline"><a class="tocxref" href="#chacha20-poly1305-operations-export-key"><bdi class="secno">10.3.5 </bdi>Export Key</a></li><li class="tocline"><a class="tocxref" href="#chacha20-poly1305-operations-get-key-length"><bdi class="secno">10.3.6 </bdi>Get key length</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#sha3"><bdi class="secno">11. </bdi>SHA-3</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#sha3-description"><bdi class="secno">11.1 </bdi>Description</a></li><li class="tocline"><a class="tocxref" href="#sha3-registration"><bdi class="secno">11.2 </bdi>Registration</a></li><li class="tocline"><a class="tocxref" href="#sha3-operations"><bdi class="secno">11.3 </bdi>Operations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#sha3-operations-digest"><bdi class="secno">11.3.1 </bdi>Digest</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#cshake"><bdi class="secno">12. </bdi>cSHAKE</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#cshake-description"><bdi class="secno">12.1 </bdi>Description</a></li><li class="tocline"><a class="tocxref" href="#cshake-registration"><bdi class="secno">12.2 </bdi>Registration</a></li><li class="tocline"><a class="tocxref" href="#cshake-params"><bdi class="secno">12.3 </bdi><span data-idl="dictionary" data-export="" data-dfn-type="dictionary" data-title="CShakeParams" data-dfn-for=""><code>CShakeParams</code></span> dictionary</a></li><li class="tocline"><a class="tocxref" href="#cshake-operations"><bdi class="secno">12.4 </bdi>Operations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#cshake-operations-digest"><bdi class="secno">12.4.1 </bdi>Digest</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#kmac"><bdi class="secno">13. </bdi>KMAC</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kmac-description"><bdi class="secno">13.1 </bdi>Description</a></li><li class="tocline"><a class="tocxref" href="#kmac-registration"><bdi class="secno">13.2 </bdi>Registration</a></li><li class="tocline"><a class="tocxref" href="#kmac-keygen-params"><bdi class="secno">13.3 </bdi><span data-idl="dictionary" data-export="" data-dfn-type="dictionary" data-title="KmacKeyGenParams" data-dfn-for=""><code>KmacKeyGenParams</code></span> dictionary</a></li><li class="tocline"><a class="tocxref" href="#kmac-importparams"><bdi class="secno">13.4 </bdi><span data-idl="dictionary" data-export="" data-dfn-type="dictionary" data-title="KmacImportParams" data-dfn-for=""><code>KmacImportParams</code></span> dictionary</a></li><li class="tocline"><a class="tocxref" href="#KmacKeyAlgorithm-dictionary"><bdi class="secno">13.5 </bdi><span data-idl="dictionary" data-export="" data-dfn-type="dictionary" data-title="KmacKeyAlgorithm" data-dfn-for=""><code>KmacKeyAlgorithm</code></span> dictionary</a></li><li class="tocline"><a class="tocxref" href="#kmac-params"><bdi class="secno">13.6 </bdi><span data-idl="dictionary" data-export="" data-dfn-type="dictionary" data-title="KmacParams" data-dfn-for=""><code>KmacParams</code></span> dictionary</a></li><li class="tocline"><a class="tocxref" href="#kmac-operations"><bdi class="secno">13.7 </bdi>Operations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kmac-operations-sign"><bdi class="secno">13.7.1 </bdi>Sign</a></li><li class="tocline"><a class="tocxref" href="#kmac-operations-verify"><bdi class="secno">13.7.2 </bdi>Verify</a></li><li class="tocline"><a class="tocxref" href="#kmac-operations-generate-key"><bdi class="secno">13.7.3 </bdi>Generate Key</a></li><li class="tocline"><a class="tocxref" href="#kmac-operations-import-key"><bdi class="secno">13.7.4 </bdi>Import Key</a></li><li class="tocline"><a class="tocxref" href="#kmac-operations-export-key"><bdi class="secno">13.7.5 </bdi>Export Key</a></li><li class="tocline"><a class="tocxref" href="#kmac-operations-get-key-length"><bdi class="secno">13.7.6 </bdi>Get key length</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#argon2"><bdi class="secno">14. </bdi>Argon2</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#argon2-description"><bdi class="secno">14.1 </bdi>Description</a></li><li class="tocline"><a class="tocxref" href="#argon2-registration"><bdi class="secno">14.2 </bdi>Registration</a></li><li class="tocline"><a class="tocxref" href="#argon2-params"><bdi class="secno">14.3 </bdi><span data-idl="dictionary" data-export="" data-dfn-type="dictionary" data-title="Argon2Params" data-dfn-for=""><code>Argon2Params</code></span> dictionary</a></li><li class="tocline"><a class="tocxref" href="#argon2-operations"><bdi class="secno">14.4 </bdi>Operations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#argon2-operations-derive-bits"><bdi class="secno">14.4.1 </bdi>Derive Bits</a></li><li class="tocline"><a class="tocxref" href="#argon2-operations-import-key"><bdi class="secno">14.4.2 </bdi>Import key</a></li><li class="tocline"><a class="tocxref" href="#argon2-operations-get-key-length"><bdi class="secno">14.4.3 </bdi>Get key length</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#iana-section"><bdi class="secno">15. </bdi>IANA Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#iana-section-jws-jwa"><bdi class="secno">15.1 </bdi>JSON Web Signature and Encryption Algorithms Registration</a></li><li class="tocline"><a class="tocxref" href="#iana-section-key-operations"><bdi class="secno">15.2 </bdi>JSON Web Key Operations</a></li></ol></li><li class="tocline"><a class="tocxref" href="#usage-example"><bdi class="secno">16. </bdi>Usage Example</a></li><li class="tocline"><a class="tocxref" href="#jwk-mapping"><bdi class="secno">A. </bdi>Mapping between JSON Web Key / JSON Web Algorithm</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#algorithm-mappings"><bdi class="secno">A.1 </bdi>Algorithm mappings</a></li></ol></li><li class="tocline"><a class="tocxref" href="#pkcs8-mapping"><bdi class="secno">B. </bdi>Mapping between Algorithm and PKCS#8 PrivateKeyInfo</a></li><li class="tocline"><a class="tocxref" href="#spki-mapping"><bdi class="secno">C. </bdi>Mapping between Algorithm and SubjectPublicKeyInfo</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">D. </bdi>Conformance</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">E. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">E.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">E.2 </bdi>Informative references</a></li></ol></li></ol></nav>
   <section id="introduction" class="informative"><div class="header-wrapper"><h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction</h2><a class="self-link" href="#introduction" aria-label="Permalink for Section 1."></a></div><p><em>This section is non-normative.</em></p>
     
     <p>
@@ -1436,14 +1430,14 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
 
   <section id="partial-JsonWebKey-dictionary"><div class="header-wrapper"><h2 id="x5-partial-jsonwebkey-dictionary"><bdi class="secno">5. </bdi>Partial JsonWebKey dictionary</h2><a class="self-link" href="#partial-JsonWebKey-dictionary" aria-label="Permalink for Section 5."></a></div>
     
-    <pre class="idl def" id="webidl-1943935263"><span class="idlHeader"><a class="self-link" href="#webidl-1943935263">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-jsonwebkey-partial-1" data-title="JsonWebKey">partial dictionary <a data-idl="partial" data-link-type="dictionary" data-title="JsonWebKey" class="idlID" data-dfn-for="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey">JsonWebKey</a> {<span data-idl="" class="idlMember" id="idl-def-jsonwebkey-pub" data-title="pub" data-dfn-for="JsonWebKey"><span class="idlType"><span class="idlSectionComment">
-  // The following fields are defined in draft-ietf-cose-dilithium-07
+    <pre class="idl def" id="webidl-218454366"><span class="idlHeader"><a class="self-link" href="#webidl-218454366">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-jsonwebkey-partial-1" data-title="JsonWebKey">partial dictionary <a data-idl="partial" data-link-type="dictionary" data-title="JsonWebKey" class="idlID" data-dfn-for="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey">JsonWebKey</a> {<span data-idl="" class="idlMember" id="idl-def-jsonwebkey-pub" data-title="pub" data-dfn-for="JsonWebKey"><span class="idlType"><span class="idlSectionComment">
+  // The following fields are defined in draft-ietf-cose-dilithium-08
   </span><a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString">DOMString</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-jsonwebkey-pub" data-idl="field" data-title="pub" data-dfn-for="JsonWebKey" data-type="DOMString" class="idlName" tabindex="0" aria-haspopup="dialog"><code>pub</code></dfn>;</span><span data-idl="" class="idlMember" id="idl-def-jsonwebkey-priv" data-title="priv" data-dfn-for="JsonWebKey"><span class="idlType">
   <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString">DOMString</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-jsonwebkey-priv" data-idl="field" data-title="priv" data-dfn-for="JsonWebKey" data-type="DOMString" class="idlName" tabindex="0" aria-haspopup="dialog"><code>priv</code></dfn>;</span>
 };</span></code></pre>
     <p>
       This extension of the <a data-link-type="dictionary" data-lt="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a> dictionary defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-webcrypto" title="Web Cryptography Level 2">webcrypto</a></cite>]
-      provides a way to represent keys with the "AKP" key type defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-cose-dilithium-07" title="ML-DSA for JOSE and COSE">draft-ietf-cose-dilithium-07</a></cite>].
+      provides a way to represent keys with the "AKP" key type defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-cose-dilithium-08" title="ML-DSA for JOSE and COSE">draft-ietf-cose-dilithium-08</a></cite>].
     </p>
   </section>
 
@@ -3799,10 +3793,19 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         </tbody>
       </table>
     </section>
-
-    <section id="slh-dsa-operations"><div class="header-wrapper"><h3 id="x8-3-operations"><bdi class="secno">8.3 </bdi>Operations</h3><a class="self-link" href="#slh-dsa-operations" aria-label="Permalink for Section 8.3"></a></div>
+    <section id="slh-dsa-jwk"><div class="header-wrapper"><h3 id="x8-3-json-web-key-representation"><bdi class="secno">8.3 </bdi>JSON Web Key Representation</h3><a class="self-link" href="#slh-dsa-jwk" aria-label="Permalink for Section 8.3"></a></div>
       
-      <section id="slh-dsa-operations-sign"><div class="header-wrapper"><h4 id="x8-3-1-sign"><bdi class="secno">8.3.1 </bdi>Sign</h4><a class="self-link" href="#slh-dsa-operations-sign" aria-label="Permalink for Section 8.3.1"></a></div>
+      <p>
+        SLH-DSA keys use the "AKP" (Algorithm Key Pair) key type defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-cose-dilithium-08" title="ML-DSA for JOSE and COSE">draft-ietf-cose-dilithium-08</a></cite>]
+        for JWK representation. The "alg" (algorithm) parameter identifies the specific SLH-DSA parameter set.
+        The public key is carried in the "pub" parameter. If a private key is included, it is represented
+        using the "priv" parameter. When expressed in JWK, all key parameters are base64url encoded.
+      </p>
+    </section>
+
+    <section id="slh-dsa-operations"><div class="header-wrapper"><h3 id="x8-4-operations"><bdi class="secno">8.4 </bdi>Operations</h3><a class="self-link" href="#slh-dsa-operations" aria-label="Permalink for Section 8.4"></a></div>
+      
+      <section id="slh-dsa-operations-sign"><div class="header-wrapper"><h4 id="x8-4-1-sign"><bdi class="secno">8.4.1 </bdi>Sign</h4><a class="self-link" href="#slh-dsa-operations-sign" aria-label="Permalink for Section 8.4.1"></a></div>
         
         <ol>
           <li>
@@ -3839,7 +3842,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
           </li>
         </ol>
       </section>
-      <section id="slh-dsa-operations-verify"><div class="header-wrapper"><h4 id="x8-3-2-verify"><bdi class="secno">8.3.2 </bdi>Verify</h4><a class="self-link" href="#slh-dsa-operations-verify" aria-label="Permalink for Section 8.3.2"></a></div>
+      <section id="slh-dsa-operations-verify"><div class="header-wrapper"><h4 id="x8-4-2-verify"><bdi class="secno">8.4.2 </bdi>Verify</h4><a class="self-link" href="#slh-dsa-operations-verify" aria-label="Permalink for Section 8.4.2"></a></div>
         
         <ol>
           <li>
@@ -3876,7 +3879,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
           </li>
         </ol>
       </section>
-      <section id="slh-dsa-operations-generate-key"><div class="header-wrapper"><h4 id="x8-3-3-generate-key"><bdi class="secno">8.3.3 </bdi>Generate Key</h4><a class="self-link" href="#slh-dsa-operations-generate-key" aria-label="Permalink for Section 8.3.3"></a></div>
+      <section id="slh-dsa-operations-generate-key"><div class="header-wrapper"><h4 id="x8-4-3-generate-key"><bdi class="secno">8.4.3 </bdi>Generate Key</h4><a class="self-link" href="#slh-dsa-operations-generate-key" aria-label="Permalink for Section 8.4.3"></a></div>
         
         <ol>
           <li>
@@ -4000,7 +4003,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
           </li>
         </ol>
       </section>
-      <section id="slh-dsa-operations-import-key"><div class="header-wrapper"><h4 id="x8-3-4-import-key"><bdi class="secno">8.3.4 </bdi>Import Key</h4><a class="self-link" href="#slh-dsa-operations-import-key" aria-label="Permalink for Section 8.3.4"></a></div>
+      <section id="slh-dsa-operations-import-key"><div class="header-wrapper"><h4 id="x8-4-4-import-key"><bdi class="secno">8.4.4 </bdi>Import Key</h4><a class="self-link" href="#slh-dsa-operations-import-key" aria-label="Permalink for Section 8.4.4"></a></div>
         
         <ol>
           <li>
@@ -4448,10 +4451,6 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
               <dd>
                 <ol>
                   <li>
-                    <div class="issue" id="issue-container-number-3"><div role="heading" class="issue-title marker" id="h-issue-1" aria-level="5"><span>Issue 3</span></div><p class="">
-                      The JWK format for SLH-DSA is not standardized yet and thus subject to change.
-                      TODO: register "alg" values for SLH-DSA with IANA in the JSON Web Signature and Encryption Algorithms registry.
-                    </p></div>
                     <dl class="switch">
                       <dt>If <var>keyData</var> is a <a data-link-type="dictionary" data-lt="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a> dictionary:</dt>
                       <dd><p>Let <var>jwk</var> equal <var>keyData</var>.</p></dd>
@@ -4614,7 +4613,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
           </li>
         </ol>
       </section>
-      <section id="slh-dsa-operations-export-key"><div class="header-wrapper"><h4 id="x8-3-5-export-key"><bdi class="secno">8.3.5 </bdi>Export Key</h4><a class="self-link" href="#slh-dsa-operations-export-key" aria-label="Permalink for Section 8.3.5"></a></div>
+      <section id="slh-dsa-operations-export-key"><div class="header-wrapper"><h4 id="x8-4-5-export-key"><bdi class="secno">8.4.5 </bdi>Export Key</h4><a class="self-link" href="#slh-dsa-operations-export-key" aria-label="Permalink for Section 8.4.5"></a></div>
         
         <ol>
           <li>
@@ -4934,10 +4933,6 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
               <dd>
                 <ol>
                   <li>
-                    <div class="issue" id="issue-container-number-4"><div role="heading" class="issue-title marker" id="h-issue-2" aria-level="5"><span>Issue 4</span></div><p class="">
-                      The JWK format for SLH-DSA is not standardized yet and thus subject to change.
-                      TODO: register "alg" values for SLH-DSA with IANA in the JSON Web Signature and Encryption Algorithms registry.
-                    </p></div>
                     <p>
                       Let <var>jwk</var> be a new <a data-link-type="dictionary" data-lt="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a>
                       dictionary.
@@ -7225,7 +7220,193 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
     </section>
   </section>
 
-  <section id="usage-example"><div class="header-wrapper"><h2 id="x15-usage-example"><bdi class="secno">15. </bdi>Usage Example</h2><a class="self-link" href="#usage-example" aria-label="Permalink for Section 15."></a></div>
+  <section id="iana-section"><div class="header-wrapper"><h2 id="x15-iana-considerations"><bdi class="secno">15. </bdi>IANA Considerations</h2><a class="self-link" href="#iana-section" aria-label="Permalink for Section 15."></a></div>
+    
+    <section id="iana-section-jws-jwa"><div class="header-wrapper"><h3 id="x15-1-json-web-signature-and-encryption-algorithms-registration"><bdi class="secno">15.1 </bdi>JSON Web Signature and Encryption Algorithms Registration</h3><a class="self-link" href="#iana-section-jws-jwa" aria-label="Permalink for Section 15.1"></a></div>
+      
+      <p>
+        This section registers the following algorithm identifiers in the IANA JSON Web
+        Signature and Encryption Algorithms Registry for use with JSON Web Key.
+      </p>
+      <ul>
+        <li>Algorithm Name: "A128OCB"</li>
+        <li>Algorithm Description: AES OCB using 128 bit key</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "A192OCB"</li>
+        <li>Algorithm Description: AES OCB using 192 bit key</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "A256OCB"</li>
+        <li>Algorithm Description: AES OCB using 256 bit key</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "C20P"</li>
+        <li>Algorithm Description: ChaCha20-Poly1305</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "K128"</li>
+        <li>Algorithm Description: KMAC using the KMAC128</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "K256"</li>
+        <li>Algorithm Description: KMAC using the KMAC256</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHA2-128s"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHA2-128s parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHA2-128f"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHA2-128f parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHA2-192s"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHA2-192s parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHA2-192f"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHA2-192f parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHA2-256s"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHA2-256s parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHA2-256f"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHA2-256f parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHAKE-128s"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHAKE-128s parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHAKE-128f"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHAKE-128f parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHAKE-192s"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHAKE-192s parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHAKE-192f"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHAKE-192f parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHAKE-256s"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHAKE-256s parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "SLH-DSA-SHAKE-256f"</li>
+        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHAKE-256f parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+    </section>
+    <section id="iana-section-key-operations"><div class="header-wrapper"><h3 id="x15-2-json-web-key-operations"><bdi class="secno">15.2 </bdi>JSON Web Key Operations</h3><a class="self-link" href="#iana-section-key-operations" aria-label="Permalink for Section 15.2"></a></div>
+      
+      <p>
+        This section registers the following key operations in the IANA JSON Web Key
+        Operations Registry for use with JSON Web Key.
+      </p>
+      <ul>
+        <li>Key Operation Value: "encapsulateKey"</li>
+        <li>Key Operation Description: Encapsulate key</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Key Operation Value: "encapsulateBits"</li>
+        <li>Key Operation Description: Encapsulate bits not to be used as a key</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Key Operation Value: "decapsulateKey"</li>
+        <li>Key Operation Description: Eecapsulate key</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Key Operation Value: "decapsulateBits"</li>
+        <li>Key Operation Description: Encapsulate bits not to be used as a key</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+    </section>
+  </section>
+
+  <section id="usage-example"><div class="header-wrapper"><h2 id="x16-usage-example"><bdi class="secno">16. </bdi>Usage Example</h2><a class="self-link" href="#usage-example" aria-label="Permalink for Section 16."></a></div>
     
     <p>
       This example derives a key from a password using Argon2, if available, or PBKDF2, otherwise;
@@ -7371,8 +7552,6 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         </tr>
       </tbody>
     </table>
-    <div class="todo">TODO: register A128OCB, A192OCB, A256OCB, C20P, K128 and K256(?) with IANA in the JSON Web Signature and Encryption Algorithms registry.</div>
-    <div class="todo">TODO: register encapsulateKey, encapsulateBits, decapsulateKey and decapsulateBits with IANA in the JSON Web Key Operations registry.</div>
   </section></section>
 
   <section id="pkcs8-mapping" class="appendix informative"><div class="header-wrapper"><h2 id="b-mapping-between-algorithm-and-pkcs-8-privatekeyinfo"><bdi class="secno">B. </bdi>Mapping between Algorithm and PKCS#8 PrivateKeyInfo</h2><a class="self-link" href="#pkcs8-mapping" aria-label="Permalink for Appendix B."></a></div><p><em>This section is non-normative.</em></p>
@@ -7788,8 +7967,8 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
 
 <section id="references" class="appendix"><div class="header-wrapper"><h2 id="e-references"><bdi class="secno">E. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix E."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="e-1-normative-references"><bdi class="secno">E.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix E.1"></a></div>
     
-    <dl class="bibliography"><dt id="bib-draft-ietf-cose-dilithium-07">[draft-ietf-cose-dilithium-07]</dt><dd>
-      <a href="https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-07.html"><cite>ML-DSA for JOSE and COSE</cite></a>.  IETF. June 2025. URL: <a href="https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-07.html">https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-07.html</a>
+    <dl class="bibliography"><dt id="bib-draft-ietf-cose-dilithium-08">[draft-ietf-cose-dilithium-08]</dt><dd>
+      <a href="https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-08.html"><cite>ML-DSA for JOSE and COSE</cite></a>.  IETF. July 2025. URL: <a href="https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-08.html">https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-08.html</a>
     </dd><dt id="bib-draft-ietf-jose-pqc-kem-01">[draft-ietf-jose-pqc-kem-01]</dt><dd>
       <a href="https://www.ietf.org/archive/id/draft-ietf-jose-pqc-kem-01.html"><cite>Post-Quantum Key Encapsulation Mechanisms (PQ KEMs) for JOSE and COSE</cite></a>.  IETF. May 2025. URL: <a href="https://www.ietf.org/archive/id/draft-ietf-jose-pqc-kem-01.html">https://www.ietf.org/archive/id/draft-ietf-jose-pqc-kem-01.html</a>
     </dd><dt id="bib-fips-202">[FIPS-202]</dt><dd>
@@ -7883,9 +8062,9 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
     </li><li>
       <a href="#ref-for-dom-keyformat-spki-4" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
     </li><li>
-      <a href="#ref-for-dom-keyformat-spki-5" title="§ 8.3.4 Import Key">§ 8.3.4 Import Key</a> 
+      <a href="#ref-for-dom-keyformat-spki-5" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> 
     </li><li>
-      <a href="#ref-for-dom-keyformat-spki-6" title="§ 8.3.5 Export Key">§ 8.3.5 Export Key</a> 
+      <a href="#ref-for-dom-keyformat-spki-6" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-pkcs8" aria-label="Links in this document to definition: pkcs8">
@@ -7905,9 +8084,9 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
     </li><li>
       <a href="#ref-for-dom-keyformat-pkcs8-4" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
     </li><li>
-      <a href="#ref-for-dom-keyformat-pkcs8-5" title="§ 8.3.4 Import Key">§ 8.3.4 Import Key</a> 
+      <a href="#ref-for-dom-keyformat-pkcs8-5" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> 
     </li><li>
-      <a href="#ref-for-dom-keyformat-pkcs8-6" title="§ 8.3.5 Export Key">§ 8.3.5 Export Key</a> 
+      <a href="#ref-for-dom-keyformat-pkcs8-6" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-jwk" aria-label="Links in this document to definition: jwk">
@@ -7927,9 +8106,9 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
     </li><li>
       <a href="#ref-for-dom-keyformat-jwk-4" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
     </li><li>
-      <a href="#ref-for-dom-keyformat-jwk-5" title="§ 8.3.4 Import Key">§ 8.3.4 Import Key</a> 
+      <a href="#ref-for-dom-keyformat-jwk-5" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> 
     </li><li>
-      <a href="#ref-for-dom-keyformat-jwk-6" title="§ 8.3.5 Export Key">§ 8.3.5 Export Key</a> 
+      <a href="#ref-for-dom-keyformat-jwk-6" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
     </li><li>
       <a href="#ref-for-dom-keyformat-jwk-7" title="§ 9.4.4 Import Key">§ 9.4.4 Import Key</a> 
     </li><li>
@@ -7963,9 +8142,9 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
     </li><li>
       <a href="#ref-for-dom-keyformat-raw-public-6" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
     </li><li>
-      <a href="#ref-for-dom-keyformat-raw-public-7" title="§ 8.3.4 Import Key">§ 8.3.4 Import Key</a> 
+      <a href="#ref-for-dom-keyformat-raw-public-7" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> 
     </li><li>
-      <a href="#ref-for-dom-keyformat-raw-public-8" title="§ 8.3.5 Export Key">§ 8.3.5 Export Key</a> 
+      <a href="#ref-for-dom-keyformat-raw-public-8" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-raw-private" aria-label="Links in this document to definition: raw-private">
@@ -7979,9 +8158,9 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
     <li>
       <a href="#ref-for-dom-keyformat-raw-private-1" title="§ 3.1.1 Key Formats">§ 3.1.1 Key Formats</a> 
     </li><li>
-      <a href="#ref-for-dom-keyformat-raw-private-2" title="§ 8.3.4 Import Key">§ 8.3.4 Import Key</a> 
+      <a href="#ref-for-dom-keyformat-raw-private-2" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> 
     </li><li>
-      <a href="#ref-for-dom-keyformat-raw-private-3" title="§ 8.3.5 Export Key">§ 8.3.5 Export Key</a> 
+      <a href="#ref-for-dom-keyformat-raw-private-3" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-raw-seed" aria-label="Links in this document to definition: raw-seed">
@@ -8415,9 +8594,9 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
     </li><li>
       <a href="#ref-for-dom-jsonwebkey-pub-8" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
     </li><li>
-      <a href="#ref-for-dom-jsonwebkey-pub-9" title="§ 8.3.4 Import Key">§ 8.3.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-pub-10" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-pub-11" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dom-jsonwebkey-pub-9" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-pub-10" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-pub-11" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dom-jsonwebkey-pub-12" title="§ 8.3.5 Export Key">§ 8.3.5 Export Key</a> 
+      <a href="#ref-for-dom-jsonwebkey-pub-12" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-jsonwebkey-priv" aria-label="Links in this document to definition: priv">
@@ -8437,9 +8616,9 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
     </li><li>
       <a href="#ref-for-dom-jsonwebkey-priv-12" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
     </li><li>
-      <a href="#ref-for-dom-jsonwebkey-priv-13" title="§ 8.3.4 Import Key">§ 8.3.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-priv-14" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-priv-15" title="Reference 3">(3)</a> <a href="#ref-for-dom-jsonwebkey-priv-16" title="Reference 4">(4)</a> <a href="#ref-for-dom-jsonwebkey-priv-17" title="Reference 5">(5)</a> 
+      <a href="#ref-for-dom-jsonwebkey-priv-13" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-priv-14" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-priv-15" title="Reference 3">(3)</a> <a href="#ref-for-dom-jsonwebkey-priv-16" title="Reference 4">(4)</a> <a href="#ref-for-dom-jsonwebkey-priv-17" title="Reference 5">(5)</a> 
     </li><li>
-      <a href="#ref-for-dom-jsonwebkey-priv-18" title="§ 8.3.5 Export Key">§ 8.3.5 Export Key</a> 
+      <a href="#ref-for-dom-jsonwebkey-priv-18" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-ContextParams" aria-label="Links in this document to definition: ContextParams">
@@ -8473,9 +8652,9 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
     </li><li>
       <a href="#ref-for-dfn-ContextParams-context-4" title="§ 7.4.2 Verify">§ 7.4.2 Verify</a> <a href="#ref-for-dfn-ContextParams-context-5" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-ContextParams-context-6" title="§ 8.3.1 Sign">§ 8.3.1 Sign</a> <a href="#ref-for-dfn-ContextParams-context-7" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-ContextParams-context-6" title="§ 8.4.1 Sign">§ 8.4.1 Sign</a> <a href="#ref-for-dfn-ContextParams-context-7" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-ContextParams-context-8" title="§ 8.3.2 Verify">§ 8.3.2 Verify</a> <a href="#ref-for-dfn-ContextParams-context-9" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-ContextParams-context-8" title="§ 8.4.2 Verify">§ 8.4.2 Verify</a> <a href="#ref-for-dfn-ContextParams-context-9" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-AeadParams" aria-label="Links in this document to definition: AeadParams">
