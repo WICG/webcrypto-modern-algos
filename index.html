@@ -628,6 +628,19 @@ partial interface <a data-idl="partial" data-link-type="interface" data-title="S
           </li>
           <li>
             <p>
+              Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-extractable"><code>[[extractable]]</code></a> internal
+              slot of <var>sharedKey</var> to <var>extractable</var>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-usages"><code>[[usages]]</code></a> internal slot of
+              <var>sharedKey</var> to the <a href="https://www.w3.org/TR/webcrypto-2/#concept-normalized-usages">normalized value</a>
+              of <var>usages</var>.
+            </p>
+          </li>
+          <li>
+            <p>
               Let <var>encapsulatedKey</var> be a new <a data-link-type="idl" data-lt="EncapsulatedKey" href="#dfn-EncapsulatedKey" class="internalDFN" id="ref-for-dfn-EncapsulatedKey-3"><code>EncapsulatedKey</code></a> dictionary
               with <a data-link-type="idl" href="#dfn-EncapsulatedKey-sharedKey" class="internalDFN" id="ref-for-dfn-EncapsulatedKey-sharedKey-1"><code>sharedKey</code></a> set to <var>sharedKey</var>
               and <a data-link-type="idl" href="#dfn-EncapsulatedKey-ciphertext" class="internalDFN" id="ref-for-dfn-EncapsulatedKey-ciphertext-1"><code>ciphertext</code></a> set to the
@@ -857,6 +870,19 @@ partial interface <a data-idl="partial" data-link-type="interface" data-title="S
               <var>format</var>, the <var>decapsulatedBits</var> as <var>keyData</var>, <var>sharedKeyAlgorithm</var> as
               <var>algorithm</var> and using
               <var>extractable</var> and <var>usages</var>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-extractable"><code>[[extractable]]</code></a> internal
+              slot of <var>sharedKey</var> to <var>extractable</var>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-usages"><code>[[usages]]</code></a> internal slot of
+              <var>sharedKey</var> to the <a href="https://www.w3.org/TR/webcrypto-2/#concept-normalized-usages">normalized value</a>
+              of <var>usages</var>.
             </p>
           </li>
           <li>
