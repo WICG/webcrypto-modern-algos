@@ -6244,6 +6244,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         This describes cSHAKE128 and cSHAKE256, as specified by
         [<cite><a class="bibref" data-link-type="biblio" href="#bib-nist-sp800-185" title="NIST Special Publication 800-185: SHA-3 Derived Functions: cSHAKE, KMAC, TupleHash and ParallelHash">NIST-SP800-185</a></cite>].
       </p>
+      <p>
+        When both the <a data-link-type="idl" href="#dfn-CShakeParams-functionName" class="internalDFN" id="ref-for-dfn-CShakeParams-functionName-1"><code>functionName</code></a> and <a data-link-type="idl" href="#dfn-CShakeParams-customization" class="internalDFN" id="ref-for-dfn-CShakeParams-customization-1"><code>customization</code></a>
+        parameters are empty (or not provided), cSHAKE is functionally equivalent to
+        SHAKE as defined in Section 6.2 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-fips-202" title="SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions">FIPS-202</a></cite>].
+      </p>
     </section>
     <section id="cshake-registration"><div class="header-wrapper"><h3 id="x12-2-registration"><bdi class="secno">12.2 </bdi>Registration</h3><a class="self-link" href="#cshake-registration" aria-label="Permalink for Section 12.2"></a></div>
       
@@ -6273,8 +6278,8 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       
       <pre class="idl def" id="webidl-1097481639"><span class="idlHeader"><a class="self-link" href="#webidl-1097481639">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-cshakeparams" data-title="CShakeParams">dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-CShakeParams" id="ref-for-dfn-CShakeParams-2"><code>CShakeParams</code></a> : <span class="idlSuperclass"><a data-link-type="dictionary" href="https://www.w3.org/TR/webcrypto-2/#dfn-Algorithm">Algorithm</a></span> {<span data-idl="" class="idlMember" id="idl-def-cshakeparams-length" data-title="length" data-dfn-for="CShakeParams">
   required<span class="idlType"> [<span class="extAttr"><a data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#EnforceRange">EnforceRange</a></span>] <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-unsigned-long">unsigned long</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-CShakeParams-length" id="ref-for-dfn-CShakeParams-length-1"><code>length</code></a>;</span><span data-idl="" class="idlMember" id="idl-def-cshakeparams-functionname" data-title="functionName" data-dfn-for="CShakeParams"><span class="idlType">
-  <a data-link-type="typedef" href="https://webidl.spec.whatwg.org/#BufferSource">BufferSource</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-CShakeParams-functionName" id="ref-for-dfn-CShakeParams-functionName-1"><code>functionName</code></a>;</span><span data-idl="" class="idlMember" id="idl-def-cshakeparams-customization" data-title="customization" data-dfn-for="CShakeParams"><span class="idlType">
-  <a data-link-type="typedef" href="https://webidl.spec.whatwg.org/#BufferSource">BufferSource</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-CShakeParams-customization" id="ref-for-dfn-CShakeParams-customization-1"><code>customization</code></a>;</span>
+  <a data-link-type="typedef" href="https://webidl.spec.whatwg.org/#BufferSource">BufferSource</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-CShakeParams-functionName" id="ref-for-dfn-CShakeParams-functionName-2"><code>functionName</code></a>;</span><span data-idl="" class="idlMember" id="idl-def-cshakeparams-customization" data-title="customization" data-dfn-for="CShakeParams"><span class="idlType">
+  <a data-link-type="typedef" href="https://webidl.spec.whatwg.org/#BufferSource">BufferSource</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-CShakeParams-customization" id="ref-for-dfn-CShakeParams-customization-2"><code>customization</code></a>;</span>
 };</span></code></pre>
       <p>The <dfn data-dfn-for="CShakeParams" id="dfn-CShakeParams-length" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="length" data-type="unsigned long" tabindex="0" aria-haspopup="dialog"><code>length</code></dfn> member represents the requested output length in bits.</p>
       <p>The <dfn data-dfn-for="CShakeParams" id="dfn-CShakeParams-functionName" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="functionName" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>functionName</code></dfn> member represents the function name, used by NIST to define functions based on cSHAKE. When used, it should only be set to values defined by NIST.</p>
@@ -6293,14 +6298,14 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
           </li>
           <li>
             <p>
-              Let <var>functionName</var> be the <a data-link-type="idl" href="#dfn-CShakeParams-functionName" class="internalDFN" id="ref-for-dfn-CShakeParams-functionName-2"><code>functionName</code></a> member of
+              Let <var>functionName</var> be the <a data-link-type="idl" href="#dfn-CShakeParams-functionName" class="internalDFN" id="ref-for-dfn-CShakeParams-functionName-3"><code>functionName</code></a> member of
               <var>normalizedAlgorithm</var> if present or the empty octet
               string otherwise.
             </p>
           </li>
           <li>
             <p>
-              Let <var>customization</var> be the <a data-link-type="idl" href="#dfn-CShakeParams-customization" class="internalDFN" id="ref-for-dfn-CShakeParams-customization-2"><code>customization</code></a> member of
+              Let <var>customization</var> be the <a data-link-type="idl" href="#dfn-CShakeParams-customization" class="internalDFN" id="ref-for-dfn-CShakeParams-customization-3"><code>customization</code></a> member of
               <var>normalizedAlgorithm</var> if present or the empty octet
               string otherwise.
             </p>
@@ -8636,9 +8641,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-CShakeParams-functionName-1" title="§ 12.3 CShakeParams dictionary">§ 12.3 CShakeParams dictionary</a> 
+      <a href="#ref-for-dfn-CShakeParams-functionName-1" title="§ 12.1 Description">§ 12.1 Description</a> 
     </li><li>
-      <a href="#ref-for-dfn-CShakeParams-functionName-2" title="§ 12.4.1 Digest">§ 12.4.1 Digest</a> 
+      <a href="#ref-for-dfn-CShakeParams-functionName-2" title="§ 12.3 CShakeParams dictionary">§ 12.3 CShakeParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-CShakeParams-functionName-3" title="§ 12.4.1 Digest">§ 12.4.1 Digest</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-CShakeParams-customization" aria-label="Links in this document to definition: customization">
@@ -8650,9 +8657,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-CShakeParams-customization-1" title="§ 12.3 CShakeParams dictionary">§ 12.3 CShakeParams dictionary</a> 
+      <a href="#ref-for-dfn-CShakeParams-customization-1" title="§ 12.1 Description">§ 12.1 Description</a> 
     </li><li>
-      <a href="#ref-for-dfn-CShakeParams-customization-2" title="§ 12.4.1 Digest">§ 12.4.1 Digest</a> 
+      <a href="#ref-for-dfn-CShakeParams-customization-2" title="§ 12.3 CShakeParams dictionary">§ 12.3 CShakeParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-CShakeParams-customization-3" title="§ 12.4.1 Digest">§ 12.4.1 Digest</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacKeyGenParams" aria-label="Links in this document to definition: KmacKeyGenParams">
