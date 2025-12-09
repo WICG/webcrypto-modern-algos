@@ -6018,6 +6018,12 @@ dictionary CShakeParams : Algorithm {
           </li>
           <li>
             <p>
+              If |length| is zero or |length| modulo 8 is not zero,
+              then [= exception/throw =] an {{OperationError}}.
+            </p>
+          </li>
+          <li>
+            <p>
               Let |functionName| be the {{CShakeParams/functionName}} member of
               |normalizedAlgorithm| if present or the empty octet
               string otherwise.
