@@ -6098,8 +6098,11 @@ dictionary CShakeParams : Algorithm {
       <p class="note">
         For 128-bit collision security, TurboSHAKE128 output should be at least 256 bits.
         For 256-bit collision security, TurboSHAKE256 output should be at least 512 bits.
+        These output lengths also exceed the corresponding preimage and second-preimage security
+        requirements (which only require output length equal to the targeted security level).
         When the output length meets these thresholds, TurboSHAKE128 achieves NIST post-quantum
         security level 2, and TurboSHAKE256 achieves level 5.
+        See Section 7 of [[RFC9861]].
       </p>
     </section>
     <section id="turboshake-registration">
@@ -6151,6 +6154,12 @@ dictionary TurboShakeParams : Algorithm {
             <p>
               Let |length| be the {{TurboShakeParams/length}} member of
               |normalizedAlgorithm|.
+            </p>
+          </li>
+          <li>
+            <p>
+              If |length| is zero or |length| modulo 8 is not zero,
+              then [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
@@ -6223,8 +6232,11 @@ dictionary TurboShakeParams : Algorithm {
       <p class="note">
         For 128-bit collision security, KT128 output should be at least 256 bits.
         For 256-bit collision security, KT256 output should be at least 512 bits.
+        These output lengths also exceed the corresponding preimage and second-preimage security
+        requirements (which only require output length equal to the targeted security level).
         When the output length meets these thresholds, KT128 achieves NIST post-quantum
         security level 2, and KT256 achieves level 5.
+        See Section 7 of [[RFC9861]].
       </p>
     </section>
     <section id="kangarootwelve-registration">
@@ -6271,6 +6283,12 @@ dictionary KangarooTwelveParams : Algorithm {
             <p>
               Let |length| be the {{KangarooTwelveParams/length}} member of
               |normalizedAlgorithm|.
+            </p>
+          </li>
+          <li>
+            <p>
+              If |length| is zero or |length| modulo 8 is not zero,
+              then [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
