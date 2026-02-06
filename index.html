@@ -278,8 +278,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       "id": "draft-ietf-lamps-dilithium-certificates"
     }
   },
-  "publishISODate": "2026-02-03T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 03 February 2026"
+  "publishISODate": "2026-02-06T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 06 February 2026"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/cg-draft"></head>
 
@@ -288,7 +288,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Modern Algorithms in the Web Cryptography API</h1> 
     <p id="w3c-state">
       <a href="https://www.w3.org/standards/types#reports">Draft Community Group Report</a>
-      <time class="dt-published" datetime="2026-02-03">03 February 2026</time>
+      <time class="dt-published" datetime="2026-02-06">06 February 2026</time>
     </p>
     <dl>
       
@@ -2305,6 +2305,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
+                      Let <var>keyAlgorithm</var> be the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-algorithm"><code>[[algorithm]]</code></a> internal slot of <var>key</var>.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       Let <var>data</var> be an instance of the <code>SubjectPublicKeyInfo</code>
                       ASN.1 structure defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc5280" title="Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile">RFC5280</a></cite>]
                       with the following properties:
@@ -2319,19 +2324,19 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                         <ul>
                           <li>
                             <dl class="switch">
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>ML-KEM-512</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>ML-KEM-512</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-alg-ml-kem-512</code> (2.16.840.1.101.3.4.4.1) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>ML-KEM-768</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>ML-KEM-768</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-alg-ml-kem-768</code> (2.16.840.1.101.3.4.4.2) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>ML-KEM-1024</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>ML-KEM-1024</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-alg-ml-kem-1024</code> (2.16.840.1.101.3.4.4.3) OID.
@@ -2372,6 +2377,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
+                      Let <var>keyAlgorithm</var> be the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-algorithm"><code>[[algorithm]]</code></a> internal slot of <var>key</var>.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       Let <var>data</var> be an instance of the <code>PrivateKeyInfo</code>
                       ASN.1 structure defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc5208" title="Public-Key Cryptography Standards (PKCS) #8: Private-Key Information Syntax Specification Version 1.2">RFC5208</a></cite>]
                       with the following properties:
@@ -2391,19 +2401,19 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                         <ul>
                           <li>
                             <dl class="switch">
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>ML-KEM-512</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>ML-KEM-512</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-alg-ml-kem-512</code> (2.16.840.1.101.3.4.4.1) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>ML-KEM-768</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>ML-KEM-768</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-alg-ml-kem-768</code> (2.16.840.1.101.3.4.4.2) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>ML-KEM-1024</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>ML-KEM-1024</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-alg-ml-kem-1024</code> (2.16.840.1.101.3.4.4.3) OID.
@@ -2426,7 +2436,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                         <ul>
                           <li>
                             <dl class="switch">
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>ML-KEM-512</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>ML-KEM-512</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>privateKey</var> field to the result of DER-encoding
@@ -2436,7 +2446,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                                   with an implicit encoding of OCTET STRING).
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>ML-KEM-768</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>ML-KEM-768</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>privateKey</var> field to the result of DER-encoding
@@ -2446,7 +2456,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                                   with an implicit encoding of OCTET STRING).
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>ML-KEM-1024</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>ML-KEM-1024</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>privateKey</var> field to the result of DER-encoding
@@ -2541,6 +2551,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
+                      Let <var>keyAlgorithm</var> be the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-algorithm"><code>[[algorithm]]</code></a> internal slot of <var>key</var>.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       Set the <code>kty</code> attribute of <var>jwk</var> to
                       "<code>AKP</code>".
                     </p>
@@ -2549,7 +2564,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                     <p>
                       Set the <code>alg</code> attribute of <var>jwk</var> to
                       the <code>alg</code> value corresponding to the
-                      <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var>
+                      <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var>
                       indicated in Section 8 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-jose-pqc-kem-01" title="Post-Quantum Key Encapsulation Mechanisms (PQ KEMs) for JOSE and COSE">draft-ietf-jose-pqc-kem-01</a></cite>]
                       (Figure 1).
                     </p>
@@ -3432,6 +3447,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
+                      Let <var>keyAlgorithm</var> be the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-algorithm"><code>[[algorithm]]</code></a> internal slot of <var>key</var>.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       Let <var>data</var> be an instance of the <code>SubjectPublicKeyInfo</code>
                       ASN.1 structure defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc5280" title="Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile">RFC5280</a></cite>]
                       with the following properties:
@@ -3446,19 +3466,19 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                         <ul>
                           <li>
                             <dl class="switch">
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>ML-DSA-44</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>ML-DSA-44</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-ml-dsa-44</code> (2.16.840.1.101.3.4.3.17) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>ML-DSA-65</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>ML-DSA-65</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-ml-dsa-65</code> (2.16.840.1.101.3.4.3.18) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>ML-DSA-87</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>ML-DSA-87</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-ml-dsa-87</code> (2.16.840.1.101.3.4.3.19) OID.
@@ -3499,6 +3519,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
+                      Let <var>keyAlgorithm</var> be the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-algorithm"><code>[[algorithm]]</code></a> internal slot of <var>key</var>.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       Let <var>data</var> be an instance of the <code>PrivateKeyInfo</code>
                       ASN.1 structure defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc5208" title="Public-Key Cryptography Standards (PKCS) #8: Private-Key Information Syntax Specification Version 1.2">RFC5208</a></cite>]
                       with the following properties:
@@ -3518,19 +3543,19 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                         <ul>
                           <li>
                             <dl class="switch">
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>ML-DSA-44</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>ML-DSA-44</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-ml-dsa-44</code> (2.16.840.1.101.3.4.3.17) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>ML-DSA-65</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>ML-DSA-65</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-ml-dsa-65</code> (2.16.840.1.101.3.4.3.18) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>ML-DSA-87</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>ML-DSA-87</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-ml-dsa-87</code> (2.16.840.1.101.3.4.3.19) OID.
@@ -3553,7 +3578,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                         <ul>
                           <li>
                             <dl class="switch">
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>ML-DSA-44</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>ML-DSA-44</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>privateKey</var> field to the result of DER-encoding
@@ -3563,7 +3588,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                                   with an implicit encoding of OCTET STRING).
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>ML-DSA-65</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>ML-DSA-65</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>privateKey</var> field to the result of DER-encoding
@@ -3573,7 +3598,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                                   with an implicit encoding of OCTET STRING).
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>ML-DSA-87</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>ML-DSA-87</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>privateKey</var> field to the result of DER-encoding
@@ -3667,6 +3692,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
+                      Let <var>keyAlgorithm</var> be the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-algorithm"><code>[[algorithm]]</code></a> internal slot of <var>key</var>.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       Set the <code>kty</code> attribute of <var>jwk</var> to
                       "<code>AKP</code>".
                     </p>
@@ -3674,7 +3704,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   <li>
                     <p>
                       Set the <code>alg</code> attribute of <var>jwk</var> to
-                      the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var>.
+                      the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var>.
                     </p>
                   </li>
                   <li>
@@ -4641,6 +4671,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
+                      Let <var>keyAlgorithm</var> be the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-algorithm"><code>[[algorithm]]</code></a> internal slot of <var>key</var>.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       Let <var>data</var> be an instance of the <code>SubjectPublicKeyInfo</code>
                       ASN.1 structure defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc5280" title="Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile">RFC5280</a></cite>]
                       with the following properties:
@@ -4655,73 +4690,73 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                         <ul>
                           <li>
                             <dl class="switch">
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHA2-128s</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHA2-128s</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-sha2-128s</code> (2.16.840.1.101.3.4.3.20) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHA2-128f</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHA2-128f</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-sha2-128f</code> (2.16.840.1.101.3.4.3.21) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHA2-192s</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHA2-192s</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-sha2-192s</code> (2.16.840.1.101.3.4.3.22) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHA2-192f</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHA2-192f</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-sha2-192f</code> (2.16.840.1.101.3.4.3.23) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHA2-256s</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHA2-256s</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-sha2-256s</code> (2.16.840.1.101.3.4.3.24) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHA2-256f</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHA2-256f</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-sha2-256f</code> (2.16.840.1.101.3.4.3.25) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHAKE-128s</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHAKE-128s</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-shake-128s</code> (2.16.840.1.101.3.4.3.26) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHAKE-128f</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHAKE-128f</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-shake-128f</code> (2.16.840.1.101.3.4.3.27) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHAKE-192s</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHAKE-192s</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-shake-192s</code> (2.16.840.1.101.3.4.3.28) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHAKE-192f</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHAKE-192f</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-shake-192f</code> (2.16.840.1.101.3.4.3.29) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHAKE-256s</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHAKE-256s</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-shake-256s</code> (2.16.840.1.101.3.4.3.30) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHAKE-256f</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHAKE-256f</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-shake-256f</code> (2.16.840.1.101.3.4.3.31) OID.
@@ -4762,6 +4797,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
+                      Let <var>keyAlgorithm</var> be the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-algorithm"><code>[[algorithm]]</code></a> internal slot of <var>key</var>.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       Let <var>data</var> be an instance of the <code>PrivateKeyInfo</code>
                       ASN.1 structure defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc5208" title="Public-Key Cryptography Standards (PKCS) #8: Private-Key Information Syntax Specification Version 1.2">RFC5208</a></cite>]
                       with the following properties:
@@ -4782,73 +4822,73 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                           <li>
                             <dl class="switch">
 
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHA2-128s</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHA2-128s</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-sha2-128s</code> (2.16.840.1.101.3.4.3.20) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHA2-128f</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHA2-128f</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-sha2-128f</code> (2.16.840.1.101.3.4.3.21) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHA2-192s</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHA2-192s</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-sha2-192s</code> (2.16.840.1.101.3.4.3.22) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHA2-192f</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHA2-192f</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-sha2-192f</code> (2.16.840.1.101.3.4.3.23) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHA2-256s</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHA2-256s</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-sha2-256s</code> (2.16.840.1.101.3.4.3.24) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHA2-256f</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHA2-256f</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-sha2-256f</code> (2.16.840.1.101.3.4.3.25) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHAKE-128s</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHAKE-128s</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-shake-128s</code> (2.16.840.1.101.3.4.3.26) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHAKE-128f</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHAKE-128f</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-shake-128f</code> (2.16.840.1.101.3.4.3.27) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHAKE-192s</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHAKE-192s</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-shake-192s</code> (2.16.840.1.101.3.4.3.28) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHAKE-192f</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHAKE-192f</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-shake-192f</code> (2.16.840.1.101.3.4.3.29) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHAKE-256s</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHAKE-256s</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-shake-256s</code> (2.16.840.1.101.3.4.3.30) OID.
                                 </p>
                               </dd>
-                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var> is "<code>SLH-DSA-SHAKE-256f</code>":</dt>
+                              <dt>If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var> is "<code>SLH-DSA-SHAKE-256f</code>":</dt>
                               <dd>
                                 <p>
                                   Set the <var>algorithm</var> object identifier to the <code>id-slh-dsa-shake-256f</code> (2.16.840.1.101.3.4.3.31) OID.
@@ -4940,6 +4980,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
+                      Let <var>keyAlgorithm</var> be the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-algorithm"><code>[[algorithm]]</code></a> internal slot of <var>key</var>.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       Set the <code>kty</code> attribute of <var>jwk</var> to
                       "<code>AKP</code>".
                     </p>
@@ -4947,7 +4992,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   <li>
                     <p>
                       Set the <code>alg</code> attribute of <var>jwk</var> to
-                      the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var>.
+                      the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var>.
                     </p>
                   </li>
                   <li>
@@ -6873,23 +6918,20 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
-                      Let <var>algorithm</var> be the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-algorithm"><code>[[algorithm]]</code></a> internal slot of
-                      <var>key</var>.
+                      Let <var>keyAlgorithm</var> be the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-algorithm"><code>[[algorithm]]</code></a> internal slot of <var>key</var>.
                     </p>
                   </li>
                   <li>
                     <dl class="switch">
                       <dt>
                         If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of
-                        <var>normalizedAlgorithm</var> is a case-sensitive string match for
-                        "<code>KMAC128</code>":
+                        <var>keyAlgorithm</var> is "<code>KMAC128</code>":
                       </dt>
                       <dd>Set the <code>alg</code> attribute of <var>jwk</var> to
                         the string "<code>K128</code>".</dd>
                       <dt>
                         If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of
-                        <var>normalizedAlgorithm</var> is a case-sensitive string match for
-                        "<code>KMAC256</code>":
+                        <var>keyAlgorithm</var> is "<code>KMAC256</code>":
                       </dt>
                       <dd>Set the <code>alg</code> attribute of <var>jwk</var> to
                         the string "<code>K256</code>".</dd>
