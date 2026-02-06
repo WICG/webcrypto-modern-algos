@@ -2080,6 +2080,11 @@ partial dictionary JsonWebKey {
                   </li>
                   <li>
                     <p>
+                      Let |keyAlgorithm| be the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a> internal slot of |key|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       Let |data| be an instance of the `SubjectPublicKeyInfo`
                       ASN.1 structure defined in [[RFC5280]]
                       with the following properties:
@@ -2094,19 +2099,19 @@ partial dictionary JsonWebKey {
                         <ul>
                           <li>
                             <dl class="switch">
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`ML-KEM-512`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`ML-KEM-512`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-alg-ml-kem-512` (2.16.840.1.101.3.4.4.1) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`ML-KEM-768`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`ML-KEM-768`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-alg-ml-kem-768` (2.16.840.1.101.3.4.4.2) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`ML-KEM-1024`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`ML-KEM-1024`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-alg-ml-kem-1024` (2.16.840.1.101.3.4.4.3) OID.
@@ -2147,6 +2152,11 @@ partial dictionary JsonWebKey {
                   </li>
                   <li>
                     <p>
+                      Let |keyAlgorithm| be the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a> internal slot of |key|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       Let |data| be an instance of the `PrivateKeyInfo`
                       ASN.1 structure defined in [[RFC5208]]
                       with the following properties:
@@ -2166,19 +2176,19 @@ partial dictionary JsonWebKey {
                         <ul>
                           <li>
                             <dl class="switch">
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`ML-KEM-512`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`ML-KEM-512`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-alg-ml-kem-512` (2.16.840.1.101.3.4.4.1) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`ML-KEM-768`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`ML-KEM-768`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-alg-ml-kem-768` (2.16.840.1.101.3.4.4.2) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`ML-KEM-1024`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`ML-KEM-1024`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-alg-ml-kem-1024` (2.16.840.1.101.3.4.4.3) OID.
@@ -2201,7 +2211,7 @@ partial dictionary JsonWebKey {
                         <ul>
                           <li>
                             <dl class="switch">
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`ML-KEM-512`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`ML-KEM-512`":</dt>
                               <dd>
                                 <p>
                                   Set the |privateKey| field to the result of DER-encoding
@@ -2211,7 +2221,7 @@ partial dictionary JsonWebKey {
                                   with an implicit encoding of OCTET STRING).
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`ML-KEM-768`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`ML-KEM-768`":</dt>
                               <dd>
                                 <p>
                                   Set the |privateKey| field to the result of DER-encoding
@@ -2221,7 +2231,7 @@ partial dictionary JsonWebKey {
                                   with an implicit encoding of OCTET STRING).
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`ML-KEM-1024`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`ML-KEM-1024`":</dt>
                               <dd>
                                 <p>
                                   Set the |privateKey| field to the result of DER-encoding
@@ -2316,6 +2326,11 @@ partial dictionary JsonWebKey {
                   </li>
                   <li>
                     <p>
+                      Let |keyAlgorithm| be the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a> internal slot of |key|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       Set the `kty` attribute of |jwk| to
                       "`AKP`".
                     </p>
@@ -2324,7 +2339,7 @@ partial dictionary JsonWebKey {
                     <p>
                       Set the `alg` attribute of |jwk| to
                       the `alg` value corresponding to the
-                      {{Algorithm/name}} member of |normalizedAlgorithm|
+                      {{Algorithm/name}} member of |keyAlgorithm|
                       indicated in Section 8 of [[draft-ietf-jose-pqc-kem-01]]
                       (Figure 1).
                     </p>
@@ -3209,6 +3224,11 @@ dictionary ContextParams : Algorithm {
                   </li>
                   <li>
                     <p>
+                      Let |keyAlgorithm| be the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a> internal slot of |key|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       Let |data| be an instance of the `SubjectPublicKeyInfo`
                       ASN.1 structure defined in [[RFC5280]]
                       with the following properties:
@@ -3223,19 +3243,19 @@ dictionary ContextParams : Algorithm {
                         <ul>
                           <li>
                             <dl class="switch">
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`ML-DSA-44`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`ML-DSA-44`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-ml-dsa-44` (2.16.840.1.101.3.4.3.17) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`ML-DSA-65`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`ML-DSA-65`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-ml-dsa-65` (2.16.840.1.101.3.4.3.18) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`ML-DSA-87`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`ML-DSA-87`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-ml-dsa-87` (2.16.840.1.101.3.4.3.19) OID.
@@ -3276,6 +3296,11 @@ dictionary ContextParams : Algorithm {
                   </li>
                   <li>
                     <p>
+                      Let |keyAlgorithm| be the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a> internal slot of |key|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       Let |data| be an instance of the `PrivateKeyInfo`
                       ASN.1 structure defined in [[RFC5208]]
                       with the following properties:
@@ -3295,19 +3320,19 @@ dictionary ContextParams : Algorithm {
                         <ul>
                           <li>
                             <dl class="switch">
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`ML-DSA-44`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`ML-DSA-44`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-ml-dsa-44` (2.16.840.1.101.3.4.3.17) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`ML-DSA-65`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`ML-DSA-65`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-ml-dsa-65` (2.16.840.1.101.3.4.3.18) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`ML-DSA-87`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`ML-DSA-87`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-ml-dsa-87` (2.16.840.1.101.3.4.3.19) OID.
@@ -3330,7 +3355,7 @@ dictionary ContextParams : Algorithm {
                         <ul>
                           <li>
                             <dl class="switch">
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`ML-DSA-44`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`ML-DSA-44`":</dt>
                               <dd>
                                 <p>
                                   Set the |privateKey| field to the result of DER-encoding
@@ -3340,7 +3365,7 @@ dictionary ContextParams : Algorithm {
                                   with an implicit encoding of OCTET STRING).
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`ML-DSA-65`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`ML-DSA-65`":</dt>
                               <dd>
                                 <p>
                                   Set the |privateKey| field to the result of DER-encoding
@@ -3350,7 +3375,7 @@ dictionary ContextParams : Algorithm {
                                   with an implicit encoding of OCTET STRING).
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`ML-DSA-87`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`ML-DSA-87`":</dt>
                               <dd>
                                 <p>
                                   Set the |privateKey| field to the result of DER-encoding
@@ -3444,6 +3469,11 @@ dictionary ContextParams : Algorithm {
                   </li>
                   <li>
                     <p>
+                      Let |keyAlgorithm| be the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a> internal slot of |key|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       Set the `kty` attribute of |jwk| to
                       "`AKP`".
                     </p>
@@ -3451,7 +3481,7 @@ dictionary ContextParams : Algorithm {
                   <li>
                     <p>
                       Set the `alg` attribute of |jwk| to
-                      the {{Algorithm/name}} member of |normalizedAlgorithm|.
+                      the {{Algorithm/name}} member of |keyAlgorithm|.
                     </p>
                   </li>
                   <li>
@@ -4418,6 +4448,11 @@ dictionary ContextParams : Algorithm {
                   </li>
                   <li>
                     <p>
+                      Let |keyAlgorithm| be the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a> internal slot of |key|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       Let |data| be an instance of the `SubjectPublicKeyInfo`
                       ASN.1 structure defined in [[RFC5280]]
                       with the following properties:
@@ -4432,73 +4467,73 @@ dictionary ContextParams : Algorithm {
                         <ul>
                           <li>
                             <dl class="switch">
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHA2-128s`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHA2-128s`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-sha2-128s` (2.16.840.1.101.3.4.3.20) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHA2-128f`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHA2-128f`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-sha2-128f` (2.16.840.1.101.3.4.3.21) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHA2-192s`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHA2-192s`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-sha2-192s` (2.16.840.1.101.3.4.3.22) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHA2-192f`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHA2-192f`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-sha2-192f` (2.16.840.1.101.3.4.3.23) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHA2-256s`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHA2-256s`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-sha2-256s` (2.16.840.1.101.3.4.3.24) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHA2-256f`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHA2-256f`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-sha2-256f` (2.16.840.1.101.3.4.3.25) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHAKE-128s`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHAKE-128s`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-shake-128s` (2.16.840.1.101.3.4.3.26) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHAKE-128f`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHAKE-128f`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-shake-128f` (2.16.840.1.101.3.4.3.27) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHAKE-192s`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHAKE-192s`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-shake-192s` (2.16.840.1.101.3.4.3.28) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHAKE-192f`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHAKE-192f`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-shake-192f` (2.16.840.1.101.3.4.3.29) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHAKE-256s`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHAKE-256s`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-shake-256s` (2.16.840.1.101.3.4.3.30) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHAKE-256f`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHAKE-256f`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-shake-256f` (2.16.840.1.101.3.4.3.31) OID.
@@ -4539,6 +4574,11 @@ dictionary ContextParams : Algorithm {
                   </li>
                   <li>
                     <p>
+                      Let |keyAlgorithm| be the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a> internal slot of |key|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       Let |data| be an instance of the `PrivateKeyInfo`
                       ASN.1 structure defined in [[RFC5208]]
                       with the following properties:
@@ -4559,73 +4599,73 @@ dictionary ContextParams : Algorithm {
                           <li>
                             <dl class="switch">
 
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHA2-128s`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHA2-128s`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-sha2-128s` (2.16.840.1.101.3.4.3.20) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHA2-128f`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHA2-128f`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-sha2-128f` (2.16.840.1.101.3.4.3.21) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHA2-192s`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHA2-192s`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-sha2-192s` (2.16.840.1.101.3.4.3.22) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHA2-192f`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHA2-192f`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-sha2-192f` (2.16.840.1.101.3.4.3.23) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHA2-256s`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHA2-256s`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-sha2-256s` (2.16.840.1.101.3.4.3.24) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHA2-256f`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHA2-256f`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-sha2-256f` (2.16.840.1.101.3.4.3.25) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHAKE-128s`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHAKE-128s`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-shake-128s` (2.16.840.1.101.3.4.3.26) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHAKE-128f`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHAKE-128f`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-shake-128f` (2.16.840.1.101.3.4.3.27) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHAKE-192s`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHAKE-192s`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-shake-192s` (2.16.840.1.101.3.4.3.28) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHAKE-192f`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHAKE-192f`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-shake-192f` (2.16.840.1.101.3.4.3.29) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHAKE-256s`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHAKE-256s`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-shake-256s` (2.16.840.1.101.3.4.3.30) OID.
                                 </p>
                               </dd>
-                              <dt>If the {{Algorithm/name}} member of |normalizedAlgorithm| is "`SLH-DSA-SHAKE-256f`":</dt>
+                              <dt>If the {{Algorithm/name}} member of |keyAlgorithm| is "`SLH-DSA-SHAKE-256f`":</dt>
                               <dd>
                                 <p>
                                   Set the |algorithm| object identifier to the `id-slh-dsa-shake-256f` (2.16.840.1.101.3.4.3.31) OID.
@@ -4717,6 +4757,11 @@ dictionary ContextParams : Algorithm {
                   </li>
                   <li>
                     <p>
+                      Let |keyAlgorithm| be the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a> internal slot of |key|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       Set the `kty` attribute of |jwk| to
                       "`AKP`".
                     </p>
@@ -4724,7 +4769,7 @@ dictionary ContextParams : Algorithm {
                   <li>
                     <p>
                       Set the `alg` attribute of |jwk| to
-                      the {{Algorithm/name}} member of |normalizedAlgorithm|.
+                      the {{Algorithm/name}} member of |keyAlgorithm|.
                     </p>
                   </li>
                   <li>
@@ -6662,23 +6707,20 @@ dictionary KmacParams : Algorithm {
                   </li>
                   <li>
                     <p>
-                      Let |algorithm| be the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a> internal slot of
-                      |key|.
+                      Let |keyAlgorithm| be the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a> internal slot of |key|.
                     </p>
                   </li>
                   <li>
                     <dl class="switch">
                       <dt>
                         If the {{Algorithm/name}} member of
-                        |normalizedAlgorithm| is a case-sensitive string match for
-                        "`KMAC128`":
+                        |keyAlgorithm| is "`KMAC128`":
                       </dt>
                       <dd>Set the `alg` attribute of |jwk| to
                         the string "`K128`".</dd>
                       <dt>
                         If the {{Algorithm/name}} member of
-                        |normalizedAlgorithm| is a case-sensitive string match for
-                        "`KMAC256`":
+                        |keyAlgorithm| is "`KMAC256`":
                       </dt>
                       <dd>Set the `alg` attribute of |jwk| to
                         the string "`K256`".</dd>
