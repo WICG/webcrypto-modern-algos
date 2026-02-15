@@ -6347,17 +6347,9 @@ dictionary KmacParams : Algorithm {
                 |normalizedAlgorithm| is present:
               </dt>
               <dd>
-                <ol>
-                  <li>
-                    Let |length| be equal to the
-                    {{KmacKeyGenParams/length}}
-                    member of |normalizedAlgorithm|.
-                  </li>
-                  <li>
-                    If |length| is zero, then [= exception/throw =] an
-                    {{OperationError}}.
-                  </li>
-                </ol>
+                Let |length| be equal to the
+                {{KmacKeyGenParams/length}}
+                member of |normalizedAlgorithm|.
               </dd>
               <dt>
                 Otherwise, if the {{Algorithm/name}} member of
@@ -6563,13 +6555,6 @@ dictionary KmacParams : Algorithm {
           <li>
             <p>
               Let |length| be the length in bits of |data|.
-            </p>
-          </li>
-          <li>
-            <p>
-              If |length| is zero
-              then [= exception/throw =] a
-              {{DataError}}.
             </p>
           </li>
           <li>
