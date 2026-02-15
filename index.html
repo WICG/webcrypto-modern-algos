@@ -6877,7 +6877,8 @@ dictionary Argon2Params : Algorithm {
         <ol>
           <li>
             <p>
-              If |length| is null, or is less than 32 (4*8), then [= exception/throw =] an {{OperationError}}.
+              If |length| is null, or is less than 32 (4*8), or is not a multiple of 8,
+              then [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
