@@ -77,6 +77,12 @@
         "publisher": "NIST",
         "date": "December 2016"
       },
+      "RFC9861": {
+        "title": "KangarooTwelve and TurboSHAKE",
+        "href": "https://www.rfc-editor.org/rfc/rfc9861.html",
+        "publisher": "IETF",
+        "date": "October 2025"
+      },
       "draft-ietf-jose-pqc-kem-01": {
         "title": "Post-Quantum Key Encapsulation Mechanisms (PQ KEMs) for JOSE and COSE",
         "href": "https://www.ietf.org/archive/id/draft-ietf-jose-pqc-kem-01.html",
@@ -115,7 +121,7 @@
       This specification defines a number of post-quantum secure and
       modern cryptographic algorithms for the [[webcrypto | Web Cryptography API]],
       namely ML-KEM, ML-DSA, SLH-DSA, AES-OCB, ChaCha20-Poly1305,
-      SHA-3, cSHAKE, KMAC, and Argon2.
+      SHA-3, cSHAKE, TurboSHAKE, KangarooTwelve, KMAC, and Argon2.
     </p>
   </section>
   <section id="sotd">
@@ -140,6 +146,7 @@
       <li><a href="#chacha20-poly1305">ChaCha20-Poly1305</a> [[RFC8439]]</li>
       <li><a href="#sha3">SHA3-256, SHA3-384, and SHA3-512</a> [[FIPS-202]]</li>
       <li><a href="#cshake">cSHAKE128, cSHAKE256</a>, <a href="#kmac">KMAC128 and KMAC256</a> [[NIST-SP800-185]]</li>
+      <li><a href="#turboshake">TurboSHAKE128, TurboSHAKE256</a>, <a href="#kangarootwelve">KT128 and KT256</a> [[RFC9861]]</li>
       <li><a href="#argon2">Argon2d, Argon2i, and Argon2id</a> [[RFC9106]]</li>
     </ul>
     <p>
@@ -6119,6 +6126,265 @@ dictionary CShakeParams : Algorithm {
           <li>
             <p>
               Return a <a data-cite="webcrypto#dfn-byte-sequence-containing">byte sequence containing</a> |result|.
+            </p>
+          </li>
+        </ol>
+      </section>
+    </section>
+  </section>
+  <section id="turboshake">
+    <h3>TurboSHAKE</h3>
+    <section id="turboshake-description" class="informative">
+      <h4>Description</h4>
+      <p>
+        This describes TurboSHAKE128 and TurboSHAKE256, as specified by
+        [[RFC9861]].
+      </p>
+      <p>
+        TurboSHAKE is a family of eXtendable-Output Functions (XOFs) based on a
+        round-reduced version of the Keccak permutation used in SHA-3, making it
+        roughly twice as fast as the SHAKE functions while maintaining the same
+        security strength.
+      </p>
+      <p class="note">
+        For 128-bit collision security, TurboSHAKE128 output should be at least 256 bits.
+        For 256-bit collision security, TurboSHAKE256 output should be at least 512 bits.
+        These output lengths also exceed the corresponding preimage and second-preimage security
+        requirements (which only require output length equal to the targeted security level).
+        When the output length meets these thresholds, TurboSHAKE128 achieves NIST post-quantum
+        security level 2, and TurboSHAKE256 achieves level 5.
+        See Section 7 of [[RFC9861]].
+      </p>
+    </section>
+    <section id="turboshake-registration">
+      <h4>Registration</h4>
+      <p>
+        The <a data-cite="webcrypto#recognized-algorithm-name">recognized algorithm names</a> are
+        "<code id="alg-turboshake128">TurboSHAKE128</code>" and
+        "<code id="alg-turboshake256">TurboSHAKE256</code>".
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th><a data-cite="webcrypto#supported-operations">Operation</a></th>
+            <th><a data-cite="webcrypto#algorithm-specific-params">Parameters</a></th>
+            <th><a data-cite="webcrypto#algorithm-result">Result</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>digest</td>
+            <td>{{TurboShakeParams}}</td>
+            <td>[= byte sequence =]</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="turboshake-params">
+      <h4><dfn data-idl id="dfn-TurboShakeParams">TurboShakeParams</dfn> dictionary</h4>
+      <pre class=idl>
+dictionary TurboShakeParams : Algorithm {
+  required [EnforceRange] unsigned long length;
+  [EnforceRange] octet domainSeparation;
+};
+      </pre>
+      <p>The <dfn data-dfn-for=TurboShakeParams id=dfn-TurboShakeParams-length>length</dfn> member represents the requested output length in bits.</p>
+      <p>The <dfn data-dfn-for=TurboShakeParams id=dfn-TurboShakeParams-domainSeparation>domainSeparation</dfn> member represents the domain separation byte. If not specified, it defaults to <code>0x1F</code>. Valid values are in the range <code>0x01</code> to <code>0x7F</code>.</p>
+      <p class="note">
+        Protocols that use both KangarooTwelve and TurboSHAKE should avoid using the values
+        <code>0x06</code>, <code>0x07</code>, and <code>0x0B</code> for domain separation,
+        as these are used internally by KangarooTwelve.
+      </p>
+    </section>
+    <section id="turboshake-operations">
+      <h4>Operations</h4>
+      <section id="turboshake-operations-digest">
+        <h5>Digest</h5>
+        <ol>
+          <li>
+            <p>
+              Let |length| be the {{TurboShakeParams/length}} member of
+              |normalizedAlgorithm|.
+            </p>
+          </li>
+          <li>
+            <p>
+              If |length| is zero or is not a multiple of 8,
+              then [= exception/throw =] an {{OperationError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let |domainSeparation| be the {{TurboShakeParams/domainSeparation}} member of
+              |normalizedAlgorithm| if present, or <code>0x1F</code> otherwise.
+            </p>
+          </li>
+          <li>
+            <p>
+              If |domainSeparation| is less than <code>0x01</code> or greater than <code>0x7F</code>,
+              then [= exception/throw =] an {{OperationError}}.
+            </p>
+          </li>
+          <li>
+            <dl class="switch">
+              <dt>
+                If the {{Algorithm/name}} member of
+                |normalizedAlgorithm| is a case-sensitive string match for
+                "`TurboSHAKE128`":
+              </dt>
+              <dd>
+                Let |result| be the result of performing the TurboSHAKE128 function
+                defined in Section 2 of [[RFC9861]] using
+                |message| as the |M| input parameter,
+                |domainSeparation| as the |D| input parameter, and
+                |length| divided by 8 as the |L| input parameter.
+              </dd>
+              <dt>
+                If the {{Algorithm/name}} member of
+                |normalizedAlgorithm| is a case-sensitive string match for
+                "`TurboSHAKE256`":
+              </dt>
+              <dd>
+                Let |result| be the result of performing the TurboSHAKE256 function
+                defined in Section 2 of [[RFC9861]] using
+                |message| as the |M| input parameter,
+                |domainSeparation| as the |D| input parameter, and
+                |length| divided by 8 as the |L| input parameter.
+              </dd>
+            </dl>
+          </li>
+          <li>
+            <p>
+              If performing the operation results in an error, then [= exception/throw =] an {{OperationError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              Return |result|.
+            </p>
+          </li>
+        </ol>
+      </section>
+    </section>
+  </section>
+  <section id="kangarootwelve">
+    <h3>KangarooTwelve</h3>
+    <section id="kangarootwelve-description" class="informative">
+      <h4>Description</h4>
+      <p>
+        This describes KT128 and KT256, as specified by
+        [[RFC9861]].
+      </p>
+      <p>
+        KangarooTwelve is a family of eXtendable-Output Functions (XOFs) that applies
+        tree hashing on top of TurboSHAKE, enabling parallel processing of input data.
+        KT128 uses TurboSHAKE128 internally, while KT256 uses TurboSHAKE256.
+      </p>
+      <p class="note">
+        For 128-bit collision security, KT128 output should be at least 256 bits.
+        For 256-bit collision security, KT256 output should be at least 512 bits.
+        These output lengths also exceed the corresponding preimage and second-preimage security
+        requirements (which only require output length equal to the targeted security level).
+        When the output length meets these thresholds, KT128 achieves NIST post-quantum
+        security level 2, and KT256 achieves level 5.
+        See Section 7 of [[RFC9861]].
+      </p>
+    </section>
+    <section id="kangarootwelve-registration">
+      <h4>Registration</h4>
+      <p>
+        The <a data-cite="webcrypto#recognized-algorithm-name">recognized algorithm names</a> are
+        "<code id="alg-kt128">KT128</code>" and
+        "<code id="alg-kt256">KT256</code>".
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th><a data-cite="webcrypto#supported-operations">Operation</a></th>
+            <th><a data-cite="webcrypto#algorithm-specific-params">Parameters</a></th>
+            <th><a data-cite="webcrypto#algorithm-result">Result</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>digest</td>
+            <td>{{KangarooTwelveParams}}</td>
+            <td>[= byte sequence =]</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="kangarootwelve-params">
+      <h4><dfn data-idl id="dfn-KangarooTwelveParams">KangarooTwelveParams</dfn> dictionary</h4>
+      <pre class=idl>
+dictionary KangarooTwelveParams : Algorithm {
+  required [EnforceRange] unsigned long length;
+  BufferSource customization;
+};
+      </pre>
+      <p>The <dfn data-dfn-for=KangarooTwelveParams id=dfn-KangarooTwelveParams-length>length</dfn> member represents the requested output length in bits.</p>
+      <p>The <dfn data-dfn-for=KangarooTwelveParams id=dfn-KangarooTwelveParams-customization>customization</dfn> member represents the customization string. The application selects this string to define a variant of the function. If not specified, it defaults to the empty string.</p>
+    </section>
+    <section id="kangarootwelve-operations">
+      <h4>Operations</h4>
+      <section id="kangarootwelve-operations-digest">
+        <h5>Digest</h5>
+        <ol>
+          <li>
+            <p>
+              Let |length| be the {{KangarooTwelveParams/length}} member of
+              |normalizedAlgorithm|.
+            </p>
+          </li>
+          <li>
+            <p>
+              If |length| is zero or is not a multiple of 8,
+              then [= exception/throw =] an {{OperationError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let |customization| be the {{KangarooTwelveParams/customization}} member of
+              |normalizedAlgorithm| if present or the empty octet
+              string otherwise.
+            </p>
+          </li>
+          <li>
+            <dl class="switch">
+              <dt>
+                If the {{Algorithm/name}} member of
+                |normalizedAlgorithm| is a case-sensitive string match for
+                "`KT128`":
+              </dt>
+              <dd>
+                Let |result| be the result of performing the KT128 function
+                defined in Section 3 of [[RFC9861]] using
+                |message| as the |M| input parameter,
+                |customization| as the |C| input parameter, and
+                |length| divided by 8 as the |L| input parameter.
+              </dd>
+              <dt>
+                If the {{Algorithm/name}} member of
+                |normalizedAlgorithm| is a case-sensitive string match for
+                "`KT256`":
+              </dt>
+              <dd>
+                Let |result| be the result of performing the KT256 function
+                defined in Section 3 of [[RFC9861]] using
+                |message| as the |M| input parameter,
+                |customization| as the |C| input parameter, and
+                |length| divided by 8 as the |L| input parameter.
+              </dd>
+            </dl>
+          </li>
+          <li>
+            <p>
+              If performing the operation results in an error, then [= exception/throw =] an {{OperationError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              Return |result|.
             </p>
           </li>
         </ol>
