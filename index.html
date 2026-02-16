@@ -6266,12 +6266,12 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
     </section>
     <section id="cshake-params"><div class="header-wrapper"><h3 id="x12-3-cshakeparams-dictionary"><bdi class="secno">12.3 </bdi><dfn data-idl="dictionary" id="dfn-CShakeParams" data-export="" data-dfn-type="dictionary" data-title="CShakeParams" data-dfn-for="" tabindex="0" aria-haspopup="dialog"><code>CShakeParams</code></dfn> dictionary</h3><a class="self-link" href="#cshake-params" aria-label="Permalink for Section 12.3"></a></div>
       
-      <pre class="idl def" id="webidl-1097481639"><span class="idlHeader"><a class="self-link" href="#webidl-1097481639">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-cshakeparams" data-title="CShakeParams">dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-CShakeParams" id="ref-for-dfn-CShakeParams-2"><code>CShakeParams</code></a> : <span class="idlSuperclass"><a data-link-type="dictionary" href="https://www.w3.org/TR/webcrypto-2/#dfn-Algorithm">Algorithm</a></span> {<span data-idl="" class="idlMember" id="idl-def-cshakeparams-length" data-title="length" data-dfn-for="CShakeParams">
-  required<span class="idlType"> [<span class="extAttr"><a data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#EnforceRange">EnforceRange</a></span>] <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-unsigned-long">unsigned long</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-CShakeParams-length" id="ref-for-dfn-CShakeParams-length-1"><code>length</code></a>;</span><span data-idl="" class="idlMember" id="idl-def-cshakeparams-functionname" data-title="functionName" data-dfn-for="CShakeParams"><span class="idlType">
+      <pre class="idl def" id="webidl-1714379560"><span class="idlHeader"><a class="self-link" href="#webidl-1714379560">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-cshakeparams" data-title="CShakeParams">dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-CShakeParams" id="ref-for-dfn-CShakeParams-2"><code>CShakeParams</code></a> : <span class="idlSuperclass"><a data-link-type="dictionary" href="https://www.w3.org/TR/webcrypto-2/#dfn-Algorithm">Algorithm</a></span> {<span data-idl="" class="idlMember" id="idl-def-cshakeparams-outputlength" data-title="outputLength" data-dfn-for="CShakeParams">
+  required<span class="idlType"> [<span class="extAttr"><a data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#EnforceRange">EnforceRange</a></span>] <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-unsigned-long">unsigned long</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-CShakeParams-outputLength" id="ref-for-dfn-CShakeParams-outputLength-1"><code>outputLength</code></a>;</span><span data-idl="" class="idlMember" id="idl-def-cshakeparams-functionname" data-title="functionName" data-dfn-for="CShakeParams"><span class="idlType">
   <a data-link-type="typedef" href="https://webidl.spec.whatwg.org/#BufferSource">BufferSource</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-CShakeParams-functionName" id="ref-for-dfn-CShakeParams-functionName-2"><code>functionName</code></a>;</span><span data-idl="" class="idlMember" id="idl-def-cshakeparams-customization" data-title="customization" data-dfn-for="CShakeParams"><span class="idlType">
   <a data-link-type="typedef" href="https://webidl.spec.whatwg.org/#BufferSource">BufferSource</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-CShakeParams-customization" id="ref-for-dfn-CShakeParams-customization-2"><code>customization</code></a>;</span>
 };</span></code></pre>
-      <p>The <dfn data-dfn-for="CShakeParams" id="dfn-CShakeParams-length" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="length" data-type="unsigned long" tabindex="0" aria-haspopup="dialog"><code>length</code></dfn> member represents the requested output length in bits.</p>
+      <p>The <dfn data-dfn-for="CShakeParams" id="dfn-CShakeParams-outputLength" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="outputLength" data-type="unsigned long" tabindex="0" aria-haspopup="dialog"><code>outputLength</code></dfn> member represents the requested output length in bits.</p>
       <p>The <dfn data-dfn-for="CShakeParams" id="dfn-CShakeParams-functionName" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="functionName" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>functionName</code></dfn> member represents the function name, used by NIST to define functions based on cSHAKE. When used, it should only be set to values defined by NIST.</p>
       <p>The <dfn data-dfn-for="CShakeParams" id="dfn-CShakeParams-customization" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="customization" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>customization</code></dfn> member represents the customization string. The application selects this string to define a variant of the function.</p>
     </section>
@@ -6282,7 +6282,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         <ol>
           <li>
             <p>
-              Let <var>length</var> be the <a data-link-type="idl" href="#dfn-CShakeParams-length" class="internalDFN" id="ref-for-dfn-CShakeParams-length-2"><code>length</code></a> member of
+              Let <var>outputLength</var> be the <a data-link-type="idl" href="#dfn-CShakeParams-outputLength" class="internalDFN" id="ref-for-dfn-CShakeParams-outputLength-2"><code>outputLength</code></a> member of
               <var>normalizedAlgorithm</var>.
             </p>
           </li>
@@ -6311,7 +6311,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 Let <var>result</var> be the result of performing the cSHAKE128 function
                 defined in Section 3 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-nist-sp800-185" title="NIST Special Publication 800-185: SHA-3 Derived Functions: cSHAKE, KMAC, TupleHash and ParallelHash">NIST-SP800-185</a></cite>] using
                 <var>message</var> as the <var>X</var> input parameter,
-                <var>length</var> as the <var>L</var> input parameter,
+                <var>outputLength</var> as the <var>L</var> input parameter,
                 <var>functionName</var> as the <var>N</var> input parameter, and
                 <var>customization</var> as the <var>S</var> input parameter.
               </dd>
@@ -6324,7 +6324,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 Let <var>result</var> be the result of performing the cSHAKE256 function
                 defined in Section 3 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-nist-sp800-185" title="NIST Special Publication 800-185: SHA-3 Derived Functions: cSHAKE, KMAC, TupleHash and ParallelHash">NIST-SP800-185</a></cite>] using
                 <var>message</var> as the <var>X</var> input parameter,
-                <var>length</var> as the <var>L</var> input parameter,
+                <var>outputLength</var> as the <var>L</var> input parameter,
                 <var>functionName</var> as the <var>N</var> input parameter, and
                 <var>customization</var> as the <var>S</var> input parameter.
               </dd>
@@ -6425,11 +6425,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
     </section>
     <section id="kmac-params"><div class="header-wrapper"><h3 id="x13-6-kmacparams-dictionary"><bdi class="secno">13.6 </bdi><dfn data-idl="dictionary" id="dfn-KmacParams" data-export="" data-dfn-type="dictionary" data-title="KmacParams" data-dfn-for="" tabindex="0" aria-haspopup="dialog"><code>KmacParams</code></dfn> dictionary</h3><a class="self-link" href="#kmac-params" aria-label="Permalink for Section 13.6"></a></div>
       
-      <pre class="idl def" id="webidl-1848208597"><span class="idlHeader"><a class="self-link" href="#webidl-1848208597">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-kmacparams" data-title="KmacParams">dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-KmacParams" id="ref-for-dfn-KmacParams-3"><code>KmacParams</code></a> : <span class="idlSuperclass"><a data-link-type="dictionary" href="https://www.w3.org/TR/webcrypto-2/#dfn-Algorithm">Algorithm</a></span> {<span data-idl="" class="idlMember" id="idl-def-kmacparams-length" data-title="length" data-dfn-for="KmacParams">
-  required<span class="idlType"> [<span class="extAttr"><a data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#EnforceRange">EnforceRange</a></span>] <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-unsigned-long">unsigned long</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-KmacParams-length" id="ref-for-dfn-KmacParams-length-1"><code>length</code></a>;</span><span data-idl="" class="idlMember" id="idl-def-kmacparams-customization" data-title="customization" data-dfn-for="KmacParams"><span class="idlType">
+      <pre class="idl def" id="webidl-1832520310"><span class="idlHeader"><a class="self-link" href="#webidl-1832520310">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-kmacparams" data-title="KmacParams">dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-KmacParams" id="ref-for-dfn-KmacParams-3"><code>KmacParams</code></a> : <span class="idlSuperclass"><a data-link-type="dictionary" href="https://www.w3.org/TR/webcrypto-2/#dfn-Algorithm">Algorithm</a></span> {<span data-idl="" class="idlMember" id="idl-def-kmacparams-outputlength" data-title="outputLength" data-dfn-for="KmacParams">
+  required<span class="idlType"> [<span class="extAttr"><a data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#EnforceRange">EnforceRange</a></span>] <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-unsigned-long">unsigned long</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-KmacParams-outputLength" id="ref-for-dfn-KmacParams-outputLength-1"><code>outputLength</code></a>;</span><span data-idl="" class="idlMember" id="idl-def-kmacparams-customization" data-title="customization" data-dfn-for="KmacParams"><span class="idlType">
   <a data-link-type="typedef" href="https://webidl.spec.whatwg.org/#BufferSource">BufferSource</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-KmacParams-customization" id="ref-for-dfn-KmacParams-customization-1"><code>customization</code></a>;</span>
 };</span></code></pre>
-      <p>The <dfn data-dfn-for="KmacParams" id="dfn-KmacParams-length" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="length" data-type="unsigned long" tabindex="0" aria-haspopup="dialog"><code>length</code></dfn> member represents the requested output length in bits.</p>
+      <p>The <dfn data-dfn-for="KmacParams" id="dfn-KmacParams-outputLength" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="outputLength" data-type="unsigned long" tabindex="0" aria-haspopup="dialog"><code>outputLength</code></dfn> member represents the requested output length in bits.</p>
       <p>The <dfn data-dfn-for="KmacParams" id="dfn-KmacParams-customization" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="customization" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>customization</code></dfn> member represents the customization string. The application selects this string to define a variant of the function.</p>
     </section>
 
@@ -6458,7 +6458,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 the key represented by <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a>
                 internal slot of <var>key</var> as the <var>K</var> input parameter,
                 <var>message</var> as the <var>X</var> input parameter,
-                the <a data-link-type="idl" href="#dfn-KmacParams-length" class="internalDFN" id="ref-for-dfn-KmacParams-length-2"><code>length</code></a> member of <var>normalizedAlgorithm</var> as
+                the <a data-link-type="idl" href="#dfn-KmacParams-outputLength" class="internalDFN" id="ref-for-dfn-KmacParams-outputLength-2"><code>outputLength</code></a> member of <var>normalizedAlgorithm</var> as
                 the <var>L</var> input parameter, and
                 <var>customization</var> as
                 the <var>S</var> input parameter.
@@ -6474,7 +6474,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 the key represented by <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a>
                 internal slot of <var>key</var> as the <var>K</var> input parameter,
                 <var>message</var> as the <var>X</var> input parameter,
-                the <a data-link-type="idl" href="#dfn-KmacParams-length" class="internalDFN" id="ref-for-dfn-KmacParams-length-3"><code>length</code></a> member of <var>normalizedAlgorithm</var> as
+                the <a data-link-type="idl" href="#dfn-KmacParams-outputLength" class="internalDFN" id="ref-for-dfn-KmacParams-outputLength-3"><code>outputLength</code></a> member of <var>normalizedAlgorithm</var> as
                 the <var>L</var> input parameter, and
                 <var>customization</var> as
                 the <var>S</var> input parameter.
@@ -6511,7 +6511,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 the key represented by <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a>
                 internal slot of <var>key</var> as the <var>K</var> input parameter,
                 <var>message</var> as the <var>X</var> input parameter,
-                the <a data-link-type="idl" href="#dfn-KmacParams-length" class="internalDFN" id="ref-for-dfn-KmacParams-length-4"><code>length</code></a> member of <var>normalizedAlgorithm</var> as
+                the <a data-link-type="idl" href="#dfn-KmacParams-outputLength" class="internalDFN" id="ref-for-dfn-KmacParams-outputLength-4"><code>outputLength</code></a> member of <var>normalizedAlgorithm</var> as
                 the <var>L</var> input parameter, and
                 <var>customization</var> as
                 the <var>S</var> input parameter.
@@ -6527,7 +6527,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 the key represented by <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a>
                 internal slot of <var>key</var> as the <var>K</var> input parameter,
                 <var>message</var> as the <var>X</var> input parameter,
-                the <a data-link-type="idl" href="#dfn-KmacParams-length" class="internalDFN" id="ref-for-dfn-KmacParams-length-5"><code>length</code></a> member of <var>normalizedAlgorithm</var> as
+                the <a data-link-type="idl" href="#dfn-KmacParams-outputLength" class="internalDFN" id="ref-for-dfn-KmacParams-outputLength-5"><code>outputLength</code></a> member of <var>normalizedAlgorithm</var> as
                 the <var>L</var> input parameter, and
                 <var>customization</var> as
                 the <var>S</var> input parameter.
@@ -8776,7 +8776,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dfn-CShakeParams" aria-label="Permalink for definition: CShakeParams. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1097481639">IDL</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1714379560">IDL</a>
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -8786,25 +8786,25 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <a href="#ref-for-dfn-CShakeParams-2" title="§ 12.3 CShakeParams dictionary">§ 12.3 CShakeParams dictionary</a> 
     </li>
   </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-CShakeParams-length" aria-label="Links in this document to definition: length">
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-CShakeParams-outputLength" aria-label="Links in this document to definition: outputLength">
       <span class="caret"></span>
       <div>
-        <a class="self-link" href="#dfn-CShakeParams-length" aria-label="Permalink for definition: length. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1097481639">IDL</a>
+        <a class="self-link" href="#dfn-CShakeParams-outputLength" aria-label="Permalink for definition: outputLength. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1714379560">IDL</a>
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-CShakeParams-length-1" title="§ 12.3 CShakeParams dictionary">§ 12.3 CShakeParams dictionary</a> 
+      <a href="#ref-for-dfn-CShakeParams-outputLength-1" title="§ 12.3 CShakeParams dictionary">§ 12.3 CShakeParams dictionary</a> 
     </li><li>
-      <a href="#ref-for-dfn-CShakeParams-length-2" title="§ 12.4.1 Digest">§ 12.4.1 Digest</a> 
+      <a href="#ref-for-dfn-CShakeParams-outputLength-2" title="§ 12.4.1 Digest">§ 12.4.1 Digest</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-CShakeParams-functionName" aria-label="Links in this document to definition: functionName">
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dfn-CShakeParams-functionName" aria-label="Permalink for definition: functionName. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1097481639">IDL</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1714379560">IDL</a>
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -8820,7 +8820,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dfn-CShakeParams-customization" aria-label="Permalink for definition: customization. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1097481639">IDL</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1714379560">IDL</a>
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -8924,7 +8924,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dfn-KmacParams" aria-label="Permalink for definition: KmacParams. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1848208597">IDL</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1832520310">IDL</a>
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -8934,27 +8934,27 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <a href="#ref-for-dfn-KmacParams-3" title="§ 13.6 KmacParams dictionary">§ 13.6 KmacParams dictionary</a> 
     </li>
   </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacParams-length" aria-label="Links in this document to definition: length">
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacParams-outputLength" aria-label="Links in this document to definition: outputLength">
       <span class="caret"></span>
       <div>
-        <a class="self-link" href="#dfn-KmacParams-length" aria-label="Permalink for definition: length. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1848208597">IDL</a>
+        <a class="self-link" href="#dfn-KmacParams-outputLength" aria-label="Permalink for definition: outputLength. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1832520310">IDL</a>
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-KmacParams-length-1" title="§ 13.6 KmacParams dictionary">§ 13.6 KmacParams dictionary</a> 
+      <a href="#ref-for-dfn-KmacParams-outputLength-1" title="§ 13.6 KmacParams dictionary">§ 13.6 KmacParams dictionary</a> 
     </li><li>
-      <a href="#ref-for-dfn-KmacParams-length-2" title="§ 13.7.1 Sign">§ 13.7.1 Sign</a> <a href="#ref-for-dfn-KmacParams-length-3" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-KmacParams-outputLength-2" title="§ 13.7.1 Sign">§ 13.7.1 Sign</a> <a href="#ref-for-dfn-KmacParams-outputLength-3" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-KmacParams-length-4" title="§ 13.7.2 Verify">§ 13.7.2 Verify</a> <a href="#ref-for-dfn-KmacParams-length-5" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-KmacParams-outputLength-4" title="§ 13.7.2 Verify">§ 13.7.2 Verify</a> <a href="#ref-for-dfn-KmacParams-outputLength-5" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacParams-customization" aria-label="Links in this document to definition: customization">
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dfn-KmacParams-customization" aria-label="Permalink for definition: customization. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1848208597">IDL</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1832520310">IDL</a>
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
