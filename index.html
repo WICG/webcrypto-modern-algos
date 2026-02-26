@@ -278,8 +278,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       "id": "draft-ietf-lamps-dilithium-certificates"
     }
   },
-  "publishISODate": "2026-02-16T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 16 February 2026"
+  "publishISODate": "2026-02-26T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 26 February 2026"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/cg-draft"></head>
 
@@ -288,7 +288,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Modern Algorithms in the Web Cryptography API</h1> 
     <p id="w3c-state">
       <a href="https://www.w3.org/standards/types#reports">Draft Community Group Report</a>
-      <time class="dt-published" datetime="2026-02-16">16 February 2026</time>
+      <time class="dt-published" datetime="2026-02-26">26 February 2026</time>
     </p>
     <dl>
       
@@ -777,13 +777,6 @@ partial interface <a data-idl="partial" data-link-type="interface" data-title="S
           </li>
           <li>
             <p>
-              Let <var>ciphertext</var> be the result of
-              <a data-link-type="dfn" data-lt="get a copy of the buffer source" href="https://webidl.spec.whatwg.org/#dfn-get-buffer-source-copy">getting a copy of the bytes held by</a> the <code>ciphertext</code> parameter passed to the
-              <a data-link-type="idl" data-lt="decapsulateKey()" href="#dfn-SubtleCrypto-method-decapsulateKey" class="internalDFN" id="ref-for-dfn-SubtleCrypto-method-decapsulateKey-5"><code>decapsulateKey</code></a><code>()</code> method.
-            </p>
-          </li>
-          <li>
-            <p>
               Let <var>normalizedDecapsulationAlgorithm</var> be the result of
               <a href="https://www.w3.org/TR/webcrypto-2/#dfn-normalize-an-algorithm">normalizing an algorithm</a>, with
               <code>alg</code> set to <var>decapsulationAlgorithm</var> and <code>op</code> set to
@@ -808,6 +801,13 @@ partial interface <a data-idl="partial" data-link-type="interface" data-title="S
             <p>
               If an error occurred, return a Promise rejected with
               <var>normalizedSharedKeyAlgorithm</var>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <var>ciphertext</var> be the result of
+              <a data-link-type="dfn" data-lt="get a copy of the buffer source" href="https://webidl.spec.whatwg.org/#dfn-get-buffer-source-copy">getting a copy of the bytes held by</a> the <code>ciphertext</code> parameter passed to the
+              <a data-link-type="idl" data-lt="decapsulateKey()" href="#dfn-SubtleCrypto-method-decapsulateKey" class="internalDFN" id="ref-for-dfn-SubtleCrypto-method-decapsulateKey-5"><code>decapsulateKey</code></a><code>()</code> method.
             </p>
           </li>
           <li>
@@ -915,13 +915,6 @@ partial interface <a data-idl="partial" data-link-type="interface" data-title="S
           </li>
           <li>
             <p>
-              Let <var>ciphertext</var> be the result of
-              <a data-link-type="dfn" data-lt="get a copy of the buffer source" href="https://webidl.spec.whatwg.org/#dfn-get-buffer-source-copy">getting a copy of the bytes held by</a> the <code>ciphertext</code> parameter passed to the
-              <a data-link-type="idl" data-lt="decapsulateBits()" href="#dfn-SubtleCrypto-method-decapsulateBits" class="internalDFN" id="ref-for-dfn-SubtleCrypto-method-decapsulateBits-5"><code>decapsulateBits</code></a><code>()</code> method.
-            </p>
-          </li>
-          <li>
-            <p>
               Let <var>normalizedDecapsulationAlgorithm</var> be the result of
               <a href="https://www.w3.org/TR/webcrypto-2/#dfn-normalize-an-algorithm">normalizing an algorithm</a>, with
               <code>alg</code> set to <var>decapsulationAlgorithm</var> and <code>op</code> set to
@@ -932,6 +925,13 @@ partial interface <a data-idl="partial" data-link-type="interface" data-title="S
             <p>
               If an error occurred, return a Promise rejected with
               <var>normalizedDecapsulationAlgorithm</var>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <var>ciphertext</var> be the result of
+              <a data-link-type="dfn" data-lt="get a copy of the buffer source" href="https://webidl.spec.whatwg.org/#dfn-get-buffer-source-copy">getting a copy of the bytes held by</a> the <code>ciphertext</code> parameter passed to the
+              <a data-link-type="idl" data-lt="decapsulateBits()" href="#dfn-SubtleCrypto-method-decapsulateBits" class="internalDFN" id="ref-for-dfn-SubtleCrypto-method-decapsulateBits-5"><code>decapsulateBits</code></a><code>()</code> method.
             </p>
           </li>
           <li>
