@@ -1395,7 +1395,7 @@ partial dictionary JsonWebKey {
         <ol>
           <li>
             <p>
-              If |usages| contains any entry which is not
+              If |usages| contains an entry which is not
               one of "`encapsulateKey`", "`encapsulateBits`",
               "`decapsulateKey`" or "`decapsulateBits`",
               then [= exception/throw =] a
@@ -2562,7 +2562,7 @@ dictionary ContextParams : Algorithm {
         <ol>
           <li>
             <p>
-              If |usages| contains any entry which is not
+              If |usages| contains an entry which is not
               one of "`sign`" or "`verify`",
               then [= exception/throw =] a
               {{SyntaxError}}.
@@ -3697,7 +3697,7 @@ dictionary ContextParams : Algorithm {
         <ol>
           <li>
             <p>
-              If |usages| contains any entry which is not
+              If |usages| contains an entry which is not
               one of "`sign`" or "`verify`",
               then [= exception/throw =] a
               {{SyntaxError}}.
@@ -5051,7 +5051,7 @@ dictionary AeadParams : Algorithm {
         <ol>
           <li>
             <p>
-              If |usages| contains any entry which is not
+              If |usages| contains an entry which is not
               one of "`encrypt`", "`decrypt`",
               "`wrapKey`" or "`unwrapKey`",
               then [= exception/throw =] a
@@ -5603,7 +5603,7 @@ dictionary AeadParams : Algorithm {
         <ol>
           <li>
             <p>
-              If |usages| contains any entry which is not
+              If |usages| contains an entry which is not
               one of "`encrypt`", "`decrypt`",
               "`wrapKey`" or "`unwrapKey`",
               then [= exception/throw =] a
@@ -6347,7 +6347,7 @@ dictionary KmacParams : Algorithm {
         <ol>
           <li>
             <p>
-              If |usages| contains any entry which is not "`sign`" or
+              If |usages| contains an entry which is not "`sign`" or
               "`verify`", then [= exception/throw =] a {{SyntaxError}}.
             </p>
           </li>
