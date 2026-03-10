@@ -376,7 +376,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       <li><a href="#aes-ocb">AES-OCB</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc7253" title="The OCB Authenticated-Encryption Algorithm">RFC7253</a></cite>]</li>
       <li><a href="#chacha20-poly1305">ChaCha20-Poly1305</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8439" title="ChaCha20 and Poly1305 for IETF Protocols">RFC8439</a></cite>]</li>
       <li><a href="#sha3">SHA3-256, SHA3-384, and SHA3-512</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-fips-202" title="SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions">FIPS-202</a></cite>]</li>
-      <li><a href="#cshake">cSHAKE128, cSHAKE256</a>, <a href="#kmac">KMAC128 and KMAC256</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-nist-sp800-185" title="NIST Special Publication 800-185: SHA-3 Derived Functions: cSHAKE, KMAC, TupleHash and ParallelHash">NIST-SP800-185</a></cite>]</li>
+      <li><a href="#cshake">cSHAKE128, cSHAKE256</a>, <a href="#kmac">KMAC128, and KMAC256</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-nist-sp800-185" title="NIST Special Publication 800-185: SHA-3 Derived Functions: cSHAKE, KMAC, TupleHash and ParallelHash">NIST-SP800-185</a></cite>]</li>
       <li><a href="#argon2">Argon2d, Argon2i, and Argon2id</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9106" title="Argon2 Memory-Hard Function for Password Hashing and Proof-of-Work Applications">RFC9106</a></cite>]</li>
     </ul>
     <p>
@@ -763,7 +763,7 @@ partial interface <a data-idl="partial" data-link-type="interface" data-title="S
         
         <p>
           The <dfn id="dfn-SubtleCrypto-method-decapsulateKey" data-dfn-for="SubtleCrypto" data-lt="decapsulateKey(decapsulationAlgorithm, decapsulationKey, ciphertext, sharedKeyAlgorithm, extractable, usages)|decapsulateKey()|decapsulateKey(decapsulationAlgorithm, decapsulationKey, ciphertext, sharedKeyAlgorithm, extractable, keyUsages)" data-export="" data-dfn-type="method" data-idl="operation" data-title="decapsulateKey(decapsulationAlgorithm, decapsulationKey, ciphertext, sharedKeyAlgorithm, extractable, usages)" data-type="Promise" data-local-lt="SubtleCrypto.decapsulateKey|SubtleCrypto.decapsulateKey()|decapsulateKey" tabindex="0" aria-haspopup="dialog"><code>decapsulateKey(<var>decapsulationAlgorithm</var>, <var>decapsulationKey</var>, <var>ciphertext</var>, <var>sharedKeyAlgorithm</var>, <var>extractable</var>, <var>usages</var>)</code></dfn>
-          method decapsulates a key and returns an <a data-link-type="interface" data-lt="CryptoKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey"><code>CryptoKey</code></a> object.
+          method decapsulates a key and returns a <a data-link-type="interface" data-lt="CryptoKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey"><code>CryptoKey</code></a> object.
           It behaves as follows:
         </p>
         <ol>
@@ -1620,7 +1620,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         <ol>
           <li>
             <p>
-              If <var>usages</var> contains any entry which is not
+              If <var>usages</var> contains an entry which is not
               one of "<code>encapsulateKey</code>", "<code>encapsulateBits</code>",
               "<code>decapsulateKey</code>" or "<code>decapsulateBits</code>",
               then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
@@ -1670,7 +1670,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
           <li>
             <p>
               Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a> internal slot of
-              <var>publicKey</var> to "<code>public</code>".
+              <var>publicKey</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>".
             </p>
           </li>
           <li>
@@ -1842,7 +1842,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   <li>
                     <p>
                       Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a> internal slot
-                      of <var>key</var> to "<code>public</code>"
+                      of <var>key</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>"
                     </p>
                   </li>
                   <li>
@@ -2288,6 +2288,12 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         <ol>
           <li>
             <p>
+              Let <var>key</var> be the <a data-link-type="interface" data-lt="CryptoKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey"><code>CryptoKey</code></a> to be
+              exported.
+            </p>
+          </li>
+          <li>
+            <p>
               If the underlying cryptographic key material represented by the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a> internal slot of <var>key</var>
               cannot be accessed, then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an <a data-link-type="exception" data-lt="OperationError" href="https://webidl.spec.whatwg.org/#operationerror"><code>OperationError</code></a>.
             </p>
@@ -2300,7 +2306,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   <li>
                     <p>
                       If the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a> internal slot
-                      of <var>key</var> is not "<code>public</code>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an <a data-link-type="exception" data-lt="InvalidAccessError" href="https://webidl.spec.whatwg.org/#invalidaccesserror"><code>InvalidAccessError</code></a>.
+                      of <var>key</var> is not "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an <a data-link-type="exception" data-lt="InvalidAccessError" href="https://webidl.spec.whatwg.org/#invalidaccesserror"><code>InvalidAccessError</code></a>.
                     </p>
                   </li>
                   <li>
@@ -2491,7 +2497,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   <li>
                     <p>
                       If the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a> internal slot
-                      of <var>key</var> is not "<code>public</code>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an <a data-link-type="exception" data-lt="InvalidAccessError" href="https://webidl.spec.whatwg.org/#invalidaccesserror"><code>InvalidAccessError</code></a>.
+                      of <var>key</var> is not "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an <a data-link-type="exception" data-lt="InvalidAccessError" href="https://webidl.spec.whatwg.org/#invalidaccesserror"><code>InvalidAccessError</code></a>.
                     </p>
                   </li>
                   <li>
@@ -2514,7 +2520,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   <li>
                     <p>
                       If the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a> internal slot
-                      of <var>key</var> is not "<code>private</code>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an <a data-link-type="exception" data-lt="InvalidAccessError" href="https://webidl.spec.whatwg.org/#invalidaccesserror"><code>InvalidAccessError</code></a>.
+                      of <var>key</var> is not "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-private"><code>private</code></a>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an <a data-link-type="exception" data-lt="InvalidAccessError" href="https://webidl.spec.whatwg.org/#invalidaccesserror"><code>InvalidAccessError</code></a>.
                     </p>
                   </li>
                   <li>
@@ -2779,7 +2785,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         <ol>
           <li>
             <p>
-              If <var>usages</var> contains a value which is not
+              If <var>usages</var> contains an entry which is not
               one of "<code>sign</code>" or "<code>verify</code>",
               then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
               <a data-link-type="exception" data-lt="SyntaxError" href="https://webidl.spec.whatwg.org/#syntaxerror"><code>SyntaxError</code></a>.
@@ -2827,7 +2833,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
           <li>
             <p>
               Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a> internal slot of
-              <var>publicKey</var> to "<code>public</code>".
+              <var>publicKey</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>".
             </p>
           </li>
           <li>
@@ -2918,7 +2924,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 <ol>
                   <li>
                     <p>
-                      If <var>usages</var> contains a value which is not
+                      If <var>usages</var> contains an entry which is not
                       "<code>verify</code>"
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="SyntaxError" href="https://webidl.spec.whatwg.org/#syntaxerror"><code>SyntaxError</code></a>.
@@ -2997,7 +3003,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   <li>
                     <p>
                       Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a> internal slot
-                      of <var>key</var> to "<code>public</code>"
+                      of <var>key</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>"
                     </p>
                   </li>
                   <li>
@@ -3025,7 +3031,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 <ol>
                   <li>
                     <p>
-                      If <var>usages</var> contains a value which is not
+                      If <var>usages</var> contains an entry which is not
                       "<code>sign</code>"
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="SyntaxError" href="https://webidl.spec.whatwg.org/#syntaxerror"><code>SyntaxError</code></a>.
@@ -3151,7 +3157,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 <ol>
                   <li>
                     <p>
-                      If <var>usages</var> contains a value which is not
+                      If <var>usages</var> contains an entry which is not
                       "<code>verify</code>"
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="SyntaxError" href="https://webidl.spec.whatwg.org/#syntaxerror"><code>SyntaxError</code></a>.
@@ -3178,7 +3184,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   <li>
                     <p>
                       Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a> internal slot
-                      of <var>key</var> to "<code>public</code>"
+                      of <var>key</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>"
                     </p>
                   </li>
                   <li>
@@ -3267,10 +3273,10 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   <li>
                     <p>
                       If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-7"><code>priv</code></a> field is present
-                      and <var>usages</var> contains a value which is not
+                      and <var>usages</var> contains an entry which is not
                       "<code>sign</code>", or,
                       if the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-8"><code>priv</code></a> field is not present
-                      and <var>usages</var> contains a value which is not
+                      and <var>usages</var> contains an entry which is not
                       "<code>verify</code>"
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="SyntaxError" href="https://webidl.spec.whatwg.org/#syntaxerror"><code>SyntaxError</code></a>.
@@ -3414,7 +3420,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
           </li>
           <li>
             <p>
-              Return <var>key</var>
+              Return <var>key</var>.
             </p>
           </li>
         </ol>
@@ -3442,7 +3448,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   <li>
                     <p>
                       If the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a> internal slot
-                      of <var>key</var> is not "<code>public</code>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an <a data-link-type="exception" data-lt="InvalidAccessError" href="https://webidl.spec.whatwg.org/#invalidaccesserror"><code>InvalidAccessError</code></a>.
+                      of <var>key</var> is not "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an <a data-link-type="exception" data-lt="InvalidAccessError" href="https://webidl.spec.whatwg.org/#invalidaccesserror"><code>InvalidAccessError</code></a>.
                     </p>
                   </li>
                   <li>
@@ -3635,7 +3641,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   <li>
                     <p>
                       If the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a> internal slot
-                      of <var>key</var> is not "<code>public</code>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an <a data-link-type="exception" data-lt="InvalidAccessError" href="https://webidl.spec.whatwg.org/#invalidaccesserror"><code>InvalidAccessError</code></a>.
+                      of <var>key</var> is not "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an <a data-link-type="exception" data-lt="InvalidAccessError" href="https://webidl.spec.whatwg.org/#invalidaccesserror"><code>InvalidAccessError</code></a>.
                     </p>
                   </li>
                   <li>
@@ -3658,7 +3664,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   <li>
                     <p>
                       If the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a> internal slot
-                      of <var>key</var> is not "<code>private</code>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an <a data-link-type="exception" data-lt="InvalidAccessError" href="https://webidl.spec.whatwg.org/#invalidaccesserror"><code>InvalidAccessError</code></a>.
+                      of <var>key</var> is not "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-private"><code>private</code></a>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an <a data-link-type="exception" data-lt="InvalidAccessError" href="https://webidl.spec.whatwg.org/#invalidaccesserror"><code>InvalidAccessError</code></a>.
                     </p>
                   </li>
                   <li>
@@ -3914,7 +3920,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         <ol>
           <li>
             <p>
-              If <var>usages</var> contains a value which is not
+              If <var>usages</var> contains an entry which is not
               one of "<code>sign</code>" or "<code>verify</code>",
               then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
               <a data-link-type="exception" data-lt="SyntaxError" href="https://webidl.spec.whatwg.org/#syntaxerror"><code>SyntaxError</code></a>.
@@ -3955,7 +3961,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
           <li>
             <p>
               Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a> internal slot of
-              <var>publicKey</var> to "<code>public</code>".
+              <var>publicKey</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>".
             </p>
           </li>
           <li>
@@ -4046,7 +4052,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 <ol>
                   <li>
                     <p>
-                      If <var>usages</var> contains a value which is not
+                      If <var>usages</var> contains an entry which is not
                       "<code>verify</code>"
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="SyntaxError" href="https://webidl.spec.whatwg.org/#syntaxerror"><code>SyntaxError</code></a>.
@@ -4179,7 +4185,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   <li>
                     <p>
                       Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a> internal slot
-                      of <var>key</var> to "<code>public</code>"
+                      of <var>key</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>"
                     </p>
                   </li>
                   <li>
@@ -4207,7 +4213,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 <ol>
                   <li>
                     <p>
-                      If <var>usages</var> contains a value which is not
+                      If <var>usages</var> contains an entry which is not
                       "<code>sign</code>"
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="SyntaxError" href="https://webidl.spec.whatwg.org/#syntaxerror"><code>SyntaxError</code></a>.
@@ -4378,7 +4384,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 <ol>
                   <li>
                     <p>
-                      If <var>usages</var> contains a value which is not
+                      If <var>usages</var> contains an entry which is not
                       "<code>verify</code>"
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="SyntaxError" href="https://webidl.spec.whatwg.org/#syntaxerror"><code>SyntaxError</code></a>.
@@ -4414,7 +4420,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   <li>
                     <p>
                       Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a> internal slot
-                      of <var>key</var> to "<code>public</code>"
+                      of <var>key</var> to "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>"
                     </p>
                   </li>
                   <li>
@@ -4491,10 +4497,10 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   <li>
                     <p>
                       If the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-13"><code>priv</code></a> field is present
-                      and <var>usages</var> contains a value which is not
+                      and <var>usages</var> contains an entry which is not
                       "<code>sign</code>", or,
                       if the <a data-link-type="idl" href="#dom-jsonwebkey-priv" class="internalDFN" id="ref-for-dom-jsonwebkey-priv-14"><code>priv</code></a> field is not present
-                      and <var>usages</var> contains a value which is not
+                      and <var>usages</var> contains an entry which is not
                       "<code>verify</code>"
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="SyntaxError" href="https://webidl.spec.whatwg.org/#syntaxerror"><code>SyntaxError</code></a>.
@@ -4638,7 +4644,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
           </li>
           <li>
             <p>
-              Return <var>key</var>
+              Return <var>key</var>.
             </p>
           </li>
         </ol>
@@ -4666,7 +4672,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   <li>
                     <p>
                       If the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a> internal slot
-                      of <var>key</var> is not "<code>public</code>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an <a data-link-type="exception" data-lt="InvalidAccessError" href="https://webidl.spec.whatwg.org/#invalidaccesserror"><code>InvalidAccessError</code></a>.
+                      of <var>key</var> is not "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an <a data-link-type="exception" data-lt="InvalidAccessError" href="https://webidl.spec.whatwg.org/#invalidaccesserror"><code>InvalidAccessError</code></a>.
                     </p>
                   </li>
                   <li>
@@ -4909,7 +4915,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                           Set the <var>privateKey</var> field to the result of DER-encoding
                           a <code>OCTET STRING</code> ASN.1 type that represents the SLH-DSA private key represented
                           by the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a>
-                          internal slot of <var>key</var>
+                          internal slot of <var>key</var>.
                         </p>
                       </li>
                     </ul>
@@ -4929,7 +4935,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   <li>
                     <p>
                       If the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a> internal slot
-                      of <var>key</var> is not "<code>public</code>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an <a data-link-type="exception" data-lt="InvalidAccessError" href="https://webidl.spec.whatwg.org/#invalidaccesserror"><code>InvalidAccessError</code></a>.
+                      of <var>key</var> is not "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-public"><code>public</code></a>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an <a data-link-type="exception" data-lt="InvalidAccessError" href="https://webidl.spec.whatwg.org/#invalidaccesserror"><code>InvalidAccessError</code></a>.
                     </p>
                   </li>
                   <li>
@@ -4952,7 +4958,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   <li>
                     <p>
                       If the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-type"><code>[[type]]</code></a> internal slot
-                      of <var>key</var> is not "<code>private</code>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an <a data-link-type="exception" data-lt="InvalidAccessError" href="https://webidl.spec.whatwg.org/#invalidaccesserror"><code>InvalidAccessError</code></a>.
+                      of <var>key</var> is not "<a data-link-type="enum-value" href="https://www.w3.org/TR/webcrypto-2/#dom-keytype-private"><code>private</code></a>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> an <a data-link-type="exception" data-lt="InvalidAccessError" href="https://webidl.spec.whatwg.org/#invalidaccesserror"><code>InvalidAccessError</code></a>.
                     </p>
                   </li>
                   <li>
@@ -5266,7 +5272,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         <ol>
           <li>
             <p>
-              If <var>usages</var> contains any entry which is not
+              If <var>usages</var> contains an entry which is not
               one of "<code>encrypt</code>", "<code>decrypt</code>",
               "<code>wrapKey</code>" or "<code>unwrapKey</code>",
               then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
@@ -5818,7 +5824,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         <ol>
           <li>
             <p>
-              If <var>usages</var> contains any entry which is not
+              If <var>usages</var> contains an entry which is not
               one of "<code>encrypt</code>", "<code>decrypt</code>",
               "<code>wrapKey</code>" or "<code>unwrapKey</code>",
               then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
@@ -6536,12 +6542,12 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
           </li>
           <li>
             <p>
-              Let <var>mac</var> be a <a href="https://www.w3.org/TR/webcrypto-2/#dfn-byte-sequence-containing">byte sequence containing</a> <var>mac</var>.
+              Let <var>computedMac</var> be a <a href="https://www.w3.org/TR/webcrypto-2/#dfn-byte-sequence-containing">byte sequence containing</a> <var>mac</var>.
             </p>
           </li>
           <li>
             <p>
-              Return true if <var>mac</var> is equal to <var>signature</var> and false
+              Return true if <var>computedMac</var> is equal to <var>signature</var> and false
               otherwise.
             </p>
           </li>
@@ -6552,7 +6558,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         <ol>
           <li>
             <p>
-              If <var>usages</var> contains any entry which is not "<code>sign</code>" or
+              If <var>usages</var> contains an entry which is not "<code>sign</code>" or
               "<code>verify</code>", then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a <a data-link-type="exception" data-lt="SyntaxError" href="https://webidl.spec.whatwg.org/#syntaxerror"><code>SyntaxError</code></a>.
             </p>
           </li>
@@ -7046,7 +7052,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
             <td><a data-link-type="interface" data-lt="CryptoKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey"><code>CryptoKey</code></a></td>
           </tr>
           <tr>
-            <td>Get key length</td>
+            <td>get key length</td>
             <td>None</td>
             <td>null</td>
           </tr>
@@ -7438,13 +7444,13 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       </ul>
       <ul>
         <li>Key Operation Value: "decapsulateKey"</li>
-        <li>Key Operation Description: Eecapsulate key</li>
+        <li>Key Operation Description: Decapsulate key</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
       </ul>
       <ul>
         <li>Key Operation Value: "decapsulateBits"</li>
-        <li>Key Operation Description: Encapsulate bits not to be used as a key</li>
+        <li>Key Operation Description: Decapsulate bits not to be used as a key</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
       </ul>
