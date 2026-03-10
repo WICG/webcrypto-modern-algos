@@ -139,7 +139,7 @@
       <li><a href="#aes-ocb">AES-OCB</a> [[RFC7253]]</li>
       <li><a href="#chacha20-poly1305">ChaCha20-Poly1305</a> [[RFC8439]]</li>
       <li><a href="#sha3">SHA3-256, SHA3-384, and SHA3-512</a> [[FIPS-202]]</li>
-      <li><a href="#cshake">cSHAKE128, cSHAKE256</a>, <a href="#kmac">KMAC128 and KMAC256</a> [[NIST-SP800-185]]</li>
+      <li><a href="#cshake">cSHAKE128, cSHAKE256</a>, <a href="#kmac">KMAC128, and KMAC256</a> [[NIST-SP800-185]]</li>
       <li><a href="#argon2">Argon2d, Argon2i, and Argon2id</a> [[RFC9106]]</li>
     </ul>
     <p>
@@ -532,7 +532,7 @@ enum KeyUsage { "encrypt", "decrypt", "sign", "verify", "deriveKey", "deriveBits
         <h4>The decapsulateKey method</h4>
         <p>
           The <dfn id="dfn-SubtleCrypto-method-decapsulateKey" data-dfn-for=SubtleCrypto data-lt="decapsulateKey">decapsulateKey(|decapsulationAlgorithm|, |decapsulationKey|, |ciphertext|, |sharedKeyAlgorithm|, |extractable|, |usages|)</dfn>
-          method decapsulates a key and returns an {{CryptoKey}} object.
+          method decapsulates a key and returns a {{CryptoKey}} object.
           It behaves as follows:
         </p>
         <ol>
@@ -1445,7 +1445,7 @@ partial dictionary JsonWebKey {
           <li>
             <p>
               Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot of
-              |publicKey| to "`public`".
+              |publicKey| to {{KeyType/"public"}}.
             </p>
           </li>
           <li>
@@ -1617,7 +1617,7 @@ partial dictionary JsonWebKey {
                   <li>
                     <p>
                       Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
-                      of |key| to "`public`"
+                      of |key| to {{KeyType/"public"}}
                     </p>
                   </li>
                   <li>
@@ -2063,6 +2063,12 @@ partial dictionary JsonWebKey {
         <ol>
           <li>
             <p>
+              Let |key| be the {{CryptoKey}} to be
+              exported.
+            </p>
+          </li>
+          <li>
+            <p>
               If the underlying cryptographic key material represented by the <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a> internal slot of |key|
               cannot be accessed, then [= exception/throw =] an {{OperationError}}.
             </p>
@@ -2075,7 +2081,7 @@ partial dictionary JsonWebKey {
                   <li>
                     <p>
                       If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
-                      of |key| is not "`public`", then [= exception/throw =] an {{InvalidAccessError}}.
+                      of |key| is not {{KeyType/"public"}}, then [= exception/throw =] an {{InvalidAccessError}}.
                     </p>
                   </li>
                   <li>
@@ -2266,7 +2272,7 @@ partial dictionary JsonWebKey {
                   <li>
                     <p>
                       If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
-                      of |key| is not "`public`", then [= exception/throw =] an {{InvalidAccessError}}.
+                      of |key| is not {{KeyType/"public"}}, then [= exception/throw =] an {{InvalidAccessError}}.
                     </p>
                   </li>
                   <li>
@@ -2289,7 +2295,7 @@ partial dictionary JsonWebKey {
                   <li>
                     <p>
                       If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
-                      of |key| is not "`private`", then [= exception/throw =] an {{InvalidAccessError}}.
+                      of |key| is not {{KeyType/"private"}}, then [= exception/throw =] an {{InvalidAccessError}}.
                     </p>
                   </li>
                   <li>
@@ -2556,7 +2562,7 @@ dictionary ContextParams : Algorithm {
         <ol>
           <li>
             <p>
-              If |usages| contains a value which is not
+              If |usages| contains any entry which is not
               one of "`sign`" or "`verify`",
               then [= exception/throw =] a
               {{SyntaxError}}.
@@ -2604,7 +2610,7 @@ dictionary ContextParams : Algorithm {
           <li>
             <p>
               Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot of
-              |publicKey| to "`public`".
+              |publicKey| to {{KeyType/"public"}}.
             </p>
           </li>
           <li>
@@ -2695,7 +2701,7 @@ dictionary ContextParams : Algorithm {
                 <ol>
                   <li>
                     <p>
-                      If |usages| contains a value which is not
+                      If |usages| contains an entry which is not
                       "`verify`"
                       then [= exception/throw =] a
                       {{SyntaxError}}.
@@ -2774,7 +2780,7 @@ dictionary ContextParams : Algorithm {
                   <li>
                     <p>
                       Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
-                      of |key| to "`public`"
+                      of |key| to {{KeyType/"public"}}
                     </p>
                   </li>
                   <li>
@@ -2802,7 +2808,7 @@ dictionary ContextParams : Algorithm {
                 <ol>
                   <li>
                     <p>
-                      If |usages| contains a value which is not
+                      If |usages| contains an entry which is not
                       "`sign`"
                       then [= exception/throw =] a
                       {{SyntaxError}}.
@@ -2928,7 +2934,7 @@ dictionary ContextParams : Algorithm {
                 <ol>
                   <li>
                     <p>
-                      If |usages| contains a value which is not
+                      If |usages| contains an entry which is not
                       "`verify`"
                       then [= exception/throw =] a
                       {{SyntaxError}}.
@@ -2955,7 +2961,7 @@ dictionary ContextParams : Algorithm {
                   <li>
                     <p>
                       Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
-                      of |key| to "`public`"
+                      of |key| to {{KeyType/"public"}}
                     </p>
                   </li>
                   <li>
@@ -3044,10 +3050,10 @@ dictionary ContextParams : Algorithm {
                   <li>
                     <p>
                       If the {{JsonWebKey/priv}} field is present
-                      and |usages| contains a value which is not
+                      and |usages| contains an entry which is not
                       "`sign`", or,
                       if the {{JsonWebKey/priv}} field is not present
-                      and |usages| contains a value which is not
+                      and |usages| contains an entry which is not
                       "`verify`"
                       then [= exception/throw =] a
                       {{SyntaxError}}.
@@ -3191,7 +3197,7 @@ dictionary ContextParams : Algorithm {
           </li>
           <li>
             <p>
-              Return |key|
+              Return |key|.
             </p>
           </li>
         </ol>
@@ -3219,7 +3225,7 @@ dictionary ContextParams : Algorithm {
                   <li>
                     <p>
                       If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
-                      of |key| is not "`public`", then [= exception/throw =] an {{InvalidAccessError}}.
+                      of |key| is not {{KeyType/"public"}}, then [= exception/throw =] an {{InvalidAccessError}}.
                     </p>
                   </li>
                   <li>
@@ -3412,7 +3418,7 @@ dictionary ContextParams : Algorithm {
                   <li>
                     <p>
                       If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
-                      of |key| is not "`public`", then [= exception/throw =] an {{InvalidAccessError}}.
+                      of |key| is not {{KeyType/"public"}}, then [= exception/throw =] an {{InvalidAccessError}}.
                     </p>
                   </li>
                   <li>
@@ -3435,7 +3441,7 @@ dictionary ContextParams : Algorithm {
                   <li>
                     <p>
                       If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
-                      of |key| is not "`private`", then [= exception/throw =] an {{InvalidAccessError}}.
+                      of |key| is not {{KeyType/"private"}}, then [= exception/throw =] an {{InvalidAccessError}}.
                     </p>
                   </li>
                   <li>
@@ -3691,7 +3697,7 @@ dictionary ContextParams : Algorithm {
         <ol>
           <li>
             <p>
-              If |usages| contains a value which is not
+              If |usages| contains any entry which is not
               one of "`sign`" or "`verify`",
               then [= exception/throw =] a
               {{SyntaxError}}.
@@ -3732,7 +3738,7 @@ dictionary ContextParams : Algorithm {
           <li>
             <p>
               Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot of
-              |publicKey| to "`public`".
+              |publicKey| to {{KeyType/"public"}}.
             </p>
           </li>
           <li>
@@ -3823,7 +3829,7 @@ dictionary ContextParams : Algorithm {
                 <ol>
                   <li>
                     <p>
-                      If |usages| contains a value which is not
+                      If |usages| contains an entry which is not
                       "`verify`"
                       then [= exception/throw =] a
                       {{SyntaxError}}.
@@ -3956,7 +3962,7 @@ dictionary ContextParams : Algorithm {
                   <li>
                     <p>
                       Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
-                      of |key| to "`public`"
+                      of |key| to {{KeyType/"public"}}
                     </p>
                   </li>
                   <li>
@@ -3984,7 +3990,7 @@ dictionary ContextParams : Algorithm {
                 <ol>
                   <li>
                     <p>
-                      If |usages| contains a value which is not
+                      If |usages| contains an entry which is not
                       "`sign`"
                       then [= exception/throw =] a
                       {{SyntaxError}}.
@@ -4155,7 +4161,7 @@ dictionary ContextParams : Algorithm {
                 <ol>
                   <li>
                     <p>
-                      If |usages| contains a value which is not
+                      If |usages| contains an entry which is not
                       "`verify`"
                       then [= exception/throw =] a
                       {{SyntaxError}}.
@@ -4191,7 +4197,7 @@ dictionary ContextParams : Algorithm {
                   <li>
                     <p>
                       Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
-                      of |key| to "`public`"
+                      of |key| to {{KeyType/"public"}}
                     </p>
                   </li>
                   <li>
@@ -4268,10 +4274,10 @@ dictionary ContextParams : Algorithm {
                   <li>
                     <p>
                       If the {{JsonWebKey/priv}} field is present
-                      and |usages| contains a value which is not
+                      and |usages| contains an entry which is not
                       "`sign`", or,
                       if the {{JsonWebKey/priv}} field is not present
-                      and |usages| contains a value which is not
+                      and |usages| contains an entry which is not
                       "`verify`"
                       then [= exception/throw =] a
                       {{SyntaxError}}.
@@ -4415,7 +4421,7 @@ dictionary ContextParams : Algorithm {
           </li>
           <li>
             <p>
-              Return |key|
+              Return |key|.
             </p>
           </li>
         </ol>
@@ -4443,7 +4449,7 @@ dictionary ContextParams : Algorithm {
                   <li>
                     <p>
                       If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
-                      of |key| is not "`public`", then [= exception/throw =] an {{InvalidAccessError}}.
+                      of |key| is not {{KeyType/"public"}}, then [= exception/throw =] an {{InvalidAccessError}}.
                     </p>
                   </li>
                   <li>
@@ -4686,7 +4692,7 @@ dictionary ContextParams : Algorithm {
                           Set the |privateKey| field to the result of DER-encoding
                           a `OCTET STRING` ASN.1 type that represents the SLH-DSA private key represented
                           by the <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
-                          internal slot of |key|
+                          internal slot of |key|.
                         </p>
                       </li>
                     </ul>
@@ -4706,7 +4712,7 @@ dictionary ContextParams : Algorithm {
                   <li>
                     <p>
                       If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
-                      of |key| is not "`public`", then [= exception/throw =] an {{InvalidAccessError}}.
+                      of |key| is not {{KeyType/"public"}}, then [= exception/throw =] an {{InvalidAccessError}}.
                     </p>
                   </li>
                   <li>
@@ -4729,7 +4735,7 @@ dictionary ContextParams : Algorithm {
                   <li>
                     <p>
                       If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
-                      of |key| is not "`private`", then [= exception/throw =] an {{InvalidAccessError}}.
+                      of |key| is not {{KeyType/"private"}}, then [= exception/throw =] an {{InvalidAccessError}}.
                     </p>
                   </li>
                   <li>
@@ -6325,12 +6331,12 @@ dictionary KmacParams : Algorithm {
           </li>
           <li>
             <p>
-              Let |mac| be a <a data-cite="webcrypto#dfn-byte-sequence-containing">byte sequence containing</a> |mac|.
+              Let |computedMac| be a <a data-cite="webcrypto#dfn-byte-sequence-containing">byte sequence containing</a> |mac|.
             </p>
           </li>
           <li>
             <p>
-              Return true if |mac| is equal to |signature| and false
+              Return true if |computedMac| is equal to |signature| and false
               otherwise.
             </p>
           </li>
@@ -6829,7 +6835,7 @@ dictionary KmacParams : Algorithm {
             <td>{{CryptoKey}}</td>
           </tr>
           <tr>
-            <td>Get key length</td>
+            <td>get key length</td>
             <td>None</td>
             <td>null</td>
           </tr>
@@ -7223,13 +7229,13 @@ dictionary Argon2Params : Algorithm {
       </ul>
       <ul>
         <li>Key Operation Value: "decapsulateKey"</li>
-        <li>Key Operation Description: Eecapsulate key</li>
+        <li>Key Operation Description: Decapsulate key</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
       </ul>
       <ul>
         <li>Key Operation Value: "decapsulateBits"</li>
-        <li>Key Operation Description: Encapsulate bits not to be used as a key</li>
+        <li>Key Operation Description: Decapsulate bits not to be used as a key</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
       </ul>
