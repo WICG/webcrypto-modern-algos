@@ -9,7 +9,8 @@ Web Cryptography API, namely:
 - SLH-DSA
 - AES-OCB
 - ChaCha20-Poly1305
-- SHA-3, cSHAKE and KMAC
+- SHA-3, cSHAKE, TurboSHAKE, and KangarooTwelve
+- KMAC
 - Argon2
 
 To accommodate the usage of ML-KEM, and possibly future other KEMs,
