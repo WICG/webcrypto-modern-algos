@@ -1969,6 +1969,20 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                   </li>
                   <li>
                     <p>
+                      If <var>mlKemPrivateKey</var> represents an ML-KEM key in the <code>expandedKey</code> format,
+                      or if <var>mlKemPrivateKey</var> represents an ML-KEM key in the <code>both</code> format
+                      and the <code>both</code> format is not supported, throw a <a data-link-type="exception" data-lt="NotSupportedError" href="https://webidl.spec.whatwg.org/#notsupportederror"><code>NotSupportedError</code></a>.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If <var>mlKemPrivateKey</var> represents an ML-KEM key in the <code>both</code> format,
+                      and the <code>seed</code> field does not correspond to the <code>expandedKey</code> field,
+                      throw a <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       Let <var>key</var> be a new <a data-link-type="interface" data-lt="CryptoKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey"><code>CryptoKey</code></a>
                       that represents the ML-KEM private key identified by <var>mlKemPrivateKey</var>.
                     </p>
@@ -3126,6 +3140,20 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                       If an error occurred while parsing,
                       then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If <var>mlDsaPrivateKey</var> represents an ML-DSA key in the <code>expandedKey</code> format,
+                      or if <var>mlDsaPrivateKey</var> represents an ML-DSA key in the <code>both</code> format
+                      and the <code>both</code> format is not supported, throw a <a data-link-type="exception" data-lt="NotSupportedError" href="https://webidl.spec.whatwg.org/#notsupportederror"><code>NotSupportedError</code></a>.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If <var>mlDsaPrivateKey</var> represents an ML-DSA key in the <code>both</code> format,
+                      and the <code>seed</code> field does not correspond to the <code>expandedKey</code> field,
+                      throw a <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
                     </p>
                   </li>
                   <li>
