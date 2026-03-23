@@ -3692,6 +3692,290 @@ dictionary ContextParams : Algorithm {
     </section>
   </section>
 
+  <section id="ml-dsa-mu">
+    <h3>ML-DSA-MU</h3>
+    <section id="ml-dsa-mu-description" class="informative">
+      <h4>Description</h4>
+      <p>
+        This section defines the computation of the ML-DSA message representative
+        <var>μ</var>, as specified in Sections 6.2 and 6.3 of [[FIPS-204]].
+        Normally, <var>μ</var> is computed internally as part of an ML-DSA
+        sign or verify operation. Computing <var>μ</var> externally allows
+        large messages to be processed before they are passed to
+        the signing or verification step.
+      </p>
+      <p>
+        Both Pure ML-DSA and Pre-Hash ML-DSA (HashML-DSA, Sections 5.4 and 5.5
+        of [[FIPS-204]]) are supported. When the {{MlDsaMuParams/hash}} member
+        is not present, the input is the full message (Pure ML-DSA).
+        When present, the input is the pre-computed hash digest of the message.
+      </p>
+      <p>
+        The resulting <var>μ</var> value can be passed to
+        the <a data-cite="webcrypto#SubtleCrypto-method-signDigest">signDigest()</a> and
+        <a data-cite="webcrypto#SubtleCrypto-method-verifyDigest">verifyDigest()</a> methods
+        with an <a href="#ml-dsa">ML-DSA</a> algorithm.
+      </p>
+    </section>
+    <section id="ml-dsa-mu-registration">
+      <h4>Registration</h4>
+      <p>
+        The <a data-cite="webcrypto#recognized-algorithm-name">recognized algorithm name</a> for
+        this algorithm is "<code id="alg-ml-dsa-mu">ML-DSA-MU</code>".
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th><a data-cite="webcrypto#supported-operations">Operation</a></th>
+            <th><a data-cite="webcrypto#algorithm-specific-params">Parameters</a></th>
+            <th><a data-cite="webcrypto#algorithm-result">Result</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>digest</td>
+            <td>{{MlDsaMuParams}}</td>
+            <td>[= byte sequence =]</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="ml-dsa-mu-params">
+      <h4><dfn data-idl id="dfn-MlDsaMuParams">MlDsaMuParams</dfn> dictionary</h4>
+      <pre class=idl>
+dictionary MlDsaMuParams : ContextParams {
+  required CryptoKey public;
+  HashAlgorithmIdentifier hash;
+};
+      </pre>
+      <p>
+        The <dfn data-idl data-dfn-for=MlDsaMuParams id="dfn-MlDsaMuParams-public">public</dfn>
+        member represents the ML-DSA public key from which <var>tr</var> is derived.
+      </p>
+      <p>
+        The <dfn data-idl data-dfn-for=MlDsaMuParams id="dfn-MlDsaMuParams-hash">hash</dfn>
+        member, if present, identifies the hash function that was used to produce |message|,
+        for use as PH in HashML-DSA (Section 5.4 of [[FIPS-204]]).
+        When present, |message| is the hash digest PH(M), not the original message.
+      </p>
+    </section>
+    <section id="ml-dsa-mu-operations">
+      <h4>Operations</h4>
+      <section id="ml-dsa-mu-operations-digest">
+        <h5>Digest</h5>
+        <ol>
+          <li>
+            <p>
+              Let |publicKey| be the {{MlDsaMuParams/public}} member of |normalizedAlgorithm|.
+            </p>
+          </li>
+          <li>
+            <p>
+              If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot of
+              |publicKey| is not {{KeyType/"public"}}, then [= exception/throw =] an {{InvalidAccessError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              If the {{KeyAlgorithm/name}} attribute of the
+              <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a> internal slot of
+              |publicKey| is not one of "`ML-DSA-44`", "`ML-DSA-65`" or "`ML-DSA-87`",
+              then [= exception/throw =] an {{InvalidAccessError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let |context| be the {{ContextParams/context}} member of |normalizedAlgorithm|
+              or the empty [= byte sequence =] if the {{ContextParams/context}} member of
+              |normalizedAlgorithm| is not present.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let |pk| be the raw encoded ML-DSA public key associated with |publicKey|.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <var>tr</var> be the result of applying SHAKE-256 ([[FIPS-202]])
+              to |pk| with an output length of 64 bytes.
+            </p>
+          </li>
+          <li>
+            <dl class="switch">
+              <dt>
+                If the {{MlDsaMuParams/hash}} member of |normalizedAlgorithm| is present:
+              </dt>
+              <dd>
+                <ol>
+                  <li>
+                    <p>
+                      Let |hashAlgorithm| be the {{MlDsaMuParams/hash}} member of |normalizedAlgorithm|.
+                    </p>
+                  </li>
+                  <li>
+                    <dl class="switch">
+                      <dt>If the {{Algorithm/name}} member of |hashAlgorithm| is "`SHA-256`":</dt>
+                      <dd>
+                        <p>
+                          Let |oid| be the DER encoding of `id-sha256` (2.16.840.1.101.3.4.2.1)
+                          and let |expectedLength| be 32.
+                        </p>
+                      </dd>
+                      <dt>If the {{Algorithm/name}} member of |hashAlgorithm| is "`SHA-384`":</dt>
+                      <dd>
+                        <p>
+                          Let |oid| be the DER encoding of `id-sha384` (2.16.840.1.101.3.4.2.2)
+                          and let |expectedLength| be 48.
+                        </p>
+                      </dd>
+                      <dt>If the {{Algorithm/name}} member of |hashAlgorithm| is "`SHA-512`":</dt>
+                      <dd>
+                        <p>
+                          Let |oid| be the DER encoding of `id-sha512` (2.16.840.1.101.3.4.2.3)
+                          and let |expectedLength| be 64.
+                        </p>
+                      </dd>
+                      <dt>If the {{Algorithm/name}} member of |hashAlgorithm| is "`SHA3-256`":</dt>
+                      <dd>
+                        <p>
+                          Let |oid| be the DER encoding of `id-sha3-256` (2.16.840.1.101.3.4.2.8)
+                          and let |expectedLength| be 32.
+                        </p>
+                      </dd>
+                      <dt>If the {{Algorithm/name}} member of |hashAlgorithm| is "`SHA3-384`":</dt>
+                      <dd>
+                        <p>
+                          Let |oid| be the DER encoding of `id-sha3-384` (2.16.840.1.101.3.4.2.9)
+                          and let |expectedLength| be 48.
+                        </p>
+                      </dd>
+                      <dt>If the {{Algorithm/name}} member of |hashAlgorithm| is "`SHA3-512`":</dt>
+                      <dd>
+                        <p>
+                          Let |oid| be the DER encoding of `id-sha3-512` (2.16.840.1.101.3.4.2.10)
+                          and let |expectedLength| be 64.
+                        </p>
+                      </dd>
+                      <dt>If the {{Algorithm/name}} member of |hashAlgorithm| is "`cSHAKE128`":</dt>
+                      <dd>
+                        <ol>
+                          <li>
+                            <p>
+                              If the {{CShakeParams/functionName}} member of |hashAlgorithm| is present
+                              and is not an empty [= byte sequence =],
+                              then [= exception/throw =] an {{OperationError}}.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              If the {{CShakeParams/customization}} member of |hashAlgorithm| is present
+                              and is not an empty [= byte sequence =],
+                              then [= exception/throw =] an {{OperationError}}.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              If the {{CShakeParams/outputLength}} member of |hashAlgorithm| is not 256,
+                              then [= exception/throw =] an {{OperationError}}.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              Let |oid| be the DER encoding of `id-shake128` (2.16.840.1.101.3.4.2.11)
+                              and let |expectedLength| be 32.
+                            </p>
+                          </li>
+                        </ol>
+                      </dd>
+                      <dt>If the {{Algorithm/name}} member of |hashAlgorithm| is "`cSHAKE256`":</dt>
+                      <dd>
+                        <ol>
+                          <li>
+                            <p>
+                              If the {{CShakeParams/functionName}} member of |hashAlgorithm| is present
+                              and is not an empty [= byte sequence =],
+                              then [= exception/throw =] an {{OperationError}}.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              If the {{CShakeParams/customization}} member of |hashAlgorithm| is present
+                              and is not an empty [= byte sequence =],
+                              then [= exception/throw =] an {{OperationError}}.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              If the {{CShakeParams/outputLength}} member of |hashAlgorithm| is not 512,
+                              then [= exception/throw =] an {{OperationError}}.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              Let |oid| be the DER encoding of `id-shake256` (2.16.840.1.101.3.4.2.12)
+                              and let |expectedLength| be 64.
+                            </p>
+                          </li>
+                        </ol>
+                      </dd>
+                      <dt>Otherwise:</dt>
+                      <dd>
+                        <p>
+                          [= exception/throw =] a {{NotSupportedError}}.
+                        </p>
+                      </dd>
+                    </dl>
+                  </li>
+                  <li>
+                    <p>
+                      If the [= byte sequence/length =] of |message| is not equal to |expectedLength|,
+                      then [= exception/throw =] an {{OperationError}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Let <var>M&prime;</var> be the concatenation of
+                      the byte 0x01,
+                      the single-byte encoding of the [= byte sequence/length =] of |context| (i.e., IntegerToBytes(&#x7C;ctx&#x7C;, 1) per [[FIPS-204]]),
+                      |context|,
+                      |oid|, and
+                      |message|.
+                    </p>
+                  </li>
+                </ol>
+              </dd>
+              <dt>
+                Otherwise:
+              </dt>
+              <dd>
+                <p>
+                  Let <var>M&prime;</var> be the concatenation of
+                  the byte 0x00,
+                  the single-byte encoding of the [= byte sequence/length =] of |context| (i.e., IntegerToBytes(&#x7C;ctx&#x7C;, 1) per [[FIPS-204]]),
+                  |context|, and
+                  |message|.
+                </p>
+              </dd>
+            </dl>
+          </li>
+          <li>
+            <p>
+              Let <var>μ</var> be the result of applying SHAKE-256 ([[FIPS-202]])
+              to the concatenation of <var>tr</var> and <var>M&prime;</var>
+              with an output length of 64 bytes.
+            </p>
+          </li>
+          <li>
+            <p>
+              Return <var>μ</var>.
+            </p>
+          </li>
+        </ol>
+      </section>
+    </section>
+  </section>
+
   <section id="slh-dsa">
     <h3>SLH-DSA</h3>
     <section id="slh-dsa-description" class="informative">
