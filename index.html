@@ -915,6 +915,7 @@ enum KeyUsage { "encrypt", "decrypt", "sign", "verify", "deriveKey", "deriveBits
             <p>
               If |operation| is not one of
               "`encrypt`", "`decrypt`", "`sign`", "`verify`",
+              "`signDigest`", "`verifyDigest`",
               "`digest`", "`generateKey`", "`deriveKey`", "`deriveBits`",
               "`importKey`", "`exportKey`", "`wrapKey`", "`unwrapKey`",
               "`encapsulateKey`", "`encapsulateBits`",
@@ -944,6 +945,7 @@ enum KeyUsage { "encrypt", "decrypt", "sign", "verify", "deriveKey", "deriveBits
             <p>
               If |operation| is not one of
               "`encrypt`", "`decrypt`", "`sign`", "`verify`",
+              "`signDigest`", "`verifyDigest`",
               "`digest`", "`generateKey`", "`deriveKey`", "`deriveBits`",
               "`importKey`", "`exportKey`", "`wrapKey`", "`unwrapKey`",
               "`encapsulateKey`", "`encapsulateBits`",
@@ -2469,6 +2471,16 @@ partial dictionary JsonWebKey {
             <td>boolean</td>
           </tr>
           <tr>
+            <td>signDigest</td>
+            <td>None</td>
+            <td>[= byte sequence =]</td>
+          </tr>
+          <tr>
+            <td>verifyDigest</td>
+            <td>None</td>
+            <td>boolean</td>
+          </tr>
+          <tr>
             <td>generateKey</td>
             <td>None</td>
             <td>{{CryptoKeyPair}}</td>
@@ -2569,6 +2581,102 @@ dictionary ContextParams : Algorithm {
           <li>
             <p>
               If the ML-DSA.Verify algorithm returned an error, return an {{OperationError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              Return |result|.
+            </p>
+          </li>
+        </ol>
+      </section>
+      <section id="ml-dsa-operations-sign-digest">
+        <h5>Sign Digest</h5>
+        <div class=note>
+          <p>
+            The |digest| parameter is an externally computed <var>μ</var> value
+            (64 bytes), which is passed directly to ML-DSA.Sign_internal
+            (Section 6.2 of [[FIPS-204]]).
+          </p>
+          <p>
+            This can be used to implement Pre-Hash ML-DSA (HashML-DSA, Sections
+            5.4 and 5.5 of [[FIPS-204]]) by computing <var>μ</var> externally.
+          </p>
+        </div>
+        <ol>
+          <li>
+            <p>
+              If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot of
+              |key| is not {{KeyType/"private"}}, then [= exception/throw =] an {{InvalidAccessError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              If the [= byte sequence/length =] of |digest| is not 64,
+              then [= exception/throw =] an {{OperationError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let |result| be the result of performing the ML-DSA.Sign_internal
+              algorithm, as specified in Section 6.2 of [[FIPS-204]],
+              with the parameter set indicated by the {{Algorithm/name}} member of |normalizedAlgorithm|,
+              using the ML-DSA private key associated with |key| as |sk|,
+              and |digest| as <var>μ</var>.
+            </p>
+          </li>
+          <li>
+            <p>
+              If the ML-DSA.Sign_internal algorithm returned an error,
+              [= exception/throw =] an {{OperationError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              Return |result|.
+            </p>
+          </li>
+        </ol>
+      </section>
+      <section id="ml-dsa-operations-verify-digest">
+        <h5>Verify Digest</h5>
+        <div class=note>
+          <p>
+            The |digest| parameter is an externally computed <var>μ</var> value
+            (64 bytes), which is passed directly to ML-DSA.Verify_internal
+            (Section 6.3 of [[FIPS-204]]).
+          </p>
+          <p>
+            This can be used to implement Pre-Hash ML-DSA (HashML-DSA, Sections
+            5.4 and 5.5 of [[FIPS-204]]) by computing <var>μ</var> externally.
+          </p>
+        </div>
+        <ol>
+          <li>
+            <p>
+              If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot of
+              |key| is not {{KeyType/"public"}}, then [= exception/throw =] an {{InvalidAccessError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              If the [= byte sequence/length =] of |digest| is not 64,
+              then return false.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let |result| be the result of performing the ML-DSA.Verify_internal
+              algorithm, as specified in Section 6.3 of [[FIPS-204]],
+              with the parameter set indicated by the {{Algorithm/name}} member of |normalizedAlgorithm|,
+              using the ML-DSA public key associated with |key| as |pk|,
+              |digest| as <var>μ</var>, and |signature| as <var>σ</var>.
+            </p>
+          </li>
+          <li>
+            <p>
+              If the ML-DSA.Verify_internal algorithm returned an error,
+              [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
