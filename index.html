@@ -7563,42 +7563,42 @@ dictionary Argon2Params : Algorithm {
     </p>
     <p>
       The <a href="#dfn-SubtleCrypto-method-supports">`SubtleCrypto.supports`</a>
-      method is foundational to the adoption of every other algorithm and
-      operation in this specification. It enables feature detection, graceful
+      method simplifies the expedited adoption of every other algorithm and
+      operation in this specification, by enabling feature detection, graceful
       fallback, and progressive enhancement.
     </p>
     <p>
       The <a href="#dfn-SubtleCrypto-method-getPublicKey">`SubtleCrypto.getPublicKey`</a>
       method is important for practical use of asymmetric algorithms defined
       in this specification and [[webcrypto]]. It simplifies key management
-      in that applications need only store the private key without worrying
-      about the corresponding public key going amiss or being mixed up with
-      a public key belonging to a different private key. Furthermore, it
-      allows library authors to accept non-extractable private keys as input
-      to protocols that commit the public key value to their outputs.
+      by enabling applications to only store the private key without the
+      corresponding public key, and without having to verify that the private
+      and public key do indeed correspond. Furthermore, it allows library
+      authors to accept non-extractable private keys as input to protocols
+      that commit the public key value to their outputs.
     </p>
     <p>
       In terms of algorithms, the following are considered the highest
       priority for the post-quantum transition and for enabling modern
-      cryptographic protocols on the Web:
+      cryptographic protocols on the Web, in order of priority:
     </p>
     <ol>
       <li>
-        <a href="#ml-dsa">ML-DSA</a> is the primary post-quantum digital
-        signature algorithm standardized by NIST [[FIPS-204]].
-      </li>
-      <li>
-        <a href="#ml-kem">ML-KEM</a> is the primary post-quantum Key
-        Encapsulation Mechanism standardized by NIST [[FIPS-203]]. Combined
-        with traditional key agreement, it enables hybrid
+        <a href="#ml-kem">ML-KEM</a> is the primary post-quantum key
+        encapsulation mechanism standardized by NIST [[FIPS-203]].
+        Combined with traditional key agreement, it enables hybrid
         post-quantum/traditional (PQ/T) key establishment as used in
         protocols like [[draft-ietf-hpke-hpke]] and its PQ and PQ/T
         algorithms [[draft-ietf-hpke-pq]].
       </li>
       <li>
+        <a href="#ml-dsa">ML-DSA</a> is the primary post-quantum digital
+        signature algorithm standardized by NIST [[FIPS-204]].
+      </li>
+      <li>
         <a href="#chacha20-poly1305">ChaCha20-Poly1305</a> is a widely
-        deployed AEAD cipher [[RFC8439]] used across many protocols (TLS,
-        SSH, WireGuard, HPKE).
+        deployed AEAD cipher [[RFC8439]] used across many protocols
+        (TLS, SSH, WireGuard, HPKE).
       </li>
       <li>
         <a href="#sha3">SHA-3</a> and <a href="#cshake">cSHAKE</a>
@@ -7608,14 +7608,32 @@ dictionary Argon2Params : Algorithm {
         parameters produces output identical to SHAKE256, making a single
         implementation sufficient for both customized (cSHAKE256) and
         non-customized (SHAKE256) use cases.
+        However, if an implementation of cSHAKE is not available, an
+        implementation of SHAKE may still prove useful, when making sure
+        to throw a {{NotSupportedError}} (and return `false` from
+        <a href="#dfn-SubtleCrypto-method-supports">`SubtleCrypto.supports`</a>)
+        when the {{CShakeParams/customization}} parameter is present and
+        non-empty.
+      </li>
+      <li>
+        <a href="#argon2">Argon2</a> is a memory-hard password-based
+        key derivation function [[RFC9106]], providing improved resistance
+        against brute force attacks in highly parallelized environments
+        (such as GPUs and FPGAs).
       </li>
     </ol>
     <p>
-      Beyond these, <a href="#kmac">KMAC</a>,
-      <a href="#turboshake">TurboSHAKE</a>, and
-      <a href="#kangarootwelve">KangarooTwelve</a> are all valuable
-      additions but are not as immediately critical for the post-quantum
-      transition.
+      <a href="#slh-dsa">SLH-DSA</a> is a stateless hash-based digital
+      signature algorithm standardized by NIST [[FIPS-204]]. It has
+      seen less adoption than ML-DSA so far, but may become useful to
+      implement if an alternative to ML-DSA becomes needed.
+    </p>
+    <p>
+      Beyond these, <a href="#aes-ocb">AES-OCB</a>,
+      <a href="#turboshake">TurboSHAKE</a>,
+      <a href="#kangarootwelve">KangarooTwelve</a>, and
+      <a href="#kmac">KMAC</a> are all valuable additions but are not as
+      immediately critical for the post-quantum transition.
     </p>
   </section>
 
