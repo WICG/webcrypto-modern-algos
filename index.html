@@ -83,12 +83,6 @@
         "publisher": "IETF",
         "date": "October 2025"
       },
-      "draft-ietf-jose-pqc-kem-01": {
-        "title": "Post-Quantum Key Encapsulation Mechanisms (PQ KEMs) for JOSE and COSE",
-        "href": "https://www.ietf.org/archive/id/draft-ietf-jose-pqc-kem-01.html",
-        "publisher": "IETF",
-        "date": "May 2025"
-      },
       "draft-ietf-cose-dilithium-08": {
         "title": "ML-DSA for JOSE and COSE",
         "href": "https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-08.html",
@@ -1275,6 +1269,16 @@ partial dictionary JsonWebKey {
         </tbody>
       </table>
     </section>
+    <section id="ml-kem-jwk">
+      <h4>JSON Web Key Representation</h4>
+      <p>
+        ML-KEM keys use the "AKP" (Algorithm Key Pair) key type defined in [[draft-ietf-cose-dilithium-08]]
+        for JWK representation. The "alg" (algorithm) parameter identifies the specific ML-KEM parameter set.
+        The public key is carried in the "pub" parameter. If a private key is included, it is represented
+        using the "priv" parameter. When expressed in JWK, all key parameters are base64url encoded.
+      </p>
+    </section>
+
     <section id="ml-kem-operations">
       <h4>Operations</h4>
       <section id="ml-kem-operations-encapsulate">
@@ -1904,9 +1908,6 @@ partial dictionary JsonWebKey {
               <dd>
                 <ol>
                   <li>
-                    <p class="issue">
-                      The JWK format for ML-KEM is not standardized yet and thus subject to change.
-                    </p>
                     <dl class="switch">
                       <dt>If |keyData| is a {{JsonWebKey}} dictionary:</dt>
                       <dd><p>Let |jwk| equal |keyData|.</p></dd>
@@ -1942,16 +1943,20 @@ partial dictionary JsonWebKey {
                   </li>
                   <li>
                     <p>
-                      If the {{JsonWebKey/alg}} field of |jwk| is not
-                      one of the `alg` values corresponding to the
-                      {{Algorithm/name}} member of |normalizedAlgorithm|
-                      indicated in Section 8 of [[draft-ietf-jose-pqc-kem-01]]
-                      (Figure 1 or 2), then [= exception/throw =] a
+                      If the {{JsonWebKey/alg}} field of |jwk| is not present,
+                      or its value does not identify an algorithm that utilizes the
+                      ML-KEM parameter set indicated by the {{Algorithm/name}} member
+                      of |normalizedAlgorithm|,
+                      then [= exception/throw =] a
                       {{DataError}}.
                     </p>
-                    <p class="example">
-                      For example, `MLKEM512` and `MLKEM512+A128KW`
-                      are valid "alg" values for ML-KEM-512.
+                    <p class="note">
+                      The "alg" values registered in the
+                      IANA JSON Web Signature and Encryption Algorithms registry
+                      that identify the pure ML-KEM parameter set
+                      are `ML-KEM-512`, `ML-KEM-768`, and `ML-KEM-1024`.
+                      Implementations should also accept other values from this registry
+                      that identify an algorithm utilizing the same ML-KEM parameter set.
                     </p>
                   </li>
                   <li>
@@ -2343,9 +2348,6 @@ partial dictionary JsonWebKey {
               <dd>
                 <ol>
                   <li>
-                    <p class="issue">
-                      The JWK format for ML-KEM is not standardized yet and thus subject to change.
-                    </p>
                     <p>
                       Let |jwk| be a new {{JsonWebKey}}
                       dictionary.
@@ -2365,14 +2367,7 @@ partial dictionary JsonWebKey {
                   <li>
                     <p>
                       Set the `alg` attribute of |jwk| to
-                      the `alg` value corresponding to the
-                      {{Algorithm/name}} member of |keyAlgorithm|
-                      indicated in Section 8 of [[draft-ietf-jose-pqc-kem-01]]
-                      (Figure 1).
-                    </p>
-                    <p class="example">
-                      For example, `MLKEM512` is the "alg" value
-                      used for ML-KEM-512.
+                      the {{Algorithm/name}} member of |keyAlgorithm|.
                     </p>
                   </li>
                   <li>
@@ -7408,6 +7403,30 @@ dictionary Argon2Params : Algorithm {
       <ul>
         <li>Algorithm Name: "K256"</li>
         <li>Algorithm Description: KMAC using the KMAC256</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "ML-KEM-512"</li>
+        <li>Algorithm Description: ML-KEM using the ML-KEM-512 parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "ML-KEM-768"</li>
+        <li>Algorithm Description: ML-KEM using the ML-KEM-768 parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "ML-KEM-1024"</li>
+        <li>Algorithm Description: ML-KEM using the ML-KEM-1024 parameter set</li>
         <li>Algorithm Usage Location(s): "JWK"</li>
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
