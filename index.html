@@ -232,7 +232,7 @@ partial interface SubtleCrypto {
 
   static boolean supports(DOMString operation,
                    AlgorithmIdentifier algorithm,
-                   optional unsigned long? length = null);
+                   optional [EnforceRange] unsigned long? length = null);
   static boolean supports(DOMString operation,
                    AlgorithmIdentifier algorithm,
                    AlgorithmIdentifier additionalAlgorithm);
@@ -6515,7 +6515,7 @@ dictionary KmacImportParams : Algorithm {
       <h4><dfn data-idl id="dfn-KmacKeyAlgorithm">KmacKeyAlgorithm</dfn> dictionary</h4>
       <pre class=idl>
 dictionary KmacKeyAlgorithm : KeyAlgorithm {
-  required unsigned long length;
+  required [EnforceRange] unsigned long length;
 };
       </pre>
       <p>The <dfn data-dfn-for=KmacKeyAlgorithm id=dfn-KmacKeyAlgorithm-length>length</dfn> member represents the length (in bits) of the key.</p>
