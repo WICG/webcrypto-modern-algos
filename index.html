@@ -104,6 +104,18 @@
         "href": "https://datatracker.ietf.org/doc/draft-ietf-hpke-hpke/",
         "publisher": "IETF"
       },
+      "draft-irtf-cfrg-hybrid-kems-09": {
+        "title": "Hybrid PQ/T Key Encapsulation Mechanisms",
+        "href": "https://www.ietf.org/archive/id/draft-irtf-cfrg-hybrid-kems-09.html",
+        "publisher": "IETF",
+        "date": "March 2026"
+      },
+      "draft-irtf-cfrg-concrete-hybrid-kems-03": {
+        "title": "Concrete Hybrid PQ/T Key Encapsulation Mechanisms",
+        "href": "https://www.ietf.org/archive/id/draft-irtf-cfrg-concrete-hybrid-kems-03.html",
+        "publisher": "IETF",
+        "date": "March 2026"
+      },
     },
   };
   </script>
@@ -114,8 +126,9 @@
     <p>
       This specification defines a number of post-quantum secure and
       modern cryptographic algorithms for the [[webcrypto | Web Cryptography API]],
-      namely ML-KEM, ML-DSA, SLH-DSA, AES-OCB, ChaCha20-Poly1305,
-      SHA-3, cSHAKE, TurboSHAKE, KangarooTwelve, KMAC, and Argon2.
+      namely ML-KEM, Hybrid KEMs, ML-DSA, SLH-DSA, AES-OCB,
+      ChaCha20-Poly1305, SHA-3, cSHAKE, TurboSHAKE, KangarooTwelve,
+      KMAC, and Argon2.
     </p>
   </section>
   <section id="sotd">
@@ -134,6 +147,7 @@
     </p>
     <ul>
       <li><a href="#ml-kem">ML-KEM</a> [[FIPS-203]]</li>
+      <li><a href="#hybrid-kems">Hybrid KEMs</a> [[draft-irtf-cfrg-concrete-hybrid-kems-03]]</li>
       <li><a href="#ml-dsa">ML-DSA</a> [[FIPS-204]]</li>
       <li><a href="#slh-dsa">SLH-DSA</a> [[FIPS-205]]</li>
       <li><a href="#aes-ocb">AES-OCB</a> [[RFC7253]]</li>
@@ -144,7 +158,7 @@
       <li><a href="#argon2">Argon2d, Argon2i, and Argon2id</a> [[RFC9106]]</li>
     </ul>
     <p>
-      To accommodate the usage of ML-KEM, and possibly future other KEMs,
+      To accommodate the usage of ML-KEM, Hybrid KEMs, and possibly future other KEMs,
       this proposal introduces functions for key encapsulation and decapsulation;
       <a href="#dfn-SubtleCrypto-method-encapsulateKey">`SubtleCrypto.encapsulateKey`</a>,
       <a href="#dfn-SubtleCrypto-method-encapsulateBits">`SubtleCrypto.encapsulateBits`</a>,
@@ -7487,6 +7501,740 @@ dictionary Argon2Params : Algorithm {
     </section>
   </section>
 
+  <section id="hybrid-kems">
+    <h3>Hybrid KEMs</h3>
+    <section id="hybrid-kems-description" class="informative">
+      <h4>Description</h4>
+      <p>
+        This describes using hybrid post-quantum/traditional key
+        encapsulation mechanisms for key encapsulation and decapsulation,
+        as specified by [[draft-irtf-cfrg-concrete-hybrid-kems-03]].
+      </p>
+    </section>
+    <section id="hybrid-kems-registration">
+      <h4>Registration</h4>
+      <p>
+        The <a data-cite="webcrypto#recognized-algorithm-name">recognized algorithm names</a> for
+        this algorithm are "`MLKEM768-P256`", "`MLKEM768-X25519`" and
+        "`MLKEM1024-P384`".
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th><a data-cite="webcrypto#supported-operations">Operation</a></th>
+            <th><a data-cite="webcrypto#algorithm-specific-params">Parameters</a></th>
+            <th><a data-cite="webcrypto#algorithm-result">Result</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>encapsulate</td>
+            <td>None</td>
+            <td>{{EncapsulatedBits}}</td>
+          </tr>
+          <tr>
+            <td>decapsulate</td>
+            <td>None</td>
+            <td>[= byte sequence =]</td>
+          </tr>
+          <tr>
+            <td>generateKey</td>
+            <td>None</td>
+            <td>{{CryptoKeyPair}}</td>
+          </tr>
+          <tr>
+            <td>importKey</td>
+            <td>None</td>
+            <td>{{CryptoKey}}</td>
+          </tr>
+          <tr>
+            <td>exportKey</td>
+            <td>None</td>
+            <td>object</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="hybrid-kems-operations">
+      <h4>Operations</h4>
+      <section id="hybrid-kems-operations-encapsulate">
+        <h5>Encapsulate</h5>
+        <ol>
+          <li>
+            <p>
+              If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot of
+              |key| is not {{KeyType/"public"}}, then [= exception/throw =] an {{InvalidAccessError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let |sharedKey| and |ciphertext| be the outputs that result
+              from performing the Encaps function for the hybrid
+              KEM instance indicated by the {{Algorithm/name}} member of
+              |algorithm| in Section 4 of
+              [[draft-irtf-cfrg-concrete-hybrid-kems-03]], using the key
+              represented by the <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
+              internal slot of |key| as the |ek| input parameter.
+            </p>
+          </li>
+          <li>
+            <p>
+              If the Encaps function returned an error, return an {{OperationError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let |result| be a new {{EncapsulatedBits}}
+              dictionary.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the {{EncapsulatedBits/sharedKey}} attribute
+              of |result| to the result of [= ArrayBuffer/create | creating =]
+              an {{ArrayBuffer}} containing |sharedKey|.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the {{EncapsulatedBits/ciphertext}} attribute
+              of |result| to the result of [= ArrayBuffer/create | creating =]
+              an {{ArrayBuffer}} containing |ciphertext|.
+            </p>
+          </li>
+          <li>
+            <p>
+              Return |result|.
+            </p>
+          </li>
+        </ol>
+      </section>
+      <section id="hybrid-kems-operations-decapsulate">
+        <h5>Decapsulate</h5>
+        <ol>
+          <li>
+            <p>
+              If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot of
+              |key| is not {{KeyType/"private"}}, then [= exception/throw =] an {{InvalidAccessError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let |sharedKey| be the output that results from performing
+              the Decaps function for the hybrid KEM instance
+              indicated by the {{Algorithm/name}} member of |algorithm| in
+              Section 4 of [[draft-irtf-cfrg-concrete-hybrid-kems-03]],
+              using the key represented by the <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
+              internal slot of |key| as the |dk| input parameter, and
+              |ciphertext| as the |ct| input parameter.
+            </p>
+          </li>
+          <li>
+            <p>
+              If the Decaps function returned an error, return an {{OperationError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              Return |sharedKey|.
+            </p>
+          </li>
+        </ol>
+      </section>
+      <section id="hybrid-kems-operations-generate-key">
+        <h5>Generate Key</h5>
+        <ol>
+          <li>
+            <p>
+              If |usages| contains an entry which is not
+              one of "`encapsulateKey`", "`encapsulateBits`",
+              "`decapsulateKey`" or "`decapsulateBits`",
+              then [= exception/throw =] a
+              {{SyntaxError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              Generate a hybrid KEM key pair by performing the
+              GenerateKeyPair function described in Section 5.2 of
+              [[draft-irtf-cfrg-hybrid-kems-09]] with the hybrid
+              KEM instance indicated by the {{Algorithm/name}} member of
+              |normalizedAlgorithm|.
+            </p>
+          </li>
+          <li>
+            <p>
+              If the key generation step fails,
+              then [= exception/throw =] an
+              {{OperationError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let |algorithm| be a new {{KeyAlgorithm}} object.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the {{KeyAlgorithm/name}} attribute of
+              |algorithm| to the {{Algorithm/name}} attribute of
+              |normalizedAlgorithm|.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let |publicKey| be a new {{CryptoKey}}
+              representing the encapsulation key of the generated key pair.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot of
+              |publicKey| to {{KeyType/"public"}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a> internal
+              slot of |publicKey| to |algorithm|.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-extractable">`[[extractable]]`</a> internal
+              slot of |publicKey| to true.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-usages">`[[usages]]`</a> internal slot of
+              |publicKey| to be the
+              <a data-cite="webcrypto#concept-usage-intersection">usage intersection</a> of
+              |usages| and `[ "encapsulateKey", "encapsulateBits" ]`.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let |privateKey| be a new {{CryptoKey}}
+              representing the decapsulation key of the generated key pair.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot of
+              |privateKey| to {{KeyType/"private"}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a> internal
+              slot of |privateKey| to |algorithm|.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-extractable">`[[extractable]]`</a> internal
+              slot of |privateKey| to |extractable|.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-usages">`[[usages]]`</a> internal slot of
+              |privateKey| to be the
+              <a data-cite="webcrypto#concept-usage-intersection">usage intersection</a> of
+              |usages| and `[ "decapsulateKey", "decapsulateBits" ]`.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let |result| be a new {{CryptoKeyPair}}
+              dictionary.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the {{CryptoKeyPair/publicKey}} attribute
+              of |result| to be |publicKey|.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set the {{CryptoKeyPair/privateKey}} attribute
+              of |result| to be |privateKey|.
+            </p>
+          </li>
+          <li>
+            <p>
+              Return |result|.
+            </p>
+          </li>
+        </ol>
+      </section>
+      <section id="hybrid-kems-operations-import-key">
+        <h5>Import Key</h5>
+        <div class=note>
+          <p>
+            TODO: {{KeyFormat/"spki"}} and {{KeyFormat/"pkcs8"}}.
+          </p>
+        </div>
+        <ol>
+          <li>
+            <p>Let |keyData| be the key data to be imported.</p>
+          </li>
+          <li>
+            <dl class="switch">
+              <dt>If |format| is {{KeyFormat/"raw-public"}}:</dt>
+              <dd>
+                <ol>
+                  <li>
+                    <p>
+                      If |usages| contains an entry which is not
+                      "`encapsulateKey`" or "`encapsulateBits`"
+                      then [= exception/throw =] a
+                      {{SyntaxError}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Let |data| be |keyData|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If the length in bytes of |data| is not the raw public key
+                      length, `Nek`, for the hybrid KEM instance
+                      indicated by the {{Algorithm/name}} member of
+                      |normalizedAlgorithm| in Section 4 of
+                      [[draft-irtf-cfrg-concrete-hybrid-kems-03]], then
+                      [= exception/throw =] a {{DataError}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Let |key| be a new {{CryptoKey}}
+                      that represents the hybrid KEM public key data in |data|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
+                      of |key| to {{KeyType/"public"}}
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Let |algorithm| be a new {{KeyAlgorithm}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Set the {{KeyAlgorithm/name}} attribute of
+                      |algorithm| to the {{Algorithm/name}} attribute of
+                      |normalizedAlgorithm|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a>
+                      internal slot of |key| to |algorithm|.
+                    </p>
+                  </li>
+                </ol>
+              </dd>
+              <dt>If |format| is {{KeyFormat/"raw-seed"}}:</dt>
+              <dd>
+                <ol>
+                  <li>
+                    <p>
+                      If |usages| contains an entry which is not
+                      "`decapsulateKey`" or "`decapsulateBits`"
+                      then [= exception/throw =] a
+                      {{SyntaxError}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Let |data| be |keyData|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If the length in bits of |data| is not 256
+                      then [= exception/throw =] a
+                      {{DataError}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Let |keyPair| be the result of performing the
+                      DeriveKeyPair function described in Section 5.5 of
+                      [[draft-irtf-cfrg-hybrid-kems-09]] with the
+                      hybrid KEM instance indicated by the {{Algorithm/name}}
+                      member of |normalizedAlgorithm|, using |data| as the
+                      |seed| input parameter.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If the DeriveKeyPair function returned an error,
+                      then [= exception/throw =] an {{OperationError}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Let |key| be a new {{CryptoKey}}
+                      that represents the hybrid KEM private key identified by
+                      the decapsulation key of |keyPair|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
+                      of |key| to {{KeyType/"private"}}
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Let |algorithm| be a new {{KeyAlgorithm}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Set the {{KeyAlgorithm/name}} attribute of
+                      |algorithm| to the {{Algorithm/name}} attribute of
+                      |normalizedAlgorithm|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a>
+                      internal slot of |key| to |algorithm|.
+                    </p>
+                  </li>
+                </ol>
+              </dd>
+              <dt>If |format| is {{KeyFormat/"jwk"}}:</dt>
+              <dd>
+                <ol>
+                  <li>
+                    <dl class="switch">
+                      <dt>If |keyData| is a {{JsonWebKey}} dictionary:</dt>
+                      <dd><p>Let |jwk| equal |keyData|.</p></dd>
+                      <dt>Otherwise:</dt>
+                      <dd><p>[= exception/Throw =] a {{DataError}}.</p></dd>
+                    </dl>
+                  </li>
+                  <li>
+                    <p>
+                      If the {{JsonWebKey/priv}} field of |jwk| is present
+                      and if |usages| contains an entry which is not
+                      "`decapsulateKey`" or "`decapsulateBits`"
+                      then [= exception/throw =] a
+                      {{SyntaxError}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If the {{JsonWebKey/priv}} field of |jwk| is not present
+                      and if |usages| contains an entry which is not
+                      "`encapsulateKey`" or "`encapsulateBits`"
+                      then [= exception/throw =] a
+                      {{SyntaxError}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If the {{JsonWebKey/kty}} field of |jwk| is not
+                      "`AKP`",
+                      then [= exception/throw =] a
+                      {{DataError}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If the {{JsonWebKey/alg}} field of |jwk| is not
+                      equal to the {{Algorithm/name}} member of
+                      |normalizedAlgorithm|, then [= exception/throw =] a
+                      {{DataError}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If |usages| is non-empty and the {{JsonWebKey/use}} field of |jwk| is present
+                      and is not equal to "`enc`", then [= exception/throw =] a
+                      {{DataError}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If the {{JsonWebKey/key_ops}} field of |jwk| is present, and
+                      is invalid according to the requirements of JSON Web
+                      Key [[JWK]], or it does not contain all of the specified |usages|
+                      values,
+                      then [= exception/throw =] a
+                      {{DataError}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If the {{JsonWebKey/ext}} field of |jwk| is present and
+                      has the value false and |extractable| is true,
+                      then [= exception/throw =] a
+                      {{DataError}}.
+                    </p>
+                  </li>
+                  <li>
+                    <dl class="switch">
+                      <dt>If the {{JsonWebKey/priv}} field of |jwk| is present:</dt>
+                      <dd>
+                        <ol>
+                          <li>
+                            <p>
+                              If the {{JsonWebKey/priv}} attribute of |jwk|
+                              does not contain a valid base64url encoded
+                              32-byte seed representing a hybrid KEM private key,
+                              then [= exception/throw =] a {{DataError}}.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              Let |key| be a new {{CryptoKey}} object that represents the
+                              hybrid KEM private key identified by interpreting the
+                              {{JsonWebKey/priv}} attribute of |jwk|
+                              as a base64url encoded seed.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a>
+                              internal slot of |key| to {{KeyType/"private"}}.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              If the {{JsonWebKey/pub}} attribute of |jwk|
+                              does not contain the base64url encoded public key
+                              representing the hybrid KEM public key
+                              corresponding to |key|,
+                              then [= exception/throw =] a {{DataError}}.
+                            </p>
+                          </li>
+                        </ol>
+                      </dd>
+                      <dt>Otherwise:</dt>
+                      <dd>
+                        <ol>
+                          <li>
+                            <p>
+                              If the {{JsonWebKey/pub}} attribute of |jwk|
+                              does not contain a valid base64url encoded raw
+                              public key whose length is `Nek` for the
+                              hybrid KEM instance indicated by the
+                              {{Algorithm/name}} member of
+                              |normalizedAlgorithm| in Section 4 of
+                              [[draft-irtf-cfrg-concrete-hybrid-kems-03]],
+                              then [= exception/throw =] a {{DataError}}.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              Let |key| be a new {{CryptoKey}} object that represents the
+                              hybrid KEM public key identified by interpreting the
+                              {{JsonWebKey/pub}} attribute of |jwk|
+                              as a base64url encoded public key.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a>
+                              internal slot of |key| to {{KeyType/"public"}}.
+                            </p>
+                          </li>
+                        </ol>
+                      </dd>
+                    </dl>
+                  </li>
+                  <li>
+                    <p>
+                      Let |algorithm| be a new instance of a {{KeyAlgorithm}} object.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Set the {{KeyAlgorithm/name}} attribute of
+                      |algorithm| to the {{Algorithm/name}} member of |normalizedAlgorithm|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a>
+                      internal slot of |key| to |algorithm|.
+                    </p>
+                  </li>
+                </ol>
+              </dd>
+              <dt>Otherwise:</dt>
+              <dd>
+                [= exception/throw =] a
+                {{NotSupportedError}}.
+              </dd>
+            </dl>
+          </li>
+          <li>
+            <p>
+              Return |key|.
+            </p>
+          </li>
+        </ol>
+      </section>
+      <section id="hybrid-kems-operations-export-key">
+        <h5>Export Key</h5>
+        <ol>
+          <li>
+            <p>
+              Let |key| be the {{CryptoKey}} to be
+              exported.
+            </p>
+          </li>
+          <li>
+            <p>
+              If the underlying cryptographic key material represented by the <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a> internal slot of |key|
+              cannot be accessed, then [= exception/throw =] an {{OperationError}}.
+            </p>
+          </li>
+          <li>
+            <dl class="switch">
+              <dt>If |format| is {{KeyFormat/"raw-public"}}:</dt>
+              <dd>
+                <ol>
+                  <li>
+                    <p>
+                      If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
+                      of |key| is not {{KeyType/"public"}}, then [= exception/throw =] an {{InvalidAccessError}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Let |data| be a [= byte sequence =] containing
+                      the raw octets of the key represented by the <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a> internal slot of
+                      |key|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Let |result| be |data|.
+                    </p>
+                  </li>
+                </ol>
+              </dd>
+              <dt>If |format| is {{KeyFormat/"raw-seed"}}:</dt>
+              <dd>
+                <ol>
+                  <li>
+                    <p>
+                      If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
+                      of |key| is not {{KeyType/"private"}}, then [= exception/throw =] an {{InvalidAccessError}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Let |data| be a [= byte sequence =] containing the 32-byte seed represented by
+                      the <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
+                      internal slot of |key|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Let |result| be |data|.
+                    </p>
+                  </li>
+                </ol>
+              </dd>
+              <dt>If |format| is {{KeyFormat/"jwk"}}:</dt>
+              <dd>
+                <ol>
+                  <li>
+                    <p>
+                      Let |jwk| be a new {{JsonWebKey}}
+                      dictionary.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Let |keyAlgorithm| be the <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a> internal slot of |key|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Set the `kty` attribute of |jwk| to
+                      "`AKP`".
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Set the `alg` attribute of |jwk| to the
+                      {{Algorithm/name}} member of |keyAlgorithm|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Set the {{JsonWebKey/pub}} attribute of |jwk|
+                      to the base64url encoded public key corresponding
+                      to the <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
+                      internal slot of |key|.
+                    </p>
+                  </li>
+                  <li>
+                    <dl class="switch">
+                      <dt>
+                        If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot
+                        of |key| is {{KeyType/"private"}}:
+                      </dt>
+                      <dd>
+                        Set the {{JsonWebKey/priv}} attribute of |jwk|
+                        to the base64url encoded 32-byte seed represented by
+                        the <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
+                        internal slot of |key|.
+                      </dd>
+                    </dl>
+                  </li>
+                  <li>
+                    <p>
+                      Set the `key_ops` attribute of |jwk| to the {{CryptoKey/usages}} attribute of |key|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Set the `ext` attribute of |jwk| to the <a data-cite="webcrypto#dfn-CryptoKey-slot-extractable">`[[extractable]]`</a> internal slot
+                      of |key|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Let |result| be |jwk|.
+                    </p>
+                  </li>
+                </ol>
+              </dd>
+              <dt>Otherwise:</dt>
+              <dd>
+                <p>
+                  [= exception/throw =] a
+                  {{NotSupportedError}}.
+                </p>
+              </dd>
+            </dl>
+          </li>
+          <li>
+            <p>
+              Return |result|.
+            </p>
+          </li>
+        </ol>
+      </section>
+    </section>
+  </section>
+
   <section id="iana-section">
     <h2>IANA Considerations</h2>
     <section id="iana-section-jws-jwa">
@@ -7641,6 +8389,30 @@ dictionary Argon2Params : Algorithm {
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
       </ul>
+      <ul>
+        <li>Algorithm Name: "MLKEM768-P256"</li>
+        <li>Algorithm Description: Hybrid KEM using ML-KEM-768 and P-256</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "MLKEM768-X25519"</li>
+        <li>Algorithm Description: Hybrid KEM using ML-KEM-768 and X25519</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "MLKEM1024-P384"</li>
+        <li>Algorithm Description: Hybrid KEM using ML-KEM-1024 and P-384</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
     </section>
     <section id="iana-section-key-operations">
       <h3>JSON Web Key Operations</h3>
@@ -7712,6 +8484,11 @@ dictionary Argon2Params : Algorithm {
         post-quantum/traditional (PQ/T) key establishment as used in
         protocols like [[draft-ietf-hpke-hpke]] and its PQ and PQ/T
         algorithms [[draft-ietf-hpke-pq]].
+      </li>
+      <li>
+        <a href="#hybrid-kems">Hybrid KEMs</a> provide
+        post-quantum/traditional KEM instances that combine ML-KEM with
+        P-256, X25519, or P-384 [[draft-irtf-cfrg-concrete-hybrid-kems-03]].
       </li>
       <li>
         <a href="#ml-dsa">ML-DSA</a> is the primary post-quantum digital
@@ -7896,6 +8673,45 @@ alg: "C20P" }
           <td>
 <pre class=js>
 { name: "ChaCha20-Poly1305" }
+</pre>
+          </td>
+        </tr>
+        <tr>
+          <td>
+<pre class=js>
+{ kty: "AKP",
+alg: "MLKEM768-P256" }
+</pre>
+          </td>
+          <td>
+<pre class=js>
+{ name: "MLKEM768-P256" }
+</pre>
+          </td>
+        </tr>
+        <tr>
+          <td>
+<pre class=js>
+{ kty: "AKP",
+alg: "MLKEM768-X25519" }
+</pre>
+          </td>
+          <td>
+<pre class=js>
+{ name: "MLKEM768-X25519" }
+</pre>
+          </td>
+        </tr>
+        <tr>
+          <td>
+<pre class=js>
+{ kty: "AKP",
+alg: "MLKEM1024-P384" }
+</pre>
+          </td>
+          <td>
+<pre class=js>
+{ name: "MLKEM1024-P384" }
 </pre>
           </td>
         </tr>

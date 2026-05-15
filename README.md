@@ -12,8 +12,9 @@ Web Cryptography API, namely:
 - SHA-3, cSHAKE, TurboSHAKE, and KangarooTwelve
 - KMAC
 - Argon2
+- Hybrid KEMs
 
-To accommodate the usage of ML-KEM, and possibly future other KEMs,
+To accommodate the usage of ML-KEM, Hybrid KEMs, and possibly future other KEMs,
 it proposes to add functions for key encapsulation and decapsulation;
 `SubtleCrypto.encapsulateKey`, `SubtleCrypto.encapsulateBits`,
 `SubtleCrypto.decapsulateKey` and `SubtleCrypto.decapsulateBits`.
