@@ -7555,6 +7555,16 @@ dictionary Argon2Params : Algorithm {
         </tbody>
       </table>
     </section>
+    <section id="hybrid-kems-jwk">
+      <h4>JSON Web Key Representation</h4>
+      <p>
+        Hybrid KEM keys use the "AKP" (Algorithm Key Pair) key type defined in [[draft-ietf-cose-dilithium-08]]
+        for JWK representation. The "alg" (algorithm) parameter identifies the specific hybrid KEM instance.
+        The public key is carried in the "pub" parameter. If a private key is included, it is represented
+        using the "priv" parameter. When expressed in JWK, all key parameters are base64url encoded.
+      </p>
+    </section>
+
     <section id="hybrid-kems-operations">
       <h4>Operations</h4>
       <section id="hybrid-kems-operations-encapsulate">
@@ -7952,10 +7962,21 @@ dictionary Argon2Params : Algorithm {
                   </li>
                   <li>
                     <p>
-                      If the {{JsonWebKey/alg}} field of |jwk| is not
-                      equal to the {{Algorithm/name}} member of
-                      |normalizedAlgorithm|, then [= exception/throw =] a
+                      If the {{JsonWebKey/alg}} field of |jwk| is not present,
+                      or its value does not identify the hybrid KEM instance
+                      indicated by the {{Algorithm/name}} member of
+                      |normalizedAlgorithm|,
+                      then [= exception/throw =] a
                       {{DataError}}.
+                    </p>
+                    <p class="note">
+                      The "alg" values registered in the
+                      IANA JSON Web Signature and Encryption Algorithms registry
+                      for the hybrid KEM instances defined by this specification
+                      are `MLKEM768-P256`, `MLKEM768-X25519`, and
+                      `MLKEM1024-P384`. Implementations should also accept other
+                      values from this registry that identify an algorithm
+                      utilizing the same hybrid KEM instance.
                     </p>
                   </li>
                   <li>
