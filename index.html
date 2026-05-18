@@ -83,11 +83,11 @@
         "publisher": "IETF",
         "date": "October 2025"
       },
-      "draft-ietf-jose-pqc-kem-01": {
+      "draft-ietf-jose-pqc-kem-05": {
         "title": "Post-Quantum Key Encapsulation Mechanisms (PQ KEMs) for JOSE and COSE",
-        "href": "https://www.ietf.org/archive/id/draft-ietf-jose-pqc-kem-01.html",
+        "href": "https://www.ietf.org/archive/id/draft-ietf-jose-pqc-kem-05.html",
         "publisher": "IETF",
-        "date": "May 2025"
+        "date": "December 2025"
       },
       "draft-ietf-cose-dilithium-08": {
         "title": "ML-DSA for JOSE and COSE",
@@ -1912,11 +1912,11 @@ partial dictionary JsonWebKey {
               </dd>
               <dt>If |format| is {{KeyFormat/"jwk"}}:</dt>
               <dd>
+                <p class="issue">
+                  The JWK format for ML-KEM is not standardized yet and thus subject to change.
+                </p>
                 <ol>
                   <li>
-                    <p class="issue">
-                      The JWK format for ML-KEM is not standardized yet and thus subject to change.
-                    </p>
                     <dl class="switch">
                       <dt>If |keyData| is a {{JsonWebKey}} dictionary:</dt>
                       <dd><p>Let |jwk| equal |keyData|.</p></dd>
@@ -1955,12 +1955,12 @@ partial dictionary JsonWebKey {
                       If the {{JsonWebKey/alg}} field of |jwk| is not
                       one of the `alg` values corresponding to the
                       {{Algorithm/name}} member of |normalizedAlgorithm|
-                      indicated in Section 8 of [[draft-ietf-jose-pqc-kem-01]]
+                      indicated in Section 8 of [[draft-ietf-jose-pqc-kem-05]]
                       (Figure 1 or 2), then [= exception/throw =] a
                       {{DataError}}.
                     </p>
                     <p class="example">
-                      For example, `MLKEM512` and `MLKEM512+A128KW`
+                      For example, `ML-KEM-512` and `ML-KEM-512+A128KW`
                       are valid "alg" values for ML-KEM-512.
                     </p>
                   </li>
@@ -2351,11 +2351,11 @@ partial dictionary JsonWebKey {
               </dd>
               <dt>If |format| is {{KeyFormat/"jwk"}}:</dt>
               <dd>
+                <p class="issue">
+                  The JWK format for ML-KEM is not standardized yet and thus subject to change.
+                </p>
                 <ol>
                   <li>
-                    <p class="issue">
-                      The JWK format for ML-KEM is not standardized yet and thus subject to change.
-                    </p>
                     <p>
                       Let |jwk| be a new {{JsonWebKey}}
                       dictionary.
@@ -2377,11 +2377,11 @@ partial dictionary JsonWebKey {
                       Set the `alg` attribute of |jwk| to
                       the `alg` value corresponding to the
                       {{Algorithm/name}} member of |keyAlgorithm|
-                      indicated in Section 8 of [[draft-ietf-jose-pqc-kem-01]]
+                      indicated in Section 8 of [[draft-ietf-jose-pqc-kem-05]]
                       (Figure 1).
                     </p>
                     <p class="example">
-                      For example, `MLKEM512` is the "alg" value
+                      For example, `ML-KEM-512` is the "alg" value
                       used for ML-KEM-512.
                     </p>
                   </li>
