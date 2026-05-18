@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 35.8.0">
+<meta name="generator" content="ReSpec 37.1.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -64,6 +64,7 @@ dfn{cursor:pointer}
 .dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
 .dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
 .dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel .marker.cddl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
 .dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
 .dfn-panel a[href]:hover{border-bottom-width:1px}
 .dfn-panel ul{padding:0}
@@ -90,13 +91,17 @@ a.bibref{text-decoration:none}
 .respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
 }
 #references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+@media (prefers-color-scheme:dark){
+#references :target{background:color-mix(in srgb, #eaf3ff 15%, transparent)}
+}
+body:has(input[name=color-scheme][value=dark]:checked) #references :target{background:color-mix(in srgb, #eaf3ff 15%, transparent)}
 cite .bibref{font-style:italic}
 a[href].orcid{padding-left:4px;padding-right:4px}
 a[href].orcid>svg{margin-bottom:-2px}
 ol.tof,ul.tof{list-style:none outside none}
 .caption{margin-top:.5em;font-style:italic}
 #issue-summary>ul{column-count:2}
-#issue-summary li{list-style:none;display:inline-block}
+#issue-summary li{list-style:none}
 details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
 details.respec-tests-details>*{padding-right:2em}
 details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
@@ -106,7 +111,7 @@ details.respec-tests-details>li{padding-left:1em}
 .self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
 aside.example .marker>a.self-link{color:inherit}
 .header-wrapper{display:flex;align-items:baseline}
-:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2):has(+a.self-link){position:relative;left:-.5em}
 :is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.5}
 :is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
 :is(h2,h3)+a.self-link{top:-.2em}
@@ -117,6 +122,8 @@ dd{margin-left:0}
 @media print{
 .removeOnSave{display:none}
 }
+body:has(input[name=color-scheme][value=light]:checked),head:not(:has(meta[name=color-scheme][content~=dark]))+body{color-scheme:light}
+body:has(input[name=color-scheme][value=dark]:checked){color-scheme:dark}
 </style>
   
 <link rel="stylesheet" href="https://w3c.github.io/webcrypto/webcrypto.css" type="text/css">
@@ -140,9 +147,36 @@ dd{margin-left:0}
       namely ML-KEM, ML-DSA, SLH-DSA, AES-OCB, ChaCha20-Poly1305,
       SHA-3, cSHAKE, TurboSHAKE, KangarooTwelve, KMAC, and Argon2.">
 <style>
-.hljs{--base:#fafafa;--mono-1:#383a42;--mono-2:#686b77;--mono-3:#717277;--hue-1:#0b76c5;--hue-2:#336ae3;--hue-3:#a626a4;--hue-4:#42803c;--hue-5:#ca4706;--hue-5-2:#c91243;--hue-6:#986801;--hue-6-2:#9a6a01}
+.hljs,body:has(input[name=color-scheme][value=light]:checked) .hljs,head:not(:has(meta[name=color-scheme][content~=dark]))+body .hljs{--base:#fafafa;--mono-1:#383a42;--mono-2:#686b77;--mono-3:#717277;--hue-1:#0b76c5;--hue-2:#336ae3;--hue-3:#a626a4;--hue-4:#42803c;--hue-5:#ca4706;--hue-5-2:#c91243;--hue-6:#986801;--hue-6-2:#9a6a01}
 @media (prefers-color-scheme:dark){
-.hljs{--base:#282c34;--mono-1:#abb2bf;--mono-2:#818896;--mono-3:#5c6370;--hue-1:#56b6c2;--hue-2:#61aeee;--hue-3:#c678dd;--hue-4:#98c379;--hue-5:#e06c75;--hue-5-2:#be5046;--hue-6:#d19a66;--hue-6-2:#e6c07b}
+.hljs{
+  --base: #282c34;
+  --mono-1: #abb2bf;
+  --mono-2: #818896;
+  --mono-3: #5c6370;
+  --hue-1: #56b6c2;
+  --hue-2: #61aeee;
+  --hue-3: #c678dd;
+  --hue-4: #98c379;
+  --hue-5: #e06c75;
+  --hue-5-2: #be5046;
+  --hue-6: #d19a66;
+  --hue-6-2: #e6c07b;
+}
+}
+body:has(input[name=color-scheme][value=dark]:checked) .hljs{
+  --base: #282c34;
+  --mono-1: #abb2bf;
+  --mono-2: #818896;
+  --mono-3: #5c6370;
+  --hue-1: #56b6c2;
+  --hue-2: #61aeee;
+  --hue-3: #c678dd;
+  --hue-4: #98c379;
+  --hue-5: #e06c75;
+  --hue-5-2: #be5046;
+  --hue-6: #d19a66;
+  --hue-6-2: #e6c07b;
 }
 .hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;color:var(--mono-1,#383a42);background:#fafafa;background:var(--base,#fafafa)}
 .hljs-comment,.hljs-quote{color:#717277;color:var(--mono-3,#717277);font-style:italic}
@@ -175,7 +209,7 @@ var.respec-hl{background:0 0;color:#000;box-shadow:unset}
 }
 </style>
 <style>
-var{position:relative;cursor:pointer}
+var[data-type]{position:relative}
 var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
 var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#222}
 var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#222;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
@@ -252,12 +286,12 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       "date": "October 2025",
       "id": "rfc9861"
     },
-    "draft-ietf-jose-pqc-kem-01": {
+    "draft-ietf-jose-pqc-kem-05": {
       "title": "Post-Quantum Key Encapsulation Mechanisms (PQ KEMs) for JOSE and COSE",
-      "href": "https://www.ietf.org/archive/id/draft-ietf-jose-pqc-kem-01.html",
+      "href": "https://www.ietf.org/archive/id/draft-ietf-jose-pqc-kem-05.html",
       "publisher": "IETF",
-      "date": "May 2025",
-      "id": "draft-ietf-jose-pqc-kem-01"
+      "date": "December 2025",
+      "id": "draft-ietf-jose-pqc-kem-05"
     },
     "draft-ietf-cose-dilithium-08": {
       "title": "ML-DSA for JOSE and COSE",
@@ -297,8 +331,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       "id": "draft-ietf-hpke-hpke"
     }
   },
-  "publishISODate": "2026-03-29T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 29 March 2026"
+  "publishISODate": "2026-05-18T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 18 May 2026"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/cg-draft"></head>
 
@@ -307,19 +341,21 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Modern Algorithms in the Web Cryptography API</h1> 
     <p id="w3c-state">
       <a href="https://www.w3.org/standards/types#reports">Draft Community Group Report</a>
-      <time class="dt-published" datetime="2026-03-29">29 March 2026</time>
+      <time class="dt-published" datetime="2026-05-18">18 May 2026</time>
     </p>
     <dl>
       
       <dt>Latest published version:</dt><dd>
-              <a href="https://www.w3.org/webcrypto-modern-algos/">https://www.w3.org/webcrypto-modern-algos/</a>
+              none
             </dd>
       <dt>Latest editor's draft:</dt><dd><a href="https://wicg.github.io/webcrypto-modern-algos/">https://wicg.github.io/webcrypto-modern-algos/</a></dd>
       
       
       
       
-      <dt>Editors:</dt><dd class="editor p-author h-card vcard">
+      <dt>
+              Editors:
+            </dt><dd class="editor p-author h-card vcard">
     <a class="ed_mailto u-email email p-name" href="mailto:daniel.huigens@proton.ch">Daniel Huigens</a> (<a class="p-org org h-org" href="https://proton.me/">Proton AG</a>)
   </dd><dd class="editor p-author h-card vcard">
     <a class="ed_mailto u-email email p-name" href="mailto:panva.ip@gmail.com">Filip Skokan</a> (<a class="p-org org h-org" href="https://www.okta.com/">Okta</a>)
@@ -1410,7 +1446,7 @@ partial interface <a data-idl="partial" data-link-type="interface" data-title="S
               Execute the step.
             </dd>
           </dl>
-          <div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Note</span></div><p class="">
+          <div class="note" role="note" id="issue-container-generatedID"><div class="note-title marker" id="h-note"><span>Note</span></div><p class="">
             The steps in the referenced algorithm may access the <var>normalizedAlgorithm</var>,
             <var>length</var>, and <var>usages</var> variables from this context.
           </p></div>
@@ -1532,7 +1568,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
               using the key represented by the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a>
               internal slot of <var>key</var> as the <var class="overline">ek</var> input parameter.
             </p>
-            <div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="5"><span>Note</span></div><div class="">
+            <div class="note" role="note" id="issue-container-generatedID-0"><div class="note-title marker" id="h-note-0"><span>Note</span></div><div class="">
               <p>
                 The result of this check may be cached or precomputed
                 for the <a data-link-type="interface" data-lt="CryptoKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey"><code>CryptoKey</code></a> object if desirable for performance.
@@ -1604,7 +1640,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
               internal slot of <var>key</var> as the <var class="overline">dk</var> input parameter, and
               <var>ciphertext</var> as the <var class="overline">c</var> input parameter.
             </p>
-            <div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="5"><span>Note</span></div><div class="">
+            <div class="note" role="note" id="issue-container-generatedID-1"><div class="note-title marker" id="h-note-1"><span>Note</span></div><div class="">
               <p>
                 The result of the decapsulation key type check and the hash check
                 may be cached or precomputed for the <a data-link-type="interface" data-lt="CryptoKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey"><code>CryptoKey</code></a> object
@@ -1654,7 +1690,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
               Section 7.1 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-fips-203" title="Module-Lattice-Based Key-Encapsulation Mechanism Standard">FIPS-203</a></cite>], with the parameter set
               indicated by the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var>.
             </p>
-            <div class="note" role="note" id="issue-container-generatedID-2"><div role="heading" class="note-title marker" id="h-note-2" aria-level="5"><span>Note</span></div><div class="">
+            <div class="note" role="note" id="issue-container-generatedID-2"><div class="note-title marker" id="h-note-2"><span>Note</span></div><div class="">
               <p>
                 In order to be able to export the seed <code>(d, z)</code>,
                 <code>d</code> and <code>z</code> need to be stored as part of the generated
@@ -2140,11 +2176,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
               </dd>
               <dt>If <var>format</var> is "<a data-link-type="idl" href="#dom-keyformat-jwk" class="internalDFN" id="ref-for-dom-keyformat-jwk-1"><code>jwk</code></a>":</dt>
               <dd>
+                <div class="issue" id="issue-container-number-1"><div class="issue-title marker" id="h-issue"><span>Issue 1</span></div><p class="">
+                  The JWK format for ML-KEM is not standardized yet and thus subject to change.
+                </p></div>
                 <ol>
                   <li>
-                    <div class="issue" id="issue-container-number-1"><div role="heading" class="issue-title marker" id="h-issue" aria-level="5"><span>Issue 1</span></div><p class="">
-                      The JWK format for ML-KEM is not standardized yet and thus subject to change.
-                    </p></div>
                     <dl class="switch">
                       <dt>If <var>keyData</var> is a <a data-link-type="dictionary" data-lt="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a> dictionary:</dt>
                       <dd><p>Let <var>jwk</var> equal <var>keyData</var>.</p></dd>
@@ -2183,12 +2219,12 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                       If the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-jsonwebkey-alg"><code>alg</code></a> field of <var>jwk</var> is not
                       one of the <code>alg</code> values corresponding to the
                       <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var>
-                      indicated in Section 8 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-jose-pqc-kem-01" title="Post-Quantum Key Encapsulation Mechanisms (PQ KEMs) for JOSE and COSE">draft-ietf-jose-pqc-kem-01</a></cite>]
+                      indicated in Section 8 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-jose-pqc-kem-05" title="Post-Quantum Key Encapsulation Mechanisms (PQ KEMs) for JOSE and COSE">draft-ietf-jose-pqc-kem-05</a></cite>]
                       (Figure 1 or 2), then <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throw</a> a
                       <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
                     </p>
                     <p class="example">
-                      For example, <code>MLKEM512</code> and <code>MLKEM512+A128KW</code>
+                      For example, <code>ML-KEM-512</code> and <code>ML-KEM-512+A128KW</code>
                       are valid "alg" values for ML-KEM-512.
                     </p>
                   </li>
@@ -2563,7 +2599,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                       seed variables of the key represented by the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a>
                       internal slot of <var>key</var>.
                     </p>
-                    <div class="note" role="note" id="issue-container-generatedID-3"><div role="heading" class="note-title marker" id="h-note-3" aria-level="5"><span>Note</span></div><div class="">
+                    <div class="note" role="note" id="issue-container-generatedID-3"><div class="note-title marker" id="h-note-3"><span>Note</span></div><div class="">
                       <p>
                         The <var>d</var> and <var>z</var> seed variables were sampled in the ML-KEM.KeyGen function
                         as described in Section 7.1 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-fips-203" title="Module-Lattice-Based Key-Encapsulation Mechanism Standard">FIPS-203</a></cite>].
@@ -2579,11 +2615,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
               </dd>
               <dt>If <var>format</var> is "<a data-link-type="idl" href="#dom-keyformat-jwk" class="internalDFN" id="ref-for-dom-keyformat-jwk-2"><code>jwk</code></a>":</dt>
               <dd>
+                <div class="issue" id="issue-container-number-2"><div class="issue-title marker" id="h-issue-0"><span>Issue 2</span></div><p class="">
+                  The JWK format for ML-KEM is not standardized yet and thus subject to change.
+                </p></div>
                 <ol>
                   <li>
-                    <div class="issue" id="issue-container-number-2"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="5"><span>Issue 2</span></div><p class="">
-                      The JWK format for ML-KEM is not standardized yet and thus subject to change.
-                    </p></div>
                     <p>
                       Let <var>jwk</var> be a new <a data-link-type="dictionary" data-lt="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a>
                       dictionary.
@@ -2605,11 +2641,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                       Set the <code>alg</code> attribute of <var>jwk</var> to
                       the <code>alg</code> value corresponding to the
                       <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>keyAlgorithm</var>
-                      indicated in Section 8 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-jose-pqc-kem-01" title="Post-Quantum Key Encapsulation Mechanisms (PQ KEMs) for JOSE and COSE">draft-ietf-jose-pqc-kem-01</a></cite>]
+                      indicated in Section 8 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-jose-pqc-kem-05" title="Post-Quantum Key Encapsulation Mechanisms (PQ KEMs) for JOSE and COSE">draft-ietf-jose-pqc-kem-05</a></cite>]
                       (Figure 1).
                     </p>
                     <p class="example">
-                      For example, <code>MLKEM512</code> is the "alg" value
+                      For example, <code>ML-KEM-512</code> is the "alg" value
                       used for ML-KEM-512.
                     </p>
                   </li>
@@ -2731,7 +2767,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
   <a data-link-type="typedef" href="https://webidl.spec.whatwg.org/#BufferSource">BufferSource</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-ContextParams-context" id="ref-for-dfn-ContextParams-context-1"><code>context</code></a>;</span>
 };</span></code></pre>
       <p>The <dfn data-idl="field" data-dfn-for="ContextParams" id="dfn-ContextParams-context" data-export="" data-dfn-type="dict-member" data-title="context" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>context</code></dfn> member represents the optional context data to associate with the message.</p>
-      <div class="note" role="note" id="issue-container-generatedID-4"><div role="heading" class="note-title marker" id="h-note-4" aria-level="4"><span>Note</span></div><div class="">
+      <div class="note" role="note" id="issue-container-generatedID-4"><div class="note-title marker" id="h-note-4"><span>Note</span></div><div class="">
         <p>
           The <a data-link-type="idl" data-lt="ContextParams" href="#dfn-ContextParams" class="internalDFN" id="ref-for-dfn-ContextParams-4"><code>ContextParams</code></a> dictionary is identical to the <a data-link-type="dictionary" data-lt="Ed448Params" href="https://wicg.github.io/webcrypto-secure-curves/#dfn-Ed448Params"><code>Ed448Params</code></a> dictionary of [<cite><a class="bibref" data-link-type="biblio" href="#bib-webcrypto-secure-curves" title="Secure Curves in the Web Cryptography API">webcrypto-secure-curves</a></cite>],
           and the latter may be replaced by the former when merging this proposal.
@@ -2831,7 +2867,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
               Section 5.1 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-fips-204" title="Module-Lattice-Based Digital Signature Standard">FIPS-204</a></cite>], with the parameter set
               indicated by the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithm-name"><code>name</code></a> member of <var>normalizedAlgorithm</var>.
             </p>
-            <div class="note" role="note" id="issue-container-generatedID-5"><div role="heading" class="note-title marker" id="h-note-5" aria-level="5"><span>Note</span></div><div class="">
+            <div class="note" role="note" id="issue-container-generatedID-5"><div class="note-title marker" id="h-note-5"><span>Note</span></div><div class="">
               <p>
                 In order to be able to export the seed <code>ξ</code>,
                 it needs to be stored as part of the generated
@@ -3721,7 +3757,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                       of the key represented by the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a>
                       internal slot of <var>key</var>.
                     </p>
-                    <div class="note" role="note" id="issue-container-generatedID-6"><div role="heading" class="note-title marker" id="h-note-6" aria-level="5"><span>Note</span></div><div class="">
+                    <div class="note" role="note" id="issue-container-generatedID-6"><div class="note-title marker" id="h-note-6"><span>Note</span></div><div class="">
                       <p>
                         The <var>ξ</var> seed variable was sampled in the ML-DSA.KeyGen function
                         as described in Section 5.1 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-fips-204" title="Module-Lattice-Based Digital Signature Standard">FIPS-204</a></cite>].
@@ -5176,7 +5212,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <p>The <dfn data-dfn-for="AeadParams" id="dfn-AeadParams-iv" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="iv" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>iv</code></dfn> member represents the initialization vector to use.</p>
       <p>The <dfn data-dfn-for="AeadParams" id="dfn-AeadParams-additionalData" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="additionalData" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>additionalData</code></dfn> member represents the additional authentication data to include.</p>
       <p>The <dfn data-dfn-for="AeadParams" id="dfn-AeadParams-tagLength" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="tagLength" data-type="octet" tabindex="0" aria-haspopup="dialog"><code>tagLength</code></dfn> member represents the desired length of the authentication tag.</p>
-      <div class="note" role="note" id="issue-container-generatedID-7"><div role="heading" class="note-title marker" id="h-note-7" aria-level="4"><span>Note</span></div><div class="">
+      <div class="note" role="note" id="issue-container-generatedID-7"><div class="note-title marker" id="h-note-7"><span>Note</span></div><div class="">
         <p>
           The <a data-link-type="idl" data-lt="AeadParams" href="#dfn-AeadParams" class="internalDFN" id="ref-for-dfn-AeadParams-4"><code>AeadParams</code></a> dictionary is identical to the <a data-link-type="dictionary" data-lt="AesGcmParams" href="https://www.w3.org/TR/webcrypto-2/#dfn-AesGcmParams"><code>AesGcmParams</code></a> dictionary of [<cite><a class="bibref" data-link-type="biblio" href="#bib-webcrypto" title="Web Cryptography Level 2">webcrypto</a></cite>],
           and the latter may be replaced by the former when merging this proposal.
@@ -6412,7 +6448,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         roughly twice as fast as the SHAKE functions while maintaining the same
         security strength.
       </p>
-      <div class="note" role="note" id="issue-container-generatedID-8"><div role="heading" class="note-title marker" id="h-note-8" aria-level="4"><span>Note</span></div><p class="">
+      <div class="note" role="note" id="issue-container-generatedID-8"><div class="note-title marker" id="h-note-8"><span>Note</span></div><p class="">
         For 128-bit collision security, TurboSHAKE128 output should be at least 256 bits.
         For 256-bit collision security, TurboSHAKE256 output should be at least 512 bits.
         These output lengths also exceed the corresponding preimage and second-preimage security
@@ -6454,7 +6490,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
 };</span></code></pre>
       <p>The <dfn data-dfn-for="TurboShakeParams" id="dfn-TurboShakeParams-outputLength" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="outputLength" data-type="unsigned long" tabindex="0" aria-haspopup="dialog"><code>outputLength</code></dfn> member represents the requested output length in bits.</p>
       <p>The <dfn data-dfn-for="TurboShakeParams" id="dfn-TurboShakeParams-domainSeparation" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="domainSeparation" data-type="octet" tabindex="0" aria-haspopup="dialog"><code>domainSeparation</code></dfn> member represents the domain separation byte. If not specified, it defaults to <code>0x1F</code>. Valid values are in the range <code>0x01</code> to <code>0x7F</code>.</p>
-      <div class="note" role="note" id="issue-container-generatedID-9"><div role="heading" class="note-title marker" id="h-note-9" aria-level="4"><span>Note</span></div><p class="">
+      <div class="note" role="note" id="issue-container-generatedID-9"><div class="note-title marker" id="h-note-9"><span>Note</span></div><p class="">
         Protocols that use both KangarooTwelve and TurboSHAKE should avoid using the values
         <code>0x06</code>, <code>0x07</code>, and <code>0x0B</code> for domain separation,
         as these are used internally by KangarooTwelve.
@@ -6544,7 +6580,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         tree hashing on top of TurboSHAKE, enabling parallel processing of input data.
         KT128 uses TurboSHAKE128 internally, while KT256 uses TurboSHAKE256.
       </p>
-      <div class="note" role="note" id="issue-container-generatedID-10"><div role="heading" class="note-title marker" id="h-note-10" aria-level="4"><span>Note</span></div><p class="">
+      <div class="note" role="note" id="issue-container-generatedID-10"><div class="note-title marker" id="h-note-10"><span>Note</span></div><p class="">
         For 128-bit collision security, KT128 output should be at least 256 bits.
         For 256-bit collision security, KT256 output should be at least 512 bits.
         These output lengths also exceed the corresponding preimage and second-preimage security
@@ -7381,7 +7417,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <p>The <dfn data-dfn-for="Argon2Params" id="dfn-Argon2Params-version" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="version" data-type="octet" tabindex="0" aria-haspopup="dialog"><code>version</code></dfn> member represents the version number. The default and currently only defined version is 19 (0x13).</p>
       <p>The <dfn data-dfn-for="Argon2Params" id="dfn-Argon2Params-secretValue" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="secretValue" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>secretValue</code></dfn> member represents the optional secret value.</p>
       <p>The <dfn data-dfn-for="Argon2Params" id="dfn-Argon2Params-associatedData" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="associatedData" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>associatedData</code></dfn> member represents the optional associated data.</p>
-      <div class="note" role="note" id="issue-container-generatedID-11"><div role="heading" class="note-title marker" id="h-note-11" aria-level="4"><span>Note</span></div><p class="">
+      <div class="note" role="note" id="issue-container-generatedID-11"><div class="note-title marker" id="h-note-11"><span>Note</span></div><p class="">
         For the recommended values of the parameters, see section 4 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9106" title="Argon2 Memory-Hard Function for Password Hashing and Proof-of-Work Applications">RFC9106</a></cite>].
       </p></div>
     </section>
@@ -8404,12 +8440,1202 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
 
 
 
-<section id="references" class="appendix"><div class="header-wrapper"><h2 id="e-references"><bdi class="secno">E. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix E."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="e-1-normative-references"><bdi class="secno">E.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix E.1"></a></div>
+<div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat" aria-label="Links in this document to definition: KeyFormat">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyformat" aria-label="Permalink for definition: KeyFormat. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-raw" aria-label="Links in this document to definition: raw">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyformat-raw" aria-label="Permalink for definition: raw. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dom-keyformat-raw-1" title="§ 3.1.1 Key Formats">§ 3.1.1 Key Formats</a> <a href="#ref-for-dom-keyformat-raw-2" title="Reference 2">(2)</a> <a href="#ref-for-dom-keyformat-raw-3" title="Reference 3">(3)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-spki" aria-label="Links in this document to definition: spki">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyformat-spki" aria-label="Permalink for definition: spki. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dom-keyformat-spki-1" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-spki-2" title="§ 6.3.5 Export Key">§ 6.3.5 Export Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-spki-3" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-spki-4" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-spki-5" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-spki-6" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-pkcs8" aria-label="Links in this document to definition: pkcs8">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyformat-pkcs8" aria-label="Permalink for definition: pkcs8. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dom-keyformat-pkcs8-1" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-pkcs8-2" title="§ 6.3.5 Export Key">§ 6.3.5 Export Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-pkcs8-3" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-pkcs8-4" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-pkcs8-5" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-pkcs8-6" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-jwk" aria-label="Links in this document to definition: jwk">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyformat-jwk" aria-label="Permalink for definition: jwk. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dom-keyformat-jwk-1" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-jwk-2" title="§ 6.3.5 Export Key">§ 6.3.5 Export Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-jwk-3" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-jwk-4" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-jwk-5" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-jwk-6" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-jwk-7" title="§ 9.4.4 Import Key">§ 9.4.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-jwk-8" title="§ 9.4.5 Export Key">§ 9.4.5 Export Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-jwk-9" title="§ 10.3.4 Import Key">§ 10.3.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-jwk-10" title="§ 10.3.5 Export Key">§ 10.3.5 Export Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-jwk-11" title="§ 15.7.4 Import Key">§ 15.7.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-jwk-12" title="§ 15.7.5 Export Key">§ 15.7.5 Export Key</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-raw-public" aria-label="Links in this document to definition: raw-public">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyformat-raw-public" aria-label="Permalink for definition: raw-public. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1896181443">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dom-keyformat-raw-public-1" title="§ 3.1.1 Key Formats">§ 3.1.1 Key Formats</a> <a href="#ref-for-dom-keyformat-raw-public-2" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-public-3" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-public-4" title="§ 6.3.5 Export Key">§ 6.3.5 Export Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-public-5" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-public-6" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-public-7" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-public-8" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-raw-private" aria-label="Links in this document to definition: raw-private">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyformat-raw-private" aria-label="Permalink for definition: raw-private. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1896181443">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dom-keyformat-raw-private-1" title="§ 3.1.1 Key Formats">§ 3.1.1 Key Formats</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-private-2" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-private-3" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-raw-seed" aria-label="Links in this document to definition: raw-seed">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyformat-raw-seed" aria-label="Permalink for definition: raw-seed. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1896181443">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dom-keyformat-raw-seed-1" title="§ 3.1.1 Key Formats">§ 3.1.1 Key Formats</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-seed-2" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-seed-3" title="§ 6.3.5 Export Key">§ 6.3.5 Export Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-seed-4" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-seed-5" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-raw-secret" aria-label="Links in this document to definition: raw-secret">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyformat-raw-secret" aria-label="Permalink for definition: raw-secret. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1896181443">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dom-keyformat-raw-secret-1" title="§ 3.1.1 Key Formats">§ 3.1.1 Key Formats</a> <a href="#ref-for-dom-keyformat-raw-secret-2" title="Reference 2">(2)</a> <a href="#ref-for-dom-keyformat-raw-secret-3" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-secret-4" title="§ 3.2.1 The encapsulateKey method">§ 3.2.1 The encapsulateKey method</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-secret-5" title="§ 3.2.3 The decapsulateKey method">§ 3.2.3 The decapsulateKey method</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-secret-6" title="§ 9.4.4 Import Key">§ 9.4.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-secret-7" title="§ 9.4.5 Export Key">§ 9.4.5 Export Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-secret-8" title="§ 10.3.4 Import Key">§ 10.3.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-secret-9" title="§ 10.3.5 Export Key">§ 10.3.5 Export Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-secret-10" title="§ 15.7.4 Import Key">§ 15.7.4 Import Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-secret-11" title="§ 15.7.5 Export Key">§ 15.7.5 Export Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-keyformat-raw-secret-12" title="§ 16.4.2 Import key">§ 16.4.2 Import key</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage" aria-label="Links in this document to definition: KeyUsage">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyusage" aria-label="Permalink for definition: KeyUsage. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dom-keyusage-1" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> <a href="#ref-for-dom-keyusage-2" title="Reference 2">(2)</a> <a href="#ref-for-dom-keyusage-3" title="Reference 3">(3)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-encrypt" aria-label="Links in this document to definition: encrypt">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyusage-encrypt" aria-label="Permalink for definition: encrypt. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-decrypt" aria-label="Links in this document to definition: decrypt">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyusage-decrypt" aria-label="Permalink for definition: decrypt. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-sign" aria-label="Links in this document to definition: sign">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyusage-sign" aria-label="Permalink for definition: sign. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-verify" aria-label="Links in this document to definition: verify">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyusage-verify" aria-label="Permalink for definition: verify. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-derivekey" aria-label="Links in this document to definition: deriveKey">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyusage-derivekey" aria-label="Permalink for definition: deriveKey. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-derivebits" aria-label="Links in this document to definition: deriveBits">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyusage-derivebits" aria-label="Permalink for definition: deriveBits. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-wrapkey" aria-label="Links in this document to definition: wrapKey">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyusage-wrapkey" aria-label="Permalink for definition: wrapKey. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-unwrapkey" aria-label="Links in this document to definition: unwrapKey">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyusage-unwrapkey" aria-label="Permalink for definition: unwrapKey. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-encapsulatekey" aria-label="Links in this document to definition: encapsulateKey">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyusage-encapsulatekey" aria-label="Permalink for definition: encapsulateKey. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-712964944">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dom-keyusage-encapsulatekey-1" title="§ 3.1.2 Key Usages">§ 3.1.2 Key Usages</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-encapsulatebits" aria-label="Links in this document to definition: encapsulateBits">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyusage-encapsulatebits" aria-label="Permalink for definition: encapsulateBits. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-712964944">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dom-keyusage-encapsulatebits-1" title="§ 3.1.2 Key Usages">§ 3.1.2 Key Usages</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-decapsulatekey" aria-label="Links in this document to definition: decapsulateKey">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyusage-decapsulatekey" aria-label="Permalink for definition: decapsulateKey. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-712964944">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dom-keyusage-decapsulatekey-1" title="§ 3.1.2 Key Usages">§ 3.1.2 Key Usages</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-decapsulatebits" aria-label="Links in this document to definition: decapsulateBits">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-keyusage-decapsulatebits" aria-label="Permalink for definition: decapsulateBits. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-712964944">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dom-keyusage-decapsulatebits-1" title="§ 3.1.2 Key Usages">§ 3.1.2 Key Usages</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-SubtleCrypto-method-encapsulateKey" aria-label="Links in this document to definition: encapsulateKey(encapsulationAlgorithm, encapsulationKey, sharedKeyAlgorithm, extractable, usages)">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-SubtleCrypto-method-encapsulateKey" aria-label="Permalink for definition: encapsulateKey(encapsulationAlgorithm, encapsulationKey, sharedKeyAlgorithm, extractable, usages). Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-encapsulateKey-1" title="§ 1. Introduction">§ 1. Introduction</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-encapsulateKey-2" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-encapsulateKey-3" title="§ 3.1.2 Key Usages">§ 3.1.2 Key Usages</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-encapsulateKey-4" title="§ 3.2.1 The encapsulateKey method">§ 3.2.1 The encapsulateKey method</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-SubtleCrypto-method-encapsulateBits" aria-label="Links in this document to definition: encapsulateBits(encapsulationAlgorithm, encapsulationKey)">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-SubtleCrypto-method-encapsulateBits" aria-label="Permalink for definition: encapsulateBits(encapsulationAlgorithm, encapsulationKey). Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-encapsulateBits-1" title="§ 1. Introduction">§ 1. Introduction</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-encapsulateBits-2" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-encapsulateBits-3" title="§ 3.1.2 Key Usages">§ 3.1.2 Key Usages</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-encapsulateBits-4" title="§ 3.2.2 The encapsulateBits method">§ 3.2.2 The encapsulateBits method</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-SubtleCrypto-method-decapsulateKey" aria-label="Links in this document to definition: decapsulateKey(decapsulationAlgorithm, decapsulationKey, ciphertext, sharedKeyAlgorithm, extractable, usages)">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-SubtleCrypto-method-decapsulateKey" aria-label="Permalink for definition: decapsulateKey(decapsulationAlgorithm, decapsulationKey, ciphertext, sharedKeyAlgorithm, extractable, usages). Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateKey-1" title="§ 1. Introduction">§ 1. Introduction</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateKey-2" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateKey-3" title="§ 3.1.2 Key Usages">§ 3.1.2 Key Usages</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateKey-4" title="§ 3.2.3 The decapsulateKey method">§ 3.2.3 The decapsulateKey method</a> <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateKey-5" title="Reference 2">(2)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-SubtleCrypto-method-decapsulateBits" aria-label="Links in this document to definition: decapsulateBits(decapsulationAlgorithm, decapsulationKey, ciphertext)">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-SubtleCrypto-method-decapsulateBits" aria-label="Permalink for definition: decapsulateBits(decapsulationAlgorithm, decapsulationKey, ciphertext). Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateBits-1" title="§ 1. Introduction">§ 1. Introduction</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateBits-2" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateBits-3" title="§ 3.1.2 Key Usages">§ 3.1.2 Key Usages</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateBits-4" title="§ 3.2.4 The decapsulateBits method">§ 3.2.4 The decapsulateBits method</a> <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateBits-5" title="Reference 2">(2)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-SubtleCrypto-method-getPublicKey" aria-label="Links in this document to definition: getPublicKey(key, usages)">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-SubtleCrypto-method-getPublicKey" aria-label="Permalink for definition: getPublicKey(key, usages). Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-getPublicKey-1" title="§ 1. Introduction">§ 1. Introduction</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-getPublicKey-2" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-getPublicKey-3" title="§ 3.2.5 The getPublicKey method">§ 3.2.5 The getPublicKey method</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-getPublicKey-4" title="§ 18. Adoption Guidance">§ 18. Adoption Guidance</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-SubtleCrypto-method-supports" aria-label="Links in this document to definition: supports(operation, algorithm, length)">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-SubtleCrypto-method-supports" aria-label="Permalink for definition: supports(operation, algorithm, length). Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-supports-1" title="§ 1. Introduction">§ 1. Introduction</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-supports-2" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-supports-3" title="§ 18. Adoption Guidance">§ 18. Adoption Guidance</a> <a href="#ref-for-dfn-SubtleCrypto-method-supports-4" title="Reference 2">(2)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-SubtleCrypto-method-supports-additionalAlgorithm" aria-label="Links in this document to definition: supports(operation, algorithm, additionalAlgorithm)">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-SubtleCrypto-method-supports-additionalAlgorithm" aria-label="Permalink for definition: supports(operation, algorithm, additionalAlgorithm). Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-supports-additionalAlgorithm-1" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-check-support-for-algorithm" aria-label="Links in this document to definition: check support for an algorithm">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-check-support-for-algorithm" aria-label="Permalink for definition: check support for an algorithm. Activate to close this dialog.">Permalink</a>
+         
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-check-support-for-algorithm-1" title="§ 3.2.6 The supports method">§ 3.2.6 The supports method</a> <a href="#ref-for-dfn-check-support-for-algorithm-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-check-support-for-algorithm-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-check-support-for-algorithm-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-check-support-for-algorithm-5" title="Reference 5">(5)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-check-support-for-algorithm-6" title="§ 3.3 Checking support for an algorithm">§ 3.3 Checking support for an algorithm</a> <a href="#ref-for-dfn-check-support-for-algorithm-7" title="Reference 2">(2)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-EncapsulatedKey" aria-label="Links in this document to definition: EncapsulatedKey">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-EncapsulatedKey" aria-label="Permalink for definition: EncapsulatedKey. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-549016948">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-EncapsulatedKey-1" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> 
+    </li><li>
+      <a href="#ref-for-dfn-EncapsulatedKey-2" title="§ 3.2.1 The encapsulateKey method">§ 3.2.1 The encapsulateKey method</a> <a href="#ref-for-dfn-EncapsulatedKey-3" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-EncapsulatedKey-4" title="§ 4. Encapsulation dictionaries">§ 4. Encapsulation dictionaries</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-EncapsulatedKey-sharedKey" aria-label="Links in this document to definition: sharedKey">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-EncapsulatedKey-sharedKey" aria-label="Permalink for definition: sharedKey. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-549016948">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-EncapsulatedKey-sharedKey-1" title="§ 3.2.1 The encapsulateKey method">§ 3.2.1 The encapsulateKey method</a> 
+    </li><li>
+      <a href="#ref-for-dfn-EncapsulatedKey-sharedKey-2" title="§ 4. Encapsulation dictionaries">§ 4. Encapsulation dictionaries</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-EncapsulatedKey-ciphertext" aria-label="Links in this document to definition: ciphertext">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-EncapsulatedKey-ciphertext" aria-label="Permalink for definition: ciphertext. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-549016948">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-EncapsulatedKey-ciphertext-1" title="§ 3.2.1 The encapsulateKey method">§ 3.2.1 The encapsulateKey method</a> 
+    </li><li>
+      <a href="#ref-for-dfn-EncapsulatedKey-ciphertext-2" title="§ 4. Encapsulation dictionaries">§ 4. Encapsulation dictionaries</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-EncapsulatedBits" aria-label="Links in this document to definition: EncapsulatedBits">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-EncapsulatedBits" aria-label="Permalink for definition: EncapsulatedBits. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-549016948">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-EncapsulatedBits-1" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> 
+    </li><li>
+      <a href="#ref-for-dfn-EncapsulatedBits-2" title="§ 3.2.2 The encapsulateBits method">§ 3.2.2 The encapsulateBits method</a> 
+    </li><li>
+      <a href="#ref-for-dfn-EncapsulatedBits-3" title="§ 4. Encapsulation dictionaries">§ 4. Encapsulation dictionaries</a> 
+    </li><li>
+      <a href="#ref-for-dfn-EncapsulatedBits-4" title="§ 6.2 Registration">§ 6.2 Registration</a> 
+    </li><li>
+      <a href="#ref-for-dfn-EncapsulatedBits-5" title="§ 6.3.1 Encapsulate">§ 6.3.1 Encapsulate</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-EncapsulatedBits-sharedKey" aria-label="Links in this document to definition: sharedKey">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-EncapsulatedBits-sharedKey" aria-label="Permalink for definition: sharedKey. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-549016948">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-EncapsulatedBits-sharedKey-1" title="§ 3.2.1 The encapsulateKey method">§ 3.2.1 The encapsulateKey method</a> 
+    </li><li>
+      <a href="#ref-for-dfn-EncapsulatedBits-sharedKey-2" title="§ 4. Encapsulation dictionaries">§ 4. Encapsulation dictionaries</a> 
+    </li><li>
+      <a href="#ref-for-dfn-EncapsulatedBits-sharedKey-3" title="§ 6.3.1 Encapsulate">§ 6.3.1 Encapsulate</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-EncapsulatedBits-ciphertext" aria-label="Links in this document to definition: ciphertext">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-EncapsulatedBits-ciphertext" aria-label="Permalink for definition: ciphertext. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-549016948">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-EncapsulatedBits-ciphertext-1" title="§ 3.2.1 The encapsulateKey method">§ 3.2.1 The encapsulateKey method</a> 
+    </li><li>
+      <a href="#ref-for-dfn-EncapsulatedBits-ciphertext-2" title="§ 4. Encapsulation dictionaries">§ 4. Encapsulation dictionaries</a> 
+    </li><li>
+      <a href="#ref-for-dfn-EncapsulatedBits-ciphertext-3" title="§ 6.3.1 Encapsulate">§ 6.3.1 Encapsulate</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-jsonwebkey-pub" aria-label="Links in this document to definition: pub">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-jsonwebkey-pub" aria-label="Permalink for definition: pub. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dom-jsonwebkey-pub-1" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-pub-2" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-pub-3" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dom-jsonwebkey-pub-4" title="§ 6.3.5 Export Key">§ 6.3.5 Export Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-jsonwebkey-pub-5" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-pub-6" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-pub-7" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dom-jsonwebkey-pub-8" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-jsonwebkey-pub-9" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-pub-10" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-pub-11" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dom-jsonwebkey-pub-12" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-jsonwebkey-priv" aria-label="Links in this document to definition: priv">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-jsonwebkey-priv" aria-label="Permalink for definition: priv. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dom-jsonwebkey-priv-1" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-priv-2" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-priv-3" title="Reference 3">(3)</a> <a href="#ref-for-dom-jsonwebkey-priv-4" title="Reference 4">(4)</a> <a href="#ref-for-dom-jsonwebkey-priv-5" title="Reference 5">(5)</a> 
+    </li><li>
+      <a href="#ref-for-dom-jsonwebkey-priv-6" title="§ 6.3.5 Export Key">§ 6.3.5 Export Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-jsonwebkey-priv-7" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-priv-8" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-priv-9" title="Reference 3">(3)</a> <a href="#ref-for-dom-jsonwebkey-priv-10" title="Reference 4">(4)</a> <a href="#ref-for-dom-jsonwebkey-priv-11" title="Reference 5">(5)</a> 
+    </li><li>
+      <a href="#ref-for-dom-jsonwebkey-priv-12" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
+    </li><li>
+      <a href="#ref-for-dom-jsonwebkey-priv-13" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-priv-14" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-priv-15" title="Reference 3">(3)</a> <a href="#ref-for-dom-jsonwebkey-priv-16" title="Reference 4">(4)</a> <a href="#ref-for-dom-jsonwebkey-priv-17" title="Reference 5">(5)</a> 
+    </li><li>
+      <a href="#ref-for-dom-jsonwebkey-priv-18" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-ContextParams" aria-label="Links in this document to definition: ContextParams">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-ContextParams" aria-label="Permalink for definition: ContextParams. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1839088126">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-ContextParams-1" title="§ 7.2 Registration">§ 7.2 Registration</a> <a href="#ref-for-dfn-ContextParams-2" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-ContextParams-3" title="§ 7.3 ContextParams dictionary">§ 7.3 ContextParams dictionary</a> <a href="#ref-for-dfn-ContextParams-4" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-ContextParams-5" title="§ 8.2 Registration">§ 8.2 Registration</a> <a href="#ref-for-dfn-ContextParams-6" title="Reference 2">(2)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-ContextParams-context" aria-label="Links in this document to definition: context">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-ContextParams-context" aria-label="Permalink for definition: context. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1839088126">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-ContextParams-context-1" title="§ 7.3 ContextParams dictionary">§ 7.3 ContextParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-ContextParams-context-2" title="§ 7.4.1 Sign">§ 7.4.1 Sign</a> <a href="#ref-for-dfn-ContextParams-context-3" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-ContextParams-context-4" title="§ 7.4.2 Verify">§ 7.4.2 Verify</a> <a href="#ref-for-dfn-ContextParams-context-5" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-ContextParams-context-6" title="§ 8.4.1 Sign">§ 8.4.1 Sign</a> <a href="#ref-for-dfn-ContextParams-context-7" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-ContextParams-context-8" title="§ 8.4.2 Verify">§ 8.4.2 Verify</a> <a href="#ref-for-dfn-ContextParams-context-9" title="Reference 2">(2)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-AeadParams" aria-label="Links in this document to definition: AeadParams">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-AeadParams" aria-label="Permalink for definition: AeadParams. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1353594407">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-AeadParams-1" title="§ 9.2 Registration">§ 9.2 Registration</a> <a href="#ref-for-dfn-AeadParams-2" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-AeadParams-3" title="§ 9.3 AeadParams dictionary">§ 9.3 AeadParams dictionary</a> <a href="#ref-for-dfn-AeadParams-4" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-AeadParams-5" title="§ 10.2 Registration">§ 10.2 Registration</a> <a href="#ref-for-dfn-AeadParams-6" title="Reference 2">(2)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-AeadParams-iv" aria-label="Links in this document to definition: iv">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-AeadParams-iv" aria-label="Permalink for definition: iv. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1353594407">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-AeadParams-iv-1" title="§ 9.3 AeadParams dictionary">§ 9.3 AeadParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-AeadParams-iv-2" title="§ 9.4.1 Encrypt">§ 9.4.1 Encrypt</a> <a href="#ref-for-dfn-AeadParams-iv-3" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-AeadParams-iv-4" title="§ 9.4.2 Decrypt">§ 9.4.2 Decrypt</a> <a href="#ref-for-dfn-AeadParams-iv-5" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-AeadParams-iv-6" title="§ 10.3.1 Encrypt">§ 10.3.1 Encrypt</a> <a href="#ref-for-dfn-AeadParams-iv-7" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-AeadParams-iv-8" title="§ 10.3.2 Decrypt">§ 10.3.2 Decrypt</a> <a href="#ref-for-dfn-AeadParams-iv-9" title="Reference 2">(2)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-AeadParams-additionalData" aria-label="Links in this document to definition: additionalData">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-AeadParams-additionalData" aria-label="Permalink for definition: additionalData. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1353594407">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-AeadParams-additionalData-1" title="§ 9.3 AeadParams dictionary">§ 9.3 AeadParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-AeadParams-additionalData-2" title="§ 9.4.1 Encrypt">§ 9.4.1 Encrypt</a> 
+    </li><li>
+      <a href="#ref-for-dfn-AeadParams-additionalData-3" title="§ 9.4.2 Decrypt">§ 9.4.2 Decrypt</a> 
+    </li><li>
+      <a href="#ref-for-dfn-AeadParams-additionalData-4" title="§ 10.3.1 Encrypt">§ 10.3.1 Encrypt</a> 
+    </li><li>
+      <a href="#ref-for-dfn-AeadParams-additionalData-5" title="§ 10.3.2 Decrypt">§ 10.3.2 Decrypt</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-AeadParams-tagLength" aria-label="Links in this document to definition: tagLength">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-AeadParams-tagLength" aria-label="Permalink for definition: tagLength. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1353594407">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-AeadParams-tagLength-1" title="§ 9.3 AeadParams dictionary">§ 9.3 AeadParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-AeadParams-tagLength-2" title="§ 9.4.1 Encrypt">§ 9.4.1 Encrypt</a> <a href="#ref-for-dfn-AeadParams-tagLength-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-AeadParams-tagLength-4" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-AeadParams-tagLength-5" title="§ 9.4.2 Decrypt">§ 9.4.2 Decrypt</a> <a href="#ref-for-dfn-AeadParams-tagLength-6" title="Reference 2">(2)</a> <a href="#ref-for-dfn-AeadParams-tagLength-7" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-AeadParams-tagLength-8" title="§ 10.3.1 Encrypt">§ 10.3.1 Encrypt</a> 
+    </li><li>
+      <a href="#ref-for-dfn-AeadParams-tagLength-9" title="§ 10.3.2 Decrypt">§ 10.3.2 Decrypt</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-CShakeParams" aria-label="Links in this document to definition: CShakeParams">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-CShakeParams" aria-label="Permalink for definition: CShakeParams. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1714379560">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-CShakeParams-1" title="§ 12.2 Registration">§ 12.2 Registration</a> 
+    </li><li>
+      <a href="#ref-for-dfn-CShakeParams-2" title="§ 12.3 CShakeParams dictionary">§ 12.3 CShakeParams dictionary</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-CShakeParams-outputLength" aria-label="Links in this document to definition: outputLength">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-CShakeParams-outputLength" aria-label="Permalink for definition: outputLength. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1714379560">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-CShakeParams-outputLength-1" title="§ 12.3 CShakeParams dictionary">§ 12.3 CShakeParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-CShakeParams-outputLength-2" title="§ 12.4.1 Digest">§ 12.4.1 Digest</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-CShakeParams-functionName" aria-label="Links in this document to definition: functionName">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-CShakeParams-functionName" aria-label="Permalink for definition: functionName. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1714379560">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-CShakeParams-functionName-1" title="§ 12.1 Description">§ 12.1 Description</a> 
+    </li><li>
+      <a href="#ref-for-dfn-CShakeParams-functionName-2" title="§ 12.3 CShakeParams dictionary">§ 12.3 CShakeParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-CShakeParams-functionName-3" title="§ 12.4.1 Digest">§ 12.4.1 Digest</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-CShakeParams-customization" aria-label="Links in this document to definition: customization">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-CShakeParams-customization" aria-label="Permalink for definition: customization. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1714379560">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-CShakeParams-customization-1" title="§ 12.1 Description">§ 12.1 Description</a> 
+    </li><li>
+      <a href="#ref-for-dfn-CShakeParams-customization-2" title="§ 12.3 CShakeParams dictionary">§ 12.3 CShakeParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-CShakeParams-customization-3" title="§ 12.4.1 Digest">§ 12.4.1 Digest</a> 
+    </li><li>
+      <a href="#ref-for-dfn-CShakeParams-customization-4" title="§ 18. Adoption Guidance">§ 18. Adoption Guidance</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-TurboShakeParams" aria-label="Links in this document to definition: TurboShakeParams">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-TurboShakeParams" aria-label="Permalink for definition: TurboShakeParams. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-356563402">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-TurboShakeParams-1" title="§ 13.2 Registration">§ 13.2 Registration</a> 
+    </li><li>
+      <a href="#ref-for-dfn-TurboShakeParams-2" title="§ 13.3 TurboShakeParams dictionary">§ 13.3 TurboShakeParams dictionary</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-TurboShakeParams-outputLength" aria-label="Links in this document to definition: outputLength">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-TurboShakeParams-outputLength" aria-label="Permalink for definition: outputLength. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-356563402">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-TurboShakeParams-outputLength-1" title="§ 13.3 TurboShakeParams dictionary">§ 13.3 TurboShakeParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-TurboShakeParams-outputLength-2" title="§ 13.4.1 Digest">§ 13.4.1 Digest</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-TurboShakeParams-domainSeparation" aria-label="Links in this document to definition: domainSeparation">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-TurboShakeParams-domainSeparation" aria-label="Permalink for definition: domainSeparation. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-356563402">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-TurboShakeParams-domainSeparation-1" title="§ 13.3 TurboShakeParams dictionary">§ 13.3 TurboShakeParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-TurboShakeParams-domainSeparation-2" title="§ 13.4.1 Digest">§ 13.4.1 Digest</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KangarooTwelveParams" aria-label="Links in this document to definition: KangarooTwelveParams">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-KangarooTwelveParams" aria-label="Permalink for definition: KangarooTwelveParams. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1024893889">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-KangarooTwelveParams-1" title="§ 14.2 Registration">§ 14.2 Registration</a> 
+    </li><li>
+      <a href="#ref-for-dfn-KangarooTwelveParams-2" title="§ 14.3 KangarooTwelveParams dictionary">§ 14.3 KangarooTwelveParams dictionary</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KangarooTwelveParams-outputLength" aria-label="Links in this document to definition: outputLength">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-KangarooTwelveParams-outputLength" aria-label="Permalink for definition: outputLength. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1024893889">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-KangarooTwelveParams-outputLength-1" title="§ 14.3 KangarooTwelveParams dictionary">§ 14.3 KangarooTwelveParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-KangarooTwelveParams-outputLength-2" title="§ 14.4.1 Digest">§ 14.4.1 Digest</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KangarooTwelveParams-customization" aria-label="Links in this document to definition: customization">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-KangarooTwelveParams-customization" aria-label="Permalink for definition: customization. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1024893889">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-KangarooTwelveParams-customization-1" title="§ 14.3 KangarooTwelveParams dictionary">§ 14.3 KangarooTwelveParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-KangarooTwelveParams-customization-2" title="§ 14.4.1 Digest">§ 14.4.1 Digest</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacKeyGenParams" aria-label="Links in this document to definition: KmacKeyGenParams">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-KmacKeyGenParams" aria-label="Permalink for definition: KmacKeyGenParams. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1224700284">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-KmacKeyGenParams-1" title="§ 15.2 Registration">§ 15.2 Registration</a> 
+    </li><li>
+      <a href="#ref-for-dfn-KmacKeyGenParams-2" title="§ 15.3 KmacKeyGenParams dictionary">§ 15.3 KmacKeyGenParams dictionary</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacKeyGenParams-length" aria-label="Links in this document to definition: length">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-KmacKeyGenParams-length" aria-label="Permalink for definition: length. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1224700284">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-KmacKeyGenParams-length-1" title="§ 15.3 KmacKeyGenParams dictionary">§ 15.3 KmacKeyGenParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-KmacKeyGenParams-length-2" title="§ 15.7.3 Generate Key">§ 15.7.3 Generate Key</a> <a href="#ref-for-dfn-KmacKeyGenParams-length-3" title="Reference 2">(2)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacImportParams" aria-label="Links in this document to definition: KmacImportParams">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-KmacImportParams" aria-label="Permalink for definition: KmacImportParams. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-745655368">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-KmacImportParams-1" title="§ 15.2 Registration">§ 15.2 Registration</a> <a href="#ref-for-dfn-KmacImportParams-2" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-KmacImportParams-3" title="§ 15.4 KmacImportParams dictionary">§ 15.4 KmacImportParams dictionary</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacImportParams-length" aria-label="Links in this document to definition: length">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-KmacImportParams-length" aria-label="Permalink for definition: length. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-745655368">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-KmacImportParams-length-1" title="§ 15.4 KmacImportParams dictionary">§ 15.4 KmacImportParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-KmacImportParams-length-2" title="§ 15.7.4 Import Key">§ 15.7.4 Import Key</a> <a href="#ref-for-dfn-KmacImportParams-length-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-KmacImportParams-length-4" title="Reference 3">(3)</a> <a href="#ref-for-dfn-KmacImportParams-length-5" title="Reference 4">(4)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-KmacImportParams-length-6" title="§ 15.7.6 Get key length">§ 15.7.6 Get key length</a> <a href="#ref-for-dfn-KmacImportParams-length-7" title="Reference 2">(2)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacKeyAlgorithm" aria-label="Links in this document to definition: KmacKeyAlgorithm">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-KmacKeyAlgorithm" aria-label="Permalink for definition: KmacKeyAlgorithm. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-28722634">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-KmacKeyAlgorithm-1" title="§ 15.5 KmacKeyAlgorithm dictionary">§ 15.5 KmacKeyAlgorithm dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-KmacKeyAlgorithm-2" title="§ 15.7.3 Generate Key">§ 15.7.3 Generate Key</a> 
+    </li><li>
+      <a href="#ref-for-dfn-KmacKeyAlgorithm-3" title="§ 15.7.4 Import Key">§ 15.7.4 Import Key</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacKeyAlgorithm-length" aria-label="Links in this document to definition: length">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-KmacKeyAlgorithm-length" aria-label="Permalink for definition: length. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-28722634">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-KmacKeyAlgorithm-length-1" title="§ 15.5 KmacKeyAlgorithm dictionary">§ 15.5 KmacKeyAlgorithm dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-KmacKeyAlgorithm-length-2" title="§ 15.7.3 Generate Key">§ 15.7.3 Generate Key</a> 
+    </li><li>
+      <a href="#ref-for-dfn-KmacKeyAlgorithm-length-3" title="§ 15.7.4 Import Key">§ 15.7.4 Import Key</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacParams" aria-label="Links in this document to definition: KmacParams">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-KmacParams" aria-label="Permalink for definition: KmacParams. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1832520310">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-KmacParams-1" title="§ 15.2 Registration">§ 15.2 Registration</a> <a href="#ref-for-dfn-KmacParams-2" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-KmacParams-3" title="§ 15.6 KmacParams dictionary">§ 15.6 KmacParams dictionary</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacParams-outputLength" aria-label="Links in this document to definition: outputLength">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-KmacParams-outputLength" aria-label="Permalink for definition: outputLength. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1832520310">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-KmacParams-outputLength-1" title="§ 15.6 KmacParams dictionary">§ 15.6 KmacParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-KmacParams-outputLength-2" title="§ 15.7.1 Sign">§ 15.7.1 Sign</a> <a href="#ref-for-dfn-KmacParams-outputLength-3" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-KmacParams-outputLength-4" title="§ 15.7.2 Verify">§ 15.7.2 Verify</a> <a href="#ref-for-dfn-KmacParams-outputLength-5" title="Reference 2">(2)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacParams-customization" aria-label="Links in this document to definition: customization">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-KmacParams-customization" aria-label="Permalink for definition: customization. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1832520310">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-KmacParams-customization-1" title="§ 15.6 KmacParams dictionary">§ 15.6 KmacParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-KmacParams-customization-2" title="§ 15.7.1 Sign">§ 15.7.1 Sign</a> 
+    </li><li>
+      <a href="#ref-for-dfn-KmacParams-customization-3" title="§ 15.7.2 Verify">§ 15.7.2 Verify</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-Argon2Params" aria-label="Links in this document to definition: Argon2Params">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-Argon2Params" aria-label="Permalink for definition: Argon2Params. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1006558199">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-Argon2Params-1" title="§ 16.2 Registration">§ 16.2 Registration</a> 
+    </li><li>
+      <a href="#ref-for-dfn-Argon2Params-2" title="§ 16.3 Argon2Params dictionary">§ 16.3 Argon2Params dictionary</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-Argon2Params-nonce" aria-label="Links in this document to definition: nonce">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-Argon2Params-nonce" aria-label="Permalink for definition: nonce. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1006558199">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-Argon2Params-nonce-1" title="§ 16.3 Argon2Params dictionary">§ 16.3 Argon2Params dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-Argon2Params-nonce-2" title="§ 16.4.1 Derive Bits">§ 16.4.1 Derive Bits</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-Argon2Params-parallelism" aria-label="Links in this document to definition: parallelism">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-Argon2Params-parallelism" aria-label="Permalink for definition: parallelism. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1006558199">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-Argon2Params-parallelism-1" title="§ 16.3 Argon2Params dictionary">§ 16.3 Argon2Params dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-Argon2Params-parallelism-2" title="§ 16.4.1 Derive Bits">§ 16.4.1 Derive Bits</a> <a href="#ref-for-dfn-Argon2Params-parallelism-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-Argon2Params-parallelism-4" title="Reference 3">(3)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-Argon2Params-memory" aria-label="Links in this document to definition: memory">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-Argon2Params-memory" aria-label="Permalink for definition: memory. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1006558199">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-Argon2Params-memory-1" title="§ 16.3 Argon2Params dictionary">§ 16.3 Argon2Params dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-Argon2Params-memory-2" title="§ 16.4.1 Derive Bits">§ 16.4.1 Derive Bits</a> <a href="#ref-for-dfn-Argon2Params-memory-3" title="Reference 2">(2)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-Argon2Params-passes" aria-label="Links in this document to definition: passes">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-Argon2Params-passes" aria-label="Permalink for definition: passes. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1006558199">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-Argon2Params-passes-1" title="§ 16.3 Argon2Params dictionary">§ 16.3 Argon2Params dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-Argon2Params-passes-2" title="§ 16.4.1 Derive Bits">§ 16.4.1 Derive Bits</a> <a href="#ref-for-dfn-Argon2Params-passes-3" title="Reference 2">(2)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-Argon2Params-version" aria-label="Links in this document to definition: version">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-Argon2Params-version" aria-label="Permalink for definition: version. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1006558199">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-Argon2Params-version-1" title="§ 16.3 Argon2Params dictionary">§ 16.3 Argon2Params dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-Argon2Params-version-2" title="§ 16.4.1 Derive Bits">§ 16.4.1 Derive Bits</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-Argon2Params-secretValue" aria-label="Links in this document to definition: secretValue">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-Argon2Params-secretValue" aria-label="Permalink for definition: secretValue. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1006558199">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-Argon2Params-secretValue-1" title="§ 16.3 Argon2Params dictionary">§ 16.3 Argon2Params dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-Argon2Params-secretValue-2" title="§ 16.4.1 Derive Bits">§ 16.4.1 Derive Bits</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-Argon2Params-associatedData" aria-label="Links in this document to definition: associatedData">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-Argon2Params-associatedData" aria-label="Permalink for definition: associatedData. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1006558199">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-Argon2Params-associatedData-1" title="§ 16.3 Argon2Params dictionary">§ 16.3 Argon2Params dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-Argon2Params-associatedData-2" title="§ 16.4.1 Derive Bits">§ 16.4.1 Derive Bits</a> 
+    </li>
+  </ul>
+    </div><script id="respec-copy-paste">
+    document.querySelectorAll(".respec-button-copy-paste").forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        var pre = this.closest("pre");
+        if (!pre) return;
+        var sel = this.dataset.copyHeader;
+        var clone = pre.cloneNode(true);
+        if (sel) { var h = clone.querySelector(sel); if (h) h.remove(); }
+        navigator.clipboard.writeText(clone.textContent);
+      });
+    });
+  </script><section id="references" class="appendix"><div class="header-wrapper"><h2 id="e-references"><bdi class="secno">E. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix E."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="e-1-normative-references"><bdi class="secno">E.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix E.1"></a></div>
     
     <dl class="bibliography"><dt id="bib-draft-ietf-cose-dilithium-08">[draft-ietf-cose-dilithium-08]</dt><dd>
       <a href="https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-08.html"><cite>ML-DSA for JOSE and COSE</cite></a>.  IETF. July 2025. URL: <a href="https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-08.html">https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-08.html</a>
-    </dd><dt id="bib-draft-ietf-jose-pqc-kem-01">[draft-ietf-jose-pqc-kem-01]</dt><dd>
-      <a href="https://www.ietf.org/archive/id/draft-ietf-jose-pqc-kem-01.html"><cite>Post-Quantum Key Encapsulation Mechanisms (PQ KEMs) for JOSE and COSE</cite></a>.  IETF. May 2025. URL: <a href="https://www.ietf.org/archive/id/draft-ietf-jose-pqc-kem-01.html">https://www.ietf.org/archive/id/draft-ietf-jose-pqc-kem-01.html</a>
+    </dd><dt id="bib-draft-ietf-jose-pqc-kem-05">[draft-ietf-jose-pqc-kem-05]</dt><dd>
+      <a href="https://www.ietf.org/archive/id/draft-ietf-jose-pqc-kem-05.html"><cite>Post-Quantum Key Encapsulation Mechanisms (PQ KEMs) for JOSE and COSE</cite></a>.  IETF. December 2025. URL: <a href="https://www.ietf.org/archive/id/draft-ietf-jose-pqc-kem-05.html">https://www.ietf.org/archive/id/draft-ietf-jose-pqc-kem-05.html</a>
     </dd><dt id="bib-fips-202">[FIPS-202]</dt><dd>
       <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf"><cite>SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions</cite></a>.  NIST. August 2015. URL: <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf">https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf</a>
     </dd><dt id="bib-fips-203">[FIPS-203]</dt><dd>
@@ -8468,1115 +9694,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
     </dd></dl>
   </section></section><p role="navigation" id="back-to-top">
     <a href="#title"><abbr title="Back to Top">↑</abbr></a>
-  </p><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat" aria-label="Links in this document to definition: KeyFormat">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyformat" aria-label="Permalink for definition: KeyFormat. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-      <li>Not referenced in this document.</li>
-    </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-raw" aria-label="Links in this document to definition: raw">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyformat-raw" aria-label="Permalink for definition: raw. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-keyformat-raw-1" title="§ 3.1.1 Key Formats">§ 3.1.1 Key Formats</a> <a href="#ref-for-dom-keyformat-raw-2" title="Reference 2">(2)</a> <a href="#ref-for-dom-keyformat-raw-3" title="Reference 3">(3)</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-spki" aria-label="Links in this document to definition: spki">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyformat-spki" aria-label="Permalink for definition: spki. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-keyformat-spki-1" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-spki-2" title="§ 6.3.5 Export Key">§ 6.3.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-spki-3" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-spki-4" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-spki-5" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-spki-6" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-pkcs8" aria-label="Links in this document to definition: pkcs8">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyformat-pkcs8" aria-label="Permalink for definition: pkcs8. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-keyformat-pkcs8-1" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-pkcs8-2" title="§ 6.3.5 Export Key">§ 6.3.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-pkcs8-3" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-pkcs8-4" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-pkcs8-5" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-pkcs8-6" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-jwk" aria-label="Links in this document to definition: jwk">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyformat-jwk" aria-label="Permalink for definition: jwk. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-keyformat-jwk-1" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-jwk-2" title="§ 6.3.5 Export Key">§ 6.3.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-jwk-3" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-jwk-4" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-jwk-5" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-jwk-6" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-jwk-7" title="§ 9.4.4 Import Key">§ 9.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-jwk-8" title="§ 9.4.5 Export Key">§ 9.4.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-jwk-9" title="§ 10.3.4 Import Key">§ 10.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-jwk-10" title="§ 10.3.5 Export Key">§ 10.3.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-jwk-11" title="§ 15.7.4 Import Key">§ 15.7.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-jwk-12" title="§ 15.7.5 Export Key">§ 15.7.5 Export Key</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-raw-public" aria-label="Links in this document to definition: raw-public">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyformat-raw-public" aria-label="Permalink for definition: raw-public. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1896181443">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-keyformat-raw-public-1" title="§ 3.1.1 Key Formats">§ 3.1.1 Key Formats</a> <a href="#ref-for-dom-keyformat-raw-public-2" title="Reference 2">(2)</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-public-3" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-public-4" title="§ 6.3.5 Export Key">§ 6.3.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-public-5" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-public-6" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-public-7" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-public-8" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-raw-private" aria-label="Links in this document to definition: raw-private">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyformat-raw-private" aria-label="Permalink for definition: raw-private. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1896181443">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-keyformat-raw-private-1" title="§ 3.1.1 Key Formats">§ 3.1.1 Key Formats</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-private-2" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-private-3" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-raw-seed" aria-label="Links in this document to definition: raw-seed">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyformat-raw-seed" aria-label="Permalink for definition: raw-seed. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1896181443">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-keyformat-raw-seed-1" title="§ 3.1.1 Key Formats">§ 3.1.1 Key Formats</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-seed-2" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-seed-3" title="§ 6.3.5 Export Key">§ 6.3.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-seed-4" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-seed-5" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat-raw-secret" aria-label="Links in this document to definition: raw-secret">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyformat-raw-secret" aria-label="Permalink for definition: raw-secret. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1896181443">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-keyformat-raw-secret-1" title="§ 3.1.1 Key Formats">§ 3.1.1 Key Formats</a> <a href="#ref-for-dom-keyformat-raw-secret-2" title="Reference 2">(2)</a> <a href="#ref-for-dom-keyformat-raw-secret-3" title="Reference 3">(3)</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-secret-4" title="§ 3.2.1 The encapsulateKey method">§ 3.2.1 The encapsulateKey method</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-secret-5" title="§ 3.2.3 The decapsulateKey method">§ 3.2.3 The decapsulateKey method</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-secret-6" title="§ 9.4.4 Import Key">§ 9.4.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-secret-7" title="§ 9.4.5 Export Key">§ 9.4.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-secret-8" title="§ 10.3.4 Import Key">§ 10.3.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-secret-9" title="§ 10.3.5 Export Key">§ 10.3.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-secret-10" title="§ 15.7.4 Import Key">§ 15.7.4 Import Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-secret-11" title="§ 15.7.5 Export Key">§ 15.7.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-keyformat-raw-secret-12" title="§ 16.4.2 Import key">§ 16.4.2 Import key</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage" aria-label="Links in this document to definition: KeyUsage">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyusage" aria-label="Permalink for definition: KeyUsage. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-keyusage-1" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> <a href="#ref-for-dom-keyusage-2" title="Reference 2">(2)</a> <a href="#ref-for-dom-keyusage-3" title="Reference 3">(3)</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-encrypt" aria-label="Links in this document to definition: encrypt">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyusage-encrypt" aria-label="Permalink for definition: encrypt. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-      <li>Not referenced in this document.</li>
-    </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-decrypt" aria-label="Links in this document to definition: decrypt">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyusage-decrypt" aria-label="Permalink for definition: decrypt. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-      <li>Not referenced in this document.</li>
-    </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-sign" aria-label="Links in this document to definition: sign">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyusage-sign" aria-label="Permalink for definition: sign. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-      <li>Not referenced in this document.</li>
-    </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-verify" aria-label="Links in this document to definition: verify">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyusage-verify" aria-label="Permalink for definition: verify. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-      <li>Not referenced in this document.</li>
-    </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-derivekey" aria-label="Links in this document to definition: deriveKey">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyusage-derivekey" aria-label="Permalink for definition: deriveKey. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-      <li>Not referenced in this document.</li>
-    </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-derivebits" aria-label="Links in this document to definition: deriveBits">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyusage-derivebits" aria-label="Permalink for definition: deriveBits. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-      <li>Not referenced in this document.</li>
-    </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-wrapkey" aria-label="Links in this document to definition: wrapKey">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyusage-wrapkey" aria-label="Permalink for definition: wrapKey. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-      <li>Not referenced in this document.</li>
-    </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-unwrapkey" aria-label="Links in this document to definition: unwrapKey">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyusage-unwrapkey" aria-label="Permalink for definition: unwrapKey. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-      <li>Not referenced in this document.</li>
-    </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-encapsulatekey" aria-label="Links in this document to definition: encapsulateKey">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyusage-encapsulatekey" aria-label="Permalink for definition: encapsulateKey. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-712964944">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-keyusage-encapsulatekey-1" title="§ 3.1.2 Key Usages">§ 3.1.2 Key Usages</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-encapsulatebits" aria-label="Links in this document to definition: encapsulateBits">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyusage-encapsulatebits" aria-label="Permalink for definition: encapsulateBits. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-712964944">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-keyusage-encapsulatebits-1" title="§ 3.1.2 Key Usages">§ 3.1.2 Key Usages</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-decapsulatekey" aria-label="Links in this document to definition: decapsulateKey">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyusage-decapsulatekey" aria-label="Permalink for definition: decapsulateKey. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-712964944">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-keyusage-decapsulatekey-1" title="§ 3.1.2 Key Usages">§ 3.1.2 Key Usages</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyusage-decapsulatebits" aria-label="Links in this document to definition: decapsulateBits">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-keyusage-decapsulatebits" aria-label="Permalink for definition: decapsulateBits. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-712964944">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-keyusage-decapsulatebits-1" title="§ 3.1.2 Key Usages">§ 3.1.2 Key Usages</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-SubtleCrypto-method-encapsulateKey" aria-label="Links in this document to definition: encapsulateKey(encapsulationAlgorithm, encapsulationKey, sharedKeyAlgorithm, extractable, usages)">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-SubtleCrypto-method-encapsulateKey" aria-label="Permalink for definition: encapsulateKey(encapsulationAlgorithm, encapsulationKey, sharedKeyAlgorithm, extractable, usages). Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-encapsulateKey-1" title="§ 1. Introduction">§ 1. Introduction</a> 
-    </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-encapsulateKey-2" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> 
-    </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-encapsulateKey-3" title="§ 3.1.2 Key Usages">§ 3.1.2 Key Usages</a> 
-    </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-encapsulateKey-4" title="§ 3.2.1 The encapsulateKey method">§ 3.2.1 The encapsulateKey method</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-SubtleCrypto-method-encapsulateBits" aria-label="Links in this document to definition: encapsulateBits(encapsulationAlgorithm, encapsulationKey)">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-SubtleCrypto-method-encapsulateBits" aria-label="Permalink for definition: encapsulateBits(encapsulationAlgorithm, encapsulationKey). Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-encapsulateBits-1" title="§ 1. Introduction">§ 1. Introduction</a> 
-    </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-encapsulateBits-2" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> 
-    </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-encapsulateBits-3" title="§ 3.1.2 Key Usages">§ 3.1.2 Key Usages</a> 
-    </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-encapsulateBits-4" title="§ 3.2.2 The encapsulateBits method">§ 3.2.2 The encapsulateBits method</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-SubtleCrypto-method-decapsulateKey" aria-label="Links in this document to definition: decapsulateKey(decapsulationAlgorithm, decapsulationKey, ciphertext, sharedKeyAlgorithm, extractable, usages)">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-SubtleCrypto-method-decapsulateKey" aria-label="Permalink for definition: decapsulateKey(decapsulationAlgorithm, decapsulationKey, ciphertext, sharedKeyAlgorithm, extractable, usages). Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateKey-1" title="§ 1. Introduction">§ 1. Introduction</a> 
-    </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateKey-2" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> 
-    </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateKey-3" title="§ 3.1.2 Key Usages">§ 3.1.2 Key Usages</a> 
-    </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateKey-4" title="§ 3.2.3 The decapsulateKey method">§ 3.2.3 The decapsulateKey method</a> <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateKey-5" title="Reference 2">(2)</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-SubtleCrypto-method-decapsulateBits" aria-label="Links in this document to definition: decapsulateBits(decapsulationAlgorithm, decapsulationKey, ciphertext)">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-SubtleCrypto-method-decapsulateBits" aria-label="Permalink for definition: decapsulateBits(decapsulationAlgorithm, decapsulationKey, ciphertext). Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateBits-1" title="§ 1. Introduction">§ 1. Introduction</a> 
-    </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateBits-2" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> 
-    </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateBits-3" title="§ 3.1.2 Key Usages">§ 3.1.2 Key Usages</a> 
-    </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateBits-4" title="§ 3.2.4 The decapsulateBits method">§ 3.2.4 The decapsulateBits method</a> <a href="#ref-for-dfn-SubtleCrypto-method-decapsulateBits-5" title="Reference 2">(2)</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-SubtleCrypto-method-getPublicKey" aria-label="Links in this document to definition: getPublicKey(key, usages)">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-SubtleCrypto-method-getPublicKey" aria-label="Permalink for definition: getPublicKey(key, usages). Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-getPublicKey-1" title="§ 1. Introduction">§ 1. Introduction</a> 
-    </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-getPublicKey-2" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> 
-    </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-getPublicKey-3" title="§ 3.2.5 The getPublicKey method">§ 3.2.5 The getPublicKey method</a> 
-    </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-getPublicKey-4" title="§ 18. Adoption Guidance">§ 18. Adoption Guidance</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-SubtleCrypto-method-supports" aria-label="Links in this document to definition: supports(operation, algorithm, length)">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-SubtleCrypto-method-supports" aria-label="Permalink for definition: supports(operation, algorithm, length). Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-supports-1" title="§ 1. Introduction">§ 1. Introduction</a> 
-    </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-supports-2" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> 
-    </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-supports-3" title="§ 18. Adoption Guidance">§ 18. Adoption Guidance</a> <a href="#ref-for-dfn-SubtleCrypto-method-supports-4" title="Reference 2">(2)</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-SubtleCrypto-method-supports-additionalAlgorithm" aria-label="Links in this document to definition: supports(operation, algorithm, additionalAlgorithm)">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-SubtleCrypto-method-supports-additionalAlgorithm" aria-label="Permalink for definition: supports(operation, algorithm, additionalAlgorithm). Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-supports-additionalAlgorithm-1" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-check-support-for-algorithm" aria-label="Links in this document to definition: check support for an algorithm">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-check-support-for-algorithm" aria-label="Permalink for definition: check support for an algorithm. Activate to close this dialog.">Permalink</a>
-         
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-check-support-for-algorithm-1" title="§ 3.2.6 The supports method">§ 3.2.6 The supports method</a> <a href="#ref-for-dfn-check-support-for-algorithm-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-check-support-for-algorithm-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-check-support-for-algorithm-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-check-support-for-algorithm-5" title="Reference 5">(5)</a> 
-    </li><li>
-      <a href="#ref-for-dfn-check-support-for-algorithm-6" title="§ 3.3 Checking support for an algorithm">§ 3.3 Checking support for an algorithm</a> <a href="#ref-for-dfn-check-support-for-algorithm-7" title="Reference 2">(2)</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-EncapsulatedKey" aria-label="Links in this document to definition: EncapsulatedKey">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-EncapsulatedKey" aria-label="Permalink for definition: EncapsulatedKey. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-549016948">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-EncapsulatedKey-1" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> 
-    </li><li>
-      <a href="#ref-for-dfn-EncapsulatedKey-2" title="§ 3.2.1 The encapsulateKey method">§ 3.2.1 The encapsulateKey method</a> <a href="#ref-for-dfn-EncapsulatedKey-3" title="Reference 2">(2)</a> 
-    </li><li>
-      <a href="#ref-for-dfn-EncapsulatedKey-4" title="§ 4. Encapsulation dictionaries">§ 4. Encapsulation dictionaries</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-EncapsulatedKey-sharedKey" aria-label="Links in this document to definition: sharedKey">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-EncapsulatedKey-sharedKey" aria-label="Permalink for definition: sharedKey. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-549016948">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-EncapsulatedKey-sharedKey-1" title="§ 3.2.1 The encapsulateKey method">§ 3.2.1 The encapsulateKey method</a> 
-    </li><li>
-      <a href="#ref-for-dfn-EncapsulatedKey-sharedKey-2" title="§ 4. Encapsulation dictionaries">§ 4. Encapsulation dictionaries</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-EncapsulatedKey-ciphertext" aria-label="Links in this document to definition: ciphertext">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-EncapsulatedKey-ciphertext" aria-label="Permalink for definition: ciphertext. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-549016948">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-EncapsulatedKey-ciphertext-1" title="§ 3.2.1 The encapsulateKey method">§ 3.2.1 The encapsulateKey method</a> 
-    </li><li>
-      <a href="#ref-for-dfn-EncapsulatedKey-ciphertext-2" title="§ 4. Encapsulation dictionaries">§ 4. Encapsulation dictionaries</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-EncapsulatedBits" aria-label="Links in this document to definition: EncapsulatedBits">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-EncapsulatedBits" aria-label="Permalink for definition: EncapsulatedBits. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-549016948">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-EncapsulatedBits-1" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> 
-    </li><li>
-      <a href="#ref-for-dfn-EncapsulatedBits-2" title="§ 3.2.2 The encapsulateBits method">§ 3.2.2 The encapsulateBits method</a> 
-    </li><li>
-      <a href="#ref-for-dfn-EncapsulatedBits-3" title="§ 4. Encapsulation dictionaries">§ 4. Encapsulation dictionaries</a> 
-    </li><li>
-      <a href="#ref-for-dfn-EncapsulatedBits-4" title="§ 6.2 Registration">§ 6.2 Registration</a> 
-    </li><li>
-      <a href="#ref-for-dfn-EncapsulatedBits-5" title="§ 6.3.1 Encapsulate">§ 6.3.1 Encapsulate</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-EncapsulatedBits-sharedKey" aria-label="Links in this document to definition: sharedKey">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-EncapsulatedBits-sharedKey" aria-label="Permalink for definition: sharedKey. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-549016948">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-EncapsulatedBits-sharedKey-1" title="§ 3.2.1 The encapsulateKey method">§ 3.2.1 The encapsulateKey method</a> 
-    </li><li>
-      <a href="#ref-for-dfn-EncapsulatedBits-sharedKey-2" title="§ 4. Encapsulation dictionaries">§ 4. Encapsulation dictionaries</a> 
-    </li><li>
-      <a href="#ref-for-dfn-EncapsulatedBits-sharedKey-3" title="§ 6.3.1 Encapsulate">§ 6.3.1 Encapsulate</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-EncapsulatedBits-ciphertext" aria-label="Links in this document to definition: ciphertext">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-EncapsulatedBits-ciphertext" aria-label="Permalink for definition: ciphertext. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-549016948">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-EncapsulatedBits-ciphertext-1" title="§ 3.2.1 The encapsulateKey method">§ 3.2.1 The encapsulateKey method</a> 
-    </li><li>
-      <a href="#ref-for-dfn-EncapsulatedBits-ciphertext-2" title="§ 4. Encapsulation dictionaries">§ 4. Encapsulation dictionaries</a> 
-    </li><li>
-      <a href="#ref-for-dfn-EncapsulatedBits-ciphertext-3" title="§ 6.3.1 Encapsulate">§ 6.3.1 Encapsulate</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-jsonwebkey-pub" aria-label="Links in this document to definition: pub">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-jsonwebkey-pub" aria-label="Permalink for definition: pub. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-jsonwebkey-pub-1" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-pub-2" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-pub-3" title="Reference 3">(3)</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-pub-4" title="§ 6.3.5 Export Key">§ 6.3.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-pub-5" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-pub-6" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-pub-7" title="Reference 3">(3)</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-pub-8" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-pub-9" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-pub-10" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-pub-11" title="Reference 3">(3)</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-pub-12" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-jsonwebkey-priv" aria-label="Links in this document to definition: priv">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-jsonwebkey-priv" aria-label="Permalink for definition: priv. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-jsonwebkey-priv-1" title="§ 6.3.4 Import Key">§ 6.3.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-priv-2" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-priv-3" title="Reference 3">(3)</a> <a href="#ref-for-dom-jsonwebkey-priv-4" title="Reference 4">(4)</a> <a href="#ref-for-dom-jsonwebkey-priv-5" title="Reference 5">(5)</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-priv-6" title="§ 6.3.5 Export Key">§ 6.3.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-priv-7" title="§ 7.4.4 Import Key">§ 7.4.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-priv-8" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-priv-9" title="Reference 3">(3)</a> <a href="#ref-for-dom-jsonwebkey-priv-10" title="Reference 4">(4)</a> <a href="#ref-for-dom-jsonwebkey-priv-11" title="Reference 5">(5)</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-priv-12" title="§ 7.4.5 Export Key">§ 7.4.5 Export Key</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-priv-13" title="§ 8.4.4 Import Key">§ 8.4.4 Import Key</a> <a href="#ref-for-dom-jsonwebkey-priv-14" title="Reference 2">(2)</a> <a href="#ref-for-dom-jsonwebkey-priv-15" title="Reference 3">(3)</a> <a href="#ref-for-dom-jsonwebkey-priv-16" title="Reference 4">(4)</a> <a href="#ref-for-dom-jsonwebkey-priv-17" title="Reference 5">(5)</a> 
-    </li><li>
-      <a href="#ref-for-dom-jsonwebkey-priv-18" title="§ 8.4.5 Export Key">§ 8.4.5 Export Key</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-ContextParams" aria-label="Links in this document to definition: ContextParams">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-ContextParams" aria-label="Permalink for definition: ContextParams. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1839088126">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-ContextParams-1" title="§ 7.2 Registration">§ 7.2 Registration</a> <a href="#ref-for-dfn-ContextParams-2" title="Reference 2">(2)</a> 
-    </li><li>
-      <a href="#ref-for-dfn-ContextParams-3" title="§ 7.3 ContextParams dictionary">§ 7.3 ContextParams dictionary</a> <a href="#ref-for-dfn-ContextParams-4" title="Reference 2">(2)</a> 
-    </li><li>
-      <a href="#ref-for-dfn-ContextParams-5" title="§ 8.2 Registration">§ 8.2 Registration</a> <a href="#ref-for-dfn-ContextParams-6" title="Reference 2">(2)</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-ContextParams-context" aria-label="Links in this document to definition: context">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-ContextParams-context" aria-label="Permalink for definition: context. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1839088126">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-ContextParams-context-1" title="§ 7.3 ContextParams dictionary">§ 7.3 ContextParams dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-ContextParams-context-2" title="§ 7.4.1 Sign">§ 7.4.1 Sign</a> <a href="#ref-for-dfn-ContextParams-context-3" title="Reference 2">(2)</a> 
-    </li><li>
-      <a href="#ref-for-dfn-ContextParams-context-4" title="§ 7.4.2 Verify">§ 7.4.2 Verify</a> <a href="#ref-for-dfn-ContextParams-context-5" title="Reference 2">(2)</a> 
-    </li><li>
-      <a href="#ref-for-dfn-ContextParams-context-6" title="§ 8.4.1 Sign">§ 8.4.1 Sign</a> <a href="#ref-for-dfn-ContextParams-context-7" title="Reference 2">(2)</a> 
-    </li><li>
-      <a href="#ref-for-dfn-ContextParams-context-8" title="§ 8.4.2 Verify">§ 8.4.2 Verify</a> <a href="#ref-for-dfn-ContextParams-context-9" title="Reference 2">(2)</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-AeadParams" aria-label="Links in this document to definition: AeadParams">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-AeadParams" aria-label="Permalink for definition: AeadParams. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1353594407">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-AeadParams-1" title="§ 9.2 Registration">§ 9.2 Registration</a> <a href="#ref-for-dfn-AeadParams-2" title="Reference 2">(2)</a> 
-    </li><li>
-      <a href="#ref-for-dfn-AeadParams-3" title="§ 9.3 AeadParams dictionary">§ 9.3 AeadParams dictionary</a> <a href="#ref-for-dfn-AeadParams-4" title="Reference 2">(2)</a> 
-    </li><li>
-      <a href="#ref-for-dfn-AeadParams-5" title="§ 10.2 Registration">§ 10.2 Registration</a> <a href="#ref-for-dfn-AeadParams-6" title="Reference 2">(2)</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-AeadParams-iv" aria-label="Links in this document to definition: iv">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-AeadParams-iv" aria-label="Permalink for definition: iv. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1353594407">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-AeadParams-iv-1" title="§ 9.3 AeadParams dictionary">§ 9.3 AeadParams dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-AeadParams-iv-2" title="§ 9.4.1 Encrypt">§ 9.4.1 Encrypt</a> <a href="#ref-for-dfn-AeadParams-iv-3" title="Reference 2">(2)</a> 
-    </li><li>
-      <a href="#ref-for-dfn-AeadParams-iv-4" title="§ 9.4.2 Decrypt">§ 9.4.2 Decrypt</a> <a href="#ref-for-dfn-AeadParams-iv-5" title="Reference 2">(2)</a> 
-    </li><li>
-      <a href="#ref-for-dfn-AeadParams-iv-6" title="§ 10.3.1 Encrypt">§ 10.3.1 Encrypt</a> <a href="#ref-for-dfn-AeadParams-iv-7" title="Reference 2">(2)</a> 
-    </li><li>
-      <a href="#ref-for-dfn-AeadParams-iv-8" title="§ 10.3.2 Decrypt">§ 10.3.2 Decrypt</a> <a href="#ref-for-dfn-AeadParams-iv-9" title="Reference 2">(2)</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-AeadParams-additionalData" aria-label="Links in this document to definition: additionalData">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-AeadParams-additionalData" aria-label="Permalink for definition: additionalData. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1353594407">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-AeadParams-additionalData-1" title="§ 9.3 AeadParams dictionary">§ 9.3 AeadParams dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-AeadParams-additionalData-2" title="§ 9.4.1 Encrypt">§ 9.4.1 Encrypt</a> 
-    </li><li>
-      <a href="#ref-for-dfn-AeadParams-additionalData-3" title="§ 9.4.2 Decrypt">§ 9.4.2 Decrypt</a> 
-    </li><li>
-      <a href="#ref-for-dfn-AeadParams-additionalData-4" title="§ 10.3.1 Encrypt">§ 10.3.1 Encrypt</a> 
-    </li><li>
-      <a href="#ref-for-dfn-AeadParams-additionalData-5" title="§ 10.3.2 Decrypt">§ 10.3.2 Decrypt</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-AeadParams-tagLength" aria-label="Links in this document to definition: tagLength">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-AeadParams-tagLength" aria-label="Permalink for definition: tagLength. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1353594407">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-AeadParams-tagLength-1" title="§ 9.3 AeadParams dictionary">§ 9.3 AeadParams dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-AeadParams-tagLength-2" title="§ 9.4.1 Encrypt">§ 9.4.1 Encrypt</a> <a href="#ref-for-dfn-AeadParams-tagLength-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-AeadParams-tagLength-4" title="Reference 3">(3)</a> 
-    </li><li>
-      <a href="#ref-for-dfn-AeadParams-tagLength-5" title="§ 9.4.2 Decrypt">§ 9.4.2 Decrypt</a> <a href="#ref-for-dfn-AeadParams-tagLength-6" title="Reference 2">(2)</a> <a href="#ref-for-dfn-AeadParams-tagLength-7" title="Reference 3">(3)</a> 
-    </li><li>
-      <a href="#ref-for-dfn-AeadParams-tagLength-8" title="§ 10.3.1 Encrypt">§ 10.3.1 Encrypt</a> 
-    </li><li>
-      <a href="#ref-for-dfn-AeadParams-tagLength-9" title="§ 10.3.2 Decrypt">§ 10.3.2 Decrypt</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-CShakeParams" aria-label="Links in this document to definition: CShakeParams">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-CShakeParams" aria-label="Permalink for definition: CShakeParams. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1714379560">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-CShakeParams-1" title="§ 12.2 Registration">§ 12.2 Registration</a> 
-    </li><li>
-      <a href="#ref-for-dfn-CShakeParams-2" title="§ 12.3 CShakeParams dictionary">§ 12.3 CShakeParams dictionary</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-CShakeParams-outputLength" aria-label="Links in this document to definition: outputLength">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-CShakeParams-outputLength" aria-label="Permalink for definition: outputLength. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1714379560">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-CShakeParams-outputLength-1" title="§ 12.3 CShakeParams dictionary">§ 12.3 CShakeParams dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-CShakeParams-outputLength-2" title="§ 12.4.1 Digest">§ 12.4.1 Digest</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-CShakeParams-functionName" aria-label="Links in this document to definition: functionName">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-CShakeParams-functionName" aria-label="Permalink for definition: functionName. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1714379560">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-CShakeParams-functionName-1" title="§ 12.1 Description">§ 12.1 Description</a> 
-    </li><li>
-      <a href="#ref-for-dfn-CShakeParams-functionName-2" title="§ 12.3 CShakeParams dictionary">§ 12.3 CShakeParams dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-CShakeParams-functionName-3" title="§ 12.4.1 Digest">§ 12.4.1 Digest</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-CShakeParams-customization" aria-label="Links in this document to definition: customization">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-CShakeParams-customization" aria-label="Permalink for definition: customization. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1714379560">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-CShakeParams-customization-1" title="§ 12.1 Description">§ 12.1 Description</a> 
-    </li><li>
-      <a href="#ref-for-dfn-CShakeParams-customization-2" title="§ 12.3 CShakeParams dictionary">§ 12.3 CShakeParams dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-CShakeParams-customization-3" title="§ 12.4.1 Digest">§ 12.4.1 Digest</a> 
-    </li><li>
-      <a href="#ref-for-dfn-CShakeParams-customization-4" title="§ 18. Adoption Guidance">§ 18. Adoption Guidance</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-TurboShakeParams" aria-label="Links in this document to definition: TurboShakeParams">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-TurboShakeParams" aria-label="Permalink for definition: TurboShakeParams. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-356563402">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-TurboShakeParams-1" title="§ 13.2 Registration">§ 13.2 Registration</a> 
-    </li><li>
-      <a href="#ref-for-dfn-TurboShakeParams-2" title="§ 13.3 TurboShakeParams dictionary">§ 13.3 TurboShakeParams dictionary</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-TurboShakeParams-outputLength" aria-label="Links in this document to definition: outputLength">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-TurboShakeParams-outputLength" aria-label="Permalink for definition: outputLength. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-356563402">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-TurboShakeParams-outputLength-1" title="§ 13.3 TurboShakeParams dictionary">§ 13.3 TurboShakeParams dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-TurboShakeParams-outputLength-2" title="§ 13.4.1 Digest">§ 13.4.1 Digest</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-TurboShakeParams-domainSeparation" aria-label="Links in this document to definition: domainSeparation">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-TurboShakeParams-domainSeparation" aria-label="Permalink for definition: domainSeparation. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-356563402">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-TurboShakeParams-domainSeparation-1" title="§ 13.3 TurboShakeParams dictionary">§ 13.3 TurboShakeParams dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-TurboShakeParams-domainSeparation-2" title="§ 13.4.1 Digest">§ 13.4.1 Digest</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KangarooTwelveParams" aria-label="Links in this document to definition: KangarooTwelveParams">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-KangarooTwelveParams" aria-label="Permalink for definition: KangarooTwelveParams. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1024893889">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-KangarooTwelveParams-1" title="§ 14.2 Registration">§ 14.2 Registration</a> 
-    </li><li>
-      <a href="#ref-for-dfn-KangarooTwelveParams-2" title="§ 14.3 KangarooTwelveParams dictionary">§ 14.3 KangarooTwelveParams dictionary</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KangarooTwelveParams-outputLength" aria-label="Links in this document to definition: outputLength">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-KangarooTwelveParams-outputLength" aria-label="Permalink for definition: outputLength. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1024893889">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-KangarooTwelveParams-outputLength-1" title="§ 14.3 KangarooTwelveParams dictionary">§ 14.3 KangarooTwelveParams dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-KangarooTwelveParams-outputLength-2" title="§ 14.4.1 Digest">§ 14.4.1 Digest</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KangarooTwelveParams-customization" aria-label="Links in this document to definition: customization">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-KangarooTwelveParams-customization" aria-label="Permalink for definition: customization. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1024893889">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-KangarooTwelveParams-customization-1" title="§ 14.3 KangarooTwelveParams dictionary">§ 14.3 KangarooTwelveParams dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-KangarooTwelveParams-customization-2" title="§ 14.4.1 Digest">§ 14.4.1 Digest</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacKeyGenParams" aria-label="Links in this document to definition: KmacKeyGenParams">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-KmacKeyGenParams" aria-label="Permalink for definition: KmacKeyGenParams. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1224700284">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-KmacKeyGenParams-1" title="§ 15.2 Registration">§ 15.2 Registration</a> 
-    </li><li>
-      <a href="#ref-for-dfn-KmacKeyGenParams-2" title="§ 15.3 KmacKeyGenParams dictionary">§ 15.3 KmacKeyGenParams dictionary</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacKeyGenParams-length" aria-label="Links in this document to definition: length">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-KmacKeyGenParams-length" aria-label="Permalink for definition: length. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1224700284">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-KmacKeyGenParams-length-1" title="§ 15.3 KmacKeyGenParams dictionary">§ 15.3 KmacKeyGenParams dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-KmacKeyGenParams-length-2" title="§ 15.7.3 Generate Key">§ 15.7.3 Generate Key</a> <a href="#ref-for-dfn-KmacKeyGenParams-length-3" title="Reference 2">(2)</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacImportParams" aria-label="Links in this document to definition: KmacImportParams">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-KmacImportParams" aria-label="Permalink for definition: KmacImportParams. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-745655368">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-KmacImportParams-1" title="§ 15.2 Registration">§ 15.2 Registration</a> <a href="#ref-for-dfn-KmacImportParams-2" title="Reference 2">(2)</a> 
-    </li><li>
-      <a href="#ref-for-dfn-KmacImportParams-3" title="§ 15.4 KmacImportParams dictionary">§ 15.4 KmacImportParams dictionary</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacImportParams-length" aria-label="Links in this document to definition: length">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-KmacImportParams-length" aria-label="Permalink for definition: length. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-745655368">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-KmacImportParams-length-1" title="§ 15.4 KmacImportParams dictionary">§ 15.4 KmacImportParams dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-KmacImportParams-length-2" title="§ 15.7.4 Import Key">§ 15.7.4 Import Key</a> <a href="#ref-for-dfn-KmacImportParams-length-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-KmacImportParams-length-4" title="Reference 3">(3)</a> <a href="#ref-for-dfn-KmacImportParams-length-5" title="Reference 4">(4)</a> 
-    </li><li>
-      <a href="#ref-for-dfn-KmacImportParams-length-6" title="§ 15.7.6 Get key length">§ 15.7.6 Get key length</a> <a href="#ref-for-dfn-KmacImportParams-length-7" title="Reference 2">(2)</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacKeyAlgorithm" aria-label="Links in this document to definition: KmacKeyAlgorithm">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-KmacKeyAlgorithm" aria-label="Permalink for definition: KmacKeyAlgorithm. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-28722634">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-KmacKeyAlgorithm-1" title="§ 15.5 KmacKeyAlgorithm dictionary">§ 15.5 KmacKeyAlgorithm dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-KmacKeyAlgorithm-2" title="§ 15.7.3 Generate Key">§ 15.7.3 Generate Key</a> 
-    </li><li>
-      <a href="#ref-for-dfn-KmacKeyAlgorithm-3" title="§ 15.7.4 Import Key">§ 15.7.4 Import Key</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacKeyAlgorithm-length" aria-label="Links in this document to definition: length">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-KmacKeyAlgorithm-length" aria-label="Permalink for definition: length. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-28722634">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-KmacKeyAlgorithm-length-1" title="§ 15.5 KmacKeyAlgorithm dictionary">§ 15.5 KmacKeyAlgorithm dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-KmacKeyAlgorithm-length-2" title="§ 15.7.3 Generate Key">§ 15.7.3 Generate Key</a> 
-    </li><li>
-      <a href="#ref-for-dfn-KmacKeyAlgorithm-length-3" title="§ 15.7.4 Import Key">§ 15.7.4 Import Key</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacParams" aria-label="Links in this document to definition: KmacParams">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-KmacParams" aria-label="Permalink for definition: KmacParams. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1832520310">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-KmacParams-1" title="§ 15.2 Registration">§ 15.2 Registration</a> <a href="#ref-for-dfn-KmacParams-2" title="Reference 2">(2)</a> 
-    </li><li>
-      <a href="#ref-for-dfn-KmacParams-3" title="§ 15.6 KmacParams dictionary">§ 15.6 KmacParams dictionary</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacParams-outputLength" aria-label="Links in this document to definition: outputLength">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-KmacParams-outputLength" aria-label="Permalink for definition: outputLength. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1832520310">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-KmacParams-outputLength-1" title="§ 15.6 KmacParams dictionary">§ 15.6 KmacParams dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-KmacParams-outputLength-2" title="§ 15.7.1 Sign">§ 15.7.1 Sign</a> <a href="#ref-for-dfn-KmacParams-outputLength-3" title="Reference 2">(2)</a> 
-    </li><li>
-      <a href="#ref-for-dfn-KmacParams-outputLength-4" title="§ 15.7.2 Verify">§ 15.7.2 Verify</a> <a href="#ref-for-dfn-KmacParams-outputLength-5" title="Reference 2">(2)</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacParams-customization" aria-label="Links in this document to definition: customization">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-KmacParams-customization" aria-label="Permalink for definition: customization. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1832520310">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-KmacParams-customization-1" title="§ 15.6 KmacParams dictionary">§ 15.6 KmacParams dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-KmacParams-customization-2" title="§ 15.7.1 Sign">§ 15.7.1 Sign</a> 
-    </li><li>
-      <a href="#ref-for-dfn-KmacParams-customization-3" title="§ 15.7.2 Verify">§ 15.7.2 Verify</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-Argon2Params" aria-label="Links in this document to definition: Argon2Params">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-Argon2Params" aria-label="Permalink for definition: Argon2Params. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1006558199">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-Argon2Params-1" title="§ 16.2 Registration">§ 16.2 Registration</a> 
-    </li><li>
-      <a href="#ref-for-dfn-Argon2Params-2" title="§ 16.3 Argon2Params dictionary">§ 16.3 Argon2Params dictionary</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-Argon2Params-nonce" aria-label="Links in this document to definition: nonce">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-Argon2Params-nonce" aria-label="Permalink for definition: nonce. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1006558199">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-Argon2Params-nonce-1" title="§ 16.3 Argon2Params dictionary">§ 16.3 Argon2Params dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-Argon2Params-nonce-2" title="§ 16.4.1 Derive Bits">§ 16.4.1 Derive Bits</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-Argon2Params-parallelism" aria-label="Links in this document to definition: parallelism">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-Argon2Params-parallelism" aria-label="Permalink for definition: parallelism. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1006558199">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-Argon2Params-parallelism-1" title="§ 16.3 Argon2Params dictionary">§ 16.3 Argon2Params dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-Argon2Params-parallelism-2" title="§ 16.4.1 Derive Bits">§ 16.4.1 Derive Bits</a> <a href="#ref-for-dfn-Argon2Params-parallelism-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-Argon2Params-parallelism-4" title="Reference 3">(3)</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-Argon2Params-memory" aria-label="Links in this document to definition: memory">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-Argon2Params-memory" aria-label="Permalink for definition: memory. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1006558199">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-Argon2Params-memory-1" title="§ 16.3 Argon2Params dictionary">§ 16.3 Argon2Params dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-Argon2Params-memory-2" title="§ 16.4.1 Derive Bits">§ 16.4.1 Derive Bits</a> <a href="#ref-for-dfn-Argon2Params-memory-3" title="Reference 2">(2)</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-Argon2Params-passes" aria-label="Links in this document to definition: passes">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-Argon2Params-passes" aria-label="Permalink for definition: passes. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1006558199">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-Argon2Params-passes-1" title="§ 16.3 Argon2Params dictionary">§ 16.3 Argon2Params dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-Argon2Params-passes-2" title="§ 16.4.1 Derive Bits">§ 16.4.1 Derive Bits</a> <a href="#ref-for-dfn-Argon2Params-passes-3" title="Reference 2">(2)</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-Argon2Params-version" aria-label="Links in this document to definition: version">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-Argon2Params-version" aria-label="Permalink for definition: version. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1006558199">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-Argon2Params-version-1" title="§ 16.3 Argon2Params dictionary">§ 16.3 Argon2Params dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-Argon2Params-version-2" title="§ 16.4.1 Derive Bits">§ 16.4.1 Derive Bits</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-Argon2Params-secretValue" aria-label="Links in this document to definition: secretValue">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-Argon2Params-secretValue" aria-label="Permalink for definition: secretValue. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1006558199">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-Argon2Params-secretValue-1" title="§ 16.3 Argon2Params dictionary">§ 16.3 Argon2Params dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-Argon2Params-secretValue-2" title="§ 16.4.1 Derive Bits">§ 16.4.1 Derive Bits</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-Argon2Params-associatedData" aria-label="Links in this document to definition: associatedData">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dfn-Argon2Params-associatedData" aria-label="Permalink for definition: associatedData. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1006558199">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dfn-Argon2Params-associatedData-1" title="§ 16.3 Argon2Params dictionary">§ 16.3 Argon2Params dictionary</a> 
-    </li><li>
-      <a href="#ref-for-dfn-Argon2Params-associatedData-2" title="§ 16.4.1 Derive Bits">§ 16.4.1 Derive Bits</a> 
-    </li>
-  </ul>
-    </div><script id="respec-highlight-vars">(() => {
+  </p><script id="respec-highlight-vars">(() => {
 // @ts-check
 
 if (document.respec) {
@@ -9591,9 +9709,12 @@ function setupVarHighlighter() {
     .forEach(varElem => varElem.addEventListener("click", highlightListener));
 }
 
+/**
+ * @param {MouseEvent} ev
+ */
 function highlightListener(ev) {
   ev.stopPropagation();
-  const { target: varElem } = ev;
+  const varElem = /** @type {HTMLElement} */ (ev.target);
   const hightligtedElems = highlightVars(varElem);
   const resetListener = () => {
     const hlColor = getHighlightColor(varElem);
@@ -9616,6 +9737,9 @@ const HL_COLORS = new Map([
   ["respec-hl-c7", true],
 ]);
 
+/**
+ * @param {HTMLElement} target
+ */
 function getHighlightColor(target) {
   // return current colors if applicable
   const { value } = target.classList;
@@ -9630,9 +9754,15 @@ function getHighlightColor(target) {
   return [...HL_COLORS.keys()].find(c => HL_COLORS.get(c)) || "respec-hl-c1";
 }
 
+/**
+ * @param {HTMLElement} varElem
+ */
 function highlightVars(varElem) {
   const textContent = norm(varElem.textContent);
-  const parent = varElem.closest(".algorithm, section");
+  const parent = /** @type {HTMLElement} */ (
+    varElem.closest(".algorithm, section")
+  );
+  if (!parent) return [];
   const highlightColor = getHighlightColor(varElem);
 
   const varsToHighlight = [...parent.querySelectorAll("var")].filter(
@@ -9655,12 +9785,20 @@ function highlightVars(varElem) {
   return varsToHighlight;
 }
 
+/**
+ * @param {HTMLElement} el
+ * @param {string} highlightColor
+ */
 function removeHighlight(el, highlightColor) {
   el.classList.remove("respec-hl", highlightColor);
   // clean up empty class attributes so they don't come in export
   if (!el.classList.length) el.removeAttribute("class");
 }
 
+/**
+ * @param {HTMLElement} elem
+ * @param {string} highlightColor
+ */
 function addHighlight(elem, highlightColor) {
   elem.classList.add("respec-hl", highlightColor);
 }
@@ -9688,8 +9826,11 @@ function setupPanel() {
 }
 
 function panelListener() {
-  /** @type {HTMLElement} */
+  /** @type {HTMLElement | null} */
   let panel = null;
+  /**
+   * @param {KeyboardEvent|MouseEvent} event
+   */
   return event => {
     const { target, type } = event;
 
@@ -9697,24 +9838,34 @@ function panelListener() {
 
     // For keys, we only care about Enter key to activate the panel
     // otherwise it's activated via a click.
-    if (type === "keydown" && event.key !== "Enter") return;
+    if (
+      type === "keydown" &&
+      /** @type {KeyboardEvent} */ (event).key !== "Enter"
+    )
+      return;
 
     const action = deriveAction(event);
 
     switch (action) {
       case "show": {
         hidePanel(panel);
-        /** @type {HTMLElement} */
+        /** @type {HTMLElement | null} */
         const dfn = target.closest("dfn, .index-term");
+        if (!dfn?.id) break;
         panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
-        const coords = deriveCoordinates(event);
+        if (!panel) break;
+        const coords = deriveCoordinates(
+          /** @type {MouseEvent|KeyboardEvent} */ (event)
+        );
         displayPanel(dfn, panel, coords);
         break;
       }
       case "dock": {
-        panel.style.left = null;
-        panel.style.top = null;
-        panel.classList.add("docked");
+        if (panel) {
+          panel.style.left = "";
+          panel.style.top = "";
+          panel.classList.add("docked");
+        }
         break;
       }
       case "hide": {
@@ -9765,7 +9916,8 @@ function deriveAction(event) {
     if (hitALink) {
       return target.classList.contains("self-link") ? "hide" : "dock";
     }
-    const panel = target.closest(".dfn-panel");
+
+    const panel = /** @type {HTMLElement} */ (target.closest(".dfn-panel"));
     return panel.classList.contains("docked") ? "hide" : "none";
   }
   if (document.querySelector(".dfn-panel:not([hidden])")) {
@@ -9809,9 +9961,9 @@ function displayPanel(dfn, panel, { x, y }) {
     const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
     const newCaretOffset = left - newLeft;
     panel.style.left = `${newLeft}px`;
-    /** @type {HTMLElement} */
+    /** @type {HTMLElement | null} */
     const caret = panel.querySelector(".caret");
-    caret.style.left = `${newCaretOffset}px`;
+    if (caret) caret.style.left = `${newCaretOffset}px`;
   }
 
   // As it's a dialog, we trap focus.
@@ -9860,6 +10012,9 @@ function trapFocus(panel, dfn) {
 function createTrapListener(anchors, panel, dfn) {
   const lastIndex = anchors.length - 1;
   let currentIndex = 0;
+  /**
+   * @param {KeyboardEvent} event
+   */
   return event => {
     switch (event.key) {
       // Hitting "Tab" traps us in a nice loop around elements.
@@ -9889,7 +10044,7 @@ function createTrapListener(anchors, panel, dfn) {
   };
 }
 
-/** @param {HTMLElement} panel */
+/** @param {HTMLElement | null} panel */
 function hidePanel(panel) {
   if (!panel) return;
   panel.hidden = true;
