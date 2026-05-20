@@ -293,30 +293,11 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       "date": "December 2025",
       "id": "draft-ietf-jose-pqc-kem-05"
     },
-    "draft-ietf-cose-dilithium-08": {
-      "title": "ML-DSA for JOSE and COSE",
-      "href": "https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-08.html",
-      "publisher": "IETF",
-      "date": "July 2025",
-      "id": "draft-ietf-cose-dilithium-08"
-    },
     "CSOR": {
       "title": "Computer Security Objects Register",
       "href": "https://csrc.nist.gov/projects/computer-security-objects-register/algorithm-registration",
       "publisher": "NIST",
       "id": "csor"
-    },
-    "draft-ietf-lamps-kyber-certificates": {
-      "title": "Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM)",
-      "href": "https://datatracker.ietf.org/doc/draft-ietf-lamps-kyber-certificates/",
-      "publisher": "IETF",
-      "id": "draft-ietf-lamps-kyber-certificates"
-    },
-    "draft-ietf-lamps-dilithium-certificates": {
-      "title": "Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Digital Signature Algorithm (ML-DSA)",
-      "href": "https://datatracker.ietf.org/doc/draft-ietf-lamps-dilithium-certificates/",
-      "publisher": "IETF",
-      "id": "draft-ietf-lamps-dilithium-certificates"
     },
     "draft-ietf-hpke-pq": {
       "title": "Post-Quantum Hybrid Key Encapsulation Mechanisms for HPKE",
@@ -331,8 +312,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       "id": "draft-ietf-hpke-hpke"
     }
   },
-  "publishISODate": "2026-05-18T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 18 May 2026"
+  "publishISODate": "2026-05-20T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 20 May 2026"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/cg-draft"></head>
 
@@ -341,7 +322,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Modern Algorithms in the Web Cryptography API</h1> 
     <p id="w3c-state">
       <a href="https://www.w3.org/standards/types#reports">Draft Community Group Report</a>
-      <time class="dt-published" datetime="2026-05-18">18 May 2026</time>
+      <time class="dt-published" datetime="2026-05-20">20 May 2026</time>
     </p>
     <dl>
       
@@ -1486,14 +1467,14 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
 
   <section id="partial-JsonWebKey-dictionary"><div class="header-wrapper"><h2 id="x5-partial-jsonwebkey-dictionary"><bdi class="secno">5. </bdi>Partial JsonWebKey dictionary</h2><a class="self-link" href="#partial-JsonWebKey-dictionary" aria-label="Permalink for Section 5."></a></div>
     
-    <pre class="idl def" id="webidl-218454366"><span class="idlHeader"><a class="self-link" href="#webidl-218454366">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-jsonwebkey-partial-1" data-title="JsonWebKey">partial dictionary <a data-idl="partial" data-link-type="dictionary" data-title="JsonWebKey" class="idlID" data-dfn-for="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey">JsonWebKey</a> {<span data-idl="" class="idlMember" id="idl-def-jsonwebkey-pub" data-title="pub" data-dfn-for="JsonWebKey"><span class="idlType"><span class="idlSectionComment">
-  // The following fields are defined in draft-ietf-cose-dilithium-08
+    <pre class="idl def" id="webidl-480498037"><span class="idlHeader"><a class="self-link" href="#webidl-480498037">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-jsonwebkey-partial-1" data-title="JsonWebKey">partial dictionary <a data-idl="partial" data-link-type="dictionary" data-title="JsonWebKey" class="idlID" data-dfn-for="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey">JsonWebKey</a> {<span data-idl="" class="idlMember" id="idl-def-jsonwebkey-pub" data-title="pub" data-dfn-for="JsonWebKey"><span class="idlType"><span class="idlSectionComment">
+  // The following fields are defined in RFC 9964
   </span><a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString">DOMString</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-jsonwebkey-pub" data-idl="field" data-title="pub" data-dfn-for="JsonWebKey" data-type="DOMString" class="idlName" tabindex="0" aria-haspopup="dialog"><code>pub</code></dfn>;</span><span data-idl="" class="idlMember" id="idl-def-jsonwebkey-priv" data-title="priv" data-dfn-for="JsonWebKey"><span class="idlType">
   <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString">DOMString</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-jsonwebkey-priv" data-idl="field" data-title="priv" data-dfn-for="JsonWebKey" data-type="DOMString" class="idlName" tabindex="0" aria-haspopup="dialog"><code>priv</code></dfn>;</span>
 };</span></code></pre>
     <p>
       This extension of the <a data-link-type="dictionary" data-lt="JsonWebKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-JsonWebKey"><code>JsonWebKey</code></a> dictionary defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-webcrypto" title="Web Cryptography Level 2">webcrypto</a></cite>]
-      provides a way to represent keys with the "AKP" key type defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-cose-dilithium-08" title="ML-DSA for JOSE and COSE">draft-ietf-cose-dilithium-08</a></cite>].
+      provides a way to represent keys with the "AKP" key type defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9964" title="ML-DSA for JSON Object Signing and Encryption (JOSE) and CBOR Object Signing and Encryption (COSE)">RFC9964</a></cite>].
     </p>
   </section>
 
@@ -3916,7 +3897,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
     <section id="slh-dsa-jwk"><div class="header-wrapper"><h3 id="x8-3-json-web-key-representation"><bdi class="secno">8.3 </bdi>JSON Web Key Representation</h3><a class="self-link" href="#slh-dsa-jwk" aria-label="Permalink for Section 8.3"></a></div>
       
       <p>
-        SLH-DSA keys use the "AKP" (Algorithm Key Pair) key type defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-cose-dilithium-08" title="ML-DSA for JOSE and COSE">draft-ietf-cose-dilithium-08</a></cite>]
+        SLH-DSA keys use the "AKP" (Algorithm Key Pair) key type defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9964" title="ML-DSA for JSON Object Signing and Encryption (JOSE) and CBOR Object Signing and Encryption (COSE)">RFC9964</a></cite>]
         for JWK representation. The "alg" (algorithm) parameter identifies the specific SLH-DSA parameter set.
         The public key is carried in the "pub" parameter. If a private key is included, it is represented
         using the "priv" parameter. When expressed in JWK, all key parameters are base64url encoded.
@@ -7667,14 +7648,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
       </ul>
-      <ul>
-        <li>Algorithm Name: "SLH-DSA-SHA2-128s"</li>
-        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHA2-128s parameter set</li>
-        <li>Algorithm Usage Location(s): "JWK"</li>
-        <li>JOSE Implementation Requirements: Optional</li>
-        <li>Change Controller: W3C Web Application Security Working Group</li>
-        <li>Specification Document(s): [[ This Document ]]</li>
-      </ul>
+      
       <ul>
         <li>Algorithm Name: "SLH-DSA-SHA2-128f"</li>
         <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHA2-128f parameter set</li>
@@ -7715,14 +7689,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
       </ul>
-      <ul>
-        <li>Algorithm Name: "SLH-DSA-SHAKE-128s"</li>
-        <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHAKE-128s parameter set</li>
-        <li>Algorithm Usage Location(s): "JWK"</li>
-        <li>JOSE Implementation Requirements: Optional</li>
-        <li>Change Controller: W3C Web Application Security Working Group</li>
-        <li>Specification Document(s): [[ This Document ]]</li>
-      </ul>
+      
       <ul>
         <li>Algorithm Name: "SLH-DSA-SHAKE-128f"</li>
         <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHAKE-128f parameter set</li>
@@ -8052,7 +8019,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
             "<code>ML-DSA-44</code>"
           </td>
           <td>
-            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-lamps-dilithium-certificates" title="Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Digital Signature Algorithm (ML-DSA)">draft-ietf-lamps-dilithium-certificates</a></cite>]
+            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9881" title="Internet X.509 Public Key Infrastructure -- Algorithm Identifiers for the Module-Lattice-Based Digital Signature Algorithm (ML-DSA)">RFC9881</a></cite>]
           </td>
         </tr>
         <tr>
@@ -8062,7 +8029,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
             "<code>ML-DSA-65</code>"
           </td>
           <td>
-            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-lamps-dilithium-certificates" title="Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Digital Signature Algorithm (ML-DSA)">draft-ietf-lamps-dilithium-certificates</a></cite>]
+            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9881" title="Internet X.509 Public Key Infrastructure -- Algorithm Identifiers for the Module-Lattice-Based Digital Signature Algorithm (ML-DSA)">RFC9881</a></cite>]
           </td>
         </tr>
         <tr>
@@ -8072,7 +8039,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
             "<code>ML-DSA-87</code>"
           </td>
           <td>
-            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-lamps-dilithium-certificates" title="Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Digital Signature Algorithm (ML-DSA)">draft-ietf-lamps-dilithium-certificates</a></cite>]
+            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9881" title="Internet X.509 Public Key Infrastructure -- Algorithm Identifiers for the Module-Lattice-Based Digital Signature Algorithm (ML-DSA)">RFC9881</a></cite>]
           </td>
         </tr>
         <tr>
@@ -8082,7 +8049,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
             "<code>ML-KEM-512</code>"
           </td>
           <td>
-            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-lamps-kyber-certificates" title="Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM)">draft-ietf-lamps-kyber-certificates</a></cite>]
+            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9935" title="Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM)">RFC9935</a></cite>]
           </td>
         </tr>
         <tr>
@@ -8092,7 +8059,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
             "<code>ML-KEM-768</code>"
           </td>
           <td>
-            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-lamps-kyber-certificates" title="Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM)">draft-ietf-lamps-kyber-certificates</a></cite>]
+            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9935" title="Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM)">RFC9935</a></cite>]
           </td>
         </tr>
         <tr>
@@ -8102,7 +8069,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
             "<code>ML-KEM-1024</code>"
           </td>
           <td>
-            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-lamps-kyber-certificates" title="Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM)">draft-ietf-lamps-kyber-certificates</a></cite>]
+            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9935" title="Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM)">RFC9935</a></cite>]
           </td>
         </tr>
         <tr>
@@ -8252,7 +8219,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
             "<code>ML-DSA-44</code>"
           </td>
           <td>
-            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-lamps-dilithium-certificates" title="Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Digital Signature Algorithm (ML-DSA)">draft-ietf-lamps-dilithium-certificates</a></cite>]
+            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9881" title="Internet X.509 Public Key Infrastructure -- Algorithm Identifiers for the Module-Lattice-Based Digital Signature Algorithm (ML-DSA)">RFC9881</a></cite>]
           </td>
         </tr>
         <tr>
@@ -8262,7 +8229,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
             "<code>ML-DSA-65</code>"
           </td>
           <td>
-            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-lamps-dilithium-certificates" title="Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Digital Signature Algorithm (ML-DSA)">draft-ietf-lamps-dilithium-certificates</a></cite>]
+            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9881" title="Internet X.509 Public Key Infrastructure -- Algorithm Identifiers for the Module-Lattice-Based Digital Signature Algorithm (ML-DSA)">RFC9881</a></cite>]
           </td>
         </tr>
         <tr>
@@ -8272,7 +8239,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
             "<code>ML-DSA-87</code>"
           </td>
           <td>
-            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-lamps-dilithium-certificates" title="Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Digital Signature Algorithm (ML-DSA)">draft-ietf-lamps-dilithium-certificates</a></cite>]
+            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9881" title="Internet X.509 Public Key Infrastructure -- Algorithm Identifiers for the Module-Lattice-Based Digital Signature Algorithm (ML-DSA)">RFC9881</a></cite>]
           </td>
         </tr>
         <tr>
@@ -8282,7 +8249,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
             "<code>ML-KEM-512</code>"
           </td>
           <td>
-            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-lamps-kyber-certificates" title="Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM)">draft-ietf-lamps-kyber-certificates</a></cite>]
+            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9935" title="Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM)">RFC9935</a></cite>]
           </td>
         </tr>
         <tr>
@@ -8292,7 +8259,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
             "<code>ML-KEM-768</code>"
           </td>
           <td>
-            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-lamps-kyber-certificates" title="Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM)">draft-ietf-lamps-kyber-certificates</a></cite>]
+            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9935" title="Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM)">RFC9935</a></cite>]
           </td>
         </tr>
         <tr>
@@ -8302,7 +8269,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
             "<code>ML-KEM-1024</code>"
           </td>
           <td>
-            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-draft-ietf-lamps-kyber-certificates" title="Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM)">draft-ietf-lamps-kyber-certificates</a></cite>]
+            [<cite><a class="bibref" data-link-type="biblio" href="#bib-csor" title="Computer Security Objects Register">CSOR</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9935" title="Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM)">RFC9935</a></cite>]
           </td>
         </tr>
         <tr>
@@ -9632,9 +9599,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
     });
   </script><section id="references" class="appendix"><div class="header-wrapper"><h2 id="e-references"><bdi class="secno">E. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix E."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="e-1-normative-references"><bdi class="secno">E.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix E.1"></a></div>
     
-    <dl class="bibliography"><dt id="bib-draft-ietf-cose-dilithium-08">[draft-ietf-cose-dilithium-08]</dt><dd>
-      <a href="https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-08.html"><cite>ML-DSA for JOSE and COSE</cite></a>.  IETF. July 2025. URL: <a href="https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-08.html">https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-08.html</a>
-    </dd><dt id="bib-draft-ietf-jose-pqc-kem-05">[draft-ietf-jose-pqc-kem-05]</dt><dd>
+    <dl class="bibliography"><dt id="bib-draft-ietf-jose-pqc-kem-05">[draft-ietf-jose-pqc-kem-05]</dt><dd>
       <a href="https://www.ietf.org/archive/id/draft-ietf-jose-pqc-kem-05.html"><cite>Post-Quantum Key Encapsulation Mechanisms (PQ KEMs) for JOSE and COSE</cite></a>.  IETF. December 2025. URL: <a href="https://www.ietf.org/archive/id/draft-ietf-jose-pqc-kem-05.html">https://www.ietf.org/archive/id/draft-ietf-jose-pqc-kem-05.html</a>
     </dd><dt id="bib-fips-202">[FIPS-202]</dt><dd>
       <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf"><cite>SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions</cite></a>.  NIST. August 2015. URL: <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf">https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf</a>
@@ -9670,6 +9635,8 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <a href="https://www.rfc-editor.org/rfc/rfc9106"><cite>Argon2 Memory-Hard Function for Password Hashing and Proof-of-Work Applications</cite></a>. A. Biryukov; D. Dinu; D. Khovratovich; S. Josefsson.  IETF. September 2021. Informational. URL: <a href="https://www.rfc-editor.org/rfc/rfc9106">https://www.rfc-editor.org/rfc/rfc9106</a>
     </dd><dt id="bib-rfc9861">[RFC9861]</dt><dd>
       <a href="https://www.rfc-editor.org/rfc/rfc9861.html"><cite>KangarooTwelve and TurboSHAKE</cite></a>.  IETF. October 2025. URL: <a href="https://www.rfc-editor.org/rfc/rfc9861.html">https://www.rfc-editor.org/rfc/rfc9861.html</a>
+    </dd><dt id="bib-rfc9964">[RFC9964]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc9964"><cite>ML-DSA for JSON Object Signing and Encryption (JOSE) and CBOR Object Signing and Encryption (COSE)</cite></a>. M. Prorock; O. Steele.  IETF. May 2026. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc9964">https://www.rfc-editor.org/rfc/rfc9964</a>
     </dd><dt id="bib-webcrypto">[webcrypto]</dt><dd>
       <a href="https://www.w3.org/TR/webcrypto-2/"><cite>Web Cryptography Level 2</cite></a>. Daniel Huigens.  W3C. 22 April 2025. FPWD. URL: <a href="https://www.w3.org/TR/webcrypto-2/">https://www.w3.org/TR/webcrypto-2/</a>
     </dd><dt id="bib-webidl">[WebIDL]</dt><dd>
@@ -9683,12 +9650,12 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <a href="https://datatracker.ietf.org/doc/draft-ietf-hpke-hpke/"><cite>Hybrid Public Key Encryption</cite></a>.  IETF. URL: <a href="https://datatracker.ietf.org/doc/draft-ietf-hpke-hpke/">https://datatracker.ietf.org/doc/draft-ietf-hpke-hpke/</a>
     </dd><dt id="bib-draft-ietf-hpke-pq">[draft-ietf-hpke-pq]</dt><dd>
       <a href="https://datatracker.ietf.org/doc/draft-ietf-hpke-pq/"><cite>Post-Quantum Hybrid Key Encapsulation Mechanisms for HPKE</cite></a>.  IETF. URL: <a href="https://datatracker.ietf.org/doc/draft-ietf-hpke-pq/">https://datatracker.ietf.org/doc/draft-ietf-hpke-pq/</a>
-    </dd><dt id="bib-draft-ietf-lamps-dilithium-certificates">[draft-ietf-lamps-dilithium-certificates]</dt><dd>
-      <a href="https://datatracker.ietf.org/doc/draft-ietf-lamps-dilithium-certificates/"><cite>Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Digital Signature Algorithm (ML-DSA)</cite></a>.  IETF. URL: <a href="https://datatracker.ietf.org/doc/draft-ietf-lamps-dilithium-certificates/">https://datatracker.ietf.org/doc/draft-ietf-lamps-dilithium-certificates/</a>
-    </dd><dt id="bib-draft-ietf-lamps-kyber-certificates">[draft-ietf-lamps-kyber-certificates]</dt><dd>
-      <a href="https://datatracker.ietf.org/doc/draft-ietf-lamps-kyber-certificates/"><cite>Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM)</cite></a>.  IETF. URL: <a href="https://datatracker.ietf.org/doc/draft-ietf-lamps-kyber-certificates/">https://datatracker.ietf.org/doc/draft-ietf-lamps-kyber-certificates/</a>
     </dd><dt id="bib-rfc9814">[RFC9814]</dt><dd>
       <a href="https://www.rfc-editor.org/rfc/rfc9814"><cite>Use of the SLH-DSA Signature Algorithm in the Cryptographic Message Syntax (CMS)</cite></a>. R. Housley; S. Fluhrer; P. Kampanakis; B. Westerbaan.  IETF. July 2025. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc9814">https://www.rfc-editor.org/rfc/rfc9814</a>
+    </dd><dt id="bib-rfc9881">[RFC9881]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc9881"><cite>Internet X.509 Public Key Infrastructure -- Algorithm Identifiers for the Module-Lattice-Based Digital Signature Algorithm (ML-DSA)</cite></a>. J. Massimo; P. Kampanakis; S. Turner; B. E. Westerbaan.  IETF. October 2025. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc9881">https://www.rfc-editor.org/rfc/rfc9881</a>
+    </dd><dt id="bib-rfc9935">[RFC9935]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc9935"><cite>Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM)</cite></a>. S. Turner; P. Kampanakis; J. Massimo; B. E. Westerbaan.  IETF. March 2026. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc9935">https://www.rfc-editor.org/rfc/rfc9935</a>
     </dd><dt id="bib-webcrypto-secure-curves">[webcrypto-secure-curves]</dt><dd>
       <a href="https://wicg.github.io/webcrypto-secure-curves/"><cite>Secure Curves in the Web Cryptography API</cite></a>.  W3C. Draft Community Group Report. URL: <a href="https://wicg.github.io/webcrypto-secure-curves/">https://wicg.github.io/webcrypto-secure-curves/</a>
     </dd></dl>
