@@ -89,26 +89,10 @@
         "publisher": "IETF",
         "date": "December 2025"
       },
-      "draft-ietf-cose-dilithium-08": {
-        "title": "ML-DSA for JOSE and COSE",
-        "href": "https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-08.html",
-        "publisher": "IETF",
-        "date": "July 2025"
-      },
       "CSOR": {
         "title": "Computer Security Objects Register",
         "href": "https://csrc.nist.gov/projects/computer-security-objects-register/algorithm-registration",
         "publisher": "NIST"
-      },
-      "draft-ietf-lamps-kyber-certificates": {
-        "title": "Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM)",
-        "href": "https://datatracker.ietf.org/doc/draft-ietf-lamps-kyber-certificates/",
-        "publisher": "IETF"
-      },
-      "draft-ietf-lamps-dilithium-certificates": {
-        "title": "Internet X.509 Public Key Infrastructure - Algorithm Identifiers for the Module-Lattice-Based Digital Signature Algorithm (ML-DSA)",
-        "href": "https://datatracker.ietf.org/doc/draft-ietf-lamps-dilithium-certificates/",
-        "publisher": "IETF"
       },
       "draft-ietf-hpke-pq": {
         "title": "Post-Quantum Hybrid Key Encapsulation Mechanisms for HPKE",
@@ -1222,14 +1206,14 @@ dictionary EncapsulatedBits {
     <h2>Partial JsonWebKey dictionary</h2>
     <pre class=idl>
 partial dictionary JsonWebKey {
-  // The following fields are defined in draft-ietf-cose-dilithium-08
+  // The following fields are defined in RFC 9964
   DOMString pub;
   DOMString priv;
 };
     </pre>
     <p>
       This extension of the {{JsonWebKey}} dictionary defined in [[webcrypto]]
-      provides a way to represent keys with the "AKP" key type defined in [[draft-ietf-cose-dilithium-08]].
+      provides a way to represent keys with the "AKP" key type defined in [[RFC9964]].
     </p>
   </section>
 
@@ -3654,7 +3638,7 @@ dictionary ContextParams : Algorithm {
     <section id="slh-dsa-jwk">
       <h4>JSON Web Key Representation</h4>
       <p>
-        SLH-DSA keys use the "AKP" (Algorithm Key Pair) key type defined in [[draft-ietf-cose-dilithium-08]]
+        SLH-DSA keys use the "AKP" (Algorithm Key Pair) key type defined in [[RFC9964]]
         for JWK representation. The "alg" (algorithm) parameter identifies the specific SLH-DSA parameter set.
         The public key is carried in the "pub" parameter. If a private key is included, it is represented
         using the "priv" parameter. When expressed in JWK, all key parameters are base64url encoded.
@@ -7423,6 +7407,7 @@ dictionary Argon2Params : Algorithm {
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
       </ul>
+      <!-- This will be registered by draft-ietf-cose-sphincs-plus
       <ul>
         <li>Algorithm Name: "SLH-DSA-SHA2-128s"</li>
         <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHA2-128s parameter set</li>
@@ -7430,7 +7415,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
-      </ul>
+      </ul> -->
       <ul>
         <li>Algorithm Name: "SLH-DSA-SHA2-128f"</li>
         <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHA2-128f parameter set</li>
@@ -7471,6 +7456,7 @@ dictionary Argon2Params : Algorithm {
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
       </ul>
+      <!-- This will be registered by draft-ietf-cose-sphincs-plus
       <ul>
         <li>Algorithm Name: "SLH-DSA-SHAKE-128s"</li>
         <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHAKE-128s parameter set</li>
@@ -7478,7 +7464,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
-      </ul>
+      </ul> -->
       <ul>
         <li>Algorithm Name: "SLH-DSA-SHAKE-128f"</li>
         <li>Algorithm Description: SLH-DSA using the SLH-DSA-SHAKE-128f parameter set</li>
@@ -7830,7 +7816,7 @@ alg: "K256" }
             "`ML-DSA-44`"
           </td>
           <td>
-            [[CSOR]], [[draft-ietf-lamps-dilithium-certificates]]
+            [[CSOR]], [[RFC9881]]
           </td>
         </tr>
         <tr>
@@ -7840,7 +7826,7 @@ alg: "K256" }
             "`ML-DSA-65`"
           </td>
           <td>
-            [[CSOR]], [[draft-ietf-lamps-dilithium-certificates]]
+            [[CSOR]], [[RFC9881]]
           </td>
         </tr>
         <tr>
@@ -7850,7 +7836,7 @@ alg: "K256" }
             "`ML-DSA-87`"
           </td>
           <td>
-            [[CSOR]], [[draft-ietf-lamps-dilithium-certificates]]
+            [[CSOR]], [[RFC9881]]
           </td>
         </tr>
         <tr>
@@ -7860,7 +7846,7 @@ alg: "K256" }
             "`ML-KEM-512`"
           </td>
           <td>
-            [[CSOR]], [[draft-ietf-lamps-kyber-certificates]]
+            [[CSOR]], [[RFC9935]]
           </td>
         </tr>
         <tr>
@@ -7870,7 +7856,7 @@ alg: "K256" }
             "`ML-KEM-768`"
           </td>
           <td>
-            [[CSOR]], [[draft-ietf-lamps-kyber-certificates]]
+            [[CSOR]], [[RFC9935]]
           </td>
         </tr>
         <tr>
@@ -7880,7 +7866,7 @@ alg: "K256" }
             "`ML-KEM-1024`"
           </td>
           <td>
-            [[CSOR]], [[draft-ietf-lamps-kyber-certificates]]
+            [[CSOR]], [[RFC9935]]
           </td>
         </tr>
         <tr>
@@ -8030,7 +8016,7 @@ alg: "K256" }
             "`ML-DSA-44`"
           </td>
           <td>
-            [[CSOR]], [[draft-ietf-lamps-dilithium-certificates]]
+            [[CSOR]], [[RFC9881]]
           </td>
         </tr>
         <tr>
@@ -8040,7 +8026,7 @@ alg: "K256" }
             "`ML-DSA-65`"
           </td>
           <td>
-            [[CSOR]], [[draft-ietf-lamps-dilithium-certificates]]
+            [[CSOR]], [[RFC9881]]
           </td>
         </tr>
         <tr>
@@ -8050,7 +8036,7 @@ alg: "K256" }
             "`ML-DSA-87`"
           </td>
           <td>
-            [[CSOR]], [[draft-ietf-lamps-dilithium-certificates]]
+            [[CSOR]], [[RFC9881]]
           </td>
         </tr>
         <tr>
@@ -8060,7 +8046,7 @@ alg: "K256" }
             "`ML-KEM-512`"
           </td>
           <td>
-            [[CSOR]], [[draft-ietf-lamps-kyber-certificates]]
+            [[CSOR]], [[RFC9935]]
           </td>
         </tr>
         <tr>
@@ -8070,7 +8056,7 @@ alg: "K256" }
             "`ML-KEM-768`"
           </td>
           <td>
-            [[CSOR]], [[draft-ietf-lamps-kyber-certificates]]
+            [[CSOR]], [[RFC9935]]
           </td>
         </tr>
         <tr>
@@ -8080,7 +8066,7 @@ alg: "K256" }
             "`ML-KEM-1024`"
           </td>
           <td>
-            [[CSOR]], [[draft-ietf-lamps-kyber-certificates]]
+            [[CSOR]], [[RFC9935]]
           </td>
         </tr>
         <tr>
