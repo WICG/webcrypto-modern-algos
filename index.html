@@ -7563,7 +7563,7 @@ dictionary Argon2Params : Algorithm {
     <section id="hybrid-kems-jwk">
       <h4>JSON Web Key Representation</h4>
       <p>
-        Hybrid KEM keys use the "AKP" (Algorithm Key Pair) key type defined in [[draft-ietf-cose-dilithium-08]]
+        Hybrid KEM keys use the "AKP" (Algorithm Key Pair) key type defined in [[RFC9964]]
         for JWK representation. The "alg" (algorithm) parameter identifies the specific hybrid KEM instance.
         The public key is carried in the "pub" parameter. If a private key is included, it is represented
         using the "priv" parameter. When expressed in JWK, all key parameters are base64url encoded.
