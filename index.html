@@ -7787,21 +7787,9 @@ dictionary Argon2Params : Algorithm {
       </section>
       <section id="hybrid-kems-operations-import-key">
         <h5>Import Key</h5>
-        <div class=issue>
+        <div class=note>
           <p>
-            {{KeyFormat/"pkcs8"}} import is so far unspecified.
-            [[draft-ietf-lamps-pq-composite-kem]] defines
-            `OneAsymmetricKey.privateKey` as an `OCTET STRING` containing
-            `mlkemSeed || tradSK`, where `mlkemSeed` is the 64-byte ML-KEM
-            `d || z` seed and |tradSK| is the traditional private key encoding.
-          </p>
-          <p>
-            Importing this representation would produce a usable decapsulation
-            key, but we cannot recover the 32-byte seed used by
-            {{KeyFormat/"raw-seed"}} and {{KeyFormat/"jwk"}}.
-            We could require |extractable| to be `false` which would remove those
-            cases, or otherwise define that seed-based export formats fail for keys
-            that are not backed by a 32-byte seed.
+            TODO: {{KeyFormat/"pkcs8"}}.
           </p>
         </div>
         <ol>
@@ -8244,24 +8232,9 @@ dictionary Argon2Params : Algorithm {
       </section>
       <section id="hybrid-kems-operations-export-key">
         <h5>Export Key</h5>
-        <div class=issue>
+        <div class=note>
           <p>
-            {{KeyFormat/"pkcs8"}} export is so far unspecified.
-            [[draft-ietf-lamps-pq-composite-kem]] defines
-            `OneAsymmetricKey.privateKey` as an `OCTET STRING` containing
-            `mlkemSeed || tradSK`, where `mlkemSeed` is the 64-byte ML-KEM
-            `d || z` seed and |tradSK| is the traditional private key encoding.
-          </p>
-          <p>
-            Exporting this format can work for generated keys, or keys imported
-            with the 32-byte seed used by {{KeyFormat/"raw-seed"}} and
-            {{KeyFormat/"jwk"}}, provided the implementation can derive and
-            serialize the component private keys. For keys imported from
-            {{KeyFormat/"pkcs8"}}, we only have the LAMPS component
-            private-key representation. That representation is sufficient for
-            decapsulation and for {{KeyFormat/"pkcs8"}} re-export, but we cannot
-            export it as {{KeyFormat/"raw-seed"}} or {{KeyFormat/"jwk"}} unless
-            the key is backed by a 32-byte seed.
+            TODO: {{KeyFormat/"pkcs8"}}.
           </p>
         </div>
         <ol>
