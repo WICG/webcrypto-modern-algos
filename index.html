@@ -1121,6 +1121,59 @@ enum KeyUsage { "encrypt", "decrypt", "sign", "verify", "deriveKey", "deriveBits
           </p>
         </li>
         <li>
+          <dl class="switch">
+            <dt>
+              If |op| is "`deriveBits`", the {{Algorithm/name}} member of
+              |normalizedAlgorithm| is a case-sensitive string match for "`ECDH`",
+              and |length| is not null:
+            </dt>
+            <dd>
+              <ol>
+                <li>
+                  <p>
+                    Let |publicKey| be the {{EcdhKeyDeriveParams/public}}
+                    member of |normalizedAlgorithm|.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Let |publicKeyAlgorithm| be the
+                    <a data-cite="webcrypto#dfn-CryptoKey-slot-algorithm">`[[algorithm]]`</a>
+                    internal slot of |publicKey|.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Let |maximumLength| be the following value, depending on the
+                    {{EcKeyAlgorithm/namedCurve}} attribute of |publicKeyAlgorithm|:
+                  </p>
+                  <dl class="switch">
+                    <dt>If it is "`P-256`":</dt>
+                    <dd>256.</dd>
+                    <dt>If it is "`P-384`":</dt>
+                    <dd>384.</dd>
+                    <dt>If it is "`P-521`":</dt>
+                    <dd>528.</dd>
+                    <dt>Otherwise:</dt>
+                    <dd>Return false.</dd>
+                  </dl>
+                  <p class="note">
+                    This limit matches the length in bits of the byte sequence
+                    returned by the ECDH derive bits operation. For P-521, the
+                    x-coordinate is encoded as 66 octets, so the maximum length
+                    is 528 bits, not 521 bits.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    If |length| is greater than |maximumLength|, return false.
+                  </p>
+                </li>
+              </ol>
+            </dd>
+          </dl>
+        </li>
+        <li>
           <p>
             If |op| is "`generateKey`" or "`importKey`", let |usages| be the empty list.
           </p>
