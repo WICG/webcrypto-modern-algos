@@ -312,8 +312,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       "id": "draft-ietf-hpke-hpke"
     }
   },
-  "publishISODate": "2026-06-29T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 29 June 2026"
+  "publishISODate": "2026-08-06T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 06 August 2026"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/cg-draft"></head>
 
@@ -322,7 +322,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Modern Algorithms in the Web Cryptography API</h1> 
     <p id="w3c-state">
       <a href="https://www.w3.org/standards/types#reports">Draft Community Group Report</a>
-      <time class="dt-published" datetime="2026-06-29">29 June 2026</time>
+      <time class="dt-published" datetime="2026-08-06">06 August 2026</time>
     </p>
     <dl>
       
@@ -453,7 +453,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <p>
       This section extends the <a data-link-type="interface" data-lt="SubtleCrypto" href="https://www.w3.org/TR/webcrypto-2/#dfn-SubtleCrypto"><code>SubtleCrypto</code></a> interface of [<cite><a class="bibref" data-link-type="biblio" href="#bib-webcrypto" title="Web Cryptography Level 2">webcrypto</a></cite>].
     </p>
-    <pre class="idl def" id="webidl-993669945"><span class="idlHeader"><a class="self-link" href="#webidl-993669945">WebIDL</a></span><code><span data-idl="" class="idlInterface" id="idl-def-subtlecrypto-partial-1" data-title="SubtleCrypto">[<span class="extAttr"><a data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SecureContext">SecureContext</a></span>,<span class="extAttr"><a data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(Window,Worker)</span>]
+    <pre class="idl def" id="webidl-881913304"><span class="idlHeader"><a class="self-link" href="#webidl-881913304">WebIDL</a></span><code><span data-idl="" class="idlInterface" id="idl-def-subtlecrypto-partial-1" data-title="SubtleCrypto">[<span class="extAttr"><a data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SecureContext">SecureContext</a></span>,<span class="extAttr"><a data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(Window,Worker)</span>]
 partial interface <a data-idl="partial" data-link-type="interface" data-title="SubtleCrypto" class="idlID" data-dfn-for="SubtleCrypto" href="https://www.w3.org/TR/webcrypto-2/#dfn-SubtleCrypto">SubtleCrypto</a> {<span data-idl="" class="idlMethod" id="idl-def-subtlecrypto-encapsulatekey-encapsulationalgorithm-encapsulationkey-sharedkeyalgorithm-extractable-keyusages" data-title="encapsulateKey" data-dfn-for="SubtleCrypto"><span class="idlType">
   <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise">Promise</a>&lt;<a data-link-type="idl" href="#dfn-EncapsulatedKey" class="internalDFN" id="ref-for-dfn-EncapsulatedKey-1"><code>EncapsulatedKey</code></a>&gt;</span> <a class="internalDFN idlName" data-link-type="method" href="#dfn-SubtleCrypto-method-encapsulateKey" id="ref-for-dfn-SubtleCrypto-method-encapsulateKey-2"><code>encapsulateKey</code></a>(<span class="idlType">
     <a data-link-type="typedef" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithmidentifier">AlgorithmIdentifier</a></span> <span class="idlParamName">encapsulationAlgorithm</span>,<span class="idlType">
@@ -488,7 +488,7 @@ partial interface <a data-idl="partial" data-link-type="interface" data-title="S
 
   static<span class="idlType"> <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-boolean">boolean</a></span> <a class="internalDFN idlName" data-link-type="method" href="#dfn-SubtleCrypto-method-supports" id="ref-for-dfn-SubtleCrypto-method-supports-2"><code>supports</code></a>(<span class="idlType"><a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString">DOMString</a></span> <span class="idlParamName">operation</span>,<span class="idlType">
                    <a data-link-type="typedef" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithmidentifier">AlgorithmIdentifier</a></span> <span class="idlParamName">algorithm</span>,
-                   optional<span class="idlType"> <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-unsigned-long">unsigned long</a>?</span> <span class="idlParamName">length</span> = null);</span><span data-idl="" class="idlMethod" id="idl-def-subtlecrypto-supports!overload-1" data-title="supports!overload-1" data-dfn-for="SubtleCrypto">
+                   optional<span class="idlType"> [<span class="extAttr"><a data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#EnforceRange">EnforceRange</a></span>] <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-unsigned-long">unsigned long</a>?</span> <span class="idlParamName">length</span> = null);</span><span data-idl="" class="idlMethod" id="idl-def-subtlecrypto-supports!overload-1" data-title="supports!overload-1" data-dfn-for="SubtleCrypto">
   static<span class="idlType"> <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-boolean">boolean</a></span> <a class="internalDFN idlName" data-link-type="method" href="#dfn-SubtleCrypto-method-supports-additionalAlgorithm" id="ref-for-dfn-SubtleCrypto-method-supports-additionalAlgorithm-1"><code>supports</code></a>(<span class="idlType"><a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString">DOMString</a></span> <span class="idlParamName">operation</span>,<span class="idlType">
                    <a data-link-type="typedef" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithmidentifier">AlgorithmIdentifier</a></span> <span class="idlParamName">algorithm</span>,<span class="idlType">
                    <a data-link-type="typedef" href="https://www.w3.org/TR/webcrypto-2/#dom-algorithmidentifier">AlgorithmIdentifier</a></span> <span class="idlParamName">additionalAlgorithm</span>);</span>
@@ -5416,7 +5416,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
           <li>
             <p>
               Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-usages"><code>[[usages]]</code></a> internal slot of
-              <var>key</var> to be <var>usages</var>.
+              <var>key</var> to be the <a href="https://www.w3.org/TR/webcrypto-2/#concept-normalized-usages">normalized value</a> of <var>usages</var>.
             </p>
           </li>
           <li>
@@ -5949,7 +5949,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
           <li>
             <p>
               Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-usages"><code>[[usages]]</code></a> internal slot of
-              <var>key</var> to be <var>usages</var>.
+              <var>key</var> to be the <a href="https://www.w3.org/TR/webcrypto-2/#concept-normalized-usages">normalized value</a> of <var>usages</var>.
             </p>
           </li>
           <li>
@@ -6744,8 +6744,8 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
     </section>
     <section id="KmacKeyAlgorithm-dictionary"><div class="header-wrapper"><h3 id="x15-5-kmackeyalgorithm-dictionary"><bdi class="secno">15.5 </bdi><dfn data-idl="dictionary" id="dfn-KmacKeyAlgorithm" data-export="" data-dfn-type="dictionary" data-title="KmacKeyAlgorithm" data-dfn-for="" tabindex="0" aria-haspopup="dialog"><code>KmacKeyAlgorithm</code></dfn> dictionary</h3><a class="self-link" href="#KmacKeyAlgorithm-dictionary" aria-label="Permalink for Section 15.5"></a></div>
       
-      <pre class="idl def" id="webidl-28722634"><span class="idlHeader"><a class="self-link" href="#webidl-28722634">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-kmackeyalgorithm" data-title="KmacKeyAlgorithm">dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-KmacKeyAlgorithm" id="ref-for-dfn-KmacKeyAlgorithm-1"><code>KmacKeyAlgorithm</code></a> : <span class="idlSuperclass"><a data-link-type="dictionary" href="https://www.w3.org/TR/webcrypto-2/#dfn-KeyAlgorithm">KeyAlgorithm</a></span> {<span data-idl="" class="idlMember" id="idl-def-kmackeyalgorithm-length" data-title="length" data-dfn-for="KmacKeyAlgorithm">
-  required<span class="idlType"> <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-unsigned-long">unsigned long</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-KmacKeyAlgorithm-length" id="ref-for-dfn-KmacKeyAlgorithm-length-1"><code>length</code></a>;</span>
+      <pre class="idl def" id="webidl-1367499047"><span class="idlHeader"><a class="self-link" href="#webidl-1367499047">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-kmackeyalgorithm" data-title="KmacKeyAlgorithm">dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-KmacKeyAlgorithm" id="ref-for-dfn-KmacKeyAlgorithm-1"><code>KmacKeyAlgorithm</code></a> : <span class="idlSuperclass"><a data-link-type="dictionary" href="https://www.w3.org/TR/webcrypto-2/#dfn-KeyAlgorithm">KeyAlgorithm</a></span> {<span data-idl="" class="idlMember" id="idl-def-kmackeyalgorithm-length" data-title="length" data-dfn-for="KmacKeyAlgorithm">
+  required<span class="idlType"> [<span class="extAttr"><a data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#EnforceRange">EnforceRange</a></span>] <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-unsigned-long">unsigned long</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-KmacKeyAlgorithm-length" id="ref-for-dfn-KmacKeyAlgorithm-length-1"><code>length</code></a>;</span>
 };</span></code></pre>
       <p>The <dfn data-dfn-for="KmacKeyAlgorithm" id="dfn-KmacKeyAlgorithm-length" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="length" data-type="unsigned long" tabindex="0" aria-haspopup="dialog"><code>length</code></dfn> member represents the length (in bits) of the key.</p>
     </section>
@@ -6971,7 +6971,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
           <li>
             <p>
               Set the <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-usages"><code>[[usages]]</code></a> internal slot of
-              <var>key</var> to be <var>usages</var>.
+              <var>key</var> to be the <a href="https://www.w3.org/TR/webcrypto-2/#concept-normalized-usages">normalized value</a> of <var>usages</var>.
             </p>
           </li>
           <li>
@@ -8763,7 +8763,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dfn-SubtleCrypto-method-encapsulateKey" aria-label="Permalink for definition: encapsulateKey(encapsulationAlgorithm, encapsulationKey, sharedKeyAlgorithm, extractable, usages). Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-881913304">IDL</a>
         
       </div>
       <p><b>Referenced in:</b></p>
@@ -8782,7 +8782,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dfn-SubtleCrypto-method-encapsulateBits" aria-label="Permalink for definition: encapsulateBits(encapsulationAlgorithm, encapsulationKey). Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-881913304">IDL</a>
         
       </div>
       <p><b>Referenced in:</b></p>
@@ -8801,7 +8801,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dfn-SubtleCrypto-method-decapsulateKey" aria-label="Permalink for definition: decapsulateKey(decapsulationAlgorithm, decapsulationKey, ciphertext, sharedKeyAlgorithm, extractable, usages). Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-881913304">IDL</a>
         
       </div>
       <p><b>Referenced in:</b></p>
@@ -8820,7 +8820,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dfn-SubtleCrypto-method-decapsulateBits" aria-label="Permalink for definition: decapsulateBits(decapsulationAlgorithm, decapsulationKey, ciphertext). Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-881913304">IDL</a>
         
       </div>
       <p><b>Referenced in:</b></p>
@@ -8839,7 +8839,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dfn-SubtleCrypto-method-getPublicKey" aria-label="Permalink for definition: getPublicKey(key, usages). Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-881913304">IDL</a>
         
       </div>
       <p><b>Referenced in:</b></p>
@@ -8858,7 +8858,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dfn-SubtleCrypto-method-supports" aria-label="Permalink for definition: supports(operation, algorithm, length). Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-881913304">IDL</a>
         
       </div>
       <p><b>Referenced in:</b></p>
@@ -8875,7 +8875,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dfn-SubtleCrypto-method-supports-additionalAlgorithm" aria-label="Permalink for definition: supports(operation, algorithm, additionalAlgorithm). Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-993669945">IDL</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-881913304">IDL</a>
         
       </div>
       <p><b>Referenced in:</b></p>
@@ -9387,7 +9387,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dfn-KmacKeyAlgorithm" aria-label="Permalink for definition: KmacKeyAlgorithm. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-28722634">IDL</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1367499047">IDL</a>
         
       </div>
       <p><b>Referenced in:</b></p>
@@ -9404,7 +9404,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dfn-KmacKeyAlgorithm-length" aria-label="Permalink for definition: length. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-28722634">IDL</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1367499047">IDL</a>
         
       </div>
       <p><b>Referenced in:</b></p>
