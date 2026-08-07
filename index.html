@@ -3666,6 +3666,13 @@ dictionary ContextParams : Algorithm {
         <ol>
           <li>
             <p>
+              If the {{ContextParams/context}} member of |normalizedAlgorithm|
+              is present and has a [= byte sequence/length =] greater than 255
+              bytes, then [= exception/throw =] an {{OperationError}}.
+            </p>
+          </li>
+          <li>
+            <p>
               If the <a data-cite="webcrypto#dfn-CryptoKey-slot-type">`[[type]]`</a> internal slot of
               |key| is not {{KeyType/"private"}}, then [= exception/throw =] an {{InvalidAccessError}}.
             </p>
