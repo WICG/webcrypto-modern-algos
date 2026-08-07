@@ -173,6 +173,15 @@
       document, and must perform the steps to <a data-cite="webcrypto#concept-define-an-algorithm">define an algorithm</a>
       specified in section 18.4.3 of [[webcrypto]] for each of the supported operations.
     </p>
+    <p>
+      In addition to the <a data-cite="webcrypto#supported-operation">supported operations</a>
+      defined in [[webcrypto]], this specification makes use of the following operations:
+    </p>
+    <ul>
+      <li>encapsulate</li>
+      <li>decapsulate</li>
+      <li>get shared key length</li>
+    </ul>
   </section>
 
   <section id="partial-subtlecrypto-interface">
@@ -947,7 +956,7 @@ enum KeyUsage { "encrypt", "decrypt", "sign", "verify", "deriveKey", "deriveBits
           </li>
           <li>
             <dl class="switch">
-              <dt>If |operation| is "`deriveKey`", "`unwrapKey`", "`encapsulateKey`" or "`decapsulateKey`":</dt>
+              <dt>If |operation| is "`deriveKey`" or "`unwrapKey`":</dt>
               <dd>
                 <p>
                   If the result of [= check support for an algorithm | checking support for an algorithm =]
@@ -966,6 +975,68 @@ enum KeyUsage { "encrypt", "decrypt", "sign", "verify", "deriveKey", "deriveBits
                   is false,
                   return false.
                 </p>
+              </dd>
+            </dl>
+          </li>
+          <li>
+            <dl class="switch">
+              <dt>If |operation| is "`encapsulateKey`" or "`decapsulateKey`":</dt>
+              <dd>
+                <ol>
+                  <li>
+                    <p>
+                      Let |normalizedAlgorithm| be the result of
+                      <a data-cite="webcrypto#dfn-normalize-an-algorithm">normalizing an algorithm</a>, with
+                      `alg` set to |algorithm| and `op` set to
+                      "`get shared key length`".
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If an error occurred, return false.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Let |sharedKeyLength| be the result of performing the get shared key length
+                      algorithm specified by |normalizedAlgorithm| using |algorithm|.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Let |normalizedAdditionalAlgorithm| be the result of
+                      <a data-cite="webcrypto#dfn-normalize-an-algorithm">normalizing an algorithm</a>, with
+                      `alg` set to |additionalAlgorithm| and `op` set to
+                      "`importKey`".
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If an error occurred, return false.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If the result of [= determine support from operation steps | determining support from operation steps =]
+                      with `op` set to "`importKey`" and `normalizedAlgorithm` set to
+                      |normalizedAdditionalAlgorithm|, and `length` set to null is false,
+                      return false.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If the import key operation specified by |normalizedAdditionalAlgorithm|
+                      does not recognize {{KeyFormat/"raw-secret"}} as a key format, return false.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      If |normalizedAdditionalAlgorithm| has a `length` member, and either its value
+                      is greater than |sharedKeyLength| or is less than or equal to |sharedKeyLength|
+                      minus eight, return false.
+                    </p>
+                  </li>
+                </ol>
               </dd>
             </dl>
           </li>
@@ -1115,7 +1186,23 @@ enum KeyUsage { "encrypt", "decrypt", "sign", "verify", "deriveKey", "deriveBits
         </li>
         <li>
           <p>
-            If the specified operation or algorithm (or one of its parameter values)
+            Return the result of [= determine support from operation steps | determining support from operation steps =],
+            with `op` set to |op|, `normalizedAlgorithm` set to |normalizedAlgorithm|,
+            and `length` set to |length|.
+          </p>
+        </li>
+      </ol>
+      <p>
+        The <dfn id="dfn-determine-support-from-operation-steps">determine support from operation steps</dfn> algorithm
+        determines whether the operation steps for a normalized algorithm indicate support.
+        Its input is an operation name |op|, an {{Algorithm}} |normalizedAlgorithm|,
+        and a |length| parameter. Its output is a boolean.
+        It behaves as follows:
+      </p>
+      <ol>
+        <li>
+          <p>
+            If the specified operation or normalized algorithm (or one of its parameter values)
             is expected to fail (for any key and/or data) for an implementation-specific reason
             (e.g. known nonconformance to the specification), return false.
           </p>
@@ -1250,6 +1337,11 @@ partial dictionary JsonWebKey {
             <td>decapsulate</td>
             <td>None</td>
             <td>[= byte sequence =]</td>
+          </tr>
+          <tr>
+            <td>get shared key length</td>
+            <td>None</td>
+            <td>Integer</td>
           </tr>
           <tr>
             <td>generateKey</td>
@@ -1387,6 +1479,16 @@ partial dictionary JsonWebKey {
           <li>
             <p>
               Return |sharedKey|.
+            </p>
+          </li>
+        </ol>
+      </section>
+      <section id="ml-kem-operations-get-shared-key-length">
+        <h5>Get shared key length</h5>
+        <ol>
+          <li>
+            <p>
+              Return 256.
             </p>
           </li>
         </ol>
