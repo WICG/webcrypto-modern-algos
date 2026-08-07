@@ -7538,6 +7538,11 @@ dictionary Argon2Params : Algorithm {
             <td>[= byte sequence =]</td>
           </tr>
           <tr>
+            <td>get shared key length</td>
+            <td>None</td>
+            <td>Integer</td>
+          </tr>
+          <tr>
             <td>generateKey</td>
             <td>None</td>
             <td>{{CryptoKeyPair}}</td>
@@ -7647,6 +7652,16 @@ dictionary Argon2Params : Algorithm {
           <li>
             <p>
               Return |sharedKey|.
+            </p>
+          </li>
+        </ol>
+      </section>
+      <section id="hybrid-kems-operations-get-shared-key-length">
+        <h5>Get shared key length</h5>
+        <ol>
+          <li>
+            <p>
+              Return 256.
             </p>
           </li>
         </ol>
