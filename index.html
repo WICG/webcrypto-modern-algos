@@ -6053,6 +6053,12 @@ dictionary AeadParams : Algorithm {
         parameters are empty (or not provided), cSHAKE is functionally equivalent to
         SHAKE as defined in Section 6.2 of [[FIPS-202]].
       </p>
+      <p class="note">
+        Although technically possible to implement, using cSHAKE as part of other algorithms
+        outside {{SubtleCrypto/digest()}} (such as in the {{HmacKeyGenParams/hash}} parameter of HMAC)
+        is unlikely to be useful and not expected to be supported.
+        The result of {{SubtleCrypto/supports()}} should reflect whether such uses are supported.
+      </p>
     </section>
     <section id="cshake-registration">
       <h4>Registration</h4>
@@ -6182,6 +6188,12 @@ dictionary CShakeParams : Algorithm {
         When the output length meets these thresholds, TurboSHAKE128 achieves NIST post-quantum
         security level 2, and TurboSHAKE256 achieves level 5.
         See Section 7 of [[RFC9861]].
+      </p>
+      <p class="note">
+        Although technically possible to implement, using TurboSHAKE as part of other algorithms
+        outside {{SubtleCrypto/digest()}} (such as in the {{HmacKeyGenParams/hash}} parameter of HMAC)
+        is unlikely to be useful and not expected to be supported.
+        The result of {{SubtleCrypto/supports()}} should reflect whether such uses are supported.
       </p>
     </section>
     <section id="turboshake-registration">
@@ -6316,6 +6328,12 @@ dictionary TurboShakeParams : Algorithm {
         When the output length meets these thresholds, KT128 achieves NIST post-quantum
         security level 2, and KT256 achieves level 5.
         See Section 7 of [[RFC9861]].
+      </p>
+      <p class="note">
+        Although technically possible to implement, using KangarooTwelve as part of other algorithms
+        outside {{SubtleCrypto/digest()}} (such as in the {{HmacKeyGenParams/hash}} parameter of HMAC)
+        is unlikely to be useful and not expected to be supported.
+        The result of {{SubtleCrypto/supports()}} should reflect whether such uses are supported.
       </p>
     </section>
     <section id="kangarootwelve-registration">
