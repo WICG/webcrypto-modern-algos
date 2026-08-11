@@ -9,7 +9,7 @@ Web Cryptography API, namely:
 - SLH-DSA
 - AES-OCB
 - ChaCha20-Poly1305
-- SHA-3, cSHAKE, TurboSHAKE, and KangarooTwelve
+- SHA-3, SHAKE, cSHAKE, TurboSHAKE, and KangarooTwelve
 - KMAC
 - Argon2
 

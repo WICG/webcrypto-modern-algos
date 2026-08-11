@@ -115,7 +115,7 @@
       This specification defines a number of post-quantum secure and
       modern cryptographic algorithms for the [[webcrypto | Web Cryptography API]],
       namely ML-KEM, ML-DSA, SLH-DSA, AES-OCB, ChaCha20-Poly1305,
-      SHA-3, cSHAKE, TurboSHAKE, KangarooTwelve, KMAC, and Argon2.
+      SHA-3, SHAKE, cSHAKE, TurboSHAKE, KangarooTwelve, KMAC, and Argon2.
     </p>
   </section>
   <section id="sotd">
@@ -138,7 +138,7 @@
       <li><a href="#slh-dsa">SLH-DSA</a> [[FIPS-205]]</li>
       <li><a href="#aes-ocb">AES-OCB</a> [[RFC7253]]</li>
       <li><a href="#chacha20-poly1305">ChaCha20-Poly1305</a> [[RFC8439]]</li>
-      <li><a href="#sha3">SHA3-256, SHA3-384, and SHA3-512</a> [[FIPS-202]]</li>
+      <li><a href="#sha3">SHA3-256, SHA3-384, and SHA3-512</a>, and <a href="#shake">SHAKE128 and SHAKE256</a> [[FIPS-202]]</li>
       <li><a href="#cshake">cSHAKE128, cSHAKE256</a>, <a href="#kmac">KMAC128, and KMAC256</a> [[NIST-SP800-185]]</li>
       <li><a href="#turboshake">TurboSHAKE128, TurboSHAKE256</a>, <a href="#kangarootwelve">KT128, and KT256</a> [[RFC9861]]</li>
       <li><a href="#argon2">Argon2d, Argon2i, and Argon2id</a> [[RFC9106]]</li>
@@ -6040,6 +6040,104 @@ dictionary AeadParams : Algorithm {
       </section>
     </section>
   </section>
+  <section id="shake">
+    <h3>SHAKE</h3>
+    <section id="shake-description" class="informative">
+      <h4>Description</h4>
+      <p>
+        This describes the SHAKE family of eXtendable-Output Functions (XOFs),
+        as specified by [[FIPS-202]].
+      </p>
+      <p>
+        SHAKE enables applications to request variable-length output from the
+        same function, making it suitable for protocols that need more than
+        one fixed digest length.
+      </p>
+    </section>
+    <section id="shake-registration">
+      <h4>Registration</h4>
+      <p>
+        The <a data-cite="webcrypto#recognized-algorithm-name">recognized algorithm names</a> are
+        "<code id="alg-shake128">SHAKE128</code>" and
+        "<code id="alg-shake256">SHAKE256</code>".
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th><a data-cite="webcrypto#supported-operations">Operation</a></th>
+            <th><a data-cite="webcrypto#algorithm-specific-params">Parameters</a></th>
+            <th><a data-cite="webcrypto#algorithm-result">Result</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>digest</td>
+            <td>{{ShakeParams}}</td>
+            <td>[= byte sequence =]</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="shake-params">
+      <h4><dfn data-idl id="dfn-ShakeParams">ShakeParams</dfn> dictionary</h4>
+      <pre class=idl>
+dictionary ShakeParams : Algorithm {
+  required [EnforceRange] unsigned long outputLength;
+};
+      </pre>
+      <p>The <dfn data-dfn-for=ShakeParams id=dfn-ShakeParams-outputLength>outputLength</dfn> member represents the requested output length in bits.</p>
+    </section>
+    <section id="shake-operations">
+      <h4>Operations</h4>
+      <section id="shake-operations-digest">
+        <h5>Digest</h5>
+        <ol>
+          <li>
+            <p>
+              Let |outputLength| be the {{ShakeParams/outputLength}} member of
+              |normalizedAlgorithm|.
+            </p>
+          </li>
+          <li>
+            <dl class="switch">
+              <dt>
+                If the {{Algorithm/name}} member of
+                |normalizedAlgorithm| is a case-sensitive string match for
+                "`SHAKE128`":
+              </dt>
+              <dd>
+                Let |result| be the result of performing the SHAKE128 function
+                defined in Section 6.2 of [[FIPS-202]] using
+                |message| as the input message, |M|, and
+                |outputLength| as the output length, |d|.
+              </dd>
+              <dt>
+                If the {{Algorithm/name}} member of
+                |normalizedAlgorithm| is a case-sensitive string match for
+                "`SHAKE256`":
+              </dt>
+              <dd>
+                Let |result| be the result of performing the SHAKE256 function
+                defined in Section 6.2 of [[FIPS-202]] using
+                |message| as the input message, |M|, and
+                |outputLength| as the output length, |d|.
+              </dd>
+            </dl>
+          </li>
+          <li>
+            <p>
+              If performing the operation results in an error, then [= exception/throw =] an {{OperationError}}.
+            </p>
+          </li>
+          <li>
+            <p>
+              Return a <a data-cite="webcrypto#dfn-byte-sequence-containing">byte sequence containing</a> |result|.
+            </p>
+          </li>
+        </ol>
+      </section>
+    </section>
+  </section>
   <section id="cshake">
     <h3>cSHAKE</h3>
     <section id="cshake-description" class="informative">
@@ -6051,7 +6149,7 @@ dictionary AeadParams : Algorithm {
       <p>
         When both the {{CShakeParams/functionName}} and {{CShakeParams/customization}}
         parameters are empty (or not provided), cSHAKE is functionally equivalent to
-        SHAKE as defined in Section 6.2 of [[FIPS-202]].
+        the corresponding SHAKE function defined in Section 6.2 of [[FIPS-202]].
       </p>
       <p class="note">
         Although technically possible to implement, using cSHAKE as part of other algorithms
@@ -6087,13 +6185,11 @@ dictionary AeadParams : Algorithm {
     <section id="cshake-params">
       <h4><dfn data-idl id="dfn-CShakeParams">CShakeParams</dfn> dictionary</h4>
       <pre class=idl>
-dictionary CShakeParams : Algorithm {
-  required [EnforceRange] unsigned long outputLength;
+dictionary CShakeParams : ShakeParams {
   BufferSource functionName;
   BufferSource customization;
 };
       </pre>
-      <p>The <dfn data-dfn-for=CShakeParams id=dfn-CShakeParams-outputLength>outputLength</dfn> member represents the requested output length in bits.</p>
       <p>The <dfn data-dfn-for=CShakeParams id=dfn-CShakeParams-functionName>functionName</dfn> member represents the function name, used by NIST to define functions based on cSHAKE. When used, it should only be set to values defined by NIST.</p>
       <p>The <dfn data-dfn-for=CShakeParams id=dfn-CShakeParams-customization>customization</dfn> member represents the customization string. The application selects this string to define a variant of the function.</p>
     </section>
@@ -6104,7 +6200,7 @@ dictionary CShakeParams : Algorithm {
         <ol>
           <li>
             <p>
-              Let |outputLength| be the {{CShakeParams/outputLength}} member of
+              Let |outputLength| be the {{ShakeParams/outputLength}} member of
               |normalizedAlgorithm|.
             </p>
           </li>
@@ -7605,19 +7701,17 @@ dictionary Argon2Params : Algorithm {
         (TLS, SSH, WireGuard, HPKE).
       </li>
       <li>
-        <a href="#sha3">SHA-3</a> and <a href="#cshake">cSHAKE</a>
-        (specifically SHA3-256 and cSHAKE256) are used in many post-quantum
+        <a href="#sha3">SHA-3</a> and <a href="#shake">SHAKE</a>
+        (specifically SHA3-256 and SHAKE256) are used in many post-quantum
         constructions including ML-KEM key derivation and hybrid KEM
-        combiners. Notably, cSHAKE256 invoked without any customization
-        parameters produces output identical to SHAKE256, making a single
-        implementation sufficient for both customized (cSHAKE256) and
-        non-customized (SHAKE256) use cases.
-        However, if an implementation of cSHAKE is not available, an
-        implementation of SHAKE may still prove useful, when making sure
-        to throw a {{NotSupportedError}} (and return `false` from
-        <a href="#dfn-SubtleCrypto-method-supports">`SubtleCrypto.supports`</a>)
-        when the {{CShakeParams/customization}} parameter is present and
-        non-empty.
+        combiners. SHAKE256 is the browser-facing priority for XOF use
+        because it covers non-customized SHAKE use cases directly without
+        the additional function-name and customization parameter surface of
+        <a href="#cshake">cSHAKE</a>. Implementations that need
+        protocol-specific customization can add cSHAKE; cSHAKE256 invoked
+        with empty {{CShakeParams/functionName}} and
+        {{CShakeParams/customization}} parameters produces output identical
+        to SHAKE256.
       </li>
       <li>
         <a href="#argon2">Argon2</a> is a memory-hard password-based
@@ -7634,6 +7728,7 @@ dictionary Argon2Params : Algorithm {
     </p>
     <p>
       Beyond these, <a href="#aes-ocb">AES-OCB</a>,
+      <a href="#cshake">cSHAKE</a>,
       <a href="#turboshake">TurboSHAKE</a>,
       <a href="#kangarootwelve">KangarooTwelve</a>, and
       <a href="#kmac">KMAC</a> are all valuable additions but are not as
