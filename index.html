@@ -312,8 +312,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       "id": "draft-ietf-hpke-hpke"
     }
   },
-  "publishISODate": "2026-08-06T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 06 August 2026"
+  "publishISODate": "2026-08-11T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 11 August 2026"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/cg-draft"></head>
 
@@ -322,7 +322,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Modern Algorithms in the Web Cryptography API</h1> 
     <p id="w3c-state">
       <a href="https://www.w3.org/standards/types#reports">Draft Community Group Report</a>
-      <time class="dt-published" datetime="2026-08-06">06 August 2026</time>
+      <time class="dt-published" datetime="2026-08-11">11 August 2026</time>
     </p>
     <dl>
       
@@ -6310,6 +6310,12 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         parameters are empty (or not provided), cSHAKE is functionally equivalent to
         SHAKE as defined in Section 6.2 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-fips-202" title="SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions">FIPS-202</a></cite>].
       </p>
+      <div class="note" role="note" id="issue-container-generatedID-8"><div class="note-title marker" id="h-note-8"><span>Note</span></div><p class="">
+        Although technically possible to implement, using cSHAKE as part of other algorithms
+        outside <a data-link-type="method" data-lt="digest()" href="https://www.w3.org/TR/webcrypto-2/#dfn-SubtleCrypto-method-digest"><code>digest</code></a><code>()</code> (such as in the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dfn-HmacKeyGenParams-hash"><code>hash</code></a> parameter of HMAC)
+        is unlikely to be useful and not expected to be supported.
+        The result of <a data-link-type="idl" data-lt="supports()" href="#dfn-SubtleCrypto-method-supports" class="internalDFN" id="ref-for-dfn-SubtleCrypto-method-supports-3"><code>supports</code></a><code>()</code> should reflect whether such uses are supported.
+      </p></div>
     </section>
     <section id="cshake-registration"><div class="header-wrapper"><h3 id="x12-2-registration"><bdi class="secno">12.2 </bdi>Registration</h3><a class="self-link" href="#cshake-registration" aria-label="Permalink for Section 12.2"></a></div>
       
@@ -6429,7 +6435,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         roughly twice as fast as the SHAKE functions while maintaining the same
         security strength.
       </p>
-      <div class="note" role="note" id="issue-container-generatedID-8"><div class="note-title marker" id="h-note-8"><span>Note</span></div><p class="">
+      <div class="note" role="note" id="issue-container-generatedID-9"><div class="note-title marker" id="h-note-9"><span>Note</span></div><p class="">
         For 128-bit collision security, TurboSHAKE128 output should be at least 256 bits.
         For 256-bit collision security, TurboSHAKE256 output should be at least 512 bits.
         These output lengths also exceed the corresponding preimage and second-preimage security
@@ -6437,6 +6443,12 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         When the output length meets these thresholds, TurboSHAKE128 achieves NIST post-quantum
         security level 2, and TurboSHAKE256 achieves level 5.
         See Section 7 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9861" title="KangarooTwelve and TurboSHAKE">RFC9861</a></cite>].
+      </p></div>
+      <div class="note" role="note" id="issue-container-generatedID-10"><div class="note-title marker" id="h-note-10"><span>Note</span></div><p class="">
+        Although technically possible to implement, using TurboSHAKE as part of other algorithms
+        outside <a data-link-type="method" data-lt="digest()" href="https://www.w3.org/TR/webcrypto-2/#dfn-SubtleCrypto-method-digest"><code>digest</code></a><code>()</code> (such as in the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dfn-HmacKeyGenParams-hash"><code>hash</code></a> parameter of HMAC)
+        is unlikely to be useful and not expected to be supported.
+        The result of <a data-link-type="idl" data-lt="supports()" href="#dfn-SubtleCrypto-method-supports" class="internalDFN" id="ref-for-dfn-SubtleCrypto-method-supports-4"><code>supports</code></a><code>()</code> should reflect whether such uses are supported.
       </p></div>
     </section>
     <section id="turboshake-registration"><div class="header-wrapper"><h3 id="x13-2-registration"><bdi class="secno">13.2 </bdi>Registration</h3><a class="self-link" href="#turboshake-registration" aria-label="Permalink for Section 13.2"></a></div>
@@ -6471,7 +6483,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
 };</span></code></pre>
       <p>The <dfn data-dfn-for="TurboShakeParams" id="dfn-TurboShakeParams-outputLength" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="outputLength" data-type="unsigned long" tabindex="0" aria-haspopup="dialog"><code>outputLength</code></dfn> member represents the requested output length in bits.</p>
       <p>The <dfn data-dfn-for="TurboShakeParams" id="dfn-TurboShakeParams-domainSeparation" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="domainSeparation" data-type="octet" tabindex="0" aria-haspopup="dialog"><code>domainSeparation</code></dfn> member represents the domain separation byte. If not specified, it defaults to <code>0x1F</code>. Valid values are in the range <code>0x01</code> to <code>0x7F</code>.</p>
-      <div class="note" role="note" id="issue-container-generatedID-9"><div class="note-title marker" id="h-note-9"><span>Note</span></div><p class="">
+      <div class="note" role="note" id="issue-container-generatedID-11"><div class="note-title marker" id="h-note-11"><span>Note</span></div><p class="">
         Protocols that use both KangarooTwelve and TurboSHAKE should avoid using the values
         <code>0x06</code>, <code>0x07</code>, and <code>0x0B</code> for domain separation,
         as these are used internally by KangarooTwelve.
@@ -6561,7 +6573,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         tree hashing on top of TurboSHAKE, enabling parallel processing of input data.
         KT128 uses TurboSHAKE128 internally, while KT256 uses TurboSHAKE256.
       </p>
-      <div class="note" role="note" id="issue-container-generatedID-10"><div class="note-title marker" id="h-note-10"><span>Note</span></div><p class="">
+      <div class="note" role="note" id="issue-container-generatedID-12"><div class="note-title marker" id="h-note-12"><span>Note</span></div><p class="">
         For 128-bit collision security, KT128 output should be at least 256 bits.
         For 256-bit collision security, KT256 output should be at least 512 bits.
         These output lengths also exceed the corresponding preimage and second-preimage security
@@ -6569,6 +6581,12 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         When the output length meets these thresholds, KT128 achieves NIST post-quantum
         security level 2, and KT256 achieves level 5.
         See Section 7 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9861" title="KangarooTwelve and TurboSHAKE">RFC9861</a></cite>].
+      </p></div>
+      <div class="note" role="note" id="issue-container-generatedID-13"><div class="note-title marker" id="h-note-13"><span>Note</span></div><p class="">
+        Although technically possible to implement, using KangarooTwelve as part of other algorithms
+        outside <a data-link-type="method" data-lt="digest()" href="https://www.w3.org/TR/webcrypto-2/#dfn-SubtleCrypto-method-digest"><code>digest</code></a><code>()</code> (such as in the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dfn-HmacKeyGenParams-hash"><code>hash</code></a> parameter of HMAC)
+        is unlikely to be useful and not expected to be supported.
+        The result of <a data-link-type="idl" data-lt="supports()" href="#dfn-SubtleCrypto-method-supports" class="internalDFN" id="ref-for-dfn-SubtleCrypto-method-supports-5"><code>supports</code></a><code>()</code> should reflect whether such uses are supported.
       </p></div>
     </section>
     <section id="kangarootwelve-registration"><div class="header-wrapper"><h3 id="x14-2-registration"><bdi class="secno">14.2 </bdi>Registration</h3><a class="self-link" href="#kangarootwelve-registration" aria-label="Permalink for Section 14.2"></a></div>
@@ -7398,7 +7416,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <p>The <dfn data-dfn-for="Argon2Params" id="dfn-Argon2Params-version" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="version" data-type="octet" tabindex="0" aria-haspopup="dialog"><code>version</code></dfn> member represents the version number. The default and currently only defined version is 19 (0x13).</p>
       <p>The <dfn data-dfn-for="Argon2Params" id="dfn-Argon2Params-secretValue" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="secretValue" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>secretValue</code></dfn> member represents the optional secret value.</p>
       <p>The <dfn data-dfn-for="Argon2Params" id="dfn-Argon2Params-associatedData" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="associatedData" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>associatedData</code></dfn> member represents the optional associated data.</p>
-      <div class="note" role="note" id="issue-container-generatedID-11"><div class="note-title marker" id="h-note-11"><span>Note</span></div><p class="">
+      <div class="note" role="note" id="issue-container-generatedID-14"><div class="note-title marker" id="h-note-14"><span>Note</span></div><p class="">
         For the recommended values of the parameters, see section 4 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9106" title="Argon2 Memory-Hard Function for Password Hashing and Proof-of-Work Applications">RFC9106</a></cite>].
       </p></div>
     </section>
@@ -7773,7 +7791,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       operations to prioritize for implementation.
     </p>
     <p>
-      The <a href="#dfn-SubtleCrypto-method-supports" id="ref-for-dfn-SubtleCrypto-method-supports-3"><code>SubtleCrypto.supports</code></a>
+      The <a href="#dfn-SubtleCrypto-method-supports" id="ref-for-dfn-SubtleCrypto-method-supports-6"><code>SubtleCrypto.supports</code></a>
       method simplifies the expedited adoption of every other algorithm and
       operation in this specification by enabling feature detection, graceful
       fallback, and progressive enhancement.
@@ -7822,7 +7840,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         However, if an implementation of cSHAKE is not available, an
         implementation of SHAKE may still prove useful, when making sure
         to throw a <a data-link-type="exception" data-lt="NotSupportedError" href="https://webidl.spec.whatwg.org/#notsupportederror"><code>NotSupportedError</code></a> (and return <code>false</code> from
-        <a href="#dfn-SubtleCrypto-method-supports" id="ref-for-dfn-SubtleCrypto-method-supports-4"><code>SubtleCrypto.supports</code></a>)
+        <a href="#dfn-SubtleCrypto-method-supports" id="ref-for-dfn-SubtleCrypto-method-supports-7"><code>SubtleCrypto.supports</code></a>)
         when the <a data-link-type="idl" href="#dfn-CShakeParams-customization" class="internalDFN" id="ref-for-dfn-CShakeParams-customization-4"><code>customization</code></a> parameter is present and
         non-empty.
       </li>
@@ -8868,7 +8886,13 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
     </li><li>
       <a href="#ref-for-dfn-SubtleCrypto-method-supports-2" title="§ 3. Partial SubtleCrypto interface">§ 3. Partial SubtleCrypto interface</a> 
     </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-supports-3" title="§ 18. Adoption Guidance">§ 18. Adoption Guidance</a> <a href="#ref-for-dfn-SubtleCrypto-method-supports-4" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-SubtleCrypto-method-supports-3" title="§ 12.1 Description">§ 12.1 Description</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-supports-4" title="§ 13.1 Description">§ 13.1 Description</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-supports-5" title="§ 14.1 Description">§ 14.1 Description</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-supports-6" title="§ 18. Adoption Guidance">§ 18. Adoption Guidance</a> <a href="#ref-for-dfn-SubtleCrypto-method-supports-7" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-SubtleCrypto-method-supports-additionalAlgorithm" aria-label="Links in this document to definition: supports(operation, algorithm, additionalAlgorithm)">
