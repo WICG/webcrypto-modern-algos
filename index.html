@@ -1026,14 +1026,9 @@ enum KeyUsage { "encrypt", "decrypt", "sign", "verify", "deriveKey", "deriveBits
                   <li>
                     <p>
                       If the import key operation specified by |normalizedAdditionalAlgorithm|
-                      does not recognize {{KeyFormat/"raw-secret"}} as a key format, return false.
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      If |normalizedAdditionalAlgorithm| has a `length` member, and either its value
-                      is greater than |sharedKeyLength| or is less than or equal to |sharedKeyLength|
-                      minus eight, return false.
+                      would [= exception/throw =] an error for every value of |keyData| that is
+                      a [= byte sequence =] whose length in bits is |sharedKeyLength| when
+                      |format| is {{KeyFormat/"raw-secret"}}, return false.
                     </p>
                   </li>
                 </ol>
