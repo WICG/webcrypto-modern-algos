@@ -6861,6 +6861,12 @@ dictionary AeadParams : Algorithm {
         This describes the SHA-3 family of hash functions, as specified by
         [[FIPS-202]].
       </p>
+      <p class="issue" data-number="23">
+        The default HMAC key length when a SHA-3 algorithm is used as the hash
+        is not yet specified for either {{SubtleCrypto/generateKey()}}, when
+        {{HmacKeyGenParams/length}} is omitted, or {{SubtleCrypto/deriveKey()}},
+        when {{HmacImportParams/length}} is omitted from its `derivedKeyType`.
+      </p>
     </section>
     <section id="sha3-registration">
       <h4>Registration</h4>
