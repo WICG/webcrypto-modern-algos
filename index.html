@@ -104,17 +104,17 @@
         "href": "https://datatracker.ietf.org/doc/draft-ietf-hpke-hpke/",
         "publisher": "IETF"
       },
-      "draft-irtf-cfrg-hybrid-kems-09": {
+      "draft-irtf-cfrg-hybrid-kems-12": {
         "title": "Hybrid PQ/T Key Encapsulation Mechanisms",
-        "href": "https://www.ietf.org/archive/id/draft-irtf-cfrg-hybrid-kems-09.html",
+        "href": "https://www.ietf.org/archive/id/draft-irtf-cfrg-hybrid-kems-12.html",
         "publisher": "IETF",
-        "date": "March 2026"
+        "date": "July 2026"
       },
-      "draft-irtf-cfrg-concrete-hybrid-kems-03": {
+      "draft-irtf-cfrg-concrete-hybrid-kems-04": {
         "title": "Concrete Hybrid PQ/T Key Encapsulation Mechanisms",
-        "href": "https://www.ietf.org/archive/id/draft-irtf-cfrg-concrete-hybrid-kems-03.html",
+        "href": "https://www.ietf.org/archive/id/draft-irtf-cfrg-concrete-hybrid-kems-04.html",
         "publisher": "IETF",
-        "date": "March 2026"
+        "date": "July 2026"
       },
     },
   };
@@ -150,7 +150,7 @@
     </p>
     <ul>
       <li><a href="#ml-kem">ML-KEM</a> [[FIPS-203]]</li>
-      <li><a href="#hybrid-kems">Hybrid KEMs</a> [[draft-irtf-cfrg-concrete-hybrid-kems-03]]</li>
+      <li><a href="#hybrid-kems">Hybrid KEMs</a> [[draft-irtf-cfrg-concrete-hybrid-kems-04]]</li>
       <li><a href="#ml-dsa">ML-DSA</a> [[FIPS-204]]</li>
       <li><a href="#slh-dsa">SLH-DSA</a> [[FIPS-205]]</li>
       <li><a href="#aes-ocb">AES-OCB</a> [[RFC7253]]</li>
@@ -2549,7 +2549,7 @@ partial dictionary JsonWebKey {
       <p>
         This describes using hybrid post-quantum/traditional key
         encapsulation mechanisms for key encapsulation and decapsulation,
-        as specified by [[draft-irtf-cfrg-concrete-hybrid-kems-03]].
+        as specified by [[draft-irtf-cfrg-concrete-hybrid-kems-04]].
       </p>
     </section>
     <section id="hybrid-kems-registration">
@@ -2628,7 +2628,7 @@ partial dictionary JsonWebKey {
               from performing the Encaps function for the hybrid
               KEM instance indicated by the {{Algorithm/name}} member of
               |algorithm| in Section 4 of
-              [[draft-irtf-cfrg-concrete-hybrid-kems-03]], using the key
+              [[draft-irtf-cfrg-concrete-hybrid-kems-04]], using the key
               represented by the <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
               internal slot of |key| as the |ek| input parameter.
             </p>
@@ -2679,7 +2679,7 @@ partial dictionary JsonWebKey {
               Let |sharedKey| be the output that results from performing
               the Decaps function for the hybrid KEM instance
               indicated by the {{Algorithm/name}} member of |algorithm| in
-              Section 4 of [[draft-irtf-cfrg-concrete-hybrid-kems-03]],
+              Section 4 of [[draft-irtf-cfrg-concrete-hybrid-kems-04]],
               using the key represented by the <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
               internal slot of |key| as the |dk| input parameter, and
               |ciphertext| as the |ct| input parameter.
@@ -2723,7 +2723,7 @@ partial dictionary JsonWebKey {
             <p>
               Generate a hybrid KEM key pair by performing the
               GenerateKeyPair function described in Section 5.2 of
-              [[draft-irtf-cfrg-hybrid-kems-09]] with the hybrid
+              [[draft-irtf-cfrg-hybrid-kems-12]] with the hybrid
               KEM instance indicated by the {{Algorithm/name}} member of
               |normalizedAlgorithm|.
             </p>
@@ -2866,7 +2866,7 @@ partial dictionary JsonWebKey {
                       length, `Nek`, for the hybrid KEM instance
                       indicated by the {{Algorithm/name}} member of
                       |normalizedAlgorithm| in Section 4 of
-                      [[draft-irtf-cfrg-concrete-hybrid-kems-03]], then
+                      [[draft-irtf-cfrg-concrete-hybrid-kems-04]], then
                       [= exception/throw =] a {{DataError}}.
                     </p>
                   </li>
@@ -2929,7 +2929,7 @@ partial dictionary JsonWebKey {
                     <p>
                       Let |keyPair| be the result of performing the
                       DeriveKeyPair function described in Section 5.5 of
-                      [[draft-irtf-cfrg-hybrid-kems-09]] with the
+                      [[draft-irtf-cfrg-hybrid-kems-12]] with the
                       hybrid KEM instance indicated by the {{Algorithm/name}}
                       member of |normalizedAlgorithm|, using |data| as the
                       |seed| input parameter.
@@ -3104,7 +3104,7 @@ partial dictionary JsonWebKey {
                               hybrid KEM instance indicated by the
                               {{Algorithm/name}} member of
                               |normalizedAlgorithm| in Section 4 of
-                              [[draft-irtf-cfrg-concrete-hybrid-kems-03]],
+                              [[draft-irtf-cfrg-concrete-hybrid-kems-04]],
                               then [= exception/throw =] a {{DataError}}.
                             </p>
                           </li>
@@ -8522,7 +8522,7 @@ dictionary Argon2Params : Algorithm {
       <li>
         <a href="#hybrid-kems">Hybrid KEMs</a> provide
         post-quantum/traditional KEM instances that combine ML-KEM with
-        P-256, X25519, or P-384 [[draft-irtf-cfrg-concrete-hybrid-kems-03]].
+        P-256, X25519, or P-384 [[draft-irtf-cfrg-concrete-hybrid-kems-04]].
       </li>
       <li>
         <a href="#ml-dsa">ML-DSA</a> is the primary post-quantum digital
