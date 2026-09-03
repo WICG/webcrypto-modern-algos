@@ -5,6 +5,7 @@ post-quantum secure and modern cryptographic algorithms in the
 Web Cryptography API, namely:
 
 - ML-KEM
+- Hybrid KEMs
 - ML-DSA
 - SLH-DSA
 - AES-OCB
@@ -12,7 +13,6 @@ Web Cryptography API, namely:
 - SHA-3, cSHAKE, TurboSHAKE, and KangarooTwelve
 - KMAC
 - Argon2
-- Hybrid KEMs
 
 To accommodate the usage of ML-KEM, Hybrid KEMs, and possibly future other KEMs,
 it proposes to add functions for key encapsulation and decapsulation;
