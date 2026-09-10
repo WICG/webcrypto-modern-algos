@@ -42,6 +42,11 @@
       "JWA": {
         aliasOf: "RFC7518"
       },
+      "IANA-JOSE-Algorithms": {
+        "title": "IANA JSON Web Signature and Encryption Algorithms",
+        "href": "https://www.iana.org/assignments/jose/jose.xhtml#web-signature-encryption-algorithms",
+        "publisher": "IANA"
+      },
       // TODO: move to specref?
       "FIPS-202": {
         "title": "SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions",
@@ -83,12 +88,6 @@
         "publisher": "IETF",
         "date": "October 2025"
       },
-      "draft-ietf-jose-pqc-kem-05": {
-        "title": "Post-Quantum Key Encapsulation Mechanisms (PQ KEMs) for JOSE and COSE",
-        "href": "https://www.ietf.org/archive/id/draft-ietf-jose-pqc-kem-05.html",
-        "publisher": "IETF",
-        "date": "December 2025"
-      },
       "CSOR": {
         "title": "Computer Security Objects Register",
         "href": "https://csrc.nist.gov/projects/computer-security-objects-register/algorithm-registration",
@@ -102,6 +101,11 @@
       "draft-ietf-hpke-hpke": {
         "title": "Hybrid Public Key Encryption",
         "href": "https://datatracker.ietf.org/doc/draft-ietf-hpke-hpke/",
+        "publisher": "IETF"
+      },
+      "draft-ietf-jose-hpke-pq-pqt": {
+        "title": "JOSE HPKE PQ & PQ/T Algorithm Registrations",
+        "href": "https://datatracker.ietf.org/doc/draft-ietf-jose-hpke-pq-pqt/",
         "publisher": "IETF"
       },
       "draft-irtf-cfrg-hybrid-kems-12": {
@@ -1373,6 +1377,16 @@ partial dictionary JsonWebKey {
         </tbody>
       </table>
     </section>
+    <section id="ml-kem-jwk">
+      <h4>JSON Web Key Representation</h4>
+      <p>
+        ML-KEM keys use the "AKP" (Algorithm Key Pair) key type defined in [[RFC9964]]
+        for JWK representation. The "alg" (algorithm) parameter identifies the specific ML-KEM parameter set.
+        The public key is carried in the "pub" parameter. If a private key is included, it is represented
+        using the "priv" parameter. When expressed in JWK, all key parameters are base64url encoded.
+      </p>
+    </section>
+
     <section id="ml-kem-operations">
       <h4>Operations</h4>
       <section id="ml-kem-operations-encapsulate">
@@ -2010,9 +2024,6 @@ partial dictionary JsonWebKey {
               </dd>
               <dt>If |format| is {{KeyFormat/"jwk"}}:</dt>
               <dd>
-                <p class="issue">
-                  The JWK format for ML-KEM is not standardized yet and thus subject to change.
-                </p>
                 <ol>
                   <li>
                     <dl class="switch">
@@ -2050,16 +2061,25 @@ partial dictionary JsonWebKey {
                   </li>
                   <li>
                     <p>
-                      If the {{JsonWebKey/alg}} field of |jwk| is not
-                      one of the `alg` values corresponding to the
-                      {{Algorithm/name}} member of |normalizedAlgorithm|
-                      indicated in Section 8 of [[draft-ietf-jose-pqc-kem-05]]
-                      (Figure 1 or 2), then [= exception/throw =] a
+                      If the {{JsonWebKey/alg}} field of |jwk| is not present,
+                      or its value does not identify the
+                      ML-KEM parameter set indicated by the {{Algorithm/name}} member
+                      of |normalizedAlgorithm|,
+                      then [= exception/throw =] a
                       {{DataError}}.
                     </p>
-                    <p class="example">
-                      For example, `ML-KEM-512` and `ML-KEM-512+A128KW`
-                      are valid "alg" values for ML-KEM-512.
+                    <p class="note">
+                      The "alg" values registered in the
+                      [[[IANA-JOSE-Algorithms]]] registry
+                      for the ML-KEM parameter sets defined by this specification
+                      are `ML-KEM-512`, `ML-KEM-768`, and `ML-KEM-1024`.
+                      Implementations should also accept other values from this
+                      registry that identify a JWE algorithm using the same
+                      ML-KEM parameter set, provided that the JWE algorithm's
+                      JWK representation is compatible with the representation
+                      defined here apart from the "alg" value.
+                      Examples include the values proposed in
+                      [[draft-ietf-jose-hpke-pq-pqt]], once registered.
                     </p>
                   </li>
                   <li>
@@ -2449,9 +2469,6 @@ partial dictionary JsonWebKey {
               </dd>
               <dt>If |format| is {{KeyFormat/"jwk"}}:</dt>
               <dd>
-                <p class="issue">
-                  The JWK format for ML-KEM is not standardized yet and thus subject to change.
-                </p>
                 <ol>
                   <li>
                     <p>
@@ -2473,14 +2490,7 @@ partial dictionary JsonWebKey {
                   <li>
                     <p>
                       Set the `alg` attribute of |jwk| to
-                      the `alg` value corresponding to the
-                      {{Algorithm/name}} member of |keyAlgorithm|
-                      indicated in Section 8 of [[draft-ietf-jose-pqc-kem-05]]
-                      (Figure 1).
-                    </p>
-                    <p class="example">
-                      For example, `ML-KEM-512` is the "alg" value
-                      used for ML-KEM-512.
+                      the {{Algorithm/name}} member of |keyAlgorithm|.
                     </p>
                   </li>
                   <li>
@@ -3022,12 +3032,16 @@ partial dictionary JsonWebKey {
                     </p>
                     <p class="note">
                       The "alg" values registered in the
-                      IANA JSON Web Signature and Encryption Algorithms registry
+                      [[[IANA-JOSE-Algorithms]]] registry
                       for the hybrid KEM instances defined by this specification
                       are `MLKEM768-P256`, `MLKEM768-X25519`, and
                       `MLKEM1024-P384`. Implementations should also accept other
-                      values from this registry that identify an algorithm
-                      utilizing the same hybrid KEM instance.
+                      values from this registry that identify a JWE algorithm
+                      using the same hybrid KEM instance, provided that the JWE
+                      algorithm's JWK representation is compatible with the
+                      representation defined here apart from the "alg" value.
+                      Examples include the values proposed in
+                      [[draft-ietf-jose-hpke-pq-pqt]], once registered.
                     </p>
                   </li>
                   <li>
@@ -8274,8 +8288,18 @@ dictionary Argon2Params : Algorithm {
     <section id="iana-section-jws-jwa">
       <h3>JSON Web Signature and Encryption Algorithms Registration</h3>
       <p>
-        This section registers the following algorithm identifiers in the IANA JSON Web
-        Signature and Encryption Algorithms Registry for use with JSON Web Key.
+        This section registers the following algorithm identifiers in the
+        [[[IANA-JOSE-Algorithms]]]
+        Registry for use with JSON Web Key.
+      </p>
+      <p>
+        These registrations use "JWK" as the only Algorithm Usage Location.
+        They provide stable `alg` values for the JSON Web Key representations
+        defined by this specification, so that Web Cryptography API
+        implementations can serialize and parse these keys using
+        {{SubtleCrypto/exportKey()}} and {{SubtleCrypto/importKey()}} with
+        {{KeyFormat/"jwk"}}. This specification does not define use of these
+        identifiers as JSON Web Signature or JSON Web Encryption algorithms.
       </p>
       <ul>
         <li>Algorithm Name: "A128OCB"</li>
@@ -8320,6 +8344,30 @@ dictionary Argon2Params : Algorithm {
       <ul>
         <li>Algorithm Name: "K256"</li>
         <li>Algorithm Description: KMAC using the KMAC256</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "ML-KEM-512"</li>
+        <li>Algorithm Description: ML-KEM using the ML-KEM-512 parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "ML-KEM-768"</li>
+        <li>Algorithm Description: ML-KEM using the ML-KEM-768 parameter set</li>
+        <li>Algorithm Usage Location(s): "JWK"</li>
+        <li>JOSE Implementation Requirements: Optional</li>
+        <li>Change Controller: W3C Web Application Security Working Group</li>
+        <li>Specification Document(s): [[ This Document ]]</li>
+      </ul>
+      <ul>
+        <li>Algorithm Name: "ML-KEM-1024"</li>
+        <li>Algorithm Description: ML-KEM using the ML-KEM-1024 parameter set</li>
         <li>Algorithm Usage Location(s): "JWK"</li>
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
