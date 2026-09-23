@@ -5065,17 +5065,18 @@ dictionary ContextParams : Algorithm {
                   </li>
                   <li>
                     <p>
-                      Let |slhDsaPrivateKey| be the result of performing the
-                      <a data-cite="webcrypto#concept-parse-an-asn1-structure">parse an ASN.1 structure</a>
-                      algorithm, with |data| as the `privateKey` field
-                      of |privateKeyInfo|, |structure| as OCTET STRING, and |exactData| set to true.
+                      Let |slhDsaPrivateKey| be the `privateKey` field of
+                      |privateKeyInfo|, containing the raw private key bytes
+                      as specified in Section 7 of [[RFC9909]].
                     </p>
                   </li>
                   <li>
                     <p>
-                      If an error occurred while parsing,
-                      then [= exception/throw =] a
-                      {{DataError}}.
+                      If the [= byte sequence/length =] of |slhDsaPrivateKey|
+                      is not 4 times the value of |n| in Table 2 of [[FIPS-205]]
+                      for the parameter set indicated by the {{Algorithm/name}}
+                      member of |normalizedAlgorithm|, then [= exception/throw =]
+                      a {{DataError}}.
                     </p>
                   </li>
                   <li>
@@ -5643,10 +5644,9 @@ dictionary ContextParams : Algorithm {
                       </li>
                       <li>
                         <p>
-                          Set the |privateKey| field to the result of DER-encoding
-                          a `OCTET STRING` ASN.1 type that represents the SLH-DSA private key represented
-                          by the <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
-                          internal slot of |key|.
+                          Set the |privateKey| field to the raw SLH-DSA private key bytes
+                          represented by the <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
+                          internal slot of |key|, as specified in Section 7 of [[RFC9909]].
                         </p>
                       </li>
                     </ul>
@@ -8932,7 +8932,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-sha2-128s (2.16.840.1.101.3.4.3.20)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHA2-128s`"
           </td>
@@ -8942,7 +8942,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-sha2-128f (2.16.840.1.101.3.4.3.21)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHA2-128f`"
           </td>
@@ -8952,7 +8952,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-sha2-192s (2.16.840.1.101.3.4.3.22)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHA2-192s`"
           </td>
@@ -8962,7 +8962,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-sha2-192f (2.16.840.1.101.3.4.3.23)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHA2-192f`"
           </td>
@@ -8972,7 +8972,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-sha2-256s (2.16.840.1.101.3.4.3.24)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHA2-256s`"
           </td>
@@ -8982,7 +8982,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-sha2-256f (2.16.840.1.101.3.4.3.25)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHA2-256f`"
           </td>
@@ -8992,7 +8992,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-shake-128s (2.16.840.1.101.3.4.3.26)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHAKE-128s`"
           </td>
@@ -9002,7 +9002,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-shake-128f (2.16.840.1.101.3.4.3.27)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHAKE-128f`"
           </td>
@@ -9012,7 +9012,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-shake-192s (2.16.840.1.101.3.4.3.28)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHAKE-192s`"
           </td>
@@ -9022,7 +9022,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-shake-192f (2.16.840.1.101.3.4.3.29)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHAKE-192f`"
           </td>
@@ -9032,7 +9032,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-shake-256s (2.16.840.1.101.3.4.3.30)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHAKE-256s`"
           </td>
@@ -9042,7 +9042,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-shake-256f (2.16.840.1.101.3.4.3.31)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHAKE-256f`"
           </td>
