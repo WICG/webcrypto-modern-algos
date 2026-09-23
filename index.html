@@ -6685,6 +6685,12 @@ dictionary AeadParams : Algorithm {
                   </li>
                   <li>
                     <p>
+                      If the length in bits of |data| is not 256,
+                      then [= exception/throw =] a {{DataError}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       If the {{JsonWebKey/alg}} field of |jwk| is present, and is
                       not "`C20P`",
                       then [= exception/throw =] a
