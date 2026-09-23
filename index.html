@@ -203,6 +203,32 @@
       <li>decapsulate</li>
       <li>get shared key length</li>
     </ul>
+    <section id="keccak-bit-strings">
+      <h3>Keccak bit strings</h3>
+      <p>
+        The <dfn id="dfn-keccak-encoding">Keccak encoding</dfn> of a bit string is the
+        [= byte sequence =] obtained by dividing the bit string into consecutive groups
+        of eight bits and interpreting each group in least-significant-bit-first order:
+        the first bit has weight 2<sup>0</sup>, the second has weight 2<sup>1</sup>, and so on.
+        If the final group has fewer than eight bits, its bits occupy the least
+        significant positions of the final byte and the remaining most significant
+        positions are set to zero. The encoding of the empty bit string is the empty
+        byte sequence.
+      </p>
+      <p>
+        The <dfn id="dfn-keccak-decoding">Keccak decoding</dfn> of a [= byte sequence =]
+        is the bit string obtained by reading each byte in sequence, from its least
+        significant bit to its most significant bit. The decoding of the empty byte
+        sequence is the empty bit string.
+      </p>
+      <p>
+        When a byte sequence is used as the |X|, |N|, or |S| input parameter to
+        cSHAKE128, cSHAKE256, KMAC128, or KMAC256, its [= Keccak decoding =] is used.
+        The encoding of KMAC keys is defined by the
+        <a href="#kmac-operations-import-key">Import Key</a> and
+        <a href="#kmac-operations-export-key">Export Key</a> operations.
+      </p>
+    </section>
   </section>
 
   <section id="partial-subtlecrypto-interface">
@@ -7092,7 +7118,7 @@ dictionary CShakeParams : Algorithm {
           </li>
           <li>
             <p>
-              Return a <a data-cite="webcrypto#dfn-byte-sequence-containing">byte sequence containing</a> |result|.
+              Return the [= Keccak encoding =] of |result|.
             </p>
           </li>
         </ol>
@@ -7522,7 +7548,7 @@ dictionary KmacParams : Algorithm {
           </li>
           <li>
             <p>
-              Return a <a data-cite="webcrypto#dfn-byte-sequence-containing">byte sequence containing</a> |mac|.
+              Return the [= Keccak encoding =] of |mac|.
             </p>
           </li>
         </ol>
@@ -7580,7 +7606,7 @@ dictionary KmacParams : Algorithm {
           </li>
           <li>
             <p>
-              Let |computedMac| be a <a data-cite="webcrypto#dfn-byte-sequence-containing">byte sequence containing</a> |mac|.
+              Let |computedMac| be the [= Keccak encoding =] of |mac|.
             </p>
           </li>
           <li>
@@ -7862,9 +7888,30 @@ dictionary KmacParams : Algorithm {
           </li>
           <li>
             <p>
-              Let |key| be a new {{CryptoKey}}
-              object representing an KMAC key with the first |length|
-              bits of |data|.
+              Let |encodedKey| be a copy of |data|.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let |remainder| be |length| modulo 8.
+            </p>
+          </li>
+          <li>
+            <p>
+              If |remainder| is not zero, shift the last byte of |encodedKey| right
+              by 8 minus |remainder| bits, filling the vacated positions with zeros.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let |bits| be the first |length| bits of the [= Keccak decoding =]
+              of |encodedKey|.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let |key| be a new {{CryptoKey}} object representing a KMAC key
+              with the key value |bits|.
             </p>
           </li>
           <li>
@@ -7921,7 +7968,18 @@ dictionary KmacParams : Algorithm {
           </li>
           <li>
             <p>
-              Let |data| be an <a data-cite="webcrypto#dfn-byte-sequence-containing">byte sequence containing</a> |bits|.
+              Let |data| be the [= Keccak encoding =] of |bits|.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let |remainder| be the length of |bits| modulo 8.
+            </p>
+          </li>
+          <li>
+            <p>
+              If |remainder| is not zero, shift the last byte of |data| left
+              by 8 minus |remainder| bits, filling the vacated positions with zeros.
             </p>
           </li>
           <li>
