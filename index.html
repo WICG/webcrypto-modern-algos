@@ -1415,7 +1415,7 @@ partial dictionary JsonWebKey {
           </li>
           <li>
             <p>
-              If the encapsulation key check failed, return an {{OperationError}}.
+              If the encapsulation key check failed, [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
@@ -1430,7 +1430,7 @@ partial dictionary JsonWebKey {
           </li>
           <li>
             <p>
-              If the ML-KEM.Encaps function returned an error, return an {{OperationError}}.
+              If the ML-KEM.Encaps function returned an error, [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
@@ -1488,7 +1488,7 @@ partial dictionary JsonWebKey {
           </li>
           <li>
             <p>
-              If the decapsulation key check failed, return an {{OperationError}}.
+              If the decapsulation key check failed, [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
@@ -2645,7 +2645,7 @@ partial dictionary JsonWebKey {
           </li>
           <li>
             <p>
-              If the Encaps function returned an error, return an {{OperationError}}.
+              If the Encaps function returned an error, [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
@@ -2697,7 +2697,7 @@ partial dictionary JsonWebKey {
           </li>
           <li>
             <p>
-              If the Decaps function returned an error, return an {{OperationError}}.
+              If the Decaps function returned an error, [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
@@ -3425,7 +3425,7 @@ dictionary ContextParams : Algorithm {
           </li>
           <li>
             <p>
-              If the ML-DSA.Sign algorithm returned an error, return an {{OperationError}}.
+              If the ML-DSA.Sign algorithm returned an error, [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
@@ -3469,7 +3469,7 @@ dictionary ContextParams : Algorithm {
           </li>
           <li>
             <p>
-              If the ML-DSA.Verify algorithm returned an error, return an {{OperationError}}.
+              If the ML-DSA.Verify algorithm returned an error, [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
@@ -4588,7 +4588,7 @@ dictionary ContextParams : Algorithm {
           </li>
           <li>
             <p>
-              If the `slh_sign` algorithm returned an error, return an {{OperationError}}.
+              If the `slh_sign` algorithm returned an error, [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
@@ -4625,7 +4625,7 @@ dictionary ContextParams : Algorithm {
           </li>
           <li>
             <p>
-              If the `slh_verify` algorithm returned an error, return an {{OperationError}}.
+              If the `slh_verify` algorithm returned an error, [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
