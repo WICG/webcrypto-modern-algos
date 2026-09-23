@@ -422,6 +422,11 @@ enum KeyUsage { "encrypt", "decrypt", "sign", "verify", "deriveKey", "deriveBits
           </li>
           <li>
             <p>
+              If |usages| is empty, then [= exception/throw =] a {{SyntaxError}}.
+            </p>
+          </li>
+          <li>
+            <p>
               Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-extractable">`[[extractable]]`</a> internal
               slot of |sharedKey| to |extractable|.
             </p>
@@ -665,6 +670,11 @@ enum KeyUsage { "encrypt", "decrypt", "sign", "verify", "deriveKey", "deriveBits
               |format|, the |decapsulatedBits| as |keyData|, |sharedKeyAlgorithm| as
               |algorithm| and using
               |extractable| and |usages|.
+            </p>
+          </li>
+          <li>
+            <p>
+              If |usages| is empty, then [= exception/throw =] a {{SyntaxError}}.
             </p>
           </li>
           <li>
