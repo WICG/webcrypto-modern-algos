@@ -2466,8 +2466,9 @@ partial dictionary JsonWebKey {
                     </p>
                     <div class=note>
                       <p>
-                        The |d| and |z| seed variables were sampled in the ML-KEM.KeyGen function
-                        as described in Section 7.1 of [[FIPS-203]].
+                        The |d| and |z| values are the seed from which the key
+                        was generated or imported, as used by
+                        ML-KEM.KeyGen_internal in Section 6.1 of [[FIPS-203]].
                       </p>
                     </div>
                   </li>
@@ -4399,8 +4400,9 @@ dictionary ContextParams : Algorithm {
                     </p>
                     <div class=note>
                       <p>
-                        The <var>ξ</var> seed variable was sampled in the ML-DSA.KeyGen function
-                        as described in Section 5.1 of [[FIPS-204]].
+                        The <var>ξ</var> value is the seed from which the key
+                        was generated or imported, as used by
+                        ML-DSA.KeyGen_internal in Section 6.1 of [[FIPS-204]].
                       </p>
                     </div>
                   </li>
