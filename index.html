@@ -8610,8 +8610,8 @@ dictionary Argon2Params : Algorithm {
         implementation of SHAKE may still prove useful, when making sure
         to throw a {{NotSupportedError}} (and return `false` from
         <a href="#dfn-SubtleCrypto-method-supports">`SubtleCrypto.supports`</a>)
-        when the {{CShakeParams/customization}} parameter is present and
-        non-empty.
+        when either the {{CShakeParams/functionName}} or
+        {{CShakeParams/customization}} parameter is present and non-empty.
       </li>
       <li>
         <a href="#argon2">Argon2</a> is a memory-hard password-based
