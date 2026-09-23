@@ -8686,7 +8686,7 @@ dictionary Argon2Params : Algorithm {
         ['encrypt', 'decrypt']
       );
       const plaintext = 'Hello, world!';
-      const iv = crypto.getRandomValues(new Uint8Array(16));
+      const iv = crypto.getRandomValues(new Uint8Array(12));
       const encrypted = await crypto.subtle.encrypt(
         { name: encryptionAlg, iv },
         key,
