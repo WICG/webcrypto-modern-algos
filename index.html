@@ -7515,6 +7515,11 @@ dictionary KmacParams : Algorithm {
           </li>
           <li>
             <p>
+              If performing the operation results in an error, then [= exception/throw =] an {{OperationError}}.
+            </p>
+          </li>
+          <li>
+            <p>
               Return a <a data-cite="webcrypto#dfn-byte-sequence-containing">byte sequence containing</a> |mac|.
             </p>
           </li>
@@ -7565,6 +7570,11 @@ dictionary KmacParams : Algorithm {
                 the |S| input parameter.
               </dd>
             </dl>
+          </li>
+          <li>
+            <p>
+              If performing the operation results in an error, then [= exception/throw =] an {{OperationError}}.
+            </p>
           </li>
           <li>
             <p>
