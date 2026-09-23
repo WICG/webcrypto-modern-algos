@@ -5138,8 +5138,8 @@ dictionary ContextParams : Algorithm {
                   </li>
                   <li>
                     <p>
-                      If the [= byte sequence/length =] of |keyData| is not the `pk length`
-                      specified by Table 2 of [[FIPS-205]]
+                      If the [= byte sequence/length =] of |keyData| is not the
+                      public-key size (`pk bytes`) specified in Table 2 of [[FIPS-205]]
                       for the parameter set indicated by the {{Algorithm/name}} member of |normalizedAlgorithm|,
                       then [= exception/throw =] a
                       {{DataError}}.
@@ -5178,8 +5178,8 @@ dictionary ContextParams : Algorithm {
                   </li>
                   <li>
                     <p>
-                      If the [= byte sequence/length =] of |keyData| is not 2 * the `pk length`
-                      specified by Table 2 of [[FIPS-205]]
+                      If the [= byte sequence/length =] of |keyData| is not
+                      4 times the value of |n| in Table 2 of [[FIPS-205]]
                       for the parameter set indicated by the {{Algorithm/name}} member of |normalizedAlgorithm|,
                       then [= exception/throw =] a
                       {{DataError}}.
