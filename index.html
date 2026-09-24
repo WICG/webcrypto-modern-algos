@@ -94,7 +94,7 @@
         "publisher": "NIST"
       },
       "draft-ietf-hpke-pq": {
-        "title": "Post-Quantum Hybrid Key Encapsulation Mechanisms for HPKE",
+        "title": "Post-Quantum and Post-Quantum/Traditional Hybrid Algorithms for HPKE",
         "href": "https://datatracker.ietf.org/doc/draft-ietf-hpke-pq/",
         "publisher": "IETF"
       },
@@ -422,6 +422,11 @@ enum KeyUsage { "encrypt", "decrypt", "sign", "verify", "deriveKey", "deriveBits
           </li>
           <li>
             <p>
+              If |usages| is empty, then [= exception/throw =] a {{SyntaxError}}.
+            </p>
+          </li>
+          <li>
+            <p>
               Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-extractable">`[[extractable]]`</a> internal
               slot of |sharedKey| to |extractable|.
             </p>
@@ -669,6 +674,11 @@ enum KeyUsage { "encrypt", "decrypt", "sign", "verify", "deriveKey", "deriveBits
           </li>
           <li>
             <p>
+              If |usages| is empty, then [= exception/throw =] a {{SyntaxError}}.
+            </p>
+          </li>
+          <li>
+            <p>
               Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-extractable">`[[extractable]]`</a> internal
               slot of |sharedKey| to |extractable|.
             </p>
@@ -902,7 +912,8 @@ enum KeyUsage { "encrypt", "decrypt", "sign", "verify", "deriveKey", "deriveBits
           <li>
             <p>
               Set the <a data-cite="webcrypto#dfn-CryptoKey-slot-usages">`[[usages]]`</a> internal slot of
-              |publicKey| to |usages|.
+              |publicKey| to the <a data-cite="webcrypto#concept-normalized-usages">normalized value</a>
+              of |usages|.
             </p>
           </li>
           <li>
@@ -1415,7 +1426,7 @@ partial dictionary JsonWebKey {
           </li>
           <li>
             <p>
-              If the encapsulation key check failed, return an {{OperationError}}.
+              If the encapsulation key check failed, [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
@@ -1430,7 +1441,7 @@ partial dictionary JsonWebKey {
           </li>
           <li>
             <p>
-              If the ML-KEM.Encaps function returned an error, return an {{OperationError}}.
+              If the ML-KEM.Encaps function returned an error, [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
@@ -1488,7 +1499,7 @@ partial dictionary JsonWebKey {
           </li>
           <li>
             <p>
-              If the decapsulation key check failed, return an {{OperationError}}.
+              If the decapsulation input check failed, [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
@@ -2455,8 +2466,9 @@ partial dictionary JsonWebKey {
                     </p>
                     <div class=note>
                       <p>
-                        The |d| and |z| seed variables were sampled in the ML-KEM.KeyGen function
-                        as described in Section 7.1 of [[FIPS-203]].
+                        The |d| and |z| values are the seed from which the key
+                        was generated or imported, as used by
+                        ML-KEM.KeyGen_internal in Section 6.1 of [[FIPS-203]].
                       </p>
                     </div>
                   </li>
@@ -2645,7 +2657,7 @@ partial dictionary JsonWebKey {
           </li>
           <li>
             <p>
-              If the Encaps function returned an error, return an {{OperationError}}.
+              If the Encaps function returned an error, [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
@@ -2697,7 +2709,7 @@ partial dictionary JsonWebKey {
           </li>
           <li>
             <p>
-              If the Decaps function returned an error, return an {{OperationError}}.
+              If the Decaps function returned an error, [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
@@ -3425,7 +3437,7 @@ dictionary ContextParams : Algorithm {
           </li>
           <li>
             <p>
-              If the ML-DSA.Sign algorithm returned an error, return an {{OperationError}}.
+              If the ML-DSA.Sign algorithm returned an error, [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
@@ -3469,7 +3481,7 @@ dictionary ContextParams : Algorithm {
           </li>
           <li>
             <p>
-              If the ML-DSA.Verify algorithm returned an error, return an {{OperationError}}.
+              If the ML-DSA.Verify algorithm returned an error, [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
@@ -4388,8 +4400,9 @@ dictionary ContextParams : Algorithm {
                     </p>
                     <div class=note>
                       <p>
-                        The <var>ξ</var> seed variable was sampled in the ML-DSA.KeyGen function
-                        as described in Section 5.1 of [[FIPS-204]].
+                        The <var>ξ</var> value is the seed from which the key
+                        was generated or imported, as used by
+                        ML-DSA.KeyGen_internal in Section 6.1 of [[FIPS-204]].
                       </p>
                     </div>
                   </li>
@@ -4588,7 +4601,7 @@ dictionary ContextParams : Algorithm {
           </li>
           <li>
             <p>
-              If the `slh_sign` algorithm returned an error, return an {{OperationError}}.
+              If the `slh_sign` algorithm returned an error, [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
@@ -4625,7 +4638,7 @@ dictionary ContextParams : Algorithm {
           </li>
           <li>
             <p>
-              If the `slh_verify` algorithm returned an error, return an {{OperationError}}.
+              If the `slh_verify` algorithm returned an error, [= exception/throw =] an {{OperationError}}.
             </p>
           </li>
           <li>
@@ -5054,17 +5067,18 @@ dictionary ContextParams : Algorithm {
                   </li>
                   <li>
                     <p>
-                      Let |slhDsaPrivateKey| be the result of performing the
-                      <a data-cite="webcrypto#concept-parse-an-asn1-structure">parse an ASN.1 structure</a>
-                      algorithm, with |data| as the `privateKey` field
-                      of |privateKeyInfo|, |structure| as OCTET STRING, and |exactData| set to true.
+                      Let |slhDsaPrivateKey| be the `privateKey` field of
+                      |privateKeyInfo|, containing the raw private key bytes
+                      as specified in Section 7 of [[RFC9909]].
                     </p>
                   </li>
                   <li>
                     <p>
-                      If an error occurred while parsing,
-                      then [= exception/throw =] a
-                      {{DataError}}.
+                      If the [= byte sequence/length =] of |slhDsaPrivateKey|
+                      is not 4 times the value of |n| in Table 2 of [[FIPS-205]]
+                      for the parameter set indicated by the {{Algorithm/name}}
+                      member of |normalizedAlgorithm|, then [= exception/throw =]
+                      a {{DataError}}.
                     </p>
                   </li>
                   <li>
@@ -5124,8 +5138,8 @@ dictionary ContextParams : Algorithm {
                   </li>
                   <li>
                     <p>
-                      If the [= byte sequence/length =] of |keyData| is not the `pk length`
-                      specified by Table 2 of [[FIPS-205]]
+                      If the [= byte sequence/length =] of |keyData| is not the
+                      public-key size (`pk bytes`) specified in Table 2 of [[FIPS-205]]
                       for the parameter set indicated by the {{Algorithm/name}} member of |normalizedAlgorithm|,
                       then [= exception/throw =] a
                       {{DataError}}.
@@ -5164,8 +5178,8 @@ dictionary ContextParams : Algorithm {
                   </li>
                   <li>
                     <p>
-                      If the [= byte sequence/length =] of |keyData| is not 2 * the `pk length`
-                      specified by Table 2 of [[FIPS-205]]
+                      If the [= byte sequence/length =] of |keyData| is not
+                      4 times the value of |n| in Table 2 of [[FIPS-205]]
                       for the parameter set indicated by the {{Algorithm/name}} member of |normalizedAlgorithm|,
                       then [= exception/throw =] a
                       {{DataError}}.
@@ -5632,10 +5646,9 @@ dictionary ContextParams : Algorithm {
                       </li>
                       <li>
                         <p>
-                          Set the |privateKey| field to the result of DER-encoding
-                          a `OCTET STRING` ASN.1 type that represents the SLH-DSA private key represented
-                          by the <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
-                          internal slot of |key|.
+                          Set the |privateKey| field to the raw SLH-DSA private key bytes
+                          represented by the <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
+                          internal slot of |key|, as specified in Section 7 of [[RFC9909]].
                         </p>
                       </li>
                     </ul>
@@ -6685,6 +6698,12 @@ dictionary AeadParams : Algorithm {
                   </li>
                   <li>
                     <p>
+                      If the length in bits of |data| is not 256,
+                      then [= exception/throw =] a {{DataError}}.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       If the {{JsonWebKey/alg}} field of |jwk| is present, and is
                       not "`C20P`",
                       then [= exception/throw =] a
@@ -7498,6 +7517,11 @@ dictionary KmacParams : Algorithm {
           </li>
           <li>
             <p>
+              If performing the operation results in an error, then [= exception/throw =] an {{OperationError}}.
+            </p>
+          </li>
+          <li>
+            <p>
               Return a <a data-cite="webcrypto#dfn-byte-sequence-containing">byte sequence containing</a> |mac|.
             </p>
           </li>
@@ -7548,6 +7572,11 @@ dictionary KmacParams : Algorithm {
                 the |S| input parameter.
               </dd>
             </dl>
+          </li>
+          <li>
+            <p>
+              If performing the operation results in an error, then [= exception/throw =] an {{OperationError}}.
+            </p>
           </li>
           <li>
             <p>
@@ -8308,6 +8337,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[RFC7253]]</li>
       </ul>
       <ul>
         <li>Algorithm Name: "A192OCB"</li>
@@ -8316,6 +8346,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[RFC7253]]</li>
       </ul>
       <ul>
         <li>Algorithm Name: "A256OCB"</li>
@@ -8324,6 +8355,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[RFC7253]]</li>
       </ul>
       <ul>
         <li>Algorithm Name: "C20P"</li>
@@ -8332,22 +8364,25 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[RFC8439]]</li>
       </ul>
       <ul>
         <li>Algorithm Name: "K128"</li>
-        <li>Algorithm Description: KMAC using the KMAC128</li>
+        <li>Algorithm Description: KMAC128</li>
         <li>Algorithm Usage Location(s): "JWK"</li>
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[NIST-SP800-185]]</li>
       </ul>
       <ul>
         <li>Algorithm Name: "K256"</li>
-        <li>Algorithm Description: KMAC using the KMAC256</li>
+        <li>Algorithm Description: KMAC256</li>
         <li>Algorithm Usage Location(s): "JWK"</li>
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[NIST-SP800-185]]</li>
       </ul>
       <ul>
         <li>Algorithm Name: "ML-KEM-512"</li>
@@ -8356,6 +8391,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[FIPS-203]]</li>
       </ul>
       <ul>
         <li>Algorithm Name: "ML-KEM-768"</li>
@@ -8364,6 +8400,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[FIPS-203]]</li>
       </ul>
       <ul>
         <li>Algorithm Name: "ML-KEM-1024"</li>
@@ -8372,6 +8409,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[FIPS-203]]</li>
       </ul>
       <!-- This will be registered by draft-ietf-cose-sphincs-plus
       <ul>
@@ -8381,6 +8419,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[FIPS-205]]</li>
       </ul> -->
       <ul>
         <li>Algorithm Name: "SLH-DSA-SHA2-128f"</li>
@@ -8389,6 +8428,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[FIPS-205]]</li>
       </ul>
       <ul>
         <li>Algorithm Name: "SLH-DSA-SHA2-192s"</li>
@@ -8397,6 +8437,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[FIPS-205]]</li>
       </ul>
       <ul>
         <li>Algorithm Name: "SLH-DSA-SHA2-192f"</li>
@@ -8405,6 +8446,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[FIPS-205]]</li>
       </ul>
       <ul>
         <li>Algorithm Name: "SLH-DSA-SHA2-256s"</li>
@@ -8413,6 +8455,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[FIPS-205]]</li>
       </ul>
       <ul>
         <li>Algorithm Name: "SLH-DSA-SHA2-256f"</li>
@@ -8421,6 +8464,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[FIPS-205]]</li>
       </ul>
       <!-- This will be registered by draft-ietf-cose-sphincs-plus
       <ul>
@@ -8430,6 +8474,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[FIPS-205]]</li>
       </ul> -->
       <ul>
         <li>Algorithm Name: "SLH-DSA-SHAKE-128f"</li>
@@ -8438,6 +8483,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[FIPS-205]]</li>
       </ul>
       <ul>
         <li>Algorithm Name: "SLH-DSA-SHAKE-192s"</li>
@@ -8446,6 +8492,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[FIPS-205]]</li>
       </ul>
       <ul>
         <li>Algorithm Name: "SLH-DSA-SHAKE-192f"</li>
@@ -8454,6 +8501,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[FIPS-205]]</li>
       </ul>
       <ul>
         <li>Algorithm Name: "SLH-DSA-SHAKE-256s"</li>
@@ -8462,6 +8510,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[FIPS-205]]</li>
       </ul>
       <ul>
         <li>Algorithm Name: "SLH-DSA-SHAKE-256f"</li>
@@ -8470,6 +8519,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[FIPS-205]]</li>
       </ul>
       <ul>
         <li>Algorithm Name: "MLKEM768-P256"</li>
@@ -8478,6 +8528,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[draft-irtf-cfrg-concrete-hybrid-kems-04]], [[draft-irtf-cfrg-hybrid-kems-12]]</li>
       </ul>
       <ul>
         <li>Algorithm Name: "MLKEM768-X25519"</li>
@@ -8486,6 +8537,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[draft-irtf-cfrg-concrete-hybrid-kems-04]], [[draft-irtf-cfrg-hybrid-kems-12]]</li>
       </ul>
       <ul>
         <li>Algorithm Name: "MLKEM1024-P384"</li>
@@ -8494,6 +8546,7 @@ dictionary Argon2Params : Algorithm {
         <li>JOSE Implementation Requirements: Optional</li>
         <li>Change Controller: W3C Web Application Security Working Group</li>
         <li>Specification Document(s): [[ This Document ]]</li>
+        <li>Algorithm Analysis Document(s): [[draft-irtf-cfrg-concrete-hybrid-kems-04]], [[draft-irtf-cfrg-hybrid-kems-12]]</li>
       </ul>
     </section>
     <section id="iana-section-key-operations">
@@ -8593,8 +8646,8 @@ dictionary Argon2Params : Algorithm {
         implementation of SHAKE may still prove useful, when making sure
         to throw a {{NotSupportedError}} (and return `false` from
         <a href="#dfn-SubtleCrypto-method-supports">`SubtleCrypto.supports`</a>)
-        when the {{CShakeParams/customization}} parameter is present and
-        non-empty.
+        when either the {{CShakeParams/functionName}} or
+        {{CShakeParams/customization}} parameter is present and non-empty.
       </li>
       <li>
         <a href="#argon2">Argon2</a> is a memory-hard password-based
@@ -8605,7 +8658,7 @@ dictionary Argon2Params : Algorithm {
     </ol>
     <p>
       <a href="#slh-dsa">SLH-DSA</a> is a stateless hash-based digital
-      signature algorithm standardized by NIST [[FIPS-204]]. It has
+      signature algorithm standardized by NIST [[FIPS-205]]. It has
       seen less adoption than ML-DSA so far, but may become useful to
       implement if an alternative to ML-DSA becomes needed.
     </p>
@@ -8669,7 +8722,7 @@ dictionary Argon2Params : Algorithm {
         ['encrypt', 'decrypt']
       );
       const plaintext = 'Hello, world!';
-      const iv = crypto.getRandomValues(new Uint8Array(16));
+      const iv = crypto.getRandomValues(new Uint8Array(12));
       const encrypted = await crypto.subtle.encrypt(
         { name: encryptionAlg, iv },
         key,
@@ -8905,7 +8958,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-sha2-128s (2.16.840.1.101.3.4.3.20)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHA2-128s`"
           </td>
@@ -8915,7 +8968,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-sha2-128f (2.16.840.1.101.3.4.3.21)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHA2-128f`"
           </td>
@@ -8925,7 +8978,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-sha2-192s (2.16.840.1.101.3.4.3.22)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHA2-192s`"
           </td>
@@ -8935,7 +8988,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-sha2-192f (2.16.840.1.101.3.4.3.23)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHA2-192f`"
           </td>
@@ -8945,7 +8998,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-sha2-256s (2.16.840.1.101.3.4.3.24)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHA2-256s`"
           </td>
@@ -8955,7 +9008,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-sha2-256f (2.16.840.1.101.3.4.3.25)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHA2-256f`"
           </td>
@@ -8965,7 +9018,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-shake-128s (2.16.840.1.101.3.4.3.26)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHAKE-128s`"
           </td>
@@ -8975,7 +9028,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-shake-128f (2.16.840.1.101.3.4.3.27)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHAKE-128f`"
           </td>
@@ -8985,7 +9038,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-shake-192s (2.16.840.1.101.3.4.3.28)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHAKE-192s`"
           </td>
@@ -8995,7 +9048,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-shake-192f (2.16.840.1.101.3.4.3.29)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHAKE-192f`"
           </td>
@@ -9005,7 +9058,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-shake-256s (2.16.840.1.101.3.4.3.30)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHAKE-256s`"
           </td>
@@ -9015,7 +9068,7 @@ alg: "K256" }
         </tr>
         <tr>
           <td>id-slh-dsa-shake-256f (2.16.840.1.101.3.4.3.31)</td>
-          <td>OCTET STRING</td>
+          <td>Raw private key bytes (no ASN.1 wrapping)</td>
           <td>
             "`SLH-DSA-SHAKE-256f`"
           </td>
