@@ -7316,6 +7316,13 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
   <a data-link-type="typedef" href="https://webidl.spec.whatwg.org/#BufferSource">BufferSource</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-CShakeParams-customization" id="ref-for-dfn-CShakeParams-customization-2"><code>customization</code></a>;</span>
 };</span></code></pre>
       <p>The <dfn data-dfn-for="CShakeParams" id="dfn-CShakeParams-outputLength" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="outputLength" data-type="unsigned long" tabindex="0" aria-haspopup="dialog"><code>outputLength</code></dfn> member represents the requested output length in bits.</p>
+      <div class="note" role="note" id="issue-container-generatedID-12"><div class="note-title marker" id="h-note-12"><span>Note</span></div><p class="">
+        Byte-oriented implementations of cSHAKE may not support outputting a
+        non-integer number of bytes. In that case, the implementation should
+        throw a <a data-link-type="exception" data-lt="NotSupportedError" href="https://webidl.spec.whatwg.org/#notsupportederror"><code>NotSupportedError</code></a> in the Digest operation
+        (and return <code>false</code> from <a data-link-type="idl" data-lt="supports()" href="#dfn-SubtleCrypto-method-supports" class="internalDFN" id="ref-for-dfn-SubtleCrypto-method-supports-4"><code>supports</code></a><code>()</code>)
+        when <a data-link-type="idl" href="#dfn-CShakeParams-outputLength" class="internalDFN" id="ref-for-dfn-CShakeParams-outputLength-2"><code>outputLength</code></a> is not a multiple of 8.
+      </p></div>
       <p>The <dfn data-dfn-for="CShakeParams" id="dfn-CShakeParams-functionName" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="functionName" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>functionName</code></dfn> member represents the function name, used by NIST to define functions based on cSHAKE. When used, it should only be set to values defined by NIST.</p>
       <p>The <dfn data-dfn-for="CShakeParams" id="dfn-CShakeParams-customization" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="customization" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>customization</code></dfn> member represents the customization string. The application selects this string to define a variant of the function.</p>
     </section>
@@ -7326,7 +7333,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         <ol>
           <li>
             <p>
-              Let <var>outputLength</var> be the <a data-link-type="idl" href="#dfn-CShakeParams-outputLength" class="internalDFN" id="ref-for-dfn-CShakeParams-outputLength-2"><code>outputLength</code></a> member of
+              Let <var>outputLength</var> be the <a data-link-type="idl" href="#dfn-CShakeParams-outputLength" class="internalDFN" id="ref-for-dfn-CShakeParams-outputLength-3"><code>outputLength</code></a> member of
               <var>normalizedAlgorithm</var>.
             </p>
           </li>
@@ -7402,7 +7409,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         roughly twice as fast as the SHAKE functions while maintaining the same
         security strength.
       </p>
-      <div class="note" role="note" id="issue-container-generatedID-12"><div class="note-title marker" id="h-note-12"><span>Note</span></div><p class="">
+      <div class="note" role="note" id="issue-container-generatedID-13"><div class="note-title marker" id="h-note-13"><span>Note</span></div><p class="">
         For 128-bit collision security, TurboSHAKE128 output should be at least 256 bits.
         For 256-bit collision security, TurboSHAKE256 output should be at least 512 bits.
         These output lengths also exceed the corresponding preimage and second-preimage security
@@ -7411,11 +7418,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         security level 2, and TurboSHAKE256 achieves level 5.
         See Section 7 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9861" title="KangarooTwelve and TurboSHAKE">RFC9861</a></cite>].
       </p></div>
-      <div class="note" role="note" id="issue-container-generatedID-13"><div class="note-title marker" id="h-note-13"><span>Note</span></div><p class="">
+      <div class="note" role="note" id="issue-container-generatedID-14"><div class="note-title marker" id="h-note-14"><span>Note</span></div><p class="">
         Although technically possible to implement, using TurboSHAKE as part of other algorithms
         outside <a data-link-type="method" data-lt="digest()" href="https://www.w3.org/TR/webcrypto-2/#dfn-SubtleCrypto-method-digest"><code>digest</code></a><code>()</code> (such as in the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dfn-HmacKeyGenParams-hash"><code>hash</code></a> parameter of HMAC)
         is unlikely to be useful and not expected to be supported.
-        The result of <a data-link-type="idl" data-lt="supports()" href="#dfn-SubtleCrypto-method-supports" class="internalDFN" id="ref-for-dfn-SubtleCrypto-method-supports-4"><code>supports</code></a><code>()</code> should reflect whether such uses are supported.
+        The result of <a data-link-type="idl" data-lt="supports()" href="#dfn-SubtleCrypto-method-supports" class="internalDFN" id="ref-for-dfn-SubtleCrypto-method-supports-5"><code>supports</code></a><code>()</code> should reflect whether such uses are supported.
       </p></div>
     </section>
     <section id="turboshake-registration"><div class="header-wrapper"><h3 id="x14-2-registration"><bdi class="secno">14.2 </bdi>Registration</h3><a class="self-link" href="#turboshake-registration" aria-label="Permalink for Section 14.2"></a></div>
@@ -7450,7 +7457,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
 };</span></code></pre>
       <p>The <dfn data-dfn-for="TurboShakeParams" id="dfn-TurboShakeParams-outputLength" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="outputLength" data-type="unsigned long" tabindex="0" aria-haspopup="dialog"><code>outputLength</code></dfn> member represents the requested output length in bits.</p>
       <p>The <dfn data-dfn-for="TurboShakeParams" id="dfn-TurboShakeParams-domainSeparation" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="domainSeparation" data-type="octet" tabindex="0" aria-haspopup="dialog"><code>domainSeparation</code></dfn> member represents the domain separation byte. If not specified, it defaults to <code>0x1F</code>. Valid values are in the range <code>0x01</code> to <code>0x7F</code>.</p>
-      <div class="note" role="note" id="issue-container-generatedID-14"><div class="note-title marker" id="h-note-14"><span>Note</span></div><p class="">
+      <div class="note" role="note" id="issue-container-generatedID-15"><div class="note-title marker" id="h-note-15"><span>Note</span></div><p class="">
         Protocols that use both KangarooTwelve and TurboSHAKE should avoid using the values
         <code>0x06</code>, <code>0x07</code>, and <code>0x0B</code> for domain separation,
         as these are used internally by KangarooTwelve.
@@ -7540,7 +7547,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         tree hashing on top of TurboSHAKE, enabling parallel processing of input data.
         KT128 uses TurboSHAKE128 internally, while KT256 uses TurboSHAKE256.
       </p>
-      <div class="note" role="note" id="issue-container-generatedID-15"><div class="note-title marker" id="h-note-15"><span>Note</span></div><p class="">
+      <div class="note" role="note" id="issue-container-generatedID-16"><div class="note-title marker" id="h-note-16"><span>Note</span></div><p class="">
         For 128-bit collision security, KT128 output should be at least 256 bits.
         For 256-bit collision security, KT256 output should be at least 512 bits.
         These output lengths also exceed the corresponding preimage and second-preimage security
@@ -7549,11 +7556,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         security level 2, and KT256 achieves level 5.
         See Section 7 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9861" title="KangarooTwelve and TurboSHAKE">RFC9861</a></cite>].
       </p></div>
-      <div class="note" role="note" id="issue-container-generatedID-16"><div class="note-title marker" id="h-note-16"><span>Note</span></div><p class="">
+      <div class="note" role="note" id="issue-container-generatedID-17"><div class="note-title marker" id="h-note-17"><span>Note</span></div><p class="">
         Although technically possible to implement, using KangarooTwelve as part of other algorithms
         outside <a data-link-type="method" data-lt="digest()" href="https://www.w3.org/TR/webcrypto-2/#dfn-SubtleCrypto-method-digest"><code>digest</code></a><code>()</code> (such as in the <a data-link-type="dict-member" href="https://www.w3.org/TR/webcrypto-2/#dfn-HmacKeyGenParams-hash"><code>hash</code></a> parameter of HMAC)
         is unlikely to be useful and not expected to be supported.
-        The result of <a data-link-type="idl" data-lt="supports()" href="#dfn-SubtleCrypto-method-supports" class="internalDFN" id="ref-for-dfn-SubtleCrypto-method-supports-5"><code>supports</code></a><code>()</code> should reflect whether such uses are supported.
+        The result of <a data-link-type="idl" data-lt="supports()" href="#dfn-SubtleCrypto-method-supports" class="internalDFN" id="ref-for-dfn-SubtleCrypto-method-supports-6"><code>supports</code></a><code>()</code> should reflect whether such uses are supported.
       </p></div>
     </section>
     <section id="kangarootwelve-registration"><div class="header-wrapper"><h3 id="x15-2-registration"><bdi class="secno">15.2 </bdi>Registration</h3><a class="self-link" href="#kangarootwelve-registration" aria-label="Permalink for Section 15.2"></a></div>
@@ -7719,6 +7726,13 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
   [<span class="extAttr"><a data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#EnforceRange">EnforceRange</a></span>]<span class="idlType"> <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-unsigned-long">unsigned long</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-KmacKeyGenParams-length" id="ref-for-dfn-KmacKeyGenParams-length-1"><code>length</code></a>;</span>
 };</span></code></pre>
       <p>The <dfn data-dfn-for="KmacKeyGenParams" id="dfn-KmacKeyGenParams-length" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="length" data-type="unsigned long" tabindex="0" aria-haspopup="dialog"><code>length</code></dfn> member represents the length (in bits) of the key to generate. If unspecified, the recommended length will be used, which is 128 for KMAC128 and 256 for KMAC256.</p>
+      <div class="note" role="note" id="issue-container-generatedID-18"><div class="note-title marker" id="h-note-18"><span>Note</span></div><p class="">
+        Byte-oriented implementations of KMAC may not support keys with a
+        non-integer number of bytes. In that case, the implementation should
+        throw a <a data-link-type="exception" data-lt="NotSupportedError" href="https://webidl.spec.whatwg.org/#notsupportederror"><code>NotSupportedError</code></a> in the Generate Key operation
+        (and return <code>false</code> from <a data-link-type="idl" data-lt="supports()" href="#dfn-SubtleCrypto-method-supports" class="internalDFN" id="ref-for-dfn-SubtleCrypto-method-supports-7"><code>supports</code></a><code>()</code>)
+        when <a data-link-type="idl" href="#dfn-KmacKeyGenParams-length" class="internalDFN" id="ref-for-dfn-KmacKeyGenParams-length-2"><code>length</code></a> is not a multiple of 8.
+      </p></div>
     </section>
     <section id="kmac-importparams"><div class="header-wrapper"><h3 id="x16-4-kmacimportparams-dictionary"><bdi class="secno">16.4 </bdi><dfn data-idl="dictionary" id="dfn-KmacImportParams" data-export="" data-dfn-type="dictionary" data-title="KmacImportParams" data-dfn-for="" tabindex="0" aria-haspopup="dialog"><code>KmacImportParams</code></dfn> dictionary</h3><a class="self-link" href="#kmac-importparams" aria-label="Permalink for Section 16.4"></a></div>
       
@@ -7726,6 +7740,22 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
   [<span class="extAttr"><a data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#EnforceRange">EnforceRange</a></span>]<span class="idlType"> <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-unsigned-long">unsigned long</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-KmacImportParams-length" id="ref-for-dfn-KmacImportParams-length-1"><code>length</code></a>;</span>
 };</span></code></pre>
       <p>The <dfn data-dfn-for="KmacImportParams" id="dfn-KmacImportParams-length" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="length" data-type="unsigned long" tabindex="0" aria-haspopup="dialog"><code>length</code></dfn> member represents the length (in bits) of the key.</p>
+      <div class="note" role="note" id="issue-container-generatedID-19"><div class="note-title marker" id="h-note-19"><span>Note</span></div><div class="">
+        <p>
+          Byte-oriented implementations of KMAC may not support keys with a
+          non-integer number of bytes. In that case, the implementation should
+          throw a <a data-link-type="exception" data-lt="NotSupportedError" href="https://webidl.spec.whatwg.org/#notsupportederror"><code>NotSupportedError</code></a> in the Import Key operation
+          (and return <code>false</code> from <a data-link-type="idl" data-lt="supports()" href="#dfn-SubtleCrypto-method-supports" class="internalDFN" id="ref-for-dfn-SubtleCrypto-method-supports-8"><code>supports</code></a><code>()</code>)
+          when <a data-link-type="idl" href="#dfn-KmacImportParams-length" class="internalDFN" id="ref-for-dfn-KmacImportParams-length-2"><code>length</code></a> is not a multiple of 8.
+        </p>
+        <p>
+          Furthermore, when importing a key derived using <a data-link-type="method" data-lt="deriveKey()" href="https://www.w3.org/TR/webcrypto-2/#dfn-SubtleCrypto-method-deriveKey"><code>deriveKey</code></a><code>()</code>,
+          the least significant bits are read first
+          (due to the <a data-link-type="dfn|abstract-op" data-lt="Keccak decoding" href="#dfn-keccak-decoding" class="internalDFN" id="ref-for-dfn-keccak-decoding-8">Keccak decoding steps</a>),
+          rather than the most significant bits. Therefore, when deriving
+          a key with a non-integer number of bytes, bits will be lost.
+        </p>
+      </div></div>
     </section>
     <section id="KmacKeyAlgorithm-dictionary"><div class="header-wrapper"><h3 id="x16-5-kmackeyalgorithm-dictionary"><bdi class="secno">16.5 </bdi><dfn data-idl="dictionary" id="dfn-KmacKeyAlgorithm" data-export="" data-dfn-type="dictionary" data-title="KmacKeyAlgorithm" data-dfn-for="" tabindex="0" aria-haspopup="dialog"><code>KmacKeyAlgorithm</code></dfn> dictionary</h3><a class="self-link" href="#KmacKeyAlgorithm-dictionary" aria-label="Permalink for Section 16.5"></a></div>
       
@@ -7741,6 +7771,13 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
   <a data-link-type="typedef" href="https://webidl.spec.whatwg.org/#BufferSource">BufferSource</a></span> <a class="internalDFN idlName" data-link-type="dict-member" href="#dfn-KmacParams-customization" id="ref-for-dfn-KmacParams-customization-1"><code>customization</code></a>;</span>
 };</span></code></pre>
       <p>The <dfn data-dfn-for="KmacParams" id="dfn-KmacParams-outputLength" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="outputLength" data-type="unsigned long" tabindex="0" aria-haspopup="dialog"><code>outputLength</code></dfn> member represents the requested output length in bits.</p>
+      <div class="note" role="note" id="issue-container-generatedID-20"><div class="note-title marker" id="h-note-20"><span>Note</span></div><p class="">
+        Byte-oriented implementations of KMAC may not support outputting a
+        non-integer number of bytes. In that case, the implementation should
+        throw a <a data-link-type="exception" data-lt="NotSupportedError" href="https://webidl.spec.whatwg.org/#notsupportederror"><code>NotSupportedError</code></a> in the Sign and Verify operations
+        (and return <code>false</code> from <a data-link-type="idl" data-lt="supports()" href="#dfn-SubtleCrypto-method-supports" class="internalDFN" id="ref-for-dfn-SubtleCrypto-method-supports-9"><code>supports</code></a><code>()</code>)
+        when <a data-link-type="idl" href="#dfn-KmacParams-outputLength" class="internalDFN" id="ref-for-dfn-KmacParams-outputLength-2"><code>outputLength</code></a> is not a multiple of 8.
+      </p></div>
       <p>The <dfn data-dfn-for="KmacParams" id="dfn-KmacParams-customization" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="customization" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>customization</code></dfn> member represents the customization string. The application selects this string to define a variant of the function.</p>
     </section>
 
@@ -7751,7 +7788,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         <ol>
           <li>
             <p>
-              Let <var>customization</var> be the <a data-link-type="dfn|abstract-op" href="#dfn-keccak-decoding" class="internalDFN" id="ref-for-dfn-keccak-decoding-8">Keccak decoding</a> of the
+              Let <var>customization</var> be the <a data-link-type="dfn|abstract-op" href="#dfn-keccak-decoding" class="internalDFN" id="ref-for-dfn-keccak-decoding-9">Keccak decoding</a> of the
               <a data-link-type="idl" href="#dfn-KmacParams-customization" class="internalDFN" id="ref-for-dfn-KmacParams-customization-2"><code>customization</code></a> member of <var>normalizedAlgorithm</var> if
               present, or the empty bit string otherwise.
             </p>
@@ -7769,8 +7806,8 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 the raw bits of the key represented by the
                 <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a>
                 internal slot of <var>key</var> as the <var>K</var> input parameter,
-                the <a data-link-type="dfn|abstract-op" href="#dfn-keccak-decoding" class="internalDFN" id="ref-for-dfn-keccak-decoding-9">Keccak decoding</a> of <var>message</var> as the <var>X</var> input parameter,
-                the <a data-link-type="idl" href="#dfn-KmacParams-outputLength" class="internalDFN" id="ref-for-dfn-KmacParams-outputLength-2"><code>outputLength</code></a> member of <var>normalizedAlgorithm</var> as
+                the <a data-link-type="dfn|abstract-op" href="#dfn-keccak-decoding" class="internalDFN" id="ref-for-dfn-keccak-decoding-10">Keccak decoding</a> of <var>message</var> as the <var>X</var> input parameter,
+                the <a data-link-type="idl" href="#dfn-KmacParams-outputLength" class="internalDFN" id="ref-for-dfn-KmacParams-outputLength-3"><code>outputLength</code></a> member of <var>normalizedAlgorithm</var> as
                 the <var>L</var> input parameter, and
                 <var>customization</var> as
                 the <var>S</var> input parameter.
@@ -7786,8 +7823,8 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 the raw bits of the key represented by the
                 <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a>
                 internal slot of <var>key</var> as the <var>K</var> input parameter,
-                the <a data-link-type="dfn|abstract-op" href="#dfn-keccak-decoding" class="internalDFN" id="ref-for-dfn-keccak-decoding-10">Keccak decoding</a> of <var>message</var> as the <var>X</var> input parameter,
-                the <a data-link-type="idl" href="#dfn-KmacParams-outputLength" class="internalDFN" id="ref-for-dfn-KmacParams-outputLength-3"><code>outputLength</code></a> member of <var>normalizedAlgorithm</var> as
+                the <a data-link-type="dfn|abstract-op" href="#dfn-keccak-decoding" class="internalDFN" id="ref-for-dfn-keccak-decoding-11">Keccak decoding</a> of <var>message</var> as the <var>X</var> input parameter,
+                the <a data-link-type="idl" href="#dfn-KmacParams-outputLength" class="internalDFN" id="ref-for-dfn-KmacParams-outputLength-4"><code>outputLength</code></a> member of <var>normalizedAlgorithm</var> as
                 the <var>L</var> input parameter, and
                 <var>customization</var> as
                 the <var>S</var> input parameter.
@@ -7811,7 +7848,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         <ol>
           <li>
             <p>
-              Let <var>customization</var> be the <a data-link-type="dfn|abstract-op" href="#dfn-keccak-decoding" class="internalDFN" id="ref-for-dfn-keccak-decoding-11">Keccak decoding</a> of the
+              Let <var>customization</var> be the <a data-link-type="dfn|abstract-op" href="#dfn-keccak-decoding" class="internalDFN" id="ref-for-dfn-keccak-decoding-12">Keccak decoding</a> of the
               <a data-link-type="idl" href="#dfn-KmacParams-customization" class="internalDFN" id="ref-for-dfn-KmacParams-customization-3"><code>customization</code></a> member of <var>normalizedAlgorithm</var> if
               present, or the empty bit string otherwise.
             </p>
@@ -7829,8 +7866,8 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 the raw bits of the key represented by the
                 <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a>
                 internal slot of <var>key</var> as the <var>K</var> input parameter,
-                the <a data-link-type="dfn|abstract-op" href="#dfn-keccak-decoding" class="internalDFN" id="ref-for-dfn-keccak-decoding-12">Keccak decoding</a> of <var>message</var> as the <var>X</var> input parameter,
-                the <a data-link-type="idl" href="#dfn-KmacParams-outputLength" class="internalDFN" id="ref-for-dfn-KmacParams-outputLength-4"><code>outputLength</code></a> member of <var>normalizedAlgorithm</var> as
+                the <a data-link-type="dfn|abstract-op" href="#dfn-keccak-decoding" class="internalDFN" id="ref-for-dfn-keccak-decoding-13">Keccak decoding</a> of <var>message</var> as the <var>X</var> input parameter,
+                the <a data-link-type="idl" href="#dfn-KmacParams-outputLength" class="internalDFN" id="ref-for-dfn-KmacParams-outputLength-5"><code>outputLength</code></a> member of <var>normalizedAlgorithm</var> as
                 the <var>L</var> input parameter, and
                 <var>customization</var> as
                 the <var>S</var> input parameter.
@@ -7846,8 +7883,8 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                 the raw bits of the key represented by the
                 <a href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey-slot-handle"><code>[[handle]]</code></a>
                 internal slot of <var>key</var> as the <var>K</var> input parameter,
-                the <a data-link-type="dfn|abstract-op" href="#dfn-keccak-decoding" class="internalDFN" id="ref-for-dfn-keccak-decoding-13">Keccak decoding</a> of <var>message</var> as the <var>X</var> input parameter,
-                the <a data-link-type="idl" href="#dfn-KmacParams-outputLength" class="internalDFN" id="ref-for-dfn-KmacParams-outputLength-5"><code>outputLength</code></a> member of <var>normalizedAlgorithm</var> as
+                the <a data-link-type="dfn|abstract-op" href="#dfn-keccak-decoding" class="internalDFN" id="ref-for-dfn-keccak-decoding-14">Keccak decoding</a> of <var>message</var> as the <var>X</var> input parameter,
+                the <a data-link-type="idl" href="#dfn-KmacParams-outputLength" class="internalDFN" id="ref-for-dfn-KmacParams-outputLength-6"><code>outputLength</code></a> member of <var>normalizedAlgorithm</var> as
                 the <var>L</var> input parameter, and
                 <var>customization</var> as
                 the <var>S</var> input parameter.
@@ -7885,12 +7922,12 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
           <li>
             <dl class="switch">
               <dt>
-                If the <a data-link-type="idl" href="#dfn-KmacKeyGenParams-length" class="internalDFN" id="ref-for-dfn-KmacKeyGenParams-length-2"><code>length</code></a> member of
+                If the <a data-link-type="idl" href="#dfn-KmacKeyGenParams-length" class="internalDFN" id="ref-for-dfn-KmacKeyGenParams-length-3"><code>length</code></a> member of
                 <var>normalizedAlgorithm</var> is present:
               </dt>
               <dd>
                 Let <var>length</var> be equal to the
-                <a data-link-type="idl" href="#dfn-KmacKeyGenParams-length" class="internalDFN" id="ref-for-dfn-KmacKeyGenParams-length-3"><code>length</code></a>
+                <a data-link-type="idl" href="#dfn-KmacKeyGenParams-length" class="internalDFN" id="ref-for-dfn-KmacKeyGenParams-length-4"><code>length</code></a>
                 member of <var>normalizedAlgorithm</var>.
               </dd>
               <dt>
@@ -8108,13 +8145,13 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
           <li>
             <dl class="switch">
               <dt>
-                If the <a data-link-type="idl" href="#dfn-KmacImportParams-length" class="internalDFN" id="ref-for-dfn-KmacImportParams-length-2"><code>length</code></a> member of
+                If the <a data-link-type="idl" href="#dfn-KmacImportParams-length" class="internalDFN" id="ref-for-dfn-KmacImportParams-length-3"><code>length</code></a> member of
                 <var>normalizedAlgorithm</var> is present:
               </dt>
               <dd>
                 <dl class="switch">
                   <dt>
-                    If the <a data-link-type="idl" href="#dfn-KmacImportParams-length" class="internalDFN" id="ref-for-dfn-KmacImportParams-length-3"><code>length</code></a> member of
+                    If the <a data-link-type="idl" href="#dfn-KmacImportParams-length" class="internalDFN" id="ref-for-dfn-KmacImportParams-length-4"><code>length</code></a> member of
                     <var>normalizedAlgorithm</var> is greater than <var>length</var>:
                   </dt>
                   <dd>
@@ -8122,7 +8159,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                     <a data-link-type="exception" data-lt="DataError" href="https://webidl.spec.whatwg.org/#dataerror"><code>DataError</code></a>.
                   </dd>
                   <dt>
-                    If the <a data-link-type="idl" href="#dfn-KmacImportParams-length" class="internalDFN" id="ref-for-dfn-KmacImportParams-length-4"><code>length</code></a> member of
+                    If the <a data-link-type="idl" href="#dfn-KmacImportParams-length" class="internalDFN" id="ref-for-dfn-KmacImportParams-length-5"><code>length</code></a> member of
                     <var>normalizedAlgorithm</var>, is less than or equal to
                     <var>length</var> minus eight:
                   </dt>
@@ -8134,7 +8171,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
                     Otherwise:
                   </dt>
                   <dd>
-                    Set <var>length</var> equal to the <a data-link-type="idl" href="#dfn-KmacImportParams-length" class="internalDFN" id="ref-for-dfn-KmacImportParams-length-5"><code>length</code></a>
+                    Set <var>length</var> equal to the <a data-link-type="idl" href="#dfn-KmacImportParams-length" class="internalDFN" id="ref-for-dfn-KmacImportParams-length-6"><code>length</code></a>
                     member of <var>normalizedAlgorithm</var>.
                   </dd>
                 </dl>
@@ -8145,7 +8182,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
             <p>
               Let <var>key</var> be a new <a data-link-type="interface" data-lt="CryptoKey" href="https://www.w3.org/TR/webcrypto-2/#dfn-CryptoKey"><code>CryptoKey</code></a>
               object representing a KMAC key with the first <var>length</var> bits
-              of the <a data-link-type="dfn|abstract-op" href="#dfn-keccak-decoding" class="internalDFN" id="ref-for-dfn-keccak-decoding-14">Keccak decoding</a> of <var>data</var>.
+              of the <a data-link-type="dfn|abstract-op" href="#dfn-keccak-decoding" class="internalDFN" id="ref-for-dfn-keccak-decoding-15">Keccak decoding</a> of <var>data</var>.
             </p>
           </li>
           <li>
@@ -8300,12 +8337,12 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
           <li>
             <dl class="switch">
               <dt>
-                If the <a data-link-type="idl" href="#dfn-KmacImportParams-length" class="internalDFN" id="ref-for-dfn-KmacImportParams-length-6"><code>length</code></a> member of
+                If the <a data-link-type="idl" href="#dfn-KmacImportParams-length" class="internalDFN" id="ref-for-dfn-KmacImportParams-length-7"><code>length</code></a> member of
                 <var>normalizedAlgorithm</var> is present:
               </dt>
               <dd>
                 Let <var>length</var> be equal to the
-                <a data-link-type="idl" href="#dfn-KmacImportParams-length" class="internalDFN" id="ref-for-dfn-KmacImportParams-length-7"><code>length</code></a>
+                <a data-link-type="idl" href="#dfn-KmacImportParams-length" class="internalDFN" id="ref-for-dfn-KmacImportParams-length-8"><code>length</code></a>
                 member of <var>normalizedAlgorithm</var>.
               </dd>
               <dt>
@@ -8397,7 +8434,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <p>The <dfn data-dfn-for="Argon2Params" id="dfn-Argon2Params-version" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="version" data-type="octet" tabindex="0" aria-haspopup="dialog"><code>version</code></dfn> member represents the version number. The default and currently only defined version is 19 (0x13).</p>
       <p>The <dfn data-dfn-for="Argon2Params" id="dfn-Argon2Params-secretValue" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="secretValue" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>secretValue</code></dfn> member represents the optional secret value.</p>
       <p>The <dfn data-dfn-for="Argon2Params" id="dfn-Argon2Params-associatedData" data-export="" data-dfn-type="dict-member" data-idl="field" data-title="associatedData" data-type="BufferSource" tabindex="0" aria-haspopup="dialog"><code>associatedData</code></dfn> member represents the optional associated data.</p>
-      <div class="note" role="note" id="issue-container-generatedID-17"><div class="note-title marker" id="h-note-17"><span>Note</span></div><p class="">
+      <div class="note" role="note" id="issue-container-generatedID-21"><div class="note-title marker" id="h-note-21"><span>Note</span></div><p class="">
         For the recommended values of the parameters, see section 4 of [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9106" title="Argon2 Memory-Hard Function for Password Hashing and Proof-of-Work Applications">RFC9106</a></cite>].
       </p></div>
     </section>
@@ -8852,7 +8889,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       operations to prioritize for implementation.
     </p>
     <p>
-      The <a href="#dfn-SubtleCrypto-method-supports" id="ref-for-dfn-SubtleCrypto-method-supports-6"><code>SubtleCrypto.supports</code></a>
+      The <a href="#dfn-SubtleCrypto-method-supports" id="ref-for-dfn-SubtleCrypto-method-supports-10"><code>SubtleCrypto.supports</code></a>
       method simplifies the expedited adoption of every other algorithm and
       operation in this specification by enabling feature detection, graceful
       fallback, and progressive enhancement.
@@ -8906,7 +8943,7 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
         However, if an implementation of cSHAKE is not available, an
         implementation of SHAKE may still prove useful, when making sure
         to throw a <a data-link-type="exception" data-lt="NotSupportedError" href="https://webidl.spec.whatwg.org/#notsupportederror"><code>NotSupportedError</code></a> (and return <code>false</code> from
-        <a href="#dfn-SubtleCrypto-method-supports" id="ref-for-dfn-SubtleCrypto-method-supports-7"><code>SubtleCrypto.supports</code></a>)
+        <a href="#dfn-SubtleCrypto-method-supports" id="ref-for-dfn-SubtleCrypto-method-supports-11"><code>SubtleCrypto.supports</code></a>)
         when either the <a data-link-type="idl" href="#dfn-CShakeParams-functionName" class="internalDFN" id="ref-for-dfn-CShakeParams-functionName-4"><code>functionName</code></a> or
         <a data-link-type="idl" href="#dfn-CShakeParams-customization" class="internalDFN" id="ref-for-dfn-CShakeParams-customization-4"><code>customization</code></a> parameter is present and non-empty.
       </li>
@@ -9553,11 +9590,13 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
     </li><li>
       <a href="#ref-for-dfn-keccak-decoding-4" title="§ 13.4.1 Digest">§ 13.4.1 Digest</a> <a href="#ref-for-dfn-keccak-decoding-5" title="Reference 2">(2)</a> <a href="#ref-for-dfn-keccak-decoding-6" title="Reference 3">(3)</a> <a href="#ref-for-dfn-keccak-decoding-7" title="Reference 4">(4)</a> 
     </li><li>
-      <a href="#ref-for-dfn-keccak-decoding-8" title="§ 16.7.1 Sign">§ 16.7.1 Sign</a> <a href="#ref-for-dfn-keccak-decoding-9" title="Reference 2">(2)</a> <a href="#ref-for-dfn-keccak-decoding-10" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-keccak-decoding-8" title="§ 16.4 KmacImportParams dictionary">§ 16.4 KmacImportParams dictionary</a> 
     </li><li>
-      <a href="#ref-for-dfn-keccak-decoding-11" title="§ 16.7.2 Verify">§ 16.7.2 Verify</a> <a href="#ref-for-dfn-keccak-decoding-12" title="Reference 2">(2)</a> <a href="#ref-for-dfn-keccak-decoding-13" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-keccak-decoding-9" title="§ 16.7.1 Sign">§ 16.7.1 Sign</a> <a href="#ref-for-dfn-keccak-decoding-10" title="Reference 2">(2)</a> <a href="#ref-for-dfn-keccak-decoding-11" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-keccak-decoding-14" title="§ 16.7.4 Import Key">§ 16.7.4 Import Key</a> 
+      <a href="#ref-for-dfn-keccak-decoding-12" title="§ 16.7.2 Verify">§ 16.7.2 Verify</a> <a href="#ref-for-dfn-keccak-decoding-13" title="Reference 2">(2)</a> <a href="#ref-for-dfn-keccak-decoding-14" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-keccak-decoding-15" title="§ 16.7.4 Import Key">§ 16.7.4 Import Key</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-keyformat" aria-label="Links in this document to definition: KeyFormat">
@@ -10039,11 +10078,19 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
     </li><li>
       <a href="#ref-for-dfn-SubtleCrypto-method-supports-3" title="§ 13.1 Description">§ 13.1 Description</a> 
     </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-supports-4" title="§ 14.1 Description">§ 14.1 Description</a> 
+      <a href="#ref-for-dfn-SubtleCrypto-method-supports-4" title="§ 13.3 CShakeParams dictionary">§ 13.3 CShakeParams dictionary</a> 
     </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-supports-5" title="§ 15.1 Description">§ 15.1 Description</a> 
+      <a href="#ref-for-dfn-SubtleCrypto-method-supports-5" title="§ 14.1 Description">§ 14.1 Description</a> 
     </li><li>
-      <a href="#ref-for-dfn-SubtleCrypto-method-supports-6" title="§ 19. Adoption Guidance">§ 19. Adoption Guidance</a> <a href="#ref-for-dfn-SubtleCrypto-method-supports-7" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-SubtleCrypto-method-supports-6" title="§ 15.1 Description">§ 15.1 Description</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-supports-7" title="§ 16.3 KmacKeyGenParams dictionary">§ 16.3 KmacKeyGenParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-supports-8" title="§ 16.4 KmacImportParams dictionary">§ 16.4 KmacImportParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-supports-9" title="§ 16.6 KmacParams dictionary">§ 16.6 KmacParams dictionary</a> 
+    </li><li>
+      <a href="#ref-for-dfn-SubtleCrypto-method-supports-10" title="§ 19. Adoption Guidance">§ 19. Adoption Guidance</a> <a href="#ref-for-dfn-SubtleCrypto-method-supports-11" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-SubtleCrypto-method-supports-additionalAlgorithm" aria-label="Links in this document to definition: supports(operation, algorithm, additionalAlgorithm)">
@@ -10396,9 +10443,9 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-CShakeParams-outputLength-1" title="§ 13.3 CShakeParams dictionary">§ 13.3 CShakeParams dictionary</a> 
+      <a href="#ref-for-dfn-CShakeParams-outputLength-1" title="§ 13.3 CShakeParams dictionary">§ 13.3 CShakeParams dictionary</a> <a href="#ref-for-dfn-CShakeParams-outputLength-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-CShakeParams-outputLength-2" title="§ 13.4.1 Digest">§ 13.4.1 Digest</a> 
+      <a href="#ref-for-dfn-CShakeParams-outputLength-3" title="§ 13.4.1 Digest">§ 13.4.1 Digest</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-CShakeParams-functionName" aria-label="Links in this document to definition: functionName">
@@ -10554,9 +10601,9 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-KmacKeyGenParams-length-1" title="§ 16.3 KmacKeyGenParams dictionary">§ 16.3 KmacKeyGenParams dictionary</a> 
+      <a href="#ref-for-dfn-KmacKeyGenParams-length-1" title="§ 16.3 KmacKeyGenParams dictionary">§ 16.3 KmacKeyGenParams dictionary</a> <a href="#ref-for-dfn-KmacKeyGenParams-length-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-KmacKeyGenParams-length-2" title="§ 16.7.3 Generate Key">§ 16.7.3 Generate Key</a> <a href="#ref-for-dfn-KmacKeyGenParams-length-3" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-KmacKeyGenParams-length-3" title="§ 16.7.3 Generate Key">§ 16.7.3 Generate Key</a> <a href="#ref-for-dfn-KmacKeyGenParams-length-4" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacImportParams" aria-label="Links in this document to definition: KmacImportParams">
@@ -10584,11 +10631,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-KmacImportParams-length-1" title="§ 16.4 KmacImportParams dictionary">§ 16.4 KmacImportParams dictionary</a> 
+      <a href="#ref-for-dfn-KmacImportParams-length-1" title="§ 16.4 KmacImportParams dictionary">§ 16.4 KmacImportParams dictionary</a> <a href="#ref-for-dfn-KmacImportParams-length-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-KmacImportParams-length-2" title="§ 16.7.4 Import Key">§ 16.7.4 Import Key</a> <a href="#ref-for-dfn-KmacImportParams-length-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-KmacImportParams-length-4" title="Reference 3">(3)</a> <a href="#ref-for-dfn-KmacImportParams-length-5" title="Reference 4">(4)</a> 
+      <a href="#ref-for-dfn-KmacImportParams-length-3" title="§ 16.7.4 Import Key">§ 16.7.4 Import Key</a> <a href="#ref-for-dfn-KmacImportParams-length-4" title="Reference 2">(2)</a> <a href="#ref-for-dfn-KmacImportParams-length-5" title="Reference 3">(3)</a> <a href="#ref-for-dfn-KmacImportParams-length-6" title="Reference 4">(4)</a> 
     </li><li>
-      <a href="#ref-for-dfn-KmacImportParams-length-6" title="§ 16.7.6 Get key length">§ 16.7.6 Get key length</a> <a href="#ref-for-dfn-KmacImportParams-length-7" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-KmacImportParams-length-7" title="§ 16.7.6 Get key length">§ 16.7.6 Get key length</a> <a href="#ref-for-dfn-KmacImportParams-length-8" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacKeyAlgorithm" aria-label="Links in this document to definition: KmacKeyAlgorithm">
@@ -10650,11 +10697,11 @@ dictionary <a class="internalDFN idlID" data-link-type="dictionary" href="#dfn-E
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-KmacParams-outputLength-1" title="§ 16.6 KmacParams dictionary">§ 16.6 KmacParams dictionary</a> 
+      <a href="#ref-for-dfn-KmacParams-outputLength-1" title="§ 16.6 KmacParams dictionary">§ 16.6 KmacParams dictionary</a> <a href="#ref-for-dfn-KmacParams-outputLength-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-KmacParams-outputLength-2" title="§ 16.7.1 Sign">§ 16.7.1 Sign</a> <a href="#ref-for-dfn-KmacParams-outputLength-3" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-KmacParams-outputLength-3" title="§ 16.7.1 Sign">§ 16.7.1 Sign</a> <a href="#ref-for-dfn-KmacParams-outputLength-4" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-KmacParams-outputLength-4" title="§ 16.7.2 Verify">§ 16.7.2 Verify</a> <a href="#ref-for-dfn-KmacParams-outputLength-5" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-KmacParams-outputLength-5" title="§ 16.7.2 Verify">§ 16.7.2 Verify</a> <a href="#ref-for-dfn-KmacParams-outputLength-6" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-KmacParams-customization" aria-label="Links in this document to definition: customization">
