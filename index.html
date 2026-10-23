@@ -7053,6 +7053,13 @@ dictionary CShakeParams : Algorithm {
 };
       </pre>
       <p>The <dfn data-dfn-for=CShakeParams id=dfn-CShakeParams-outputLength>outputLength</dfn> member represents the requested output length in bits.</p>
+      <p class="note">
+        Byte-oriented implementations of cSHAKE may not support outputting a
+        non-integer number of bytes. In that case, the implementation should
+        throw a {{NotSupportedError}} in the Digest operation
+        (and return `false` from {{SubtleCrypto/supports()}})
+        when {{CShakeParams/outputLength}} is not a multiple of 8.
+      </p>
       <p>The <dfn data-dfn-for=CShakeParams id=dfn-CShakeParams-functionName>functionName</dfn> member represents the function name, used by NIST to define functions based on cSHAKE. When used, it should only be set to values defined by NIST.</p>
       <p>The <dfn data-dfn-for=CShakeParams id=dfn-CShakeParams-customization>customization</dfn> member represents the customization string. The application selects this string to define a variant of the function.</p>
     </section>
@@ -7462,6 +7469,13 @@ dictionary KmacKeyGenParams : Algorithm {
 };
       </pre>
       <p>The <dfn data-dfn-for=KmacKeyGenParams id=dfn-KmacKeyGenParams-length>length</dfn> member represents the length (in bits) of the key to generate. If unspecified, the recommended length will be used, which is 128 for KMAC128 and 256 for KMAC256.</p>
+      <p class="note">
+        Byte-oriented implementations of KMAC may not support keys with a
+        non-integer number of bytes. In that case, the implementation should
+        throw a {{NotSupportedError}} in the Generate Key operation
+        (and return `false` from {{SubtleCrypto/supports()}})
+        when {{KmacKeyGenParams/length}} is not a multiple of 8.
+      </p>
     </section>
     <section id="kmac-importparams">
       <h4><dfn data-idl id="dfn-KmacImportParams">KmacImportParams</dfn> dictionary</h4>
@@ -7471,6 +7485,22 @@ dictionary KmacImportParams : Algorithm {
 };
       </pre>
       <p>The <dfn data-dfn-for=KmacImportParams id=dfn-KmacImportParams-length>length</dfn> member represents the length (in bits) of the key.</p>
+      <div class="note">
+        <p>
+          Byte-oriented implementations of KMAC may not support keys with a
+          non-integer number of bytes. In that case, the implementation should
+          throw a {{NotSupportedError}} in the Import Key operation
+          (and return `false` from {{SubtleCrypto/supports()}})
+          when {{KmacImportParams/length}} is not a multiple of 8.
+        </p>
+        <p>
+          Furthermore, when importing a key derived using {{SubtleCrypto/deriveKey()}},
+          the least significant bits are read first
+          (due to the [= Keccak decoding | Keccak decoding steps =]),
+          rather than the most significant bits. Therefore, when deriving
+          a key with a non-integer number of bytes, bits will be lost.
+        </p>
+      </div>
     </section>
     <section id="KmacKeyAlgorithm-dictionary">
       <h4><dfn data-idl id="dfn-KmacKeyAlgorithm">KmacKeyAlgorithm</dfn> dictionary</h4>
@@ -7490,6 +7520,13 @@ dictionary KmacParams : Algorithm {
 };
       </pre>
       <p>The <dfn data-dfn-for=KmacParams id=dfn-KmacParams-outputLength>outputLength</dfn> member represents the requested output length in bits.</p>
+      <p class="note">
+        Byte-oriented implementations of KMAC may not support outputting a
+        non-integer number of bytes. In that case, the implementation should
+        throw a {{NotSupportedError}} in the Sign and Verify operations
+        (and return `false` from {{SubtleCrypto/supports()}})
+        when {{KmacParams/outputLength}} is not a multiple of 8.
+      </p>
       <p>The <dfn data-dfn-for=KmacParams id=dfn-KmacParams-customization>customization</dfn> member represents the customization string. The application selects this string to define a variant of the function.</p>
     </section>
 
