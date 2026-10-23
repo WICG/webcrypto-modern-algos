@@ -221,6 +221,13 @@
         significant bit to its most significant bit. The decoding of the empty byte
         sequence is the empty bit string.
       </p>
+      <p class="note">
+        A byte-oriented implementation of the Keccak family of functions
+        (SHA-3, cSHAKE, and KMAC) will likely already implement this encoding,
+        in which case no special conversion steps are needed when calling them.
+        These encoding and decoding steps are solely needed to interface with
+        the bit-oriented definitions in [[FIPS-202]] and [[NIST-SP800-185]].
+      </p>
     </section>
   </section>
 
