@@ -203,6 +203,32 @@
       <li>decapsulate</li>
       <li>get shared key length</li>
     </ul>
+    <section id="keccak-bit-strings">
+      <h3>Keccak bit strings</h3>
+      <p>
+        The <dfn id="dfn-keccak-encoding">Keccak encoding</dfn> of a bit string is the
+        [= byte sequence =] obtained by dividing the bit string into consecutive groups
+        of eight bits and interpreting each group in least-significant-bit-first order:
+        the first bit has weight 2<sup>0</sup>, the second has weight 2<sup>1</sup>, and so on.
+        If the final group has fewer than eight bits, its bits occupy the least
+        significant positions of the final byte and the remaining most significant
+        positions are set to zero. The encoding of the empty bit string is the empty
+        byte sequence.
+      </p>
+      <p>
+        The <dfn id="dfn-keccak-decoding">Keccak decoding</dfn> of a [= byte sequence =]
+        is the bit string obtained by reading each byte in sequence, from its least
+        significant bit to its most significant bit. The decoding of the empty byte
+        sequence is the empty bit string.
+      </p>
+      <p class="note">
+        A byte-oriented implementation of the Keccak family of functions
+        (SHA-3, cSHAKE, and KMAC) will likely already implement this encoding,
+        in which case no special conversion steps are needed when calling them.
+        These encoding and decoding steps are solely needed to interface with
+        the bit-oriented definitions in [[FIPS-202]] and [[NIST-SP800-185]].
+      </p>
+    </section>
   </section>
 
   <section id="partial-subtlecrypto-interface">
@@ -6935,7 +6961,7 @@ dictionary AeadParams : Algorithm {
               <dd>
                 Let |result| be the result of performing the SHA3-256 hash function
                 defined in Section 6.1 of [[FIPS-202]] using
-                |message| as the input message, |M|.
+                the [= Keccak decoding =] of |message| as the input message, |M|.
               </dd>
               <dt>
                 If the {{Algorithm/name}} member of
@@ -6945,7 +6971,7 @@ dictionary AeadParams : Algorithm {
               <dd>
                 Let |result| be the result of performing the SHA3-384 hash function
                 defined in Section 6.1 of [[FIPS-202]] using
-                |message| as the input message, |M|.
+                the [= Keccak decoding =] of |message| as the input message, |M|.
               </dd>
               <dt>
                 If the {{Algorithm/name}} member of
@@ -6955,7 +6981,7 @@ dictionary AeadParams : Algorithm {
               <dd>
                 Let |result| be the result of performing the SHA3-512 hash function
                 defined in Section 6.1 of [[FIPS-202]] using
-                |message| as the input message, |M|.
+                the [= Keccak decoding =] of |message| as the input message, |M|.
               </dd>
             </dl>
           </li>
@@ -6966,7 +6992,7 @@ dictionary AeadParams : Algorithm {
           </li>
           <li>
             <p>
-              Return |result|.
+              Return the [= Keccak encoding =] of |result|.
             </p>
           </li>
         </ol>
@@ -7043,16 +7069,16 @@ dictionary CShakeParams : Algorithm {
           </li>
           <li>
             <p>
-              Let |functionName| be the {{CShakeParams/functionName}} member of
-              |normalizedAlgorithm| if present or the empty octet
-              string otherwise.
+              Let |functionName| be the [= Keccak decoding =] of the
+              {{CShakeParams/functionName}} member of |normalizedAlgorithm| if
+              present, or the empty bit string otherwise.
             </p>
           </li>
           <li>
             <p>
-              Let |customization| be the {{CShakeParams/customization}} member of
-              |normalizedAlgorithm| if present or the empty octet
-              string otherwise.
+              Let |customization| be the [= Keccak decoding =] of the
+              {{CShakeParams/customization}} member of |normalizedAlgorithm| if
+              present, or the empty bit string otherwise.
             </p>
           </li>
           <li>
@@ -7065,7 +7091,7 @@ dictionary CShakeParams : Algorithm {
               <dd>
                 Let |result| be the result of performing the cSHAKE128 function
                 defined in Section 3 of [[NIST-SP800-185]] using
-                |message| as the |X| input parameter,
+                the [= Keccak decoding =] of |message| as the |X| input parameter,
                 |outputLength| as the |L| input parameter,
                 |functionName| as the |N| input parameter, and
                 |customization| as the |S| input parameter.
@@ -7078,7 +7104,7 @@ dictionary CShakeParams : Algorithm {
               <dd>
                 Let |result| be the result of performing the cSHAKE256 function
                 defined in Section 3 of [[NIST-SP800-185]] using
-                |message| as the |X| input parameter,
+                the [= Keccak decoding =] of |message| as the |X| input parameter,
                 |outputLength| as the |L| input parameter,
                 |functionName| as the |N| input parameter, and
                 |customization| as the |S| input parameter.
@@ -7092,7 +7118,7 @@ dictionary CShakeParams : Algorithm {
           </li>
           <li>
             <p>
-              Return a <a data-cite="webcrypto#dfn-byte-sequence-containing">byte sequence containing</a> |result|.
+              Return the [= Keccak encoding =] of |result|.
             </p>
           </li>
         </ol>
@@ -7474,9 +7500,9 @@ dictionary KmacParams : Algorithm {
         <ol>
           <li>
             <p>
-              Let |customization| be the {{KmacParams/customization}} member of
-              |normalizedAlgorithm| if present or the empty octet
-              string otherwise.
+              Let |customization| be the [= Keccak decoding =] of the
+              {{KmacParams/customization}} member of |normalizedAlgorithm| if
+              present, or the empty bit string otherwise.
             </p>
           </li>
           <li>
@@ -7489,9 +7515,10 @@ dictionary KmacParams : Algorithm {
               <dd>
                 Let |mac| be the result of performing the KMAC128 function
                 defined in Section 4 of [[NIST-SP800-185]] using
-                the key represented by <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
+                the raw bits of the key represented by the
+                <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
                 internal slot of |key| as the |K| input parameter,
-                |message| as the |X| input parameter,
+                the [= Keccak decoding =] of |message| as the |X| input parameter,
                 the {{KmacParams/outputLength}} member of |normalizedAlgorithm| as
                 the |L| input parameter, and
                 |customization| as
@@ -7505,9 +7532,10 @@ dictionary KmacParams : Algorithm {
               <dd>
                 Let |mac| be the result of performing the KMAC256 function
                 defined in Section 4 of [[NIST-SP800-185]] using
-                the key represented by <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
+                the raw bits of the key represented by the
+                <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
                 internal slot of |key| as the |K| input parameter,
-                |message| as the |X| input parameter,
+                the [= Keccak decoding =] of |message| as the |X| input parameter,
                 the {{KmacParams/outputLength}} member of |normalizedAlgorithm| as
                 the |L| input parameter, and
                 |customization| as
@@ -7522,7 +7550,7 @@ dictionary KmacParams : Algorithm {
           </li>
           <li>
             <p>
-              Return a <a data-cite="webcrypto#dfn-byte-sequence-containing">byte sequence containing</a> |mac|.
+              Return the [= Keccak encoding =] of |mac|.
             </p>
           </li>
         </ol>
@@ -7532,9 +7560,9 @@ dictionary KmacParams : Algorithm {
         <ol>
           <li>
             <p>
-              Let |customization| be the {{KmacParams/customization}} member of
-              |normalizedAlgorithm| if present or the empty octet
-              string otherwise.
+              Let |customization| be the [= Keccak decoding =] of the
+              {{KmacParams/customization}} member of |normalizedAlgorithm| if
+              present, or the empty bit string otherwise.
             </p>
           </li>
           <li>
@@ -7547,9 +7575,10 @@ dictionary KmacParams : Algorithm {
               <dd>
                 Let |mac| be the result of performing the KMAC128 function
                 defined in Section 4 of [[NIST-SP800-185]] using
-                the key represented by <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
+                the raw bits of the key represented by the
+                <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
                 internal slot of |key| as the |K| input parameter,
-                |message| as the |X| input parameter,
+                the [= Keccak decoding =] of |message| as the |X| input parameter,
                 the {{KmacParams/outputLength}} member of |normalizedAlgorithm| as
                 the |L| input parameter, and
                 |customization| as
@@ -7563,9 +7592,10 @@ dictionary KmacParams : Algorithm {
               <dd>
                 Let |mac| be the result of performing the KMAC256 function
                 defined in Section 4 of [[NIST-SP800-185]] using
-                the key represented by <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
+                the raw bits of the key represented by the
+                <a data-cite="webcrypto#dfn-CryptoKey-slot-handle">`[[handle]]`</a>
                 internal slot of |key| as the |K| input parameter,
-                |message| as the |X| input parameter,
+                the [= Keccak decoding =] of |message| as the |X| input parameter,
                 the {{KmacParams/outputLength}} member of |normalizedAlgorithm| as
                 the |L| input parameter, and
                 |customization| as
@@ -7580,7 +7610,7 @@ dictionary KmacParams : Algorithm {
           </li>
           <li>
             <p>
-              Let |computedMac| be a <a data-cite="webcrypto#dfn-byte-sequence-containing">byte sequence containing</a> |mac|.
+              Let |computedMac| be the [= Keccak encoding =] of |mac|.
             </p>
           </li>
           <li>
@@ -7863,8 +7893,8 @@ dictionary KmacParams : Algorithm {
           <li>
             <p>
               Let |key| be a new {{CryptoKey}}
-              object representing an KMAC key with the first |length|
-              bits of |data|.
+              object representing a KMAC key with the first |length| bits
+              of the [= Keccak decoding =] of |data|.
             </p>
           </li>
           <li>
@@ -7921,7 +7951,7 @@ dictionary KmacParams : Algorithm {
           </li>
           <li>
             <p>
-              Let |data| be an <a data-cite="webcrypto#dfn-byte-sequence-containing">byte sequence containing</a> |bits|.
+              Let |data| be the [= Keccak encoding =] of |bits|.
             </p>
           </li>
           <li>
